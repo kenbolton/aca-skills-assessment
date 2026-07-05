@@ -5,9 +5,9 @@ import { invalidResults, isSessionComplete } from '../lib/validation.js';
 import { downloadPaddlerPdf } from '../lib/pdf.js';
 import { syncSession } from '../lib/sync.js';
 
-// Sync-to-server is opt-in at build time (VITE_ENABLE_SYNC=true). It is hidden
+// Sync-to-server is opt-in at build time (VITE_PRIVATE=true). It is hidden
 // on the public build, where visitors self-assess and export locally.
-const SYNC_ENABLED = import.meta.env.VITE_ENABLE_SYNC === 'true';
+const SYNC_ENABLED = import.meta.env.VITE_PRIVATE === 'true';
 
 function download(name, text, type) {
   const blob = new Blob([text], { type });
