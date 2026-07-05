@@ -1,81 +1,26 @@
 import { skillById, optionFor } from './session.js';
+import { landingFor } from './landing.js';
 
 export function paddlerSummary(session, paddlerId) {
-  // Find the paddler
   const paddler = session.paddlers.find(p => p.id === paddlerId);
-  if (!paddler) {
-    throw new Error(`Paddler with id ${paddlerId} not found`);
-  }
-
-  // Get all results for this paddler
-  const paddlerResults = session.results.filter(r => r.paddlerId === paddlerId);
-
-  // Initialize counts object with all scale values set to 0
+  const target = paddler ? paddler.target : null;
+  const scale = (session.scales[target] || []);
   const counts = {};
-  for (const option of session.scale) {
-    counts[option.value] = 0;
+  for (const o of scale) counts[o.value] = 0;
+  const rows = session.results.filter(r => r.paddlerId === paddlerId);
+  const { landing, pendingCount } = landingFor(session, paddlerId);
+  const item = (r, s) => ({ skillId: r.skillId, name: s.name, category: s.category, rating: r.rating, ratingLabel: (scale.find(o => o.value === r.rating) || {}).label || '', feedback: r.feedback });
+  let coreTotal = 0, unrated = 0;
+  const flagged = [], optionalItems = [];
+  for (const r of rows) {
+    const s = skillById(session, r.skillId);
+    if (!s) continue;
+    if (s.optional) { if (r.rating !== null) optionalItems.push(item(r, s)); continue; }
+    coreTotal++;
+    if (r.rating === null) { unrated++; continue; }
+    if (r.rating in counts) counts[r.rating]++;
+    const opt = optionFor(session, s, r.rating);
+    if (opt && opt.requiresFeedback) flagged.push(item(r, s));
   }
-
-  // Process results
-  let coreTotal = 0;
-  let unrated = 0;
-  const belowItems = [];
-  let optionalAssessed = 0;
-  const optionalItems = [];
-
-  for (const result of paddlerResults) {
-    const skill = skillById(session, result.skillId);
-    if (!skill) continue;
-
-    const isOptional = skill.optional;
-
-    if (!isOptional) {
-      // Core skill
-      coreTotal++;
-
-      if (result.rating === null) {
-        unrated++;
-      } else {
-        // Count the rating (guard against a rating value not present in the scale)
-        if (result.rating != null && result.rating in counts) counts[result.rating]++;
-
-        // Check if this rating requires feedback
-        const option = optionFor(session, result.rating);
-        if (option && option.requiresFeedback) {
-          belowItems.push({
-            skillId: result.skillId,
-            name: skill.name,
-            category: skill.category,
-            rating: result.rating,
-            feedback: result.feedback,
-          });
-        }
-      }
-    } else {
-      // Optional skill
-      if (result.rating !== null) {
-        optionalAssessed++;
-        optionalItems.push({
-          skillId: result.skillId,
-          name: skill.name,
-          category: skill.category,
-          rating: result.rating,
-          feedback: result.feedback,
-        });
-      }
-    }
-  }
-
-  return {
-    name: paddler.name,
-    levelId: session.levelId,
-    levelName: session.levelName,
-    scale: session.scale,
-    coreTotal,
-    counts,
-    unrated,
-    belowItems,
-    optionalAssessed,
-    optionalItems,
-  };
+  return { name: paddler ? paddler.name : '', target, landing, pendingCount, coreTotal, counts, unrated, flagged, optionalItems };
 }
