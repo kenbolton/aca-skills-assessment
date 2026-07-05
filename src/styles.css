@@ -1,4 +1,4 @@
-:root { --hit: 56px; --dnm: #c0392b; --meet: #2e7d32; --exc: #005f6b; }
+:root { --hit: 56px; --dnm: #c0392b; --meet: #2e7d32; --exc: #005f6b; --l1: #b7791f; }
 * { box-sizing: border-box; }
 body { margin: 0; font-family: system-ui, sans-serif; font-size: 18px; -webkit-text-size-adjust: 100%; }
 button { min-height: var(--hit); font-size: 18px; }
@@ -106,6 +106,10 @@ button { min-height: var(--hit); font-size: 18px; }
   line-height: 1.4;
 }
 
+.standard-box-secondary {
+  margin-top: 0.5rem;
+}
+
 .link-button {
   min-height: auto;
   background: none;
@@ -168,6 +172,11 @@ button { min-height: var(--hit); font-size: 18px; }
   background: var(--dnm);
   border-color: var(--dnm);
   color: #fff;
+}
+
+.chip-danger[data-value="l1"] {
+  background: var(--l1);
+  border-color: var(--l1);
 }
 
 .feedback-box {

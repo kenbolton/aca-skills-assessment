@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks';
-import { getResult, setRating, setFeedback, optionFor } from '../lib/session.js';
+import { getResult, setRating, setFeedback, optionsForSkillInSession } from '../lib/session.js';
 import { resultNeedsFeedback } from '../lib/validation.js';
 import lessons from '../data/lessons.json';
 
@@ -15,11 +15,12 @@ const CONTENT_BY_SLUG = Object.fromEntries(
 );
 const PRIVATE = import.meta.env.VITE_PRIVATE === 'true';
 
-function countRatedCoreSkills(session) {
-  const coreSkills = session.skills.filter(s => !s.optional);
+function countRatedCoreSkills(session, visibleSkills) {
+  const coreSkills = visibleSkills.filter(s => !s.optional);
   let rated = 0;
   for (const skill of coreSkills) {
-    const allRated = session.paddlers.every(p => {
+    const applicable = session.paddlers.filter(p => p.target === skill.level);
+    const allRated = applicable.every(p => {
       const result = getResult(session, p.id, skill.id);
       return result && result.rating !== null;
     });
@@ -32,15 +33,30 @@ export function Rate({ session, onChange, onDone }) {
   const [i, setI] = useState(0);
   const [showLesson, setShowLesson] = useState(false);
 
-  const skill = session.skills[i];
-  const isLast = i === session.skills.length - 1;
-  const { rated: coreRated, total: coreTotal } = countRatedCoreSkills(session);
+  // A skill is only shown if at least one paddler's target matches its level;
+  // skills with no applicable paddler are auto-skipped by never appearing here.
+  const visibleSkills = session.skills.filter(s => session.paddlers.some(p => p.target === s.level));
 
-  const rowsInfo = session.paddlers.map(paddler => {
+  if (visibleSkills.length === 0) {
+    return (
+      <main className="screen rate-screen">
+        <p>No skills apply to this session's paddlers.</p>
+      </main>
+    );
+  }
+
+  const skill = visibleSkills[i];
+  const isLast = i === visibleSkills.length - 1;
+  const { rated: coreRated, total: coreTotal } = countRatedCoreSkills(session, visibleSkills);
+
+  const rowPaddlers = session.paddlers.filter(p => p.target === skill.level);
+  const options = optionsForSkillInSession(session, skill);
+
+  const rowsInfo = rowPaddlers.map(paddler => {
     const result = getResult(session, paddler.id, skill.id);
-    const option = optionFor(session, result ? result.rating : null);
+    const selectedOption = result ? options.find(o => o.value === result.rating) : null;
     const needsFeedback = result ? resultNeedsFeedback(session, result) : false;
-    return { paddler, result, option, needsFeedback };
+    return { paddler, result, selectedOption, needsFeedback };
   });
 
   const blocked = rowsInfo.some(r => r.needsFeedback);
@@ -67,7 +83,7 @@ export function Rate({ session, onChange, onDone }) {
     <main className="screen rate-screen">
       <div className="rate-header">
         <p className="rate-meta">
-          {skill.category} &middot; Skill {i + 1}/{session.skills.length} &middot; Core rated {coreRated}/{coreTotal}
+          {skill.category} &middot; Skill {i + 1}/{visibleSkills.length} &middot; Core rated {coreRated}/{coreTotal}
         </p>
         <h2 className="rate-skill-name">{skill.name}</h2>
         {skill.optional ? (
@@ -76,9 +92,17 @@ export function Rate({ session, onChange, onDone }) {
         {skill.competency ? <p className="rate-competency">{skill.competency}</p> : null}
         <div className="standard-box">
           <div className="standard-box-header">
-            <span>{session.levelId} standard</span>
+            <span>Standard</span>
           </div>
           <p className="standard-box-text">{skill.standard}</p>
+          {skill.l1Standard ? (
+            <div className="standard-box-secondary">
+              <div className="standard-box-header">
+                <span>L1 standard</span>
+              </div>
+              <p className="standard-box-text">{skill.l1Standard}</p>
+            </div>
+          ) : null}
         </div>
         {PRIVATE && lessons[skill.id] && CONTENT_BY_SLUG[lessons[skill.id]] ? (
           <div className="teaching">
@@ -96,11 +120,11 @@ export function Rate({ session, onChange, onDone }) {
       </div>
 
       <div className="rate-rows">
-        {rowsInfo.map(({ paddler, result, needsFeedback }) => (
+        {rowsInfo.map(({ paddler, result, selectedOption, needsFeedback }) => (
           <div className="paddler-row" key={paddler.id}>
             <div className="paddler-row-name">{paddler.name}</div>
             <div className="chip-row">
-              {session.scale.map(opt => {
+              {options.map(opt => {
                 const selected = result && result.rating === opt.value;
                 const chipClass = [
                   'chip',
@@ -111,6 +135,7 @@ export function Rate({ session, onChange, onDone }) {
                     key={opt.value}
                     type="button"
                     className={chipClass}
+                    data-value={opt.value}
                     aria-pressed={selected}
                     onClick={() => handleRate(paddler.id, opt.value)}
                   >
@@ -119,7 +144,7 @@ export function Rate({ session, onChange, onDone }) {
                 );
               })}
             </div>
-            {result && optionFor(session, result.rating) && optionFor(session, result.rating).requiresFeedback ? (
+            {result && selectedOption && selectedOption.requiresFeedback ? (
               <textarea
                 className={`feedback-box${needsFeedback ? ' feedback-required' : ''}`}
                 value={result.feedback}
