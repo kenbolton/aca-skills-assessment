@@ -117,6 +117,11 @@ export function Rate({ session, onChange, onDone }) {
                 );
               })}
             </ul>
+            <div className="skills-nav-foot">
+              <button type="button" className="skills-nav-review" onClick={() => { setNavOpen(false); onDone(); }}>
+                Review &rarr;
+              </button>
+            </div>
           </div>
         </div>
       ) : null}
