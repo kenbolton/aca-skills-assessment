@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import { getResult, setRating, setFeedback, optionsForSkillInSession } from '../lib/session.js';
 import { resultNeedsFeedback, skillStatus } from '../lib/validation.js';
 import lessons from '../data/lessons.json';
@@ -36,6 +36,10 @@ export function Rate({ session, onChange, onDone }) {
   const [i, setI] = useState(0);
   const [showLesson, setShowLesson] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+
+  // The whole page scrolls as one document, so moving to another skill
+  // (Next/Prev or a jump from the Skills overlay) must return to the top.
+  useEffect(() => { window.scrollTo(0, 0); }, [i]);
 
   // A skill is only shown if at least one paddler's target matches its level;
   // skills with no applicable paddler are auto-skipped by never appearing here.
