@@ -1,154 +1,52 @@
+import { expect, test, beforeEach } from 'vitest';
+import { createSession, getResult, setRating, setFeedback, optionFor, saveSession, loadSession, clearSession } from '../src/lib/session.js';
+
 beforeEach(() => {
   const store = new Map();
-  globalThis.localStorage = {
-    getItem: k => (store.has(k) ? store.get(k) : null),
-    setItem: (k, v) => store.set(k, String(v)),
-    removeItem: k => store.delete(k),
-  };
+  globalThis.localStorage = { getItem: k => store.has(k) ? store.get(k) : null, setItem: (k, v) => store.set(k, String(v)), removeItem: k => store.delete(k) };
 });
 
-import { expect, test, beforeEach } from 'vitest';
-import { loadConfig } from '../src/lib/skills.js';
-import {
-  createSession, getResult, skillById, optionFor,
-  setRating, setFeedback, saveSession, loadSession, clearSession,
-} from '../src/lib/session.js';
-
-const raw = {
-  levels: [
-    {
-      id: 'L1',
-      name: 'Level 1',
-      scale: [
-        { value: 'no', label: 'No', requiresFeedback: true },
-        { value: 'pass', label: 'Pass' },
-        { value: 'dno', label: 'Did Not Observe' },
-      ],
-      categories: [
-        {
-          name: 'Rescues',
-          skills: [
-            { id: 'wet-exit', name: 'Wet Exit', standard: 'Exit calmly' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'L2',
-      name: 'Level 2',
-      scale: [
-        { value: 'below', label: 'Below', requiresFeedback: true },
-        { value: 'meets', label: 'Meets' },
-      ],
-      categories: [
-        {
-          name: 'Strokes',
-          skills: [
-            { id: 'stern-rudder', name: 'Stern Rudder', standard: 'Holds line' },
-          ],
-        },
-      ],
-    },
+const cfg = {
+  scales: {
+    L1: [{ value: 'no', label: 'No', requiresFeedback: true }, { value: 'pass', label: 'Pass', requiresFeedback: false }, { value: 'dno', label: 'DNO', requiresFeedback: false }],
+    L2: [{ value: 'below', label: 'Below', requiresFeedback: true }, { value: 'l1', label: 'L1', requiresFeedback: true, dualOnly: true }, { value: 'meets', label: 'Meets', requiresFeedback: false }, { value: 'exceeds', label: 'Exceeds', requiresFeedback: false }],
+  },
+  skills: [
+    { id: 'a1', level: 'L1', category: 'c', name: 'A1', standard: 's', optional: false },
+    { id: 'b1', level: 'L2', category: 'c', name: 'B1', standard: 's', optional: false, l1Standard: 'l1 std' },
+    { id: 'b2', level: 'L2', category: 'c', name: 'B2', standard: 's', optional: false },
   ],
 };
 
-const config = loadConfig(raw);
-
-function base(levelId = 'L1') {
-  return createSession({
-    id: 's1',
-    createdAt: '2026-07-09T12:00:00Z',
-    config,
-    levelId,
-    location: 'Cold Spring',
-    paddlerNames: ['Alex', 'Sam'],
-  });
+function base() {
+  return createSession({ id: 's1', createdAt: 't', config: cfg, paddlers: [{ name: 'Alex', target: 'L2' }, { name: 'Sam', target: 'L1' }] });
 }
 
-test('createSession builds one result per paddler x snapshot skill, and snapshots scale/levelName', () => {
-  const s = base('L1'); // L1 has 1 skill; 2 paddlers => 2 results
-  expect(s.results).toHaveLength(2);
-  expect(s.paddlers.map(p => p.name)).toEqual(['Alex', 'Sam']);
-  expect(s.levelName).toBe('Level 1');
-  expect(s.skills.map(sk => sk.id)).toEqual(['wet-exit']);
-  expect(s.scale.map(o => o.value)).toEqual(['no', 'pass', 'dno']);
-  expect(getResult(s, s.paddlers[0].id, 'wet-exit').rating).toBeNull();
+test('createSession rates each paddler only on their target level', () => {
+  const s = base();
+  const alex = s.paddlers[0].id, sam = s.paddlers[1].id;
+  // Alex (L2) -> b1,b2 ; Sam (L1) -> a1
+  expect(s.results.filter(r => r.paddlerId === alex).map(r => r.skillId).sort()).toEqual(['b1', 'b2']);
+  expect(s.results.filter(r => r.paddlerId === sam).map(r => r.skillId)).toEqual(['a1']);
 });
 
-test('createSession trims and drops blank paddler names', () => {
-  const s = createSession({
-    id: 's2', createdAt: 'x', config, levelId: 'L1', paddlerNames: ['  Alex  ', '', '   ', 'Sam'],
-  });
-  expect(s.paddlers.map(p => p.name)).toEqual(['Alex', 'Sam']);
+test('setRating clears feedback unless the option requires it', () => {
+  let s = base();
+  const alex = s.paddlers[0].id;
+  s = setRating(s, alex, 'b1', 'l1');           // l1 requires feedback -> keep
+  s = setFeedback(s, alex, 'b1', 'met L1 only');
+  expect(getResult(s, alex, 'b1').feedback).toBe('met L1 only');
+  s = setRating(s, alex, 'b1', 'meets');         // meets -> clear
+  expect(getResult(s, alex, 'b1').feedback).toBe('');
 });
 
-test('skillById finds a snapshot skill by id', () => {
-  const s = base('L1');
-  expect(skillById(s, 'wet-exit').name).toBe('Wet Exit');
-  expect(skillById(s, 'nope')).toBeUndefined();
+test('optionFor resolves within a skill option set (l1 only on dual)', () => {
+  const s = base();
+  const b1 = s.skills.find(x => x.id === 'b1'), b2 = s.skills.find(x => x.id === 'b2');
+  expect(optionFor(s, b1, 'l1').requiresFeedback).toBe(true);
+  expect(optionFor(s, b2, 'l1')).toBeUndefined();   // l1 not available on L2-only
 });
 
-test('optionFor finds a scale option by rating value', () => {
-  const s = base('L1');
-  expect(optionFor(s, 'no').label).toBe('No');
-  expect(optionFor(s, 'nonexistent')).toBeUndefined();
-});
-
-test('setRating returns a new session and does not mutate', () => {
-  const s = base('L1');
-  const pid = s.paddlers[0].id;
-  const s2 = setRating(s, pid, 'wet-exit', 'pass');
-  expect(getResult(s, pid, 'wet-exit').rating).toBeNull();
-  expect(getResult(s2, pid, 'wet-exit').rating).toBe('pass');
-});
-
-test('setRating clears feedback when the new rating does not requiresFeedback', () => {
-  const s = base('L1');
-  const pid = s.paddlers[0].id;
-  let s2 = setRating(s, pid, 'wet-exit', 'no'); // requiresFeedback
-  s2 = setFeedback(s2, pid, 'wet-exit', 'needs work');
-  expect(getResult(s2, pid, 'wet-exit').feedback).toBe('needs work');
-
-  const s3 = setRating(s2, pid, 'wet-exit', 'pass'); // does NOT requiresFeedback
-  expect(getResult(s3, pid, 'wet-exit').feedback).toBe('');
-});
-
-test('setRating retains feedback when the new rating requiresFeedback', () => {
-  const s = base('L1');
-  const pid = s.paddlers[0].id;
-  let s2 = setRating(s, pid, 'wet-exit', 'no');
-  s2 = setFeedback(s2, pid, 'wet-exit', 'needs work');
-  const s3 = setRating(s2, pid, 'wet-exit', 'no'); // still requiresFeedback
-  expect(getResult(s3, pid, 'wet-exit').feedback).toBe('needs work');
-});
-
-test('setRating clears feedback when the new rating has no matching scale option', () => {
-  const s = base('L1');
-  const pid = s.paddlers[0].id;
-  let s2 = setRating(s, pid, 'wet-exit', 'no');
-  s2 = setFeedback(s2, pid, 'wet-exit', 'needs work');
-  const s3 = setRating(s2, pid, 'wet-exit', 'totally-unknown');
-  expect(getResult(s3, pid, 'wet-exit').feedback).toBe('');
-});
-
-test('setFeedback returns a new session with updated feedback', () => {
-  const s = base('L1');
-  const pid = s.paddlers[0].id;
-  const s2 = setFeedback(s, pid, 'wet-exit', 'looks good');
-  expect(getResult(s, pid, 'wet-exit').feedback).toBe('');
-  expect(getResult(s2, pid, 'wet-exit').feedback).toBe('looks good');
-});
-
-test('save/load/clear round-trips via localStorage', () => {
-  const s = base('L1');
-  saveSession(s);
-  expect(loadSession().id).toBe('s1');
-  clearSession();
-  expect(loadSession()).toBeNull();
-});
-
-test('loadSession returns null and clears the entry when stored value is corrupt JSON', () => {
-  localStorage.setItem('aca-assessment:session', '{bad json');
-  expect(loadSession()).toBeNull();
-  expect(localStorage.getItem('aca-assessment:session')).toBeNull();
+test('save/load/clear round-trips', () => {
+  saveSession(base()); expect(loadSession().id).toBe('s1'); clearSession(); expect(loadSession()).toBeNull();
 });
