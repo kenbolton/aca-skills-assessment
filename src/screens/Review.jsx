@@ -24,6 +24,10 @@ export function Review({ session, onBack, onReset }) {
     download(`aca-assessment-${session.id}.csv`, sessionToCsv(session), 'text/csv');
   }
 
+  function handleDownloadJson() {
+    download(`aca-assessment-${session.id}.json`, JSON.stringify(session, null, 2), 'application/json');
+  }
+
   return (
     <main className="screen review-screen">
       <h2>Review</h2>
@@ -93,6 +97,7 @@ export function Review({ session, onBack, onReset }) {
       <div className="review-actions">
         <button type="button" onClick={onBack}>◀ Back to rating</button>
         <button type="button" onClick={handleDownloadCsv} disabled={outstanding.length > 0}>Download CSV (all)</button>
+        <button type="button" onClick={handleDownloadJson}>Download JSON</button>
         <button type="button" onClick={onReset}>Start over</button>
         <SyncButton session={session} />
       </div>
