@@ -98,7 +98,8 @@ const server = createServer(async (req, res) => {
 
   const m = url.match(/^\/api\/sessions\/(.+?)(\.json|\.csv)?$/);
   if (m && (req.method === 'GET' || req.method === 'DELETE')) {
-    const id = decodeURIComponent(m[1]);
+    let id;
+    try { id = decodeURIComponent(m[1]); } catch { return sendJson(res, 400, { error: 'bad id' }); }
     if (req.method === 'DELETE') {
       const p = safeSessionPath(SESSIONS, id);
       if (!p) return sendJson(res, 400, { error: 'bad id' });
@@ -107,11 +108,12 @@ const server = createServer(async (req, res) => {
     }
     const session = await readSession(id);
     if (!session) return sendJson(res, 404, { error: 'not found' });
+    const safeName = String(id).replace(/[^a-z0-9_-]/gi, '_');
     if (m[2] === '.csv') {
-      res.writeHead(200, { 'Content-Type': 'text/csv', 'Content-Disposition': `attachment; filename="${id}.csv"` });
+      res.writeHead(200, { 'Content-Type': 'text/csv', 'Content-Disposition': `attachment; filename="${safeName}.csv"` });
       return res.end(sessionToCsv(session));
     }
-    res.writeHead(200, { 'Content-Type': 'application/json', 'Content-Disposition': `attachment; filename="${id}.json"` });
+    res.writeHead(200, { 'Content-Type': 'application/json', 'Content-Disposition': `attachment; filename="${safeName}.json"` });
     return res.end(JSON.stringify(session, null, 2));
   }
 
@@ -121,7 +123,10 @@ const server = createServer(async (req, res) => {
   }
 
   // static files from dist/ with SPA fallback
-  const rel = normalize(decodeURIComponent(url)).replace(/^(\.\.[/\\])+/, '');
+  let decodedUrl;
+  try { decodedUrl = decodeURIComponent(url); }
+  catch { res.writeHead(404); res.end('Not found'); return; }
+  const rel = normalize(decodedUrl).replace(/^(\.\.[/\\])+/, '');
   let file = join(DIST, rel === '/' ? 'index.html' : rel);
   if (!file.startsWith(DIST)) { res.writeHead(404); res.end('Not found'); return; }
   try {
