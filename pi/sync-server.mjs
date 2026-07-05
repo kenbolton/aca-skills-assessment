@@ -113,7 +113,7 @@ document.getElementById('imp').addEventListener('change',async e=>{
  const f=e.target.files[0]; if(!f) return;
  let text; try{ text=await f.text(); JSON.parse(text); }catch{ alert('Not a valid JSON file.'); e.target.value=''; return; }
  const r=await fetch('/sync',{method:'POST',headers:{'Content-Type':'application/json'},body:text});
- if(r.ok){ e.target.value=''; load(); } else { const j=await r.json().catch(()=>({})); alert('Import failed: '+(j.error||r.status)); }
+ if(r.ok){ e.target.value=''; load(); } else { e.target.value=''; const j=await r.json().catch(()=>({})); alert('Import failed: '+(j.error||r.status)); }
 });
 </script></body></html>`;
 }
