@@ -48,8 +48,12 @@ function sessionsPage() {
  .del{background:#c0392b;color:#fff;border:0;border-radius:6px;padding:.25rem .6rem}
  .resume{background:#1f8a4c;color:#fff;border:0;border-radius:6px;padding:.25rem .6rem}
  .empty{color:#666}
+ .selftag{background:#eef7f8;color:#00707e;border:1px solid #bcdfe3;border-radius:4px;padding:0 .35rem;font-size:.75rem}
+ .imp{font-size:.9rem;color:#bdeae2}
+ .imp input{color:#fff}
 </style></head><body>
-<header><strong>Past Assessments</strong> &nbsp; <a href="/">&larr; Back to app</a></header>
+<header><strong>Past Assessments</strong> &nbsp; <a href="/">&larr; Back to app</a>
+ &nbsp; <label class="imp">Import JSON <input type="file" id="imp" accept="application/json,.json"></label></header>
 <main><p class="empty" id="status">Loading…</p><table id="t" hidden><thead>
 <tr><th>Date</th><th>Level</th><th>Participants</th><th>Rated</th><th>Export</th><th></th></tr>
 </thead><tbody></tbody></table></main>
@@ -68,7 +72,9 @@ async function load(){
   const levelMode=x.level||(x.targets.length?'L1/L2':'');
   tr.appendChild(cell(levelMode));
   const participantsText=x.participants.map((n,i)=>x.landings[i]?n+' ('+x.landings[i]+')':n).join(', ');
-  tr.appendChild(cell(participantsText));
+  const pcell=cell(participantsText);
+  if(x.selfAssessment){const b=document.createElement('span');b.className='selftag';b.textContent='self';pcell.append(' ');pcell.appendChild(b);}
+  tr.appendChild(pcell);
   tr.appendChild(cell(x.counts.rated+'/'+x.counts.core));
   const exp=document.createElement('td');
   const csv=document.createElement('a');csv.href='/api/sessions/'+idp+'.csv';csv.textContent='CSV';
@@ -103,6 +109,12 @@ async function load(){
  }
 }
 load();
+document.getElementById('imp').addEventListener('change',async e=>{
+ const f=e.target.files[0]; if(!f) return;
+ let text; try{ text=await f.text(); JSON.parse(text); }catch{ alert('Not a valid JSON file.'); e.target.value=''; return; }
+ const r=await fetch('/sync',{method:'POST',headers:{'Content-Type':'application/json'},body:text});
+ if(r.ok){ e.target.value=''; load(); } else { const j=await r.json().catch(()=>({})); alert('Import failed: '+(j.error||r.status)); }
+});
 </script></body></html>`;
 }
 
