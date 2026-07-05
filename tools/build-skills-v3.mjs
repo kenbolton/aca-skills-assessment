@@ -41,7 +41,7 @@ const catSkills = { L1: {}, L2: {} };
 for (const [lvl, L] of [['L1', L1], ['L2', L2]]) {
   for (const c of L.categories) {
     catSkills[lvl][c.name] = c.skills;
-    for (const s of c.skills) byId[s.id] = s;
+    for (const s of c.skills) { s.category = c.name; byId[s.id] = s; }
   }
 }
 

@@ -20,9 +20,8 @@ export function loadConfig(raw) {
     if (seen.has(s.id)) throw new Error(`duplicate skill id ${s.id}`);
     seen.add(s.id);
     if (!LEVELS.includes(s.level)) throw new Error(`skill ${s.id} has invalid level ${s.level}`);
-    for (const f of ['name', 'standard']) if (typeof s[f] !== 'string' || !s[f]) throw new Error(`skill ${s.id} missing ${f}`);
-    const out = { id: s.id, level: s.level, name: s.name, standard: s.standard, optional: !!s.optional };
-    if (typeof s.category === 'string' && s.category) out.category = s.category;
+    for (const f of ['category', 'name', 'standard']) if (typeof s[f] !== 'string' || !s[f]) throw new Error(`skill ${s.id} missing ${f}`);
+    const out = { id: s.id, level: s.level, category: s.category, name: s.name, standard: s.standard, optional: !!s.optional };
     if (typeof s.l1Standard === 'string' && s.l1Standard) out.l1Standard = s.l1Standard;
     return out;
   });

@@ -45,6 +45,7 @@
     {
       "id": "l1-secure-transport",
       "level": "L1",
+      "category": "Preparing to Depart",
       "name": "Secure kayak for transport",
       "standard": "Make sure the kayak is securely fastened to the car or racks, using proper tie downs, straps, or knots.",
       "optional": false
@@ -52,6 +53,7 @@
     {
       "id": "l1-lift-carry",
       "level": "L1",
+      "category": "Preparing to Depart",
       "name": "Lift & carry",
       "standard": "Use proper techniques to safely lift and carry the kayak on shore.",
       "optional": false
@@ -59,6 +61,7 @@
     {
       "id": "l1-weather-hazards",
       "level": "L1",
+      "category": "Preparing to Depart",
       "name": "Weather & hazards",
       "standard": "Obtain (recite) weather conditions, forecasts, and evaluate hazards to navigation and other environmental factors.",
       "optional": false
@@ -66,6 +69,7 @@
     {
       "id": "l1-life-jacket",
       "level": "L1",
+      "category": "Preparing to Depart",
       "name": "Life jacket",
       "standard": "Put on a life jacket appropriate for the operator's size, kayak, and activity; confirm all others in the group are properly wearing their life jacket.",
       "optional": false
@@ -73,6 +77,7 @@
     {
       "id": "l1-inspect-equipment",
       "level": "L1",
+      "category": "Preparing to Depart",
       "name": "Inspect kayak & safety equipment",
       "standard": "Inspect the kayak and all safety equipment to meet state, federal, and local requirements for the vessel and activity.",
       "optional": false
@@ -80,6 +85,7 @@
     {
       "id": "l1-safe-boating",
       "level": "L1",
+      "category": "Preparing to Depart",
       "name": "Safe boating practices",
       "standard": "Recognize, describe and follow safe boating practices (behavior, substance abuse, on-water and land etiquette, Leave No Trace ethics).",
       "optional": false
@@ -87,6 +93,7 @@
     {
       "id": "l1-prepare-departure",
       "level": "L1",
+      "category": "Preparing to Depart",
       "name": "Prepare for departure",
       "standard": "Prepare kayak for departure, stowing gear securely, ensuring it is balanced.",
       "optional": false
@@ -94,6 +101,7 @@
     {
       "id": "l1-float-plan",
       "level": "L1",
+      "category": "Preparing to Depart",
       "name": "Float plan knowledge",
       "standard": "Demonstrate knowledge of a float plan (components and filing).",
       "optional": false
@@ -101,6 +109,7 @@
     {
       "id": "l1-paddle-grip",
       "level": "L1",
+      "category": "Preparing to Depart",
       "name": "Paddle orientation & grip",
       "standard": "Hold the paddle in correct orientation and grip for effective paddling.",
       "optional": false
@@ -108,6 +117,7 @@
     {
       "id": "l2-secure-rack",
       "level": "L2",
+      "category": "Core: Incident Prevention and Management",
       "name": "Securing Kayak to Rack",
       "standard": "Properly secures their kayak to rack when storing or transporting.",
       "optional": false,
@@ -116,6 +126,7 @@
     {
       "id": "l2-lift-carry",
       "level": "L2",
+      "category": "Core: Incident Prevention and Management",
       "name": "Lifting and Carrying",
       "standard": "Lifts and carries their kayak safely and efficiently.",
       "optional": false,
@@ -124,6 +135,7 @@
     {
       "id": "l2-launch-land",
       "level": "L2",
+      "category": "Core: Incident Prevention and Management",
       "name": "Launching and Landing",
       "standard": "Launches and lands at a dock or shore safely.",
       "optional": false,
@@ -132,6 +144,7 @@
     {
       "id": "l2-signaling",
       "level": "L2",
+      "category": "Core: Incident Prevention and Management",
       "name": "Signaling",
       "standard": "Carries and demonstrates proper use of an audible signaling device.",
       "optional": false,
@@ -140,6 +153,7 @@
     {
       "id": "l2-comm-device",
       "level": "L2",
+      "category": "Core: Incident Prevention and Management",
       "name": "Communication Device",
       "standard": "Has a reliable communication device readily available and knows proper device usage.",
       "optional": false
@@ -147,6 +161,7 @@
     {
       "id": "l2-float-plan",
       "level": "L2",
+      "category": "Core: Incident Prevention and Management",
       "name": "Float Plan",
       "standard": "Files a complete and accurate float plan with an appropriate point of contact.",
       "optional": false,
@@ -155,6 +170,7 @@
     {
       "id": "l1-launch",
       "level": "L1",
+      "category": "Maneuvers & Strokes",
       "name": "Launch from shore",
       "standard": "Enter and launch from shore in a controlled manner, checking for clear departure.",
       "optional": false
@@ -162,6 +178,7 @@
     {
       "id": "l1-forward-straight",
       "level": "L1",
+      "category": "Maneuvers & Strokes",
       "name": "Forward, straight line",
       "standard": "Propel the kayak forward in a straight line 15-20 kayak lengths.",
       "optional": false
@@ -169,6 +186,7 @@
     {
       "id": "l1-stop",
       "level": "L1",
+      "category": "Maneuvers & Strokes",
       "name": "Stop",
       "standard": "Stop the kayak within two kayak lengths.",
       "optional": false
@@ -176,6 +194,7 @@
     {
       "id": "l1-reverse",
       "level": "L1",
+      "category": "Maneuvers & Strokes",
       "name": "Reverse",
       "standard": "Move the kayak backwards 3-4 kayak lengths.",
       "optional": false
@@ -183,6 +202,7 @@
     {
       "id": "l1-draw",
       "level": "L1",
+      "category": "Maneuvers & Strokes",
       "name": "Draw sideways",
       "standard": "Move the kayak sideways 10 feet (3 meters) to each side.",
       "optional": false
@@ -190,6 +210,7 @@
     {
       "id": "l1-turn-stationary",
       "level": "L1",
+      "category": "Maneuvers & Strokes",
       "name": "Turn from stationary",
       "standard": "Turn the kayak from a stationary position 180° to the right and left.",
       "optional": false
@@ -197,6 +218,7 @@
     {
       "id": "l1-turn-moving",
       "level": "L1",
+      "category": "Maneuvers & Strokes",
       "name": "Turn on the move",
       "standard": "Turn the kayak while maintaining forward motion 90° to the right and left.",
       "optional": false
@@ -204,6 +226,7 @@
     {
       "id": "l1-figure-8",
       "level": "L1",
+      "category": "Maneuvers & Strokes",
       "name": "Figure-8 course",
       "standard": "Propel the kayak in a figure-of-8 course around markers 3-4 kayak lengths apart.",
       "optional": false
@@ -211,6 +234,7 @@
     {
       "id": "l1-tripping",
       "level": "L1",
+      "category": "Maneuvers & Strokes",
       "name": "Tripping",
       "standard": "Experience paddling a day trip of at least short duration (1 hour) and distance (1 mile / 1.6 km).",
       "optional": false
@@ -218,6 +242,7 @@
     {
       "id": "l1-land",
       "level": "L1",
+      "category": "Maneuvers & Strokes",
       "name": "Land & exit",
       "standard": "Arrive at destination point, checking for clear approach, and exit the kayak in a controlled and safe manner.",
       "optional": false
@@ -225,6 +250,7 @@
     {
       "id": "l1-secure-unattended",
       "level": "L1",
+      "category": "Maneuvers & Strokes",
       "name": "Secure when unattended",
       "standard": "Secure the kayak and equipment before leaving unattended, with attention to environment and conditions.",
       "optional": false
@@ -232,6 +258,7 @@
     {
       "id": "l2-forward",
       "level": "L2",
+      "category": "Core: Strokes",
       "name": "Forward Paddling",
       "standard": "Moves the kayak 200 yards/meters in a reasonably straight line.",
       "optional": false,
@@ -240,6 +267,7 @@
     {
       "id": "l2-reverse",
       "level": "L2",
+      "category": "Core: Strokes",
       "name": "Reverse Paddling",
       "standard": "Moves the kayak 50 yards/meters with reasonable control.",
       "optional": false,
@@ -248,6 +276,7 @@
     {
       "id": "l2-stopping",
       "level": "L2",
+      "category": "Core: Strokes",
       "name": "Stopping",
       "standard": "Stops the kayak from a good speed (2 to 2.5 knots), in forward and reverse.",
       "optional": false,
@@ -256,6 +285,7 @@
     {
       "id": "l2-sweep",
       "level": "L2",
+      "category": "Core: Strokes",
       "name": "Forward & Reverse Sweep",
       "standard": "Turns the kayak smoothly while moving forward or in reverse without losing momentum.",
       "optional": false,
@@ -264,6 +294,7 @@
     {
       "id": "l2-rotate-360",
       "level": "L2",
+      "category": "Core: Maneuvers",
       "name": "Rotate in place 360°",
       "standard": "Spins the kayak in place with minimal forward or reverse movement.",
       "optional": false,
@@ -272,6 +303,7 @@
     {
       "id": "l2-turning-move",
       "level": "L2",
+      "category": "Core: Maneuvers",
       "name": "Turning on the Move",
       "standard": "Maneuvers the kayak smoothly around obstacles.",
       "optional": false,
@@ -280,6 +312,7 @@
     {
       "id": "l2-draw",
       "level": "L2",
+      "category": "Core: Maneuvers",
       "name": "Draw Sideways",
       "standard": "Moves the kayak sideways 10 feet (3.3 meters).",
       "optional": false,
@@ -288,6 +321,7 @@
     {
       "id": "l2-stern-rudder",
       "level": "L2",
+      "category": "Core: Maneuvers",
       "name": "Ruddering (Stern)",
       "standard": "Holds the kayak on a straight course or turns toward the paddle side to correct a course.",
       "optional": false
@@ -295,6 +329,7 @@
     {
       "id": "l2-stern-rudder-away",
       "level": "L2",
+      "category": "Core: Maneuvers",
       "name": "Stern Rudder (away side)",
       "standard": "Turns away from the paddle side while stern ruddering.",
       "optional": true
@@ -302,6 +337,7 @@
     {
       "id": "l2-linked-maneuvers",
       "level": "L2",
+      "category": "Core: Maneuvers",
       "name": "Linked Maneuvers",
       "standard": "Paddles a course requiring various turning maneuvers safely, effectively, and efficiently.",
       "optional": true
@@ -309,6 +345,7 @@
     {
       "id": "l2-low-brace-recovery",
       "level": "L2",
+      "category": "Core: Edging and Support",
       "name": "Low Brace Recovery",
       "standard": "Prevents capsize when off balance.",
       "optional": false
@@ -316,6 +353,7 @@
     {
       "id": "l2-low-brace-turn",
       "level": "L2",
+      "category": "Core: Edging and Support",
       "name": "Low Brace Turn",
       "standard": "Makes a turn of at least 90 degrees.",
       "optional": false
@@ -323,6 +361,7 @@
     {
       "id": "l2-edge-control",
       "level": "L2",
+      "category": "Core: Edging and Support",
       "name": "Edge Control",
       "standard": "Edges with purpose and consistency during strokes and maneuvers.",
       "optional": false
@@ -330,6 +369,7 @@
     {
       "id": "l2-turn-control",
       "level": "L2",
+      "category": "Core: Edging and Support",
       "name": "Turn Control",
       "standard": "Able to vary the radius of their turns.",
       "optional": true
@@ -337,6 +377,7 @@
     {
       "id": "l1-equipment",
       "level": "L1",
+      "category": "Technical Knowledge",
       "name": "Equipment knowledge",
       "standard": "Equipment: working knowledge of paddling equipment and terminology.",
       "optional": false
@@ -344,6 +385,7 @@
     {
       "id": "l1-safety-knowledge",
       "level": "L1",
+      "category": "Technical Knowledge",
       "name": "Safety & hazard planning",
       "standard": "Safety: understand the dangers of kayaking and how to plan an appropriate course to avoid potential hazardous situations.",
       "optional": false
@@ -351,6 +393,7 @@
     {
       "id": "l1-cold-water",
       "level": "L1",
+      "category": "Technical Knowledge",
       "name": "Cold water / thermal",
       "standard": "Cold water shock, hypothermia and hyperthermia; prevention and treatment.",
       "optional": false
@@ -358,6 +401,7 @@
     {
       "id": "l1-signals",
       "level": "L1",
+      "category": "Technical Knowledge",
       "name": "Communication signals",
       "standard": "Recognize and appropriately use communication (paddle and whistle) signals.",
       "optional": false
@@ -365,6 +409,7 @@
     {
       "id": "l1-nav-rules",
       "level": "L1",
+      "category": "Technical Knowledge",
       "name": "Navigational rules",
       "standard": "Follow basic navigational rules for inland waterways.",
       "optional": false
@@ -372,6 +417,7 @@
     {
       "id": "l1-group-awareness",
       "level": "L1",
+      "category": "Technical Knowledge",
       "name": "Group awareness",
       "standard": "Display awareness of the group and employ effective on-water management techniques.",
       "optional": false
@@ -379,6 +425,7 @@
     {
       "id": "l2-awareness",
       "level": "L2",
+      "category": "Core: Awareness and Seamanship",
       "name": "Awareness",
       "standard": "Demonstrates awareness of self, group members, and environment.",
       "optional": false,
@@ -387,6 +434,7 @@
     {
       "id": "l2-lnt",
       "level": "L2",
+      "category": "Core: Awareness and Seamanship",
       "name": "Leave No Trace",
       "standard": "Interacts appropriately with the ecosystem and wildlife.",
       "optional": false
@@ -394,6 +442,7 @@
     {
       "id": "l2-kayak-knowledge",
       "level": "L2",
+      "category": "Core: Awareness and Seamanship",
       "name": "Kayak",
       "standard": "Working knowledge of types of kayaks suitable for paddling in Level 2 conditions.",
       "optional": false
@@ -401,6 +450,7 @@
     {
       "id": "l2-equipment",
       "level": "L2",
+      "category": "Core: Awareness and Seamanship",
       "name": "Equipment",
       "standard": "Working knowledge of paddling equipment.",
       "optional": false,
@@ -409,6 +459,7 @@
     {
       "id": "l2-cold-water-shock",
       "level": "L2",
+      "category": "Core: Awareness and Seamanship",
       "name": "Cold-Water Shock",
       "standard": "Understands cold-water shock and the sudden onset of issues associated with immersion in cold water.",
       "optional": false,
@@ -417,6 +468,7 @@
     {
       "id": "l2-thermal",
       "level": "L2",
+      "category": "Core: Awareness and Seamanship",
       "name": "Hypothermia & Hyperthermia",
       "standard": "Working knowledge of the issues associated with both, including prevention, recognition, and basic treatment.",
       "optional": false,
@@ -425,6 +477,7 @@
     {
       "id": "l2-forecasts",
       "level": "L2",
+      "category": "Core: Trip Planning and Navigation",
       "name": "Forecasts",
       "standard": "Gathers, understands, and utilizes appropriate weather and marine forecasts.",
       "optional": false,
@@ -433,6 +486,7 @@
     {
       "id": "l2-chart-use",
       "level": "L2",
+      "category": "Core: Trip Planning and Navigation",
       "name": "Chart Use",
       "standard": "Demonstrates use of charts, aerial images, weather and marine forecasts, and knowledge of their paddling group when route planning.",
       "optional": false
@@ -440,6 +494,7 @@
     {
       "id": "l2-trip-conditions",
       "level": "L2",
+      "category": "Core: Trip Planning and Navigation",
       "name": "Trip Planning — wind/waves/currents",
       "standard": "Incorporates wind, waves, and currents into route plan and trip choices.",
       "optional": false
@@ -447,6 +502,7 @@
     {
       "id": "l2-trip-flow",
       "level": "L2",
+      "category": "Core: Trip Planning and Navigation",
       "name": "Trip Planning — direction of flow",
       "standard": "Incorporates direction of flow into route plan and trip choices.",
       "optional": false
@@ -454,6 +510,7 @@
     {
       "id": "l2-route-finding",
       "level": "L2",
+      "category": "Core: Trip Planning and Navigation",
       "name": "Route Finding",
       "standard": "Uses appropriate map or chart to know where they are and where they are going.",
       "optional": false
@@ -461,6 +518,7 @@
     {
       "id": "l2-compass",
       "level": "L2",
+      "category": "Core: Trip Planning and Navigation",
       "name": "Compass Use",
       "standard": "Demonstrates using handheld and deck-mounted compasses to take bearings.",
       "optional": false
@@ -468,6 +526,7 @@
     {
       "id": "l2-nautical-rules",
       "level": "L2",
+      "category": "Core: Trip Planning and Navigation",
       "name": "Nautical Rules of the Road",
       "standard": "Understands the Nautical Rules of the Road and demonstrates safe paddling in relation to boat traffic.",
       "optional": false,
@@ -476,6 +535,7 @@
     {
       "id": "l2-tide-drift",
       "level": "L2",
+      "category": "Core: Trip Planning and Navigation",
       "name": "Tide & Tidal Drift",
       "standard": "Demonstrates ability to calculate tide and tidal drift stages and incorporate results into a trip plan.",
       "optional": true
@@ -483,6 +543,7 @@
     {
       "id": "l1-principles-rescue",
       "level": "L1",
+      "category": "Safety and Rescue",
       "name": "Principles of rescue",
       "standard": "Demonstrate Principles of Rescue: safe rescue strategies (T-RETHROG: Talk, Reach, Throw, Row, Go); rescue priorities (people, kayak, paddle, gear); responsibilities of rescuer, group, and swimmers.",
       "optional": false
@@ -490,6 +551,7 @@
     {
       "id": "l1-rescue-gear",
       "level": "L1",
+      "category": "Safety and Rescue",
       "name": "Rescue & safety gear",
       "standard": "Identify and demonstrate the use of appropriate rescue and safety gear for the kayak and planned activity.",
       "optional": false
@@ -497,6 +559,7 @@
     {
       "id": "l1-wading-risks",
       "level": "L1",
+      "category": "Swimming and Wading Skills",
       "name": "Wading risks",
       "standard": "Understand the risks associated with standing and walking in these environments (including entanglement and environmental hazards).",
       "optional": false
@@ -504,6 +567,7 @@
     {
       "id": "l1-swim-positions",
       "level": "L1",
+      "category": "Swimming and Wading Skills",
       "name": "Swimming positions",
       "standard": "Understand the pros and cons of different swimming positions.",
       "optional": false
@@ -511,6 +575,7 @@
     {
       "id": "l1-swim-with-gear",
       "level": "L1",
+      "category": "Swimming and Wading Skills",
       "name": "Swim with equipment",
       "standard": "Self-rescue: swimming with equipment.",
       "optional": false
@@ -518,6 +583,7 @@
     {
       "id": "l1-conserve-energy",
       "level": "L1",
+      "category": "Swimming and Wading Skills",
       "name": "Conserve energy",
       "standard": "Strategies to conserve energy.",
       "optional": false
@@ -525,6 +591,7 @@
     {
       "id": "l1-rescue-kayak-types",
       "level": "L1",
+      "category": "Kayak-based Rescues",
       "name": "Kayak types in rescues",
       "standard": "Advantages and disadvantages during rescues of various kayaks (sit-ins, sit-on-tops, recreational kayaks).",
       "optional": false
@@ -532,6 +599,7 @@
     {
       "id": "l1-wet-exit",
       "level": "L1",
+      "category": "Kayak-based Rescues",
       "name": "Wet exit",
       "standard": "Calmly exit the kayak after capsize, using proper body position and contact with the kayak and paddle.",
       "optional": false
@@ -539,6 +607,7 @@
     {
       "id": "l1-paddle-recovery",
       "level": "L1",
+      "category": "Kayak-based Rescues",
       "name": "Paddle recovery",
       "standard": "Paddle recovery options.",
       "optional": false
@@ -546,6 +615,7 @@
     {
       "id": "l1-kayak-recovery",
       "level": "L1",
+      "category": "Kayak-based Rescues",
       "name": "Kayak recovery",
       "standard": "Strategies for kayak recovery.",
       "optional": false
@@ -553,6 +623,7 @@
     {
       "id": "l1-swimmer-tow",
       "level": "L1",
+      "category": "Kayak-based Rescues",
       "name": "Swimmer tow options",
       "standard": "Swimmer tow options.",
       "optional": false
@@ -560,6 +631,7 @@
     {
       "id": "l1-reentry",
       "level": "L1",
+      "category": "Kayak-based Rescues",
       "name": "Re-entry / re-mount",
       "standard": "Swimmer re-entry / re-mount techniques (stern entry, heel hook, rescue sling, paddle float).",
       "optional": false
@@ -567,6 +639,7 @@
     {
       "id": "l1-bulldozing",
       "level": "L1",
+      "category": "Kayak-based Rescues",
       "name": "Bumping / bulldozing",
       "standard": "Kayak bumping / bulldozing.",
       "optional": false
@@ -574,6 +647,7 @@
     {
       "id": "l1-kayak-towing",
       "level": "L1",
+      "category": "Kayak-based Rescues",
       "name": "Kayak towing",
       "standard": "Kayak towing.",
       "optional": false
@@ -581,6 +655,7 @@
     {
       "id": "l1-kayak-rescues",
       "level": "L1",
+      "category": "Kayak-based Rescues",
       "name": "Kayak-specific rescues",
       "standard": "Kayak-specific rescues (boat over boat, boat to boat, scoop).",
       "optional": false
@@ -588,6 +663,7 @@
     {
       "id": "l1-unresponsive",
       "level": "L1",
+      "category": "Kayak-based Rescues",
       "name": "Unresponsive paddler rescue",
       "standard": "Unresponsive paddler rescue.",
       "optional": false
@@ -595,6 +671,7 @@
     {
       "id": "l1-emptying-water",
       "level": "L1",
+      "category": "Kayak-based Rescues",
       "name": "Emptying water",
       "standard": "Emptying water from kayak (on-shore, bailers, pumps).",
       "optional": false
@@ -602,6 +679,7 @@
     {
       "id": "l2-wet-exit",
       "level": "L2",
+      "category": "Core: Rescues and Towing",
       "name": "Capsize & Wet Exit",
       "standard": "Performs a wet exit in two ways.",
       "optional": false,
@@ -610,6 +688,7 @@
     {
       "id": "l2-assisted-rescue",
       "level": "L2",
+      "category": "Core: Rescues and Towing",
       "name": "Assisted Rescues & Deep-Water Re-Entry",
       "standard": "Performs one or more assisted rescues as rescuer and swimmer: Side-by-Side, Sling, or T-Rescue.",
       "optional": false,
@@ -618,6 +697,7 @@
     {
       "id": "l2-self-rescue",
       "level": "L2",
+      "category": "Core: Rescues and Towing",
       "name": "Self-Rescue",
       "standard": "Performs one of: Scramble (cowboy), Paddle Float, or Re-enter and Roll (with or without paddle float).",
       "optional": false,
@@ -626,6 +706,7 @@
     {
       "id": "l2-swim-rescue",
       "level": "L2",
+      "category": "Core: Rescues and Towing",
       "name": "Swim Rescue",
       "standard": "Swims to shore (25 yards/meters) in full paddling gear and drains kayak.",
       "optional": false,
@@ -634,6 +715,7 @@
     {
       "id": "l2-move-capsized",
       "level": "L2",
+      "category": "Core: Rescues and Towing",
       "name": "Move a Capsized Kayak to Shore",
       "standard": "Moves a capsized kayak ~3 kayak lengths (~50 ft/15 m) via Bulldozing, Shove and Chase, or Contact Tow.",
       "optional": false,
@@ -642,6 +724,7 @@
     {
       "id": "l2-swimmer-tows",
       "level": "L2",
+      "category": "Core: Rescues and Towing",
       "name": "Swimmer Tows",
       "standard": "Performs swimmer rescue via a bow, toggle, or back deck swimmer carry.",
       "optional": false,
@@ -650,6 +733,7 @@
     {
       "id": "l2-scoop-rescue",
       "level": "L2",
+      "category": "Core: Rescues and Towing",
       "name": "Scoop Rescue",
       "standard": "Able to assist a swimmer into their kayak.",
       "optional": true
@@ -657,6 +741,7 @@
     {
       "id": "l2-unresponsive",
       "level": "L2",
+      "category": "Core: Rescues and Towing",
       "name": "Unresponsive Paddler Rescue",
       "standard": "Able to bring a capsized paddler to the surface.",
       "optional": true
@@ -664,6 +749,7 @@
     {
       "id": "l2-towing",
       "level": "L2",
+      "category": "Core: Rescues and Towing",
       "name": "Towing",
       "standard": "Able to use towlines and various towing configurations to move a kayak.",
       "optional": true
@@ -671,6 +757,7 @@
     {
       "id": "l2-cur-awareness",
       "level": "L2",
+      "category": "Venue (Developing): Currents",
       "name": "Currents — Awareness",
       "standard": "Demonstrates understanding of currents (tidal or river) in Level 2 venues.",
       "optional": true
@@ -678,6 +765,7 @@
     {
       "id": "l2-cur-reading",
       "level": "L2",
+      "category": "Venue (Developing): Currents",
       "name": "Currents — Reading Water & Boat Control",
       "standard": "Identifies direction of flow and eddies and paddles through currents in control.",
       "optional": true
@@ -685,6 +773,7 @@
     {
       "id": "l2-cur-hazards",
       "level": "L2",
+      "category": "Venue (Developing): Currents",
       "name": "Currents — Hazards",
       "standard": "Identifies hazards and positions themselves to avoid hazards.",
       "optional": true
@@ -692,6 +781,7 @@
     {
       "id": "l2-cur-rescues",
       "level": "L2",
+      "category": "Venue (Developing): Currents",
       "name": "Currents — Rescues",
       "standard": "Performs a self-rescue, an assisted rescue, and contact towing in current.",
       "optional": true
@@ -699,6 +789,7 @@
     {
       "id": "l2-ww-awareness",
       "level": "L2",
+      "category": "Venue (Developing): Wind and Waves",
       "name": "Wind/Waves — Awareness",
       "standard": "Understands how onshore and offshore winds affect paddling conditions.",
       "optional": true
@@ -706,6 +797,7 @@
     {
       "id": "l2-ww-tactics",
       "level": "L2",
+      "category": "Venue (Developing): Wind and Waves",
       "name": "Wind/Waves — Tactics",
       "standard": "Applies strategies for paddling at various angles to the direction of the wind.",
       "optional": true
@@ -713,6 +805,7 @@
     {
       "id": "l2-ww-boat-control",
       "level": "L2",
+      "category": "Venue (Developing): Wind and Waves",
       "name": "Wind/Waves — Boat Control",
       "standard": "Can control their direction and maintain stability in wind and waves.",
       "optional": true
@@ -720,6 +813,7 @@
     {
       "id": "l2-ww-rescues",
       "level": "L2",
+      "category": "Venue (Developing): Wind and Waves",
       "name": "Wind/Waves — Rescues",
       "standard": "Performs a self-rescue, an assisted rescue, and contact towing in wind and waves.",
       "optional": true
@@ -727,6 +821,7 @@
     {
       "id": "l2-rock-awareness",
       "level": "L2",
+      "category": "Venue (Developing): Rocky Shorelines",
       "name": "Rocky — Awareness",
       "standard": "Identifies hazards and landing areas on a map or chart.",
       "optional": true
@@ -734,6 +829,7 @@
     {
       "id": "l2-rock-tactics",
       "level": "L2",
+      "category": "Venue (Developing): Rocky Shorelines",
       "name": "Rocky — Tactics",
       "standard": "Chooses appropriate landings and areas to play in the rocks.",
       "optional": true
@@ -741,6 +837,7 @@
     {
       "id": "l2-rock-boat-control",
       "level": "L2",
+      "category": "Venue (Developing): Rocky Shorelines",
       "name": "Rocky — Boat Control",
       "standard": "Maneuvers along rocky shorelines safely, effectively, and efficiently.",
       "optional": true
@@ -748,6 +845,7 @@
     {
       "id": "l2-rock-rescues",
       "level": "L2",
+      "category": "Venue (Developing): Rocky Shorelines",
       "name": "Rocky — Rescues",
       "standard": "Performs a self-rescue, an assisted rescue, and contact towing close to rock features.",
       "optional": true
