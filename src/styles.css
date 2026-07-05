@@ -183,8 +183,10 @@ button { min-height: var(--hit); font-size: 18px; }
   line-height: 1.4;
 }
 
-.standard-box-secondary {
-  margin-top: 0.5rem;
+.standard-section + .standard-section {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #dbe4e6;
 }
 
 .link-button {

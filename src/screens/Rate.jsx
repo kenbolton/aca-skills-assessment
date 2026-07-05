@@ -131,23 +131,19 @@ export function Rate({ session, onChange, onDone }) {
         ) : null}
         {skill.competency ? <p className="rate-competency">{skill.competency}</p> : null}
         <div className="standard-box">
-          <div className="standard-box-header">
-            <span>Standard</span>
-          </div>
-          <p className="standard-box-text">{skill.standard}</p>
           {skill.l1Standard ? (
-            <div className="standard-box-secondary">
-              <div className="standard-box-header">
-                <span>L1 standard</span>
-              </div>
+            <div className="standard-section">
+              <div className="standard-box-header"><span>L1 standard</span></div>
               <p className="standard-box-text">{skill.l1Standard}</p>
             </div>
           ) : null}
+          <div className="standard-section">
+            <div className="standard-box-header"><span>{skill.level} standard</span></div>
+            <p className="standard-box-text">{skill.standard}</p>
+          </div>
           {skill.exceedsStandard ? (
-            <div className="standard-box-secondary">
-              <div className="standard-box-header">
-                <span>Exceeds standard</span>
-              </div>
+            <div className="standard-section">
+              <div className="standard-box-header"><span>Exceeds standard</span></div>
               <p className="standard-box-text">{skill.exceedsStandard}</p>
             </div>
           ) : null}
