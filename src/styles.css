@@ -264,6 +264,36 @@ button { min-height: var(--hit); font-size: 18px; }
   font-size: 1.2rem;
 }
 
+.badge-landing-L2 {
+  background: #e6f4f4;
+  color: var(--exc);
+  border: 1px solid var(--exc);
+}
+
+.badge-landing-L1 {
+  background: #eaf5eb;
+  color: var(--meet);
+  border: 1px solid var(--meet);
+}
+
+.badge-landing-did_not_meet_L1 {
+  background: #fdecea;
+  color: var(--dnm);
+  border: 1px solid var(--dnm);
+}
+
+.badge-landing-pending {
+  background: #fdf3e3;
+  color: var(--l1);
+  border: 1px solid var(--l1);
+}
+
+.review-target-line {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
 .review-counts-line {
   font-weight: 600;
   margin: 0 0 0.75rem;

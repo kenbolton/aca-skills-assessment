@@ -35,12 +35,12 @@ export function Review({ session, onBack, onReset }) {
   }
 
   function handleDownloadCsv() {
-    download(`aca-${session.levelId}-${session.id}.csv`, sessionToCsv(session), 'text/csv');
+    download(`aca-assessment-${session.id}.csv`, sessionToCsv(session), 'text/csv');
   }
 
   return (
     <main className="screen review-screen">
-      <h2>Review — {session.levelName}</h2>
+      <h2>Review</h2>
 
       {outstanding.length > 0 ? (
         <p className="error review-warning">
@@ -53,11 +53,20 @@ export function Review({ session, onBack, onReset }) {
       <div className="review-cards">
         {session.paddlers.map(paddler => {
           const summary = paddlerSummary(session, paddler.id);
+          const scale = session.scales[summary.target] || [];
+          const LANDING = {
+            L2: 'Lands: Level 2',
+            L1: 'Lands: Level 1',
+            did_not_meet_L1: 'Did not meet Level 1',
+            pending: `Pending — ${summary.pendingCount} not yet assessed`,
+          };
           return (
             <div className="review-card" key={paddler.id}>
               <h3 className="review-card-name">{summary.name}</h3>
+              <p className={`badge badge-landing-${summary.landing}`}>{LANDING[summary.landing]}</p>
+              <p className="review-target-line">Target: {summary.target}</p>
               <p className="review-counts-line">
-                {summary.scale.map((opt, idx) => (
+                {scale.map((opt, idx) => (
                   <span key={opt.value} className={opt.requiresFeedback ? 'count-danger' : ''}>
                     {idx > 0 ? '   ' : ''}{opt.label} {summary.counts[opt.value] ?? 0}
                   </span>
@@ -65,19 +74,19 @@ export function Review({ session, onBack, onReset }) {
                 <span className="count-unrated">   Unrated {summary.unrated}</span>
               </p>
 
-              {summary.belowItems.length > 0 ? (
+              {summary.flagged.length > 0 ? (
                 <ul className="review-below-list">
-                  {summary.belowItems.map(item => (
+                  {summary.flagged.map(item => (
                     <li key={item.skillId}>
-                      <strong>{item.name}</strong> ({item.category}): {item.feedback}
+                      <strong>{item.name}</strong> ({item.category}) — {item.ratingLabel}: {item.feedback}
                     </li>
                   ))}
                 </ul>
               ) : null}
 
-              {summary.optionalAssessed > 0 ? (
+              {summary.optionalItems.length > 0 ? (
                 <p className="review-optional-line">
-                  Optional assessed: {summary.optionalAssessed}
+                  Optional assessed: {summary.optionalItems.length}
                   {' — '}
                   {summary.optionalItems.map(item => item.name).join(', ')}
                 </p>
