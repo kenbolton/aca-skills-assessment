@@ -130,21 +130,6 @@
           ]
         },
         {
-          "name": "Core: Rescues and Towing",
-          "competency": "The paddler can employ one technique for self-rescue and one for assisted rescue and then paddle to shore in Level 2 conditions. They can swim with their kayak to shore and move another person's kayak to shore.",
-          "skills": [
-            { "id": "l2-wet-exit", "name": "Capsize & Wet Exit", "standard": "Performs a wet exit in two ways." },
-            { "id": "l2-assisted-rescue", "name": "Assisted Rescues & Deep-Water Re-Entry", "standard": "Performs one or more assisted rescues as rescuer and swimmer: Side-by-Side, Sling, or T-Rescue." },
-            { "id": "l2-self-rescue", "name": "Self-Rescue", "standard": "Performs one of: Scramble (cowboy), Paddle Float, or Re-enter and Roll (with or without paddle float)." },
-            { "id": "l2-swim-rescue", "name": "Swim Rescue", "standard": "Swims to shore (25 yards/meters) in full paddling gear and drains kayak." },
-            { "id": "l2-move-capsized", "name": "Move a Capsized Kayak to Shore", "standard": "Moves a capsized kayak ~3 kayak lengths (~50 ft/15 m) via Bulldozing, Shove and Chase, or Contact Tow." },
-            { "id": "l2-swimmer-tows", "name": "Swimmer Tows", "standard": "Performs swimmer rescue via a bow, toggle, or back deck swimmer carry." },
-            { "id": "l2-scoop-rescue", "name": "Scoop Rescue", "standard": "Able to assist a swimmer into their kayak.", "optional": true },
-            { "id": "l2-unresponsive", "name": "Unresponsive Paddler Rescue", "standard": "Able to bring a capsized paddler to the surface.", "optional": true },
-            { "id": "l2-towing", "name": "Towing", "standard": "Able to use towlines and various towing configurations to move a kayak.", "optional": true }
-          ]
-        },
-        {
           "name": "Core: Awareness and Seamanship",
           "competency": "The paddler has a heightened awareness of the environment. They adapt plans accordingly and clearly communicate with the group to make necessary changes. They are properly equipped for the conditions and use equipment appropriately to maintain personal and group comfort.",
           "skills": [
@@ -180,6 +165,21 @@
             { "id": "l2-compass", "name": "Compass Use", "standard": "Demonstrates using handheld and deck-mounted compasses to take bearings." },
             { "id": "l2-nautical-rules", "name": "Nautical Rules of the Road", "standard": "Understands the Nautical Rules of the Road and demonstrates safe paddling in relation to boat traffic." },
             { "id": "l2-tide-drift", "name": "Tide & Tidal Drift", "standard": "Demonstrates ability to calculate tide and tidal drift stages and incorporate results into a trip plan.", "optional": true }
+          ]
+        },
+        {
+          "name": "Core: Rescues and Towing",
+          "competency": "The paddler can employ one technique for self-rescue and one for assisted rescue and then paddle to shore in Level 2 conditions. They can swim with their kayak to shore and move another person's kayak to shore.",
+          "skills": [
+            { "id": "l2-wet-exit", "name": "Capsize & Wet Exit", "standard": "Performs a wet exit in two ways." },
+            { "id": "l2-assisted-rescue", "name": "Assisted Rescues & Deep-Water Re-Entry", "standard": "Performs one or more assisted rescues as rescuer and swimmer: Side-by-Side, Sling, or T-Rescue." },
+            { "id": "l2-self-rescue", "name": "Self-Rescue", "standard": "Performs one of: Scramble (cowboy), Paddle Float, or Re-enter and Roll (with or without paddle float)." },
+            { "id": "l2-swim-rescue", "name": "Swim Rescue", "standard": "Swims to shore (25 yards/meters) in full paddling gear and drains kayak." },
+            { "id": "l2-move-capsized", "name": "Move a Capsized Kayak to Shore", "standard": "Moves a capsized kayak ~3 kayak lengths (~50 ft/15 m) via Bulldozing, Shove and Chase, or Contact Tow." },
+            { "id": "l2-swimmer-tows", "name": "Swimmer Tows", "standard": "Performs swimmer rescue via a bow, toggle, or back deck swimmer carry." },
+            { "id": "l2-scoop-rescue", "name": "Scoop Rescue", "standard": "Able to assist a swimmer into their kayak.", "optional": true },
+            { "id": "l2-unresponsive", "name": "Unresponsive Paddler Rescue", "standard": "Able to bring a capsized paddler to the surface.", "optional": true },
+            { "id": "l2-towing", "name": "Towing", "standard": "Able to use towlines and various towing configurations to move a kayak.", "optional": true }
           ]
         },
         {

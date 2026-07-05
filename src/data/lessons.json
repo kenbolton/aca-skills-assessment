@@ -1,0 +1,8 @@
+{
+  "l2-forward": "forward-paddling",
+  "l2-reverse": "reverse-paddling",
+  "l2-stopping": "stopping",
+  "l2-sweep": "forward-reverse-sweep",
+  "l2-wet-exit": "capsize-wet-exit",
+  "l2-assisted-rescue": "assisted-rescues"
+}

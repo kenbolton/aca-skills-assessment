@@ -1,6 +1,19 @@
 import { useState } from 'preact/hooks';
 import { getResult, setRating, setFeedback, optionFor } from '../lib/session.js';
 import { resultNeedsFeedback } from '../lib/validation.js';
+import lessons from '../data/lessons.json';
+
+// Lesson HTML fragments are bundled ONLY in the private build. The public build's
+// lessons-content/ has no *.html (git-ignored), so this glob resolves to {}.
+const LESSON_FRAGMENTS = import.meta.glob('/lessons-content/*.html', {
+  eager: true, query: '?raw', import: 'default',
+});
+const CONTENT_BY_SLUG = Object.fromEntries(
+  Object.entries(LESSON_FRAGMENTS).map(
+    ([path, html]) => [path.split('/').pop().replace(/\.html$/, ''), html],
+  ),
+);
+const PRIVATE = import.meta.env.VITE_PRIVATE === 'true';
 
 function countRatedCoreSkills(session) {
   const coreSkills = session.skills.filter(s => !s.optional);
@@ -17,7 +30,7 @@ function countRatedCoreSkills(session) {
 
 export function Rate({ session, onChange, onDone }) {
   const [i, setI] = useState(0);
-  const [showStandard, setShowStandard] = useState(true);
+  const [showLesson, setShowLesson] = useState(false);
 
   const skill = session.skills[i];
   const isLast = i === session.skills.length - 1;
@@ -64,16 +77,22 @@ export function Rate({ session, onChange, onDone }) {
         <div className="standard-box">
           <div className="standard-box-header">
             <span>{session.levelId} standard</span>
-            <button
-              type="button"
-              className="link-button"
-              onClick={() => setShowStandard(s => !s)}
-            >
-              {showStandard ? 'Hide' : 'Show'}
-            </button>
           </div>
-          {showStandard ? <p className="standard-box-text">{skill.standard}</p> : null}
+          <p className="standard-box-text">{skill.standard}</p>
         </div>
+        {PRIVATE && lessons[skill.id] && CONTENT_BY_SLUG[lessons[skill.id]] ? (
+          <div className="teaching">
+            <button type="button" className="link-button" onClick={() => setShowLesson(s => !s)}>
+              📖 {showLesson ? 'Hide' : 'Show'} teaching notes &amp; drills
+            </button>
+            {showLesson ? (
+              <div
+                className="lesson-content"
+                dangerouslySetInnerHTML={{ __html: CONTENT_BY_SLUG[lessons[skill.id]] }}
+              />
+            ) : null}
+          </div>
+        ) : null}
       </div>
 
       <div className="rate-rows">

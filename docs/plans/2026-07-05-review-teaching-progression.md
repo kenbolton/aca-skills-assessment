@@ -544,6 +544,11 @@ git commit -m "feat: link to past-assessments page from Setup (private build onl
 
 ### Task 7: Lesson pipeline — `build-lessons.mjs`, `lessons.json`, gitignore
 
+> **REVISED at implementation:** lessons are emitted as HTML **fragments** into a
+> git-ignored `lessons-content/` dir (with a committed `lessons-content/.gitkeep`),
+> not standalone pages under `public/lessons/`. The fragments are bundled inline by
+> Task 8; there is no separate served page and no `/lessons/` server route.
+
 **Files:**
 - Create: `tools/build-lessons.mjs`
 - Create: `src/data/lessons.json` (generated, then committed)
@@ -667,6 +672,13 @@ Expected: the `git status` check prints "ok: public/lessons ignored".
 
 ### Task 8: Rate screen — gated teaching link
 
+> **REVISED at implementation:** the teaching lesson is shown **inline as a
+> collapsible section** — the fragment is bundled at build time via
+> `import.meta.glob('/lessons-content/*.html', {eager, query:'?raw'})` and rendered
+> with `dangerouslySetInnerHTML` — NOT an iframe or an external link. The standard's
+> Hide/Show toggle was also removed (the standard is always shown). The `/sessions`
+> list renders rows via `textContent` (no innerHTML of user data).
+
 **Files:**
 - Modify: `src/screens/Rate.jsx`
 
@@ -680,6 +692,36 @@ After the existing imports (top of file), add:
 import lessons from '../data/lessons.json';
 
 const PRIVATE = import.meta.env.VITE_PRIVATE === 'true';
+```
+
+- [ ] **Step 1b: Always show the standard — remove the Hide/Show toggle**
+
+In `src/screens/Rate.jsx`, remove the `showStandard` state and the toggle so the standard is always visible.
+1. Delete the line `const [showStandard, setShowStandard] = useState(true);` from the component body. Keep the `useState` import (still used for `const [i, setI] = useState(0);`).
+2. Replace the standard box block:
+```jsx
+        <div className="standard-box">
+          <div className="standard-box-header">
+            <span>{session.levelId} standard</span>
+            <button
+              type="button"
+              className="link-button"
+              onClick={() => setShowStandard(s => !s)}
+            >
+              {showStandard ? 'Hide' : 'Show'}
+            </button>
+          </div>
+          {showStandard ? <p className="standard-box-text">{skill.standard}</p> : null}
+        </div>
+```
+with:
+```jsx
+        <div className="standard-box">
+          <div className="standard-box-header">
+            <span>{session.levelId} standard</span>
+          </div>
+          <p className="standard-box-text">{skill.standard}</p>
+        </div>
 ```
 
 - [ ] **Step 2: Render the teaching link in the skill header**

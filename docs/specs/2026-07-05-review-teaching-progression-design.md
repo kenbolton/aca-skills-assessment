@@ -134,6 +134,12 @@ Hidden on the public build.
 
 ## Part B — Teaching links per skill (Pi only)
 
+> **REVISED at implementation:** lessons are shown **inline** on the Rate screen as a
+> collapsible section (fragments bundled via `import.meta.glob` from a git-ignored
+> `lessons-content/`, rendered with `dangerouslySetInnerHTML`), not as an
+> iframe/external link. Still bundled + precached (offline) and private-only; the
+> public build simply has no fragments to bundle.
+
 ### Conversion pipeline — `tools/build-lessons.mjs` (run on the Mac)
 
 - Input: a lessons source dir (default `~/Documents/ACA/2024/Lessons`, overridable
