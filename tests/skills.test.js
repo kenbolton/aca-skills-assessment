@@ -161,3 +161,16 @@ test('loadConfig accepts the real skills.json and skillsForLevel returns non-emp
   expect(skillsForLevel(config, 'L1').length).toBeGreaterThan(0);
   expect(skillsForLevel(config, 'L2').length).toBeGreaterThan(0);
 });
+
+test('L2 assesses dry boat-handling before rescues (progressive order)', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { fileURLToPath } = await import('node:url');
+  const raw = JSON.parse(readFileSync(
+    fileURLToPath(new URL('../src/data/skills.json', import.meta.url)), 'utf8'));
+  const cfg = loadConfig(raw);
+  const flat = skillsForLevel(cfg, 'L2');
+  const lastTripPlanning = flat.map(s => s.category).lastIndexOf('Core: Trip Planning and Navigation');
+  const firstRescue = flat.findIndex(s => s.category === 'Core: Rescues and Towing');
+  expect(lastTripPlanning).toBeGreaterThanOrEqual(0);
+  expect(firstRescue).toBeGreaterThan(lastTripPlanning);
+});
