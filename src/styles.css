@@ -295,3 +295,17 @@ button { min-height: var(--hit); font-size: 18px; }
   gap: 0.75rem;
   margin-top: 1rem;
 }
+
+.teaching { margin-top: 0.5rem; }
+.lesson-content {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: #f2f7f8;
+  border: 1px solid #cfe0e3;
+  border-radius: 8px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.lesson-content h1, .lesson-content h2, .lesson-content h3 { color: #00707e; margin: 0.6rem 0 0.3rem; }
+.lesson-content ul, .lesson-content ol { padding-left: 1.2rem; }
+.lesson-content p { margin: 0.4rem 0; }
