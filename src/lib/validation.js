@@ -17,6 +17,7 @@ export function skillStatus(session, skill) {
 }
 
 export function resultNeedsFeedback(session, result) {
+  if (session.selfAssessment) return false;
   const skill = skillById(session, result.skillId);
   if (!skill || skill.optional) return false;
   const opt = optionFor(session, skill, result.rating);

@@ -4,7 +4,7 @@ const KEY = 'aca-assessment:session';
 let seq = 0;
 function pid() { return `p${++seq}`; }
 
-export function createSession({ id, createdAt, config, location = '', paddlers }) {
+export function createSession({ id, createdAt, config, location = '', paddlers, selfAssessment = false }) {
   const people = paddlers.map(p => ({ name: (p.name || '').trim(), target: p.target })).filter(p => p.name);
   const withIds = people.map(p => ({ id: pid(), name: p.name, target: p.target }));
   const results = [];
@@ -13,7 +13,7 @@ export function createSession({ id, createdAt, config, location = '', paddlers }
       if (sk.level === p.target) results.push({ paddlerId: p.id, skillId: sk.id, rating: null, feedback: '' });
     }
   }
-  return { id, createdAt, location, scales: config.scales, paddlers: withIds, skills: config.skills, results };
+  return { id, createdAt, location, selfAssessment: !!selfAssessment, scales: config.scales, paddlers: withIds, skills: config.skills, results };
 }
 
 export function getResult(session, paddlerId, skillId) {

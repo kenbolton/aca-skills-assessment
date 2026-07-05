@@ -50,3 +50,9 @@ test('optionFor resolves within a skill option set (l1 only on dual)', () => {
 test('save/load/clear round-trips', () => {
   saveSession(base()); expect(loadSession().id).toBe('s1'); clearSession(); expect(loadSession()).toBeNull();
 });
+
+test('createSession stores selfAssessment, defaulting to false', () => {
+  expect(base().selfAssessment).toBe(false);
+  const solo = createSession({ id: 's2', createdAt: 't', config: cfg, selfAssessment: true, paddlers: [{ name: 'Me', target: 'L2' }] });
+  expect(solo.selfAssessment).toBe(true);
+});

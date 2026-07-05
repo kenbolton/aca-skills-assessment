@@ -41,3 +41,11 @@ test('skillStatus reflects completion across the paddlers a skill applies to', (
   expect(st([r('p1', 'meets'), r('p2', 'below')])).toBe('warn');
   expect(st([r('p1', 'meets'), r('p2', 'below', 'tippy')])).toBe('done');
 });
+
+test('self-assessment waives all required feedback', () => {
+  const s = withResults([]);
+  expect(resultNeedsFeedback({ ...s, selfAssessment: true }, { skillId: 'd', rating: 'l1', feedback: ' ' })).toBe(false);
+  expect(resultNeedsFeedback({ ...s, selfAssessment: true }, { skillId: 'd', rating: 'below', feedback: '' })).toBe(false);
+  // control: without the flag the same below rating still needs feedback
+  expect(resultNeedsFeedback(s, { skillId: 'd', rating: 'below', feedback: '' })).toBe(true);
+});
