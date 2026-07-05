@@ -6,6 +6,7 @@ import rawSkills from '../data/skills.json';
 const CONFIG = loadConfig(rawSkills);
 const LEVEL_IDS = levelIds(CONFIG);
 const PADDLER_COUNT = 5;
+const PRIVATE = import.meta.env.VITE_PRIVATE === 'true';
 
 export function Setup({ onStart }) {
   const [levelId, setLevelId] = useState(LEVEL_IDS[0]);
@@ -43,6 +44,7 @@ export function Setup({ onStart }) {
   return (
     <main className="screen setup-screen">
       <h1>New Assessment</h1>
+      {PRIVATE ? <p><a href="/sessions">Past assessments &rarr;</a></p> : null}
 
       <label className="field">
         <span>Level</span>
