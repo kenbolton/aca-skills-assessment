@@ -1,6 +1,13 @@
 import { jsPDF } from 'jspdf';
 import { paddlerSummary } from './summary.js';
 
+const LANDING_LABEL = {
+  L2: 'Level 2',
+  L1: 'Level 1',
+  did_not_meet_L1: 'Did not meet Level 1',
+  pending: (pendingCount) => `Pending (${pendingCount} not yet assessed)`
+};
+
 function safeName(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
@@ -21,7 +28,7 @@ export function downloadPaddlerPdf(session, paddlerId) {
 
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(18);
-  doc.text(`ACA ${summary.levelName} — ${summary.name}`, marginX, y);
+  doc.text(`ACA Assessment — ${summary.name}`, marginX, y);
   y += 24;
 
   doc.setFont('helvetica', 'normal');
@@ -31,7 +38,15 @@ export function downloadPaddlerPdf(session, paddlerId) {
   doc.text(metaLine, marginX, y);
   y += 20;
 
-  const countsLine = summary.scale
+  doc.setFont('helvetica', 'bold');
+  const landingLabel = summary.landing === 'pending'
+    ? LANDING_LABEL.pending(summary.pendingCount)
+    : LANDING_LABEL[summary.landing] || summary.landing;
+  doc.text(`Target: ${summary.target}    Landing: ${landingLabel}`, marginX, y);
+  y += 20;
+
+  const targetScale = session.scales[summary.target] || [];
+  const countsLine = targetScale
     .map(opt => `${opt.label}: ${summary.counts[opt.value] ?? 0}`)
     .join('   ') + `   Unrated: ${summary.unrated}`;
   doc.setFont('helvetica', 'bold');
@@ -41,27 +56,29 @@ export function downloadPaddlerPdf(session, paddlerId) {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(13);
   ensureRoom(1);
-  doc.text('Did not meet the standard:', marginX, y);
+  doc.text('Skills to review:', marginX, y);
   y += 18;
 
   doc.setFontSize(11);
-  if (summary.belowItems.length === 0) {
+  if (summary.flagged.length === 0) {
     doc.setFont('helvetica', 'normal');
     ensureRoom(1);
-    doc.text('None — all assessed skills met or exceeded.', marginX, y);
+    doc.text('None flagged.', marginX, y);
     y += 16;
   } else {
-    for (const item of summary.belowItems) {
+    for (const item of summary.flagged) {
       doc.setFont('helvetica', 'bold');
       ensureRoom(1);
-      doc.text(`• ${item.name} (${item.category})`, marginX, y);
+      doc.text(`• ${item.name} (${item.category}) — ${item.ratingLabel}`, marginX, y);
       y += 15;
 
-      doc.setFont('helvetica', 'normal');
-      const wrapped = doc.splitTextToSize(item.feedback || '(no feedback)', 480);
-      ensureRoom(wrapped.length);
-      doc.text(wrapped, marginX + 12, y);
-      y += wrapped.length * 14 + 6;
+      if (item.feedback) {
+        doc.setFont('helvetica', 'normal');
+        const wrapped = doc.splitTextToSize(item.feedback, 480);
+        ensureRoom(wrapped.length);
+        doc.text(wrapped, marginX + 12, y);
+        y += wrapped.length * 14 + 6;
+      }
     }
   }
 
@@ -75,11 +92,9 @@ export function downloadPaddlerPdf(session, paddlerId) {
 
     doc.setFontSize(11);
     for (const item of summary.optionalItems) {
-      const option = summary.scale.find(o => o.value === item.rating);
-      const label = option ? option.label : String(item.rating);
       doc.setFont('helvetica', 'bold');
       ensureRoom(1);
-      doc.text(`• ${item.name}: ${label}`, marginX, y);
+      doc.text(`• ${item.name}: ${item.ratingLabel}`, marginX, y);
       y += 15;
 
       if (item.feedback) {
@@ -92,5 +107,5 @@ export function downloadPaddlerPdf(session, paddlerId) {
     }
   }
 
-  doc.save(`aca-${session.levelId}-${safeName(summary.name)}.pdf`);
+  doc.save(`aca-${summary.target}-${safeName(summary.name)}.pdf`);
 }
