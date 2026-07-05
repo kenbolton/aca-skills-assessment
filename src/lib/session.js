@@ -32,10 +32,9 @@ function mapResult(session, paddlerId, skillId, fn) {
   return { ...session, results: session.results.map(r => (r.paddlerId === paddlerId && r.skillId === skillId ? fn(r) : r)) };
 }
 export function setRating(session, paddlerId, skillId, rating) {
-  const skill = skillById(session, skillId);
-  const opt = skill && optionFor(session, skill, rating);
-  const keep = !!(opt && opt.requiresFeedback);
-  return mapResult(session, paddlerId, skillId, r => ({ ...r, rating, feedback: keep ? r.feedback : '' }));
+  // A note may be attached to any rating, so changing the rating must never
+  // discard a note the instructor already wrote for this skill/paddler.
+  return mapResult(session, paddlerId, skillId, r => ({ ...r, rating }));
 }
 export function setFeedback(session, paddlerId, skillId, feedback) {
   return mapResult(session, paddlerId, skillId, r => ({ ...r, feedback }));

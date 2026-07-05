@@ -1,13 +1,8 @@
-import { useState } from 'preact/hooks';
 import { paddlerSummary } from '../lib/summary.js';
 import { sessionToCsv } from '../lib/csv.js';
 import { invalidResults, isSessionComplete } from '../lib/validation.js';
 import { downloadPaddlerPdf } from '../lib/pdf.js';
-import { syncSession } from '../lib/sync.js';
-
-// Sync-to-server is opt-in at build time (VITE_PRIVATE=true). It is hidden
-// on the public build, where visitors self-assess and export locally.
-const SYNC_ENABLED = import.meta.env.VITE_PRIVATE === 'true';
+import { SyncButton } from '../components/SyncButton.jsx';
 
 function download(name, text, type) {
   const blob = new Blob([text], { type });
@@ -24,15 +19,6 @@ function download(name, text, type) {
 export function Review({ session, onBack, onReset }) {
   const outstanding = invalidResults(session);
   const complete = isSessionComplete(session);
-  const [sync, setSync] = useState({ state: 'idle', msg: '' });
-
-  async function doSync() {
-    setSync({ state: 'busy', msg: 'Syncing…' });
-    const r = await syncSession(session);
-    setSync(r.ok
-      ? { state: 'ok', msg: `Synced ${new Date(r.syncedAt).toLocaleTimeString()}` }
-      : { state: 'err', msg: r.error });
-  }
 
   function handleDownloadCsv() {
     download(`aca-assessment-${session.id}.csv`, sessionToCsv(session), 'text/csv');
@@ -108,12 +94,8 @@ export function Review({ session, onBack, onReset }) {
         <button type="button" onClick={onBack}>◀ Back to rating</button>
         <button type="button" onClick={handleDownloadCsv} disabled={outstanding.length > 0}>Download CSV (all)</button>
         <button type="button" onClick={onReset}>Start over</button>
-        {SYNC_ENABLED && (
-          <button type="button" onClick={doSync} disabled={sync.state === 'busy' || outstanding.length > 0}>Sync to Pi</button>
-        )}
+        <SyncButton session={session} />
       </div>
-
-      {SYNC_ENABLED && sync.msg && <p className={sync.state === 'err' ? 'error' : ''}>{sync.msg}</p>}
     </main>
   );
 }

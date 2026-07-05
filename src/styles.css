@@ -17,9 +17,15 @@ button { min-height: var(--hit); font-size: 18px; }
 
 /* Rate screen */
 .rate-shell { display: flex; flex-direction: column; min-height: 100vh; }
-.start-over-button {
-  align-self: flex-end;
+.rate-shell-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
   margin: 0.5rem 1rem 0;
+}
+.start-over-button {
   min-height: auto;
   padding: 0.35rem 0.75rem;
   font-size: 0.85rem;
@@ -28,6 +34,14 @@ button { min-height: var(--hit); font-size: 18px; }
   border-radius: 6px;
   color: #555;
 }
+.sync-control { display: inline-flex; align-items: center; gap: 0.5rem; }
+.sync-control button {
+  min-height: auto;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+}
+.sync-msg { font-size: 0.8rem; color: #555; }
+.sync-msg.error { color: #b00020; }
 
 .rate-screen {
   max-width: 640px;

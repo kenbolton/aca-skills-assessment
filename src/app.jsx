@@ -3,6 +3,7 @@ import { Setup } from './screens/Setup.jsx';
 import { Rate } from './screens/Rate.jsx';
 import { Review } from './screens/Review.jsx';
 import { saveSession, loadSession, clearSession } from './lib/session.js';
+import { SyncButton } from './components/SyncButton.jsx';
 
 export function App() {
   const [session, setSession] = useState(() => loadSession());
@@ -20,6 +21,10 @@ export function App() {
   }
 
   function reset() {
+    if (typeof window !== 'undefined' &&
+        !window.confirm('Start over? This clears the current assessment and cannot be undone.')) {
+      return;
+    }
     clearSession();
     setSession(null);
     setScreen('setup');
@@ -32,7 +37,10 @@ export function App() {
   if (screen === 'rate') {
     return (
       <div className="rate-shell">
-        <button type="button" className="start-over-button" onClick={reset}>Start over</button>
+        <div className="rate-shell-bar">
+          <button type="button" className="start-over-button" onClick={reset}>Start over</button>
+          <SyncButton session={session} />
+        </div>
         <Rate
           session={session}
           onChange={update}

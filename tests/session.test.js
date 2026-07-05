@@ -30,14 +30,14 @@ test('createSession rates each paddler only on their target level', () => {
   expect(s.results.filter(r => r.paddlerId === sam).map(r => r.skillId)).toEqual(['a1']);
 });
 
-test('setRating clears feedback unless the option requires it', () => {
+test('setRating preserves an existing note across rating changes', () => {
   let s = base();
   const alex = s.paddlers[0].id;
-  s = setRating(s, alex, 'b1', 'l1');           // l1 requires feedback -> keep
+  s = setRating(s, alex, 'b1', 'l1');
   s = setFeedback(s, alex, 'b1', 'met L1 only');
   expect(getResult(s, alex, 'b1').feedback).toBe('met L1 only');
-  s = setRating(s, alex, 'b1', 'meets');         // meets -> clear
-  expect(getResult(s, alex, 'b1').feedback).toBe('');
+  s = setRating(s, alex, 'b1', 'meets');         // note is kept, not wiped
+  expect(getResult(s, alex, 'b1').feedback).toBe('met L1 only');
 });
 
 test('optionFor resolves within a skill option set (l1 only on dual)', () => {

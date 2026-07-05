@@ -54,9 +54,8 @@ export function Rate({ session, onChange, onDone }) {
 
   const rowsInfo = rowPaddlers.map(paddler => {
     const result = getResult(session, paddler.id, skill.id);
-    const selectedOption = result ? options.find(o => o.value === result.rating) : null;
     const needsFeedback = result ? resultNeedsFeedback(session, result) : false;
-    return { paddler, result, selectedOption, needsFeedback };
+    return { paddler, result, needsFeedback };
   });
 
   const blocked = rowsInfo.some(r => r.needsFeedback);
@@ -120,7 +119,7 @@ export function Rate({ session, onChange, onDone }) {
       </div>
 
       <div className="rate-rows">
-        {rowsInfo.map(({ paddler, result, selectedOption, needsFeedback }) => (
+        {rowsInfo.map(({ paddler, result, needsFeedback }) => (
           <div className="paddler-row" key={paddler.id}>
             <div className="paddler-row-name">{paddler.name}</div>
             <div className="chip-row">
@@ -144,14 +143,14 @@ export function Rate({ session, onChange, onDone }) {
                 );
               })}
             </div>
-            {result && selectedOption && selectedOption.requiresFeedback ? (
-              <textarea
-                className={`feedback-box${needsFeedback ? ' feedback-required' : ''}`}
-                value={result.feedback}
-                placeholder="What did not meet the standard? (tap the keyboard mic to dictate)"
-                onInput={e => handleFeedback(paddler.id, e.currentTarget.value)}
-              />
-            ) : null}
+            <textarea
+              className={`feedback-box${needsFeedback ? ' feedback-required' : ''}`}
+              value={result ? result.feedback : ''}
+              placeholder={needsFeedback
+                ? 'Required: what did not meet the standard? (tap the keyboard mic to dictate)'
+                : 'Optional note (tap the keyboard mic to dictate)'}
+              onInput={e => handleFeedback(paddler.id, e.currentTarget.value)}
+            />
           </div>
         ))}
       </div>
