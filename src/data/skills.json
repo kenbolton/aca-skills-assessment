@@ -120,6 +120,7 @@
       "category": "Core: Incident Prevention and Management",
       "name": "Securing Kayak to Rack",
       "standard": "Properly secures their kayak to rack when storing or transporting.",
+      "exceedsStandard": "Can assist others with properly securing their kayaks for storage or transport.",
       "optional": false,
       "l1Standard": "Make sure the kayak is securely fastened to the car or racks, using proper tie downs, straps, or knots."
     },
@@ -129,6 +130,7 @@
       "category": "Core: Incident Prevention and Management",
       "name": "Lifting and Carrying",
       "standard": "Lifts and carries their kayak safely and efficiently.",
+      "exceedsStandard": "Demonstrates multiple ways to carry their kayak safely. Maintains an awareness of the environment and potential hazards in which they are carrying their kayak. Uses a 2-person carry when available.",
       "optional": false,
       "l1Standard": "Use proper techniques to safely lift and carry the kayak on shore."
     },
@@ -138,6 +140,7 @@
       "category": "Core: Incident Prevention and Management",
       "name": "Launching and Landing",
       "standard": "Launches and lands at a dock or shore safely.",
+      "exceedsStandard": "Launches and lands forwards and backwards without loss of control. Is aware of the environment in which they are launching and landing, including the physical nature of the environment, as well as the presence of other users and wildlife, and exercises due regard so as not to present a hazard to them or disrupt their activity.",
       "optional": false,
       "l1Standard": "Enter and launch from shore in a controlled manner, checking for clear departure."
     },
@@ -147,6 +150,7 @@
       "category": "Core: Incident Prevention and Management",
       "name": "Signaling",
       "standard": "Carries and demonstrates proper use of an audible signaling device.",
+      "exceedsStandard": "Has more than one audible signaling device.",
       "optional": false,
       "l1Standard": "Recognize and appropriately use communication (paddle and whistle) signals."
     },
@@ -156,6 +160,7 @@
       "category": "Core: Incident Prevention and Management",
       "name": "Communication Device",
       "standard": "Has a reliable communication device readily available and knows proper device usage.",
+      "exceedsStandard": "Has multiple communication devices and knows proper usage of each.",
       "optional": false
     },
     {
@@ -164,6 +169,7 @@
       "category": "Core: Incident Prevention and Management",
       "name": "Float Plan",
       "standard": "Files a complete and accurate float plan with an appropriate point of contact.",
+      "exceedsStandard": "Understands float plans as a trip planning tool and a “safety net.”",
       "optional": false,
       "l1Standard": "Demonstrate knowledge of a float plan (components and filing)."
     },
@@ -261,6 +267,7 @@
       "category": "Core: Strokes",
       "name": "Forward Paddling",
       "standard": "Moves the kayak 200 yards/meters in a reasonably straight line.",
+      "exceedsStandard": "Maintains a reasonably straight course with minimal deviation. There is evidence of core engagement. The paddler can vary their speed and accelerate smoothly.",
       "optional": false,
       "l1Standard": "Propel the kayak forward in a straight line 15-20 kayak lengths."
     },
@@ -270,6 +277,7 @@
       "category": "Core: Strokes",
       "name": "Reverse Paddling",
       "standard": "Moves the kayak 50 yards/meters with reasonable control.",
+      "exceedsStandard": "There is evidence of core engagement. Can paddle straight backwards at different speeds. Uses corrective strokes to maintain course without stopping or using forward strokes.",
       "optional": false,
       "l1Standard": "Move the kayak backwards 3-4 kayak lengths."
     },
@@ -279,6 +287,7 @@
       "category": "Core: Strokes",
       "name": "Stopping",
       "standard": "Stops the kayak from a good speed (2 to 2.5 knots), in forward and reverse.",
+      "exceedsStandard": "Stops from a good speed within one kayak length (5 yards/meters) while demonstrating good use of core muscles.",
       "optional": false,
       "l1Standard": "Stop the kayak within two kayak lengths."
     },
@@ -288,6 +297,7 @@
       "category": "Core: Strokes",
       "name": "Forward & Reverse Sweep",
       "standard": "Turns the kayak smoothly while moving forward or in reverse without losing momentum.",
+      "exceedsStandard": "The paddler executes smooth sweep strokes using a consistent edge, extension of the blade, and core muscle involvement.",
       "optional": false,
       "l1Standard": "Turn the kayak from a stationary position 180° to the right and left."
     },
@@ -297,6 +307,7 @@
       "category": "Core: Maneuvers",
       "name": "Rotate in place 360°",
       "standard": "Spins the kayak in place with minimal forward or reverse movement.",
+      "exceedsStandard": "The paddler combines forward and reverse sweep strokes smoothly using core muscles and a solid, stable, and appropriate edge. The paddler uses a reasonable number of strokes and minimal forward or reverse movement.",
       "optional": false,
       "l1Standard": "Turn the kayak from a stationary position 180° to the right and left."
     },
@@ -306,6 +317,7 @@
       "category": "Core: Maneuvers",
       "name": "Turning on the Move",
       "standard": "Maneuvers the kayak smoothly around obstacles.",
+      "exceedsStandard": "Paddler uses a combination of strokes with core muscle engagement and appropriate stable edging of the kayak to turn around obstacles requiring a turn of 30 degrees or more.",
       "optional": false,
       "l1Standard": "Turn the kayak while maintaining forward motion 90° to the right and left."
     },
@@ -315,6 +327,7 @@
       "category": "Core: Maneuvers",
       "name": "Draw Sideways",
       "standard": "Moves the kayak sideways 10 feet (3.3 meters).",
+      "exceedsStandard": "The kayak moves straight sideways, the paddle shaft is as vertical as possible, and recoveries are clean. Can move the kayak sideways while on the move (hanging draw).",
       "optional": false,
       "l1Standard": "Move the kayak sideways 10 feet (3 meters) to each side."
     },
@@ -324,6 +337,7 @@
       "category": "Core: Maneuvers",
       "name": "Ruddering (Stern)",
       "standard": "Holds the kayak on a straight course or turns toward the paddle side to correct a course.",
+      "exceedsStandard": "The paddle is used as a rudder to keep the kayak on a straight course for at least two kayak lengths or to adjust the course as needed. There is evidence of the use of core muscles. The paddler can turn the kayak towards or away from the paddle.",
       "optional": false
     },
     {
@@ -348,6 +362,7 @@
       "category": "Core: Edging and Support",
       "name": "Low Brace Recovery",
       "standard": "Prevents capsize when off balance.",
+      "exceedsStandard": "Paddler can recover after being off balance.",
       "optional": false
     },
     {
@@ -356,6 +371,7 @@
       "category": "Core: Edging and Support",
       "name": "Low Brace Turn",
       "standard": "Makes a turn of at least 90 degrees.",
+      "exceedsStandard": "Kayak turns at least 90 degrees. The maneuver is initiated with an effective forward sweep, stable and effective edge, and stable low brace, which is required to prevent capsizing. The paddler can vary the arc of the turn and is equally competent on both sides.",
       "optional": false
     },
     {
@@ -364,6 +380,7 @@
       "category": "Core: Edging and Support",
       "name": "Edge Control",
       "standard": "Edges with purpose and consistency during strokes and maneuvers.",
+      "exceedsStandard": "The paddler uses appropriate edging to facilitate turns and maneuvers. Edging is stable and consistent.",
       "optional": false
     },
     {
@@ -428,6 +445,7 @@
       "category": "Core: Awareness and Seamanship",
       "name": "Awareness",
       "standard": "Demonstrates awareness of self, group members, and environment.",
+      "exceedsStandard": "Helps others to stay aware of the environment and “connected” with the group.",
       "optional": false,
       "l1Standard": "Display awareness of the group and employ effective on-water management techniques."
     },
@@ -437,6 +455,7 @@
       "category": "Core: Awareness and Seamanship",
       "name": "Leave No Trace",
       "standard": "Interacts appropriately with the ecosystem and wildlife.",
+      "exceedsStandard": "Unconsciously models best practices of LNT Principles and NOAA Marine Wildlife Viewing Guidelines and respectfully makes group members aware of best practices.",
       "optional": false
     },
     {
@@ -445,6 +464,7 @@
       "category": "Core: Awareness and Seamanship",
       "name": "Kayak",
       "standard": "Working knowledge of types of kayaks suitable for paddling in Level 2 conditions.",
+      "exceedsStandard": "Has a thorough understanding of the advantages and disadvantages of different styles of kayaks in different environments.",
       "optional": false
     },
     {
@@ -453,6 +473,7 @@
       "category": "Core: Awareness and Seamanship",
       "name": "Equipment",
       "standard": "Working knowledge of paddling equipment.",
+      "exceedsStandard": "Has a solid rationale for everything they carry or do not carry.",
       "optional": false,
       "l1Standard": "Equipment: working knowledge of paddling equipment and terminology."
     },
@@ -462,6 +483,7 @@
       "category": "Core: Awareness and Seamanship",
       "name": "Cold-Water Shock",
       "standard": "Understands cold-water shock and the sudden onset of issues associated with immersion in cold water.",
+      "exceedsStandard": "Has a solid understanding of cold-water shock and its prevention, recognition of, and proper treatment/response, and knows how to mitigate it.",
       "optional": false,
       "l1Standard": "Cold water shock, hypothermia and hyperthermia; prevention and treatment."
     },
@@ -471,6 +493,7 @@
       "category": "Core: Awareness and Seamanship",
       "name": "Hypothermia & Hyperthermia",
       "standard": "Working knowledge of the issues associated with both, including prevention, recognition, and basic treatment.",
+      "exceedsStandard": "Has a solid understanding of hypothermia and hyperthermia and how to mitigate both with prevention, recognition, and the proper treatment/response.",
       "optional": false,
       "l1Standard": "Cold water shock, hypothermia and hyperthermia; prevention and treatment."
     },
@@ -480,6 +503,7 @@
       "category": "Core: Trip Planning and Navigation",
       "name": "Forecasts",
       "standard": "Gathers, understands, and utilizes appropriate weather and marine forecasts.",
+      "exceedsStandard": "Comes prepared with all pertinent forecast data and can assist others in finding data for the area.",
       "optional": false,
       "l1Standard": "Obtain (recite) weather conditions, forecasts, and evaluate hazards to navigation and other environmental factors."
     },
@@ -489,6 +513,7 @@
       "category": "Core: Trip Planning and Navigation",
       "name": "Chart Use",
       "standard": "Demonstrates use of charts, aerial images, weather and marine forecasts, and knowledge of their paddling group when route planning.",
+      "exceedsStandard": "Demonstrates a high level of understanding of these materials when trip planning to make route, launching and landing, emergency evacuation, rest stop, and shuttle decisions.",
       "optional": false
     },
     {
@@ -497,6 +522,7 @@
       "category": "Core: Trip Planning and Navigation",
       "name": "Trip Planning — wind/waves/currents",
       "standard": "Incorporates wind, waves, and currents into route plan and trip choices.",
+      "exceedsStandard": "Gathers forecasts and understands how wave characteristics (size, direction) can be influenced by wind conditions. Applies a more in-depth understanding of wind forecasts (strength, trend, fetch, duration, and direction) and can infer the effect on the group’s plan from relief maps and headlands.",
       "optional": false
     },
     {
@@ -505,6 +531,7 @@
       "category": "Core: Trip Planning and Navigation",
       "name": "Trip Planning — direction of flow",
       "standard": "Incorporates direction of flow into route plan and trip choices.",
+      "exceedsStandard": "Gathers river or tidal current data and understands how it will affect the progress on a trip. Applies a more in-depth understanding of the current and can infer from maps and charts the current's effect on the group’s plan. Uses this information to choose suitable launching and landing locations and timing to present adequate water depth. Able to explain concepts to others clearly and understandably.",
       "optional": false
     },
     {
@@ -513,6 +540,7 @@
       "category": "Core: Trip Planning and Navigation",
       "name": "Route Finding",
       "standard": "Uses appropriate map or chart to know where they are and where they are going.",
+      "exceedsStandard": "Can assist others in identifying their location on a map or chart. They help keep the group on their intended route.",
       "optional": false
     },
     {
@@ -521,6 +549,7 @@
       "category": "Core: Trip Planning and Navigation",
       "name": "Compass Use",
       "standard": "Demonstrates using handheld and deck-mounted compasses to take bearings.",
+      "exceedsStandard": "Demonstrates taking bearings and using this information to determine their location on a chart. The paddler easily maintains a course using a compass.",
       "optional": false
     },
     {
@@ -529,6 +558,7 @@
       "category": "Core: Trip Planning and Navigation",
       "name": "Nautical Rules of the Road",
       "standard": "Understands the Nautical Rules of the Road and demonstrates safe paddling in relation to boat traffic.",
+      "exceedsStandard": "Understands a wide variety of nautical rules of the road. Leads a group safely through an area of active boating traffic, positioned appropriately to aids to navigation. Effectively organizes the group when crossing shipping channels.",
       "optional": false,
       "l1Standard": "Follow basic navigational rules for inland waterways."
     },
@@ -682,6 +712,7 @@
       "category": "Core: Rescues and Towing",
       "name": "Capsize & Wet Exit",
       "standard": "Performs a wet exit in two ways.",
+      "exceedsStandard": "Hang time exceeds 5 seconds, maintains control of kayak and paddle.",
       "optional": false,
       "l1Standard": "Calmly exit the kayak after capsize, using proper body position and contact with the kayak and paddle."
     },
@@ -691,6 +722,7 @@
       "category": "Core: Rescues and Towing",
       "name": "Assisted Rescues & Deep-Water Re-Entry",
       "standard": "Performs one or more assisted rescues as rescuer and swimmer: Side-by-Side, Sling, or T-Rescue.",
+      "exceedsStandard": "For kayaks with at least a stern bulkhead, less than 60 seconds from initial contact to the swimmer sitting in a dry kayak.",
       "optional": false,
       "l1Standard": "Swimmer re-entry / re-mount techniques (stern entry, heel hook, rescue sling, paddle float)."
     },
@@ -700,6 +732,7 @@
       "category": "Core: Rescues and Towing",
       "name": "Self-Rescue",
       "standard": "Performs one of: Scramble (cowboy), Paddle Float, or Re-enter and Roll (with or without paddle float).",
+      "exceedsStandard": "Can self-rescue using two or more methods.",
       "optional": false,
       "l1Standard": "Swimmer re-entry / re-mount techniques (stern entry, heel hook, rescue sling, paddle float)."
     },
@@ -709,6 +742,7 @@
       "category": "Core: Rescues and Towing",
       "name": "Swim Rescue",
       "standard": "Swims to shore (25 yards/meters) in full paddling gear and drains kayak.",
+      "exceedsStandard": "Swims to shore using a variety of techniques.",
       "optional": false,
       "l1Standard": "Self-rescue: swimming with equipment."
     },
@@ -718,6 +752,7 @@
       "category": "Core: Rescues and Towing",
       "name": "Move a Capsized Kayak to Shore",
       "standard": "Moves a capsized kayak ~3 kayak lengths (~50 ft/15 m) via Bulldozing, Shove and Chase, or Contact Tow.",
+      "exceedsStandard": "Can employ multiple techniques to get the kayak to shore.",
       "optional": false,
       "l1Standard": "Kayak bumping / bulldozing."
     },
@@ -727,6 +762,7 @@
       "category": "Core: Rescues and Towing",
       "name": "Swimmer Tows",
       "standard": "Performs swimmer rescue via a bow, toggle, or back deck swimmer carry.",
+      "exceedsStandard": "Can utilize their kayak to perform a swimmer rescue using a bow, stern, toggle, or back deck swimmer tow without hesitation and move the swimmer to a safe area using all the methods of swimmer tow.",
       "optional": false,
       "l1Standard": "Swimmer tow options."
     },
@@ -760,6 +796,7 @@
       "category": "Venue (Developing): Currents",
       "name": "Currents — Awareness",
       "standard": "Demonstrates understanding of currents (tidal or river) in Level 2 venues.",
+      "exceedsStandard": "Has a thorough understanding of the specific challenges of paddling in current with L2 characteristics and can do so safely while leading a group or on their own. Demonstrates the ability to calculate the river flow rate, or tide and tidal drift stages, and incorporate results into a route plan.",
       "optional": true
     },
     {
@@ -768,6 +805,7 @@
       "category": "Venue (Developing): Currents",
       "name": "Currents — Reading Water & Boat Control",
       "standard": "Identifies direction of flow and eddies and paddles through currents in control.",
+      "exceedsStandard": "Maximizes drift for making progress, utilizes eddies to make progress against the flow, and enters and exits eddies under control.",
       "optional": true
     },
     {
@@ -776,6 +814,7 @@
       "category": "Venue (Developing): Currents",
       "name": "Currents — Hazards",
       "standard": "Identifies hazards and positions themselves to avoid hazards.",
+      "exceedsStandard": "Identifies paddling hazards in current and can inform others of such while leading the group in the safest route possible to avoid the hazards.",
       "optional": true
     },
     {
@@ -784,6 +823,7 @@
       "category": "Venue (Developing): Currents",
       "name": "Currents — Rescues",
       "standard": "Performs a self-rescue, an assisted rescue, and contact towing in current.",
+      "exceedsStandard": "Effortlessly and unconsciously performs the “Core: Rescues and Towing” skills in current.",
       "optional": true
     },
     {
@@ -792,6 +832,7 @@
       "category": "Venue (Developing): Wind and Waves",
       "name": "Wind/Waves — Awareness",
       "standard": "Understands how onshore and offshore winds affect paddling conditions.",
+      "exceedsStandard": "Recognizes and understands the \"why\" behind increasing sea state (fetch, direction, duration, intensity) and how onshore and offshore winds affect paddling conditions and can paddle safely, effectively, and efficiently in such conditions.",
       "optional": true
     },
     {
@@ -800,6 +841,7 @@
       "category": "Venue (Developing): Wind and Waves",
       "name": "Wind/Waves — Tactics",
       "standard": "Applies strategies for paddling at various angles to the direction of the wind.",
+      "exceedsStandard": "Understands the effects of paddling in the wind on the kayaker and how to work with the wind to increase paddling efficiency.",
       "optional": true
     },
     {
@@ -808,6 +850,7 @@
       "category": "Venue (Developing): Wind and Waves",
       "name": "Wind/Waves — Boat Control",
       "standard": "Can control their direction and maintain stability in wind and waves.",
+      "exceedsStandard": "Unconsciously applies edging to maintain direction control before needing to make less efficient strokes to make direction corrections. Unconsciously maintains stability in wind and waves.",
       "optional": true
     },
     {
@@ -816,6 +859,7 @@
       "category": "Venue (Developing): Wind and Waves",
       "name": "Wind/Waves — Rescues",
       "standard": "Performs a self-rescue, an assisted rescue, and contact towing in wind and waves.",
+      "exceedsStandard": "Applies numerous rescues and contact towing techniques and is effortlessly able to attain the “target” in wind and waves.",
       "optional": true
     },
     {
@@ -824,6 +868,7 @@
       "category": "Venue (Developing): Rocky Shorelines",
       "name": "Rocky — Awareness",
       "standard": "Identifies hazards and landing areas on a map or chart.",
+      "exceedsStandard": "Has a thorough understanding of the additional challenges of paddling in rocky environments.",
       "optional": true
     },
     {
@@ -832,6 +877,7 @@
       "category": "Venue (Developing): Rocky Shorelines",
       "name": "Rocky — Tactics",
       "standard": "Chooses appropriate landings and areas to play in the rocks.",
+      "exceedsStandard": "Chooses to paddle rocky shorelines and explore caves and arches with a firm understanding of risk vs. reward. Keeps the group in areas with a high level of reward and a low level of risk.",
       "optional": true
     },
     {
@@ -840,6 +886,7 @@
       "category": "Venue (Developing): Rocky Shorelines",
       "name": "Rocky — Boat Control",
       "standard": "Maneuvers along rocky shorelines safely, effectively, and efficiently.",
+      "exceedsStandard": "Thoroughly understands water movement along rocky shorelines and can seamlessly link various strokes into maneuvers while working with the water movement.",
       "optional": true
     },
     {
@@ -848,6 +895,7 @@
       "category": "Venue (Developing): Rocky Shorelines",
       "name": "Rocky — Rescues",
       "standard": "Performs a self-rescue, an assisted rescue, and contact towing close to rock features.",
+      "exceedsStandard": "Has a thorough understanding of the importance of performing rescues and the need to move to areas of less risk when paddling close to rock features. Can react unconsciously to apply an appropriate rescue or to move to a safer area to do so.",
       "optional": true
     }
   ]

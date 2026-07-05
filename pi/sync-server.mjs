@@ -46,6 +46,7 @@ function sessionsPage() {
  th,td{text-align:left;padding:.5rem;border-bottom:1px solid #ddd;vertical-align:top}
  button{min-height:40px}
  .del{background:#c0392b;color:#fff;border:0;border-radius:6px;padding:.25rem .6rem}
+ .resume{background:#1f8a4c;color:#fff;border:0;border-radius:6px;padding:.25rem .6rem}
  .empty{color:#666}
 </style></head><body>
 <header><strong>Past Assessments</strong> &nbsp; <a href="/">&larr; Back to app</a></header>
@@ -75,6 +76,20 @@ async function load(){
   exp.appendChild(csv);exp.append(' · ');exp.appendChild(jsn);
   tr.appendChild(exp);
   const act=document.createElement('td');
+  if(x.targets&&x.targets.length){
+   const res=document.createElement('button');res.className='resume';res.textContent='Resume';
+   res.onclick=async()=>{
+    const rr=await fetch('/api/sessions/'+idp+'.json');
+    if(!rr.ok){alert('Could not load this session.');return;}
+    const full=await rr.text();
+    try{const p=JSON.parse(full);if(!p.paddlers||!p.paddlers.length||!('target' in p.paddlers[0]))throw 0;}
+    catch{alert('This session is an older format and cannot be resumed.');return;}
+    if(!confirm('Resume this assessment ('+x.participants.join(', ')+')? This replaces any assessment currently open in the app.'))return;
+    localStorage.setItem('aca-assessment:session',full);
+    location.href='/';
+   };
+   act.appendChild(res);act.append(' ');
+  }
   const del=document.createElement('button');del.className='del';del.textContent='Delete';
   del.onclick=async()=>{
    if(!confirm('Delete this assessment ('+x.participants.join(', ')+')? This cannot be undone.'))return;

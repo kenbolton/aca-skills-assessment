@@ -102,20 +102,15 @@ export function Rate({ session, onChange, onDone }) {
               <p className="standard-box-text">{skill.l1Standard}</p>
             </div>
           ) : null}
+          {skill.exceedsStandard ? (
+            <div className="standard-box-secondary">
+              <div className="standard-box-header">
+                <span>Exceeds standard</span>
+              </div>
+              <p className="standard-box-text">{skill.exceedsStandard}</p>
+            </div>
+          ) : null}
         </div>
-        {PRIVATE && lessons[skill.id] && CONTENT_BY_SLUG[lessons[skill.id]] ? (
-          <div className="teaching">
-            <button type="button" className="link-button" onClick={() => setShowLesson(s => !s)}>
-              📖 {showLesson ? 'Hide' : 'Show'} teaching notes &amp; drills
-            </button>
-            {showLesson ? (
-              <div
-                className="lesson-content"
-                dangerouslySetInnerHTML={{ __html: CONTENT_BY_SLUG[lessons[skill.id]] }}
-              />
-            ) : null}
-          </div>
-        ) : null}
       </div>
 
       <div className="rate-rows">
@@ -154,6 +149,20 @@ export function Rate({ session, onChange, onDone }) {
           </div>
         ))}
       </div>
+
+      {PRIVATE && lessons[skill.id] && CONTENT_BY_SLUG[lessons[skill.id]] ? (
+        <div className="teaching">
+          <button type="button" className="link-button" onClick={() => setShowLesson(s => !s)}>
+            📖 {showLesson ? 'Hide' : 'Show'} teaching notes &amp; drills
+          </button>
+          {showLesson ? (
+            <div
+              className="lesson-content"
+              dangerouslySetInnerHTML={{ __html: CONTENT_BY_SLUG[lessons[skill.id]] }}
+            />
+          ) : null}
+        </div>
+      ) : null}
 
       {blocked ? (
         <p className="error blocking-message">
