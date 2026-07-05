@@ -1,25 +1,26 @@
 import { useState } from 'preact/hooks';
-import { loadConfig, levelIds, getLevel } from '../lib/skills.js';
+import { loadConfig } from '../lib/skills.js';
 import { createSession } from '../lib/session.js';
 import rawSkills from '../data/skills.json';
 
 const CONFIG = loadConfig(rawSkills);
-const LEVEL_IDS = levelIds(CONFIG);
 const PADDLER_COUNT = 5;
 const PRIVATE = import.meta.env.VITE_PRIVATE === 'true';
+const TARGETS = ['L1', 'L2'];
 
 export function Setup({ onStart }) {
-  const [levelId, setLevelId] = useState(LEVEL_IDS[0]);
   const [location, setLocation] = useState('');
-  const [paddlerNames, setPaddlerNames] = useState(
-    Array.from({ length: PADDLER_COUNT }, () => ''),
+  const [paddlers, setPaddlers] = useState(
+    Array.from({ length: PADDLER_COUNT }, () => ({ name: '', target: 'L2' })),
   );
   const [error, setError] = useState('');
 
-  const level = getLevel(CONFIG, levelId);
-
   function updatePaddlerName(index, value) {
-    setPaddlerNames(names => names.map((n, i) => (i === index ? value : n)));
+    setPaddlers(rows => rows.map((p, i) => (i === index ? { ...p, name: value } : p)));
+  }
+
+  function updatePaddlerTarget(index, value) {
+    setPaddlers(rows => rows.map((p, i) => (i === index ? { ...p, target: value } : p)));
   }
 
   function handleStart() {
@@ -27,9 +28,8 @@ export function Setup({ onStart }) {
       id: `sess-${Date.now()}`,
       createdAt: new Date().toISOString(),
       config: CONFIG,
-      levelId,
       location,
-      paddlerNames,
+      paddlers,
     });
 
     if (session.paddlers.length === 0) {
@@ -47,20 +47,6 @@ export function Setup({ onStart }) {
       {PRIVATE ? <p><a href="/sessions">Past assessments &rarr;</a></p> : null}
 
       <label className="field">
-        <span>Level</span>
-        <select
-          value={levelId}
-          onChange={e => setLevelId(e.currentTarget.value)}
-        >
-          {LEVEL_IDS.map(id => (
-            <option key={id} value={id}>{getLevel(CONFIG, id).name}</option>
-          ))}
-        </select>
-      </label>
-
-      {level && level.note ? <p className="hint">{level.note}</p> : null}
-
-      <label className="field">
         <span>Location (optional)</span>
         <input
           type="text"
@@ -71,15 +57,28 @@ export function Setup({ onStart }) {
 
       <fieldset className="field paddler-fieldset">
         <legend>Paddlers</legend>
-        {paddlerNames.map((name, i) => (
-          <label className="field" key={i}>
-            <span>{`Paddler ${i + 1}`}</span>
-            <input
-              type="text"
-              value={name}
-              onChange={e => updatePaddlerName(i, e.currentTarget.value)}
-            />
-          </label>
+        {paddlers.map((p, i) => (
+          <div className="field paddler-row" key={i}>
+            <label className="field">
+              <span>{`Paddler ${i + 1}`}</span>
+              <input
+                type="text"
+                value={p.name}
+                onChange={e => updatePaddlerName(i, e.currentTarget.value)}
+              />
+            </label>
+            <label className="field">
+              <span>Target</span>
+              <select
+                value={p.target}
+                onChange={e => updatePaddlerTarget(i, e.currentTarget.value)}
+              >
+                {TARGETS.map(t => (
+                  <option key={t} value={t}>{t}</option>
+                ))}
+              </select>
+            </label>
+          </div>
         ))}
       </fieldset>
 
