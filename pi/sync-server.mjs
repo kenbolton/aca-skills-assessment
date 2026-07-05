@@ -64,8 +64,10 @@ async function load(){
   const date=new Date(x.createdAt).toLocaleString();
   const idp=encodeURIComponent(x.id);
   tr.appendChild(cell(date));
-  tr.appendChild(cell(x.levelName));
-  tr.appendChild(cell(x.paddlers.join(', ')));
+  const levelMode=x.level||(x.targets.length?'L1/L2':'');
+  tr.appendChild(cell(levelMode));
+  const participantsText=x.participants.map((n,i)=>x.landings[i]?n+' ('+x.landings[i]+')':n).join(', ');
+  tr.appendChild(cell(participantsText));
   tr.appendChild(cell(x.counts.rated+'/'+x.counts.core));
   const exp=document.createElement('td');
   const csv=document.createElement('a');csv.href='/api/sessions/'+idp+'.csv';csv.textContent='CSV';
@@ -75,7 +77,7 @@ async function load(){
   const act=document.createElement('td');
   const del=document.createElement('button');del.className='del';del.textContent='Delete';
   del.onclick=async()=>{
-   if(!confirm('Delete this assessment ('+x.paddlers.join(', ')+')? This cannot be undone.'))return;
+   if(!confirm('Delete this assessment ('+x.participants.join(', ')+')? This cannot be undone.'))return;
    const d=await fetch('/api/sessions/'+idp,{method:'DELETE'});
    if(d.ok){tr.remove(); if(!tb.children.length){t.hidden=true;s.hidden=false;s.textContent='No saved assessments yet.';}}
    else alert('Delete failed.');

@@ -1,19 +1,22 @@
+import { landingFor } from './landing.js';
+
+function coreCounts(session) {
+  const core = (session.skills || []).filter(s => !s.optional);
+  const coreIds = new Set(core.map(s => s.id));
+  const rated = (session.results || []).filter(r => coreIds.has(r.skillId) && r.rating !== null).length;
+  return { core: core.length, rated };   // rough progress hint: # core skills, # non-null core results
+}
+
 export function sessionSummary(session) {
-  const core = session.skills.filter(s => !s.optional);
-  let rated = 0;
-  for (const skill of core) {
-    const allRated = session.paddlers.every(p => {
-      const r = session.results.find(x => x.paddlerId === p.id && x.skillId === skill.id);
-      return r && r.rating !== null;
-    });
-    if (allRated) rated += 1;
-  }
-  return {
-    id: session.id,
-    createdAt: session.createdAt,
-    levelId: session.levelId,
-    levelName: session.levelName,
-    paddlers: session.paddlers.map(p => p.name),
-    counts: { core: core.length, rated },
+  const paddlers = session.paddlers || [];
+  const isV3 = paddlers.length > 0 && 'target' in paddlers[0];
+  const base = {
+    id: session.id, createdAt: session.createdAt,
+    participants: paddlers.map(p => p.name),
+    counts: coreCounts(session),
   };
+  if (isV3) {
+    return { ...base, targets: paddlers.map(p => p.target), landings: paddlers.map(p => landingFor(session, p.id).landing), level: '' };
+  }
+  return { ...base, targets: [], landings: [], level: session.levelName || '' };
 }
