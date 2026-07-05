@@ -58,19 +58,30 @@ async function load(){
  const t=document.getElementById('t'), s=document.getElementById('status');
  if(!rows.length){s.textContent='No saved assessments yet.';return;}
  s.hidden=true;t.hidden=false;const tb=t.querySelector('tbody');tb.innerHTML='';
+ function cell(text){const td=document.createElement('td');td.textContent=text;return td;}
  for(const x of rows){
   const tr=document.createElement('tr');
   const date=new Date(x.createdAt).toLocaleString();
-  tr.innerHTML='<td>'+date+'</td><td>'+x.levelName+'</td><td>'+x.paddlers.join(', ')+
-   '</td><td>'+x.counts.rated+'/'+x.counts.core+'</td>'+
-   '<td><a href="/api/sessions/'+x.id+'.csv">CSV</a> &middot; <a href="/api/sessions/'+x.id+'.json">JSON</a></td>'+
-   '<td><button class="del">Delete</button></td>';
-  tr.querySelector('.del').onclick=async()=>{
+  const idp=encodeURIComponent(x.id);
+  tr.appendChild(cell(date));
+  tr.appendChild(cell(x.levelName));
+  tr.appendChild(cell(x.paddlers.join(', ')));
+  tr.appendChild(cell(x.counts.rated+'/'+x.counts.core));
+  const exp=document.createElement('td');
+  const csv=document.createElement('a');csv.href='/api/sessions/'+idp+'.csv';csv.textContent='CSV';
+  const jsn=document.createElement('a');jsn.href='/api/sessions/'+idp+'.json';jsn.textContent='JSON';
+  exp.appendChild(csv);exp.append(' · ');exp.appendChild(jsn);
+  tr.appendChild(exp);
+  const act=document.createElement('td');
+  const del=document.createElement('button');del.className='del';del.textContent='Delete';
+  del.onclick=async()=>{
    if(!confirm('Delete this assessment ('+x.paddlers.join(', ')+')? This cannot be undone.'))return;
-   const d=await fetch('/api/sessions/'+x.id,{method:'DELETE'});
+   const d=await fetch('/api/sessions/'+idp,{method:'DELETE'});
    if(d.ok){tr.remove(); if(!tb.children.length){t.hidden=true;s.hidden=false;s.textContent='No saved assessments yet.';}}
    else alert('Delete failed.');
   };
+  act.appendChild(del);
+  tr.appendChild(act);
   tb.appendChild(tr);
  }
 }
