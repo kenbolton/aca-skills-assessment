@@ -24,6 +24,35 @@ self-hosting:
   the public build, where visitors self-assess and export locally; on your own
   server the app and `/sync` share an origin, so sync works with no extra config.
 
+## Teaching lessons (private)
+
+Embedded teaching content is built only in the private deployment. On the Mac where
+`~/Documents/ACA/2024/Lessons/` lives:
+
+```bash
+# Convert Org lessons to HTML fragments and refresh lessons map
+node tools/build-lessons.mjs            # -> lessons-content/*.html + src/data/lessons.json
+
+# Commit the map (fragments stay git-ignored)
+git add src/data/lessons.json && git commit -m "chore: refresh lessons map"
+
+# Deploy fragments to the Pi
+rsync -a lessons-content/ ken@100.85.235.11:~/aca-skills-assessment/lessons-content/
+```
+
+Then on the Pi:
+
+```bash
+cd ~/aca-skills-assessment
+git pull
+BASE_PATH=/ VITE_PRIVATE=true npm run build
+sudo systemctl restart aca-assessment
+```
+
+The `lessons-content/*.html` fragments are git-ignored (private) and only reach the Pi
+via rsync. The public GitHub Pages build has an empty `lessons-content/`, so it bundles
+no teaching content.
+
 ## Run the Server
 
 ```bash
