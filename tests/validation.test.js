@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { resultNeedsFeedback, invalidResults, isSessionComplete } from '../src/lib/validation.js';
+import { resultNeedsFeedback, invalidResults, isSessionComplete, skillStatus } from '../src/lib/validation.js';
 
 const session = {
   scales: {
@@ -28,4 +28,16 @@ test('isSessionComplete requires all core rated and no invalid', () => {
   expect(isSessionComplete(withResults([{ skillId: 'd', rating: 'meets', feedback: '' }]))).toBe(true);
   expect(isSessionComplete(withResults([{ skillId: 'd', rating: null, feedback: '' }]))).toBe(false);
   expect(isSessionComplete(withResults([{ skillId: 'd', rating: 'below', feedback: '' }]))).toBe(false);
+});
+
+test('skillStatus reflects completion across the paddlers a skill applies to', () => {
+  const skill = { id: 'd', level: 'L2', optional: false, l1Standard: 'x' };
+  const base = { scales: session.scales, paddlers: [{ id: 'p1', target: 'L2' }, { id: 'p2', target: 'L2' }], skills: [skill] };
+  const st = results => skillStatus({ ...base, results }, skill);
+  const r = (p, rating, feedback = '') => ({ paddlerId: p, skillId: 'd', rating, feedback });
+  expect(st([r('p1', null), r('p2', null)])).toBe('todo');
+  expect(st([r('p1', 'meets'), r('p2', null)])).toBe('todo');
+  expect(st([r('p1', 'meets'), r('p2', 'meets')])).toBe('done');
+  expect(st([r('p1', 'meets'), r('p2', 'below')])).toBe('warn');
+  expect(st([r('p1', 'meets'), r('p2', 'below', 'tippy')])).toBe('done');
 });

@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import { getResult, setRating, setFeedback, optionsForSkillInSession } from '../lib/session.js';
-import { resultNeedsFeedback } from '../lib/validation.js';
+import { resultNeedsFeedback, skillStatus } from '../lib/validation.js';
 import lessons from '../data/lessons.json';
 
 // Lesson HTML fragments are bundled ONLY in the private build. The public build's
@@ -14,6 +14,9 @@ const CONTENT_BY_SLUG = Object.fromEntries(
   ),
 );
 const PRIVATE = import.meta.env.VITE_PRIVATE === 'true';
+
+const STATUS_MARK = { done: '✓', warn: '⚠', todo: '○' };
+function shortCat(c) { return String(c).replace(/^(Core|Venue[^:]*):\s*/, ''); }
 
 function countRatedCoreSkills(session, visibleSkills) {
   const coreSkills = visibleSkills.filter(s => !s.optional);
@@ -32,6 +35,7 @@ function countRatedCoreSkills(session, visibleSkills) {
 export function Rate({ session, onChange, onDone }) {
   const [i, setI] = useState(0);
   const [showLesson, setShowLesson] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
 
   // A skill is only shown if at least one paddler's target matches its level;
   // skills with no applicable paddler are auto-skipped by never appearing here.
@@ -80,6 +84,39 @@ export function Rate({ session, onChange, onDone }) {
 
   return (
     <main className="screen rate-screen">
+      <button type="button" className="skills-nav-button" onClick={() => setNavOpen(true)}>
+        ☰ Skills {i + 1}/{visibleSkills.length}
+      </button>
+
+      {navOpen ? (
+        <div className="skills-nav-overlay" role="dialog" aria-label="Skills" onClick={() => setNavOpen(false)}>
+          <div className="skills-nav-panel" onClick={e => e.stopPropagation()}>
+            <div className="skills-nav-head">
+              <strong>Skills</strong>
+              <button type="button" className="skills-nav-close" aria-label="Close" onClick={() => setNavOpen(false)}>✕</button>
+            </div>
+            <ul className="skills-nav-list">
+              {visibleSkills.map((s, idx) => {
+                const status = skillStatus(session, s);
+                return (
+                  <li key={s.id}>
+                    <button
+                      type="button"
+                      className={`skills-nav-item status-${status}${idx === i ? ' current' : ''}`}
+                      onClick={() => { setI(idx); setNavOpen(false); }}
+                    >
+                      <span className="skills-nav-mark">{STATUS_MARK[status]}</span>
+                      <span className="skills-nav-name">{s.name}</span>
+                      <span className="skills-nav-cat">{shortCat(s.category)}{s.optional ? ' · opt' : ''}</span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      ) : null}
+
       <div className="rate-header">
         <p className="rate-meta">
           {skill.category} &middot; Skill {i + 1}/{visibleSkills.length} &middot; Core rated {coreRated}/{coreTotal}
