@@ -9,6 +9,14 @@ Built to be tapped on a phone from a kayak: it works with **zero network
 connectivity** once installed, and syncs finished sessions back to a home
 server (e.g. a Raspberry Pi over Tailscale) when back in range.
 
+## Try it
+
+**[kenbolton.github.io/aca-skills-assessment](https://kenbolton.github.io/aca-skills-assessment/)**
+
+Open it on your phone and tap **Add to Home Screen** to install. It then runs
+fully offline — assess yourself (or a group), and export a PDF or CSV of the
+results. Nothing is uploaded; all data stays on your device.
+
 ## Features
 
 - **Two official ACA levels**, each with its own rating scale:

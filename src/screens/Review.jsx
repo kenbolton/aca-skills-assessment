@@ -5,6 +5,10 @@ import { invalidResults, isSessionComplete } from '../lib/validation.js';
 import { downloadPaddlerPdf } from '../lib/pdf.js';
 import { syncSession } from '../lib/sync.js';
 
+// Sync-to-server is opt-in at build time (VITE_ENABLE_SYNC=true). It is hidden
+// on the public build, where visitors self-assess and export locally.
+const SYNC_ENABLED = import.meta.env.VITE_ENABLE_SYNC === 'true';
+
 function download(name, text, type) {
   const blob = new Blob([text], { type });
   const url = URL.createObjectURL(blob);
@@ -95,10 +99,12 @@ export function Review({ session, onBack, onReset }) {
         <button type="button" onClick={onBack}>◀ Back to rating</button>
         <button type="button" onClick={handleDownloadCsv} disabled={outstanding.length > 0}>Download CSV (all)</button>
         <button type="button" onClick={onReset}>Start over</button>
-        <button type="button" onClick={doSync} disabled={sync.state === 'busy' || outstanding.length > 0}>Sync to Pi</button>
+        {SYNC_ENABLED && (
+          <button type="button" onClick={doSync} disabled={sync.state === 'busy' || outstanding.length > 0}>Sync to Pi</button>
+        )}
       </div>
 
-      {sync.msg && <p className={sync.state === 'err' ? 'error' : ''}>{sync.msg}</p>}
+      {SYNC_ENABLED && sync.msg && <p className={sync.state === 'err' ? 'error' : ''}>{sync.msg}</p>}
     </main>
   );
 }

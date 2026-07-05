@@ -10,12 +10,18 @@ Run the offline-first PWA on a Raspberry Pi (or any machine) over Tailscale HTTP
 ## Build the App
 
 ```bash
-cd skills-assessment
 npm install
-npm run build
+BASE_PATH=/ VITE_ENABLE_SYNC=true npm run build
 ```
 
-This creates `dist/` with the compiled app.
+This creates `dist/` with the compiled app. The two build flags matter for
+self-hosting:
+
+- **`BASE_PATH=/`** — the server serves the app at the site root, so assets must
+  be resolved from `/` (the default build targets a GitHub Pages subpath instead).
+- **`VITE_ENABLE_SYNC=true`** — shows the in-app **Sync** button. It is hidden on
+  the public build, where visitors self-assess and export locally; on your own
+  server the app and `/sync` share an origin, so sync works with no extra config.
 
 ## Run the Server
 
