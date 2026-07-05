@@ -29,7 +29,12 @@ export default defineConfig({
           { src: 'icons/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
-      workbox: { globPatterns: ['**/*.{js,css,html,json,png,svg,woff2}'] },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,json,png,svg,woff2}'],
+        // The private Pi server owns these routes; keep the SPA navigation
+        // fallback from serving index.html for them so the link reaches the server.
+        navigateFallbackDenylist: [/^\/sessions(?:\/|$)/, /^\/api\//, /^\/sync$/],
+      },
     }),
   ],
   test: { environment: 'node' },
