@@ -262,12 +262,14 @@ button { min-height: var(--hit); font-size: 18px; }
   margin-top: 0.75rem;
   font-size: 1rem;
   padding: 0.5rem;
-  border: 2px solid var(--dnm);
+  border: 1px solid #cfd8dc;
   border-radius: 8px;
   font-family: inherit;
+  background: #f7f9fa;
 }
 
 .feedback-box.feedback-required {
+  border: 2px solid var(--dnm);
   background: #fdecea;
 }
 
