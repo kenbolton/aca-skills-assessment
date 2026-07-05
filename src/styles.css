@@ -419,3 +419,6 @@ button { min-height: var(--hit); font-size: 18px; }
 .lesson-content h1, .lesson-content h2, .lesson-content h3 { color: #00707e; margin: 0.6rem 0 0.3rem; }
 .lesson-content ul, .lesson-content ol { padding-left: 1.2rem; }
 .lesson-content p { margin: 0.4rem 0; }
+
+.checkbox-field { flex-direction: row; align-items: center; gap: 0.5rem; }
+.checkbox-field input { width: auto; min-height: auto; }
