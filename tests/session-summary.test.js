@@ -22,3 +22,8 @@ test('v2 summary degrades: level set, no landings, no throw', () => {
   expect(s.level).toBe('Level 2');
   expect(s.landings).toEqual([]);
 });
+test('sessionSummary reports selfAssessment', () => {
+  const base = { id: 'x', createdAt: 't', skills: [], results: [], paddlers: [{ name: 'Me', target: 'L2' }] };
+  expect(sessionSummary({ ...base, selfAssessment: true }).selfAssessment).toBe(true);
+  expect(sessionSummary(base).selfAssessment).toBe(false);
+});

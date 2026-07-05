@@ -13,6 +13,7 @@ export function sessionSummary(session) {
   const base = {
     id: session.id, createdAt: session.createdAt,
     participants: paddlers.map(p => p.name),
+    selfAssessment: !!session.selfAssessment,
     counts: coreCounts(session),
   };
   if (isV3) {
