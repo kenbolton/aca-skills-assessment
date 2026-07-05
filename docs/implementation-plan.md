@@ -11,7 +11,9 @@
 ## Global Constraints
 
 - App lives in `skills-assessment/` at the repo root. Do NOT touch `website/`.
-- Node ≥ 26, npm ≥ 11 (dev machine has 26.4.0 / 11.17.0).
+- Node ≥ 22 (LTS). CI (GitHub Pages) and the Raspberry Pi run Node 22; a dev
+  machine may run newer (e.g. 26.x). The original ≥26 note mirrored one dev
+  machine and was not an actual requirement.
 - Rating values are exactly the strings `'does_not_meet' | 'meets' | 'exceeds'`.
 - localStorage key for the active session: `aca-assessment:session`.
 - **Core invariant:** a result with `rating === 'does_not_meet'` MUST have non-empty trimmed `feedback`. Enforced in UI and unit-tested.

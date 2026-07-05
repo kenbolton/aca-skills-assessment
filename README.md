@@ -46,6 +46,8 @@ screens under `src/screens/` are thin views over them.
 
 ## Develop
 
+Requires **Node 22+** (LTS). CI and the self-hosted Pi both run Node 22.
+
 ```bash
 npm install
 npm run dev      # dev server
