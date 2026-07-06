@@ -131,7 +131,7 @@ export function Rate({ session, onChange, onDone }) {
         <p className="rate-meta">
           {skill.category} &middot; Skill {i + 1}/{visibleSkills.length} &middot; Core rated {coreRated}/{coreTotal}
         </p>
-        <h2 className="rate-skill-name">{skill.name || skill.standard}</h2>
+        <h2 className="rate-skill-name">{skillLabel(skill)}</h2>
         {skill.optional ? (
           <span className="badge badge-optional">Optional — does not count against the paddler</span>
         ) : null}
