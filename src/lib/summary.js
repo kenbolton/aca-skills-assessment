@@ -1,4 +1,5 @@
 import { skillById, optionFor } from './session.js';
+import { skillLabel } from './skills.js';
 import { landingFor } from './landing.js';
 
 export function paddlerSummary(session, paddlerId) {
@@ -8,8 +9,8 @@ export function paddlerSummary(session, paddlerId) {
   const counts = {};
   for (const o of scale) counts[o.value] = 0;
   const rows = session.results.filter(r => r.paddlerId === paddlerId);
-  const { landing, pendingCount } = landingFor(session, paddlerId);
-  const item = (r, s) => ({ skillId: r.skillId, name: s.name, category: s.category, rating: r.rating, ratingLabel: (scale.find(o => o.value === r.rating) || {}).label || '', feedback: r.feedback });
+  const { landing, pendingCount, belowCount = 0 } = landingFor(session, paddlerId);
+  const item = (r, s) => ({ skillId: r.skillId, name: skillLabel(s), category: s.category, rating: r.rating, ratingLabel: (scale.find(o => o.value === r.rating) || {}).label || '', feedback: r.feedback });
   let coreTotal = 0, unrated = 0;
   const flagged = [], optionalItems = [];
   for (const r of rows) {
@@ -22,5 +23,5 @@ export function paddlerSummary(session, paddlerId) {
     const opt = optionFor(session, s, r.rating);
     if (opt && opt.requiresFeedback) flagged.push(item(r, s));
   }
-  return { name: paddler ? paddler.name : '', target, landing, pendingCount, coreTotal, counts, unrated, flagged, optionalItems };
+  return { name: paddler ? paddler.name : '', target, landing, pendingCount, belowCount, coreTotal, counts, unrated, flagged, optionalItems };
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'preact/hooks';
 import { getResult, setRating, setFeedback, optionsForSkillInSession } from '../lib/session.js';
+import { skillLabel } from '../lib/skills.js';
 import { resultNeedsFeedback, skillStatus } from '../lib/validation.js';
 import lessons from '../data/lessons.json';
 
@@ -110,7 +111,7 @@ export function Rate({ session, onChange, onDone }) {
                       onClick={() => { setI(idx); setNavOpen(false); }}
                     >
                       <span className="skills-nav-mark">{STATUS_MARK[status]}</span>
-                      <span className="skills-nav-name">{s.name}</span>
+                      <span className="skills-nav-name">{skillLabel(s)}</span>
                       <span className="skills-nav-cat">{shortCat(s.category)}{s.optional ? ' · opt' : ''}</span>
                     </button>
                   </li>
@@ -130,29 +131,33 @@ export function Rate({ session, onChange, onDone }) {
         <p className="rate-meta">
           {skill.category} &middot; Skill {i + 1}/{visibleSkills.length} &middot; Core rated {coreRated}/{coreTotal}
         </p>
-        <h2 className="rate-skill-name">{skill.name}</h2>
+        <h2 className="rate-skill-name">{skill.name || skill.standard}</h2>
         {skill.optional ? (
           <span className="badge badge-optional">Optional — does not count against the paddler</span>
         ) : null}
         {skill.competency ? <p className="rate-competency">{skill.competency}</p> : null}
-        <div className="standard-box">
-          {skill.l1Standard ? (
+        {/* When a skill has no short name (L4/L5), the standard is already the
+            heading above, so the standard-box would just repeat it. */}
+        {skill.name ? (
+          <div className="standard-box">
+            {skill.l1Standard ? (
+              <div className="standard-section">
+                <div className="standard-box-header"><span>L1 standard</span></div>
+                <p className="standard-box-text">{skill.l1Standard}</p>
+              </div>
+            ) : null}
             <div className="standard-section">
-              <div className="standard-box-header"><span>L1 standard</span></div>
-              <p className="standard-box-text">{skill.l1Standard}</p>
+              <div className="standard-box-header"><span>{skill.level} standard</span></div>
+              <p className="standard-box-text">{skill.standard}</p>
             </div>
-          ) : null}
-          <div className="standard-section">
-            <div className="standard-box-header"><span>{skill.level} standard</span></div>
-            <p className="standard-box-text">{skill.standard}</p>
+            {skill.exceedsStandard ? (
+              <div className="standard-section">
+                <div className="standard-box-header"><span>Exceeds standard</span></div>
+                <p className="standard-box-text">{skill.exceedsStandard}</p>
+              </div>
+            ) : null}
           </div>
-          {skill.exceedsStandard ? (
-            <div className="standard-section">
-              <div className="standard-box-header"><span>Exceeds standard</span></div>
-              <p className="standard-box-text">{skill.exceedsStandard}</p>
-            </div>
-          ) : null}
-        </div>
+        ) : null}
       </div>
 
       <div className="rate-rows">

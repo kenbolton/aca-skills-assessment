@@ -1,4 +1,5 @@
 import { skillById, optionFor } from './session.js';
+import { skillLabel } from './skills.js';
 import { landingFor } from './landing.js';
 
 function esc(field) {
@@ -12,9 +13,9 @@ export function sessionToCsv(session) {
   const rows = [['Paddler', 'Target', 'Landing', 'Category', 'Skill', 'Optional', 'Rating', 'Feedback']];
   for (const r of session.results) {
     const p = paddlerById.get(r.paddlerId) || { name: r.paddlerId, target: '' };
-    const sk = skillById(session, r.skillId) || { category: '', name: r.skillId, optional: false };
+    const sk = skillById(session, r.skillId) || { category: '', standard: r.skillId, optional: false };
     const opt = sk.category !== undefined ? optionFor(session, sk, r.rating) : null;
-    rows.push([p.name, p.target, landingById.get(r.paddlerId) || '', sk.category, sk.name, sk.optional ? 'yes' : '', opt ? opt.label : '', r.feedback]);
+    rows.push([p.name, p.target, landingById.get(r.paddlerId) || '', sk.category, skillLabel(sk), sk.optional ? 'yes' : '', opt ? opt.label : '', r.feedback]);
   }
   return rows.map(cols => cols.map(esc).join(',')).join('\n');
 }

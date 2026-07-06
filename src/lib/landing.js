@@ -1,5 +1,9 @@
 import { skillById } from './session.js';
 
+// L3/L4/L5 are standalone: no cross-level landing, just a within-level verdict.
+export const STANDALONE_LEVELS = ['L3', 'L4', 'L5'];
+export function isStandaloneLevel(level) { return STANDALONE_LEVELS.includes(level); }
+
 export function landingFor(session, paddlerId) {
   const paddler = session.paddlers.find(p => p.id === paddlerId);
   const target = paddler ? paddler.target : null;
@@ -10,6 +14,13 @@ export function landingFor(session, paddlerId) {
   });
   const pendingCount = rows.filter(r => r.rating === null || (target === 'L1' && r.rating === 'dno')).length;
   if (pendingCount > 0) return { landing: 'pending', pendingCount };
+
+  if (isStandaloneLevel(target)) {
+    // Within-level verdict only: meets the level when every assessed skill is
+    // meets/exceeds; otherwise it lists how many fell below the standard.
+    const belowCount = rows.filter(r => r.rating === 'below').length;
+    return { landing: belowCount === 0 ? 'meets_level' : 'below_level', pendingCount: 0, belowCount };
+  }
 
   if (target === 'L1') {
     return { landing: rows.every(r => r.rating === 'pass') ? 'L1' : 'did_not_meet_L1', pendingCount: 0 };

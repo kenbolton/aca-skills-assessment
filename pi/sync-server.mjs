@@ -71,7 +71,8 @@ async function load(){
   tr.appendChild(cell(date));
   const levelMode=x.level||(x.targets.length?'L1/L2':'');
   tr.appendChild(cell(levelMode));
-  const participantsText=x.participants.map((n,i)=>x.landings[i]?n+' ('+x.landings[i]+')':n).join(', ');
+  const LANDTXT={L2:'L2',L1:'L1',did_not_meet_L1:'below L1',pending:'pending',meets_level:'meets',below_level:'below'};
+  const participantsText=x.participants.map((n,i)=>{const l=x.landings[i];return l?n+' ('+(LANDTXT[l]||l)+')':n;}).join(', ');
   const pcell=cell(participantsText);
   if(x.selfAssessment){const b=document.createElement('span');b.className='selftag';b.textContent='self';pcell.append(' ');pcell.appendChild(b);}
   tr.appendChild(pcell);

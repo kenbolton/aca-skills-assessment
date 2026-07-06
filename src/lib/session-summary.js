@@ -1,4 +1,4 @@
-import { landingFor } from './landing.js';
+import { landingFor, isStandaloneLevel } from './landing.js';
 
 function coreCounts(session) {
   const core = (session.skills || []).filter(s => !s.optional);
@@ -17,7 +17,12 @@ export function sessionSummary(session) {
     counts: coreCounts(session),
   };
   if (isV3) {
-    return { ...base, targets: paddlers.map(p => p.target), landings: paddlers.map(p => landingFor(session, p.id).landing), level: '' };
+    const targets = paddlers.map(p => p.target);
+    // A standalone session shares one L3/L4/L5 level across all paddlers; surface it
+    // so the archive list can label it (e.g. "L3") instead of the L1/L2 fallback.
+    const uniq = [...new Set(targets)];
+    const level = uniq.length === 1 && isStandaloneLevel(uniq[0]) ? uniq[0] : '';
+    return { ...base, targets, landings: paddlers.map(p => landingFor(session, p.id).landing), level };
   }
   return { ...base, targets: [], landings: [], level: session.levelName || '' };
 }

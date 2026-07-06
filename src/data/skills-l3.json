@@ -1,0 +1,596 @@
+{
+  "scales": {
+    "L3": [
+      {
+        "value": "below",
+        "label": "Below",
+        "requiresFeedback": true
+      },
+      {
+        "value": "meets",
+        "label": "Meets",
+        "requiresFeedback": false
+      },
+      {
+        "value": "exceeds",
+        "label": "Exceeds",
+        "requiresFeedback": false
+      }
+    ]
+  },
+  "skills": [
+    {
+      "id": "l3-strokes-and-maneuvers-01",
+      "level": "L3",
+      "category": "Core: Strokes and Maneuvers",
+      "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in Level 3 conditions. They increase efficiency by edging, keeping the blade fully submerged, being aware of blade angle, and effectively blending strokes. The paddler can effectively use both sides of the kayak, maneuvering both towards and away from the blade.",
+      "name": "Forward Paddling",
+      "standard": "Moves their kayak 200 yards/meters maintaining a reasonably straight course.",
+      "optional": false
+    },
+    {
+      "id": "l3-strokes-and-maneuvers-02",
+      "level": "L3",
+      "category": "Core: Strokes and Maneuvers",
+      "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in Level 3 conditions. They increase efficiency by edging, keeping the blade fully submerged, being aware of blade angle, and effectively blending strokes. The paddler can effectively use both sides of the kayak, maneuvering both towards and away from the blade.",
+      "name": "Reverse Paddling",
+      "standard": "Moves the kayak 50 yards/meters paddle with reasonable control.",
+      "optional": false
+    },
+    {
+      "id": "l3-strokes-and-maneuvers-03",
+      "level": "L3",
+      "category": "Core: Strokes and Maneuvers",
+      "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in Level 3 conditions. They increase efficiency by edging, keeping the blade fully submerged, being aware of blade angle, and effectively blending strokes. The paddler can effectively use both sides of the kayak, maneuvering both towards and away from the blade.",
+      "name": "Stopping",
+      "standard": "Stops the kayak from a good speed (2 to 3 knots), forward and reverse, within one kayak length.",
+      "optional": false
+    },
+    {
+      "id": "l3-strokes-and-maneuvers-04",
+      "level": "L3",
+      "category": "Core: Strokes and Maneuvers",
+      "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in Level 3 conditions. They increase efficiency by edging, keeping the blade fully submerged, being aware of blade angle, and effectively blending strokes. The paddler can effectively use both sides of the kayak, maneuvering both towards and away from the blade.",
+      "name": "Forward and Reverse Sweep",
+      "standard": "Turns the kayak smoothly while moving forward or in reverse without losing momentum.",
+      "optional": false
+    },
+    {
+      "id": "l3-strokes-and-maneuvers-05",
+      "level": "L3",
+      "category": "Core: Strokes and Maneuvers",
+      "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in Level 3 conditions. They increase efficiency by edging, keeping the blade fully submerged, being aware of blade angle, and effectively blending strokes. The paddler can effectively use both sides of the kayak, maneuvering both towards and away from the blade.",
+      "name": "Rotate in Place 360°",
+      "standard": "Spins the kayak in place smoothly with minimal forward or reverse movement.",
+      "optional": false
+    },
+    {
+      "id": "l3-strokes-and-maneuvers-06",
+      "level": "L3",
+      "category": "Core: Strokes and Maneuvers",
+      "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in Level 3 conditions. They increase efficiency by edging, keeping the blade fully submerged, being aware of blade angle, and effectively blending strokes. The paddler can effectively use both sides of the kayak, maneuvering both towards and away from the blade.",
+      "name": "Turning on the Move",
+      "standard": "Maneuvers the kayak smoothly around obstacles or to a target without losing momentum.",
+      "optional": false
+    },
+    {
+      "id": "l3-strokes-and-maneuvers-07",
+      "level": "L3",
+      "category": "Core: Strokes and Maneuvers",
+      "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in Level 3 conditions. They increase efficiency by edging, keeping the blade fully submerged, being aware of blade angle, and effectively blending strokes. The paddler can effectively use both sides of the kayak, maneuvering both towards and away from the blade.",
+      "name": "Draw Sideways",
+      "standard": "Moves the kayak sideways 15 feet (4.6 meters) from a static position.",
+      "optional": false
+    },
+    {
+      "id": "l3-strokes-and-maneuvers-08",
+      "level": "L3",
+      "category": "Core: Strokes and Maneuvers",
+      "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in Level 3 conditions. They increase efficiency by edging, keeping the blade fully submerged, being aware of blade angle, and effectively blending strokes. The paddler can effectively use both sides of the kayak, maneuvering both towards and away from the blade.",
+      "name": "Draw Sideways on the Move",
+      "standard": "Moves the kayak sideways 10 feet (3.3 meters) with momentum.",
+      "optional": false
+    },
+    {
+      "id": "l3-strokes-and-maneuvers-09",
+      "level": "L3",
+      "category": "Core: Strokes and Maneuvers",
+      "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in Level 3 conditions. They increase efficiency by edging, keeping the blade fully submerged, being aware of blade angle, and effectively blending strokes. The paddler can effectively use both sides of the kayak, maneuvering both towards and away from the blade.",
+      "name": "Ruddering (Bow and Stern)",
+      "standard": "Uses bow rudder to turn toward blade side of kayak. Uses stern rudders to turn both toward and away from blade side of kayak, and to maintain a straight course.",
+      "optional": false
+    },
+    {
+      "id": "l3-strokes-and-maneuvers-10",
+      "level": "L3",
+      "category": "Core: Strokes and Maneuvers",
+      "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in Level 3 conditions. They increase efficiency by edging, keeping the blade fully submerged, being aware of blade angle, and effectively blending strokes. The paddler can effectively use both sides of the kayak, maneuvering both towards and away from the blade.",
+      "name": "Linked Maneuvers",
+      "standard": "Paddles a course requiring various turning maneuvers safely, effectively, and efficiently.",
+      "optional": false
+    },
+    {
+      "id": "l3-strokes-and-maneuvers-11",
+      "level": "L3",
+      "category": "Core: Strokes and Maneuvers",
+      "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in Level 3 conditions. They increase efficiency by edging, keeping the blade fully submerged, being aware of blade angle, and effectively blending strokes. The paddler can effectively use both sides of the kayak, maneuvering both towards and away from the blade.",
+      "standard": "Equal effectiveness on both sides of the kayak: Demonstrates a high level of effectiveness and comfort working on both sides of their kayak in Level 3 conditions.",
+      "optional": true
+    },
+    {
+      "id": "l3-edging-and-support-01",
+      "level": "L3",
+      "category": "Core: Edging and Support",
+      "competency": "The paddler comfortably and effectively uses edging to facilitate maneuvering. They are consistent and stable when edging their kayak and use the blade effectively when needed. They can recover when out of balance.",
+      "name": "Low Brace Recovery",
+      "standard": "Prevents capsize when off balance.",
+      "optional": false
+    },
+    {
+      "id": "l3-edging-and-support-02",
+      "level": "L3",
+      "category": "Core: Edging and Support",
+      "competency": "The paddler comfortably and effectively uses edging to facilitate maneuvering. They are consistent and stable when edging their kayak and use the blade effectively when needed. They can recover when out of balance.",
+      "name": "Low Brace Turn",
+      "standard": "Makes a turn of at least 90 degrees.",
+      "optional": false
+    },
+    {
+      "id": "l3-edging-and-support-03",
+      "level": "L3",
+      "category": "Core: Edging and Support",
+      "competency": "The paddler comfortably and effectively uses edging to facilitate maneuvering. They are consistent and stable when edging their kayak and use the blade effectively when needed. They can recover when out of balance.",
+      "name": "Edge Control",
+      "standard": "Edges with purpose and consistency during strokes and maneuvers.",
+      "optional": false
+    },
+    {
+      "id": "l3-edging-and-support-04",
+      "level": "L3",
+      "category": "Core: Edging and Support",
+      "competency": "The paddler comfortably and effectively uses edging to facilitate maneuvering. They are consistent and stable when edging their kayak and use the blade effectively when needed. They can recover when out of balance.",
+      "name": "Rolling",
+      "standard": "Rolls their kayak from a set-up position.",
+      "optional": true
+    },
+    {
+      "id": "l3-edging-and-support-05",
+      "level": "L3",
+      "category": "Core: Edging and Support",
+      "competency": "The paddler comfortably and effectively uses edging to facilitate maneuvering. They are consistent and stable when edging their kayak and use the blade effectively when needed. They can recover when out of balance.",
+      "name": "High Brace Recovery",
+      "standard": "Prevents capsize when off balance.",
+      "optional": true
+    },
+    {
+      "id": "l3-rescues-and-towing-01",
+      "level": "L3",
+      "category": "Core: Rescues and Towing",
+      "competency": "The paddler demonstrates competent rescue and towing skills in Level 3 conditions. They choose rescues and towing configurations appropriate for the conditions (for example, what is most appropriate for capsize in breaking waves or in current). They also demonstrate the ability to be an active and safe swimmer when being rescued.",
+      "name": "Capsize and Wet Exit",
+      "standard": "Performs a wet exit in two ways.",
+      "optional": false
+    },
+    {
+      "id": "l3-rescues-and-towing-02",
+      "level": "L3",
+      "category": "Core: Rescues and Towing",
+      "competency": "The paddler demonstrates competent rescue and towing skills in Level 3 conditions. They choose rescues and towing configurations appropriate for the conditions (for example, what is most appropriate for capsize in breaking waves or in current). They also demonstrate the ability to be an active and safe swimmer when being rescued.",
+      "name": "Assisted Rescue with an Able Swimmer",
+      "standard": "Performs one or more of the following assisted rescues with an able swimmer: Side-by-Side, T-Rescue, or Swimmer Carry.",
+      "optional": false
+    },
+    {
+      "id": "l3-rescues-and-towing-03",
+      "level": "L3",
+      "category": "Core: Rescues and Towing",
+      "competency": "The paddler demonstrates competent rescue and towing skills in Level 3 conditions. They choose rescues and towing configurations appropriate for the conditions (for example, what is most appropriate for capsize in breaking waves or in current). They also demonstrate the ability to be an active and safe swimmer when being rescued.",
+      "name": "Impaired Swimmer Rescue",
+      "standard": "Performs one or more of the following assisted rescues of an impaired swimmer: Scoop, Sling, or Unresponsive Paddler Rescue.",
+      "optional": false
+    },
+    {
+      "id": "l3-rescues-and-towing-04",
+      "level": "L3",
+      "category": "Core: Rescues and Towing",
+      "competency": "The paddler demonstrates competent rescue and towing skills in Level 3 conditions. They choose rescues and towing configurations appropriate for the conditions (for example, what is most appropriate for capsize in breaking waves or in current). They also demonstrate the ability to be an active and safe swimmer when being rescued.",
+      "standard": "Kayak (Bow or Stern) or Paddle Presentation Rescue: Able to assist another paddler’s recovery from capsize by presenting their kayak or paddle.",
+      "optional": false
+    },
+    {
+      "id": "l3-rescues-and-towing-05",
+      "level": "L3",
+      "category": "Core: Rescues and Towing",
+      "competency": "The paddler demonstrates competent rescue and towing skills in Level 3 conditions. They choose rescues and towing configurations appropriate for the conditions (for example, what is most appropriate for capsize in breaking waves or in current). They also demonstrate the ability to be an active and safe swimmer when being rescued.",
+      "name": "Self-Rescue",
+      "standard": "Performs one or more self-rescues: Re-enter and Roll (with or without a paddle float), Paddle Float rescue (with or without a sling), or Scramble.",
+      "optional": false
+    },
+    {
+      "id": "l3-rescues-and-towing-06",
+      "level": "L3",
+      "category": "Core: Rescues and Towing",
+      "competency": "The paddler demonstrates competent rescue and towing skills in Level 3 conditions. They choose rescues and towing configurations appropriate for the conditions (for example, what is most appropriate for capsize in breaking waves or in current). They also demonstrate the ability to be an active and safe swimmer when being rescued.",
+      "name": "Active Swimmer",
+      "standard": "Demonstrates the role of an active and effective swimmer when rescued.",
+      "optional": false
+    },
+    {
+      "id": "l3-rescues-and-towing-07",
+      "level": "L3",
+      "category": "Core: Rescues and Towing",
+      "competency": "The paddler demonstrates competent rescue and towing skills in Level 3 conditions. They choose rescues and towing configurations appropriate for the conditions (for example, what is most appropriate for capsize in breaking waves or in current). They also demonstrate the ability to be an active and safe swimmer when being rescued.",
+      "name": "Towing Using a Tow Line",
+      "standard": "Demonstrates one or more towing strategies with a towline: In-Line Tow, Rafted In- Line Tow, or Anchor Tow.",
+      "optional": false
+    },
+    {
+      "id": "l3-rescues-and-towing-08",
+      "level": "L3",
+      "category": "Core: Rescues and Towing",
+      "competency": "The paddler demonstrates competent rescue and towing skills in Level 3 conditions. They choose rescues and towing configurations appropriate for the conditions (for example, what is most appropriate for capsize in breaking waves or in current). They also demonstrate the ability to be an active and safe swimmer when being rescued.",
+      "name": "Moves a Kayak Without a Tow Line",
+      "standard": "Demonstrates one or more strategies: Contact Tow, Bulldozing, Toggle Tow, or Throw Bag Rescue.",
+      "optional": false
+    },
+    {
+      "id": "l3-rescues-and-towing-09",
+      "level": "L3",
+      "category": "Core: Rescues and Towing",
+      "competency": "The paddler demonstrates competent rescue and towing skills in Level 3 conditions. They choose rescues and towing configurations appropriate for the conditions (for example, what is most appropriate for capsize in breaking waves or in current). They also demonstrate the ability to be an active and safe swimmer when being rescued.",
+      "name": "Paddler Separated from Kayak",
+      "standard": "Can rescue a swimmer separated from their kayak and reconnect the swimmer to their kayak.",
+      "optional": false
+    },
+    {
+      "id": "l3-rescues-and-towing-10",
+      "level": "L3",
+      "category": "Core: Rescues and Towing",
+      "competency": "The paddler demonstrates competent rescue and towing skills in Level 3 conditions. They choose rescues and towing configurations appropriate for the conditions (for example, what is most appropriate for capsize in breaking waves or in current). They also demonstrate the ability to be an active and safe swimmer when being rescued.",
+      "standard": "Deploys multiple techniques and strategies for the above rescues.",
+      "optional": true
+    },
+    {
+      "id": "l3-awareness-and-seamanship-01",
+      "level": "L3",
+      "category": "Core: Awareness and Seamanship",
+      "competency": "The paddler has a heightened awareness of the environment and paddler performance, adapts plans accordingly, and communicates clearly with the group to make necessary changes. They are properly equipped for the conditions and use equipment appropriately to maintain personal and group comfort.",
+      "name": "Awareness",
+      "standard": "Understands personal and group capabilities relative to the environment.",
+      "optional": false
+    },
+    {
+      "id": "l3-awareness-and-seamanship-02",
+      "level": "L3",
+      "category": "Core: Awareness and Seamanship",
+      "competency": "The paddler has a heightened awareness of the environment and paddler performance, adapts plans accordingly, and communicates clearly with the group to make necessary changes. They are properly equipped for the conditions and use equipment appropriately to maintain personal and group comfort.",
+      "name": "Leave No Trace (LNT)",
+      "standard": "Demonstrates appropriate interactions with ecosystems and wildlife.",
+      "optional": false
+    },
+    {
+      "id": "l3-awareness-and-seamanship-03",
+      "level": "L3",
+      "category": "Core: Awareness and Seamanship",
+      "competency": "The paddler has a heightened awareness of the environment and paddler performance, adapts plans accordingly, and communicates clearly with the group to make necessary changes. They are properly equipped for the conditions and use equipment appropriately to maintain personal and group comfort.",
+      "name": "Kayak",
+      "standard": "Has a working knowledge of types of kayaks suitable for paddling in Level 3 conditions.",
+      "optional": false
+    },
+    {
+      "id": "l3-awareness-and-seamanship-04",
+      "level": "L3",
+      "category": "Core: Awareness and Seamanship",
+      "competency": "The paddler has a heightened awareness of the environment and paddler performance, adapts plans accordingly, and communicates clearly with the group to make necessary changes. They are properly equipped for the conditions and use equipment appropriately to maintain personal and group comfort.",
+      "name": "Equipment",
+      "standard": "Maintains a properly outfitted kayak and has a working knowledge of paddling equipment.",
+      "optional": false
+    },
+    {
+      "id": "l3-awareness-and-seamanship-05",
+      "level": "L3",
+      "category": "Core: Awareness and Seamanship",
+      "competency": "The paddler has a heightened awareness of the environment and paddler performance, adapts plans accordingly, and communicates clearly with the group to make necessary changes. They are properly equipped for the conditions and use equipment appropriately to maintain personal and group comfort.",
+      "name": "Packing the kayak",
+      "standard": "Demonstrates the knowledge of how to pack and properly trim their kayak.",
+      "optional": false
+    },
+    {
+      "id": "l3-awareness-and-seamanship-06",
+      "level": "L3",
+      "category": "Core: Awareness and Seamanship",
+      "competency": "The paddler has a heightened awareness of the environment and paddler performance, adapts plans accordingly, and communicates clearly with the group to make necessary changes. They are properly equipped for the conditions and use equipment appropriately to maintain personal and group comfort.",
+      "name": "Kayak Repair",
+      "standard": "Can perform field repairs allowing for a safe paddle to an accessible area.",
+      "optional": false
+    },
+    {
+      "id": "l3-awareness-and-seamanship-07",
+      "level": "L3",
+      "category": "Core: Awareness and Seamanship",
+      "competency": "The paddler has a heightened awareness of the environment and paddler performance, adapts plans accordingly, and communicates clearly with the group to make necessary changes. They are properly equipped for the conditions and use equipment appropriately to maintain personal and group comfort.",
+      "name": "Hypothermia and Cold-Water Shock",
+      "standard": "Understands the causes, prevention, recognition, and treatment of cold- water shock and hypothermia.",
+      "optional": false
+    },
+    {
+      "id": "l3-awareness-and-seamanship-08",
+      "level": "L3",
+      "category": "Core: Awareness and Seamanship",
+      "competency": "The paddler has a heightened awareness of the environment and paddler performance, adapts plans accordingly, and communicates clearly with the group to make necessary changes. They are properly equipped for the conditions and use equipment appropriately to maintain personal and group comfort.",
+      "name": "Hyperthermia",
+      "standard": "Understands causes, prevention, recognition, and treatment of heat-related issues and hyperthermia.",
+      "optional": false
+    },
+    {
+      "id": "l3-awareness-and-seamanship-09",
+      "level": "L3",
+      "category": "Core: Awareness and Seamanship",
+      "competency": "The paddler has a heightened awareness of the environment and paddler performance, adapts plans accordingly, and communicates clearly with the group to make necessary changes. They are properly equipped for the conditions and use equipment appropriately to maintain personal and group comfort.",
+      "name": "Knots",
+      "standard": "Can tie Bowline, Clove Hitch, Figure 8, and Trucker’s Hitch knots.",
+      "optional": false
+    },
+    {
+      "id": "l3-incident-prevention-and-management-01",
+      "level": "L3",
+      "category": "Core: Incident Prevention and Management",
+      "competency": "The paddler has an incident prevention mindset on and off the water. They make good choices and demonstrate competent decision-making. They can lead and assist with incidents in Level 3 conditions and identify areas of less risk and work with other paddlers to move the group into safety.",
+      "name": "Kayak Transport",
+      "standard": "Safely transports, unloads, and carries kayaks at the launch site.",
+      "optional": false
+    },
+    {
+      "id": "l3-incident-prevention-and-management-02",
+      "level": "L3",
+      "category": "Core: Incident Prevention and Management",
+      "competency": "The paddler has an incident prevention mindset on and off the water. They make good choices and demonstrate competent decision-making. They can lead and assist with incidents in Level 3 conditions and identify areas of less risk and work with other paddlers to move the group into safety.",
+      "name": "Pre and Post-Trip Discussion",
+      "standard": "Actively participates in pre-trip and post-trip debriefing sessions.",
+      "optional": false
+    },
+    {
+      "id": "l3-incident-prevention-and-management-03",
+      "level": "L3",
+      "category": "Core: Incident Prevention and Management",
+      "competency": "The paddler has an incident prevention mindset on and off the water. They make good choices and demonstrate competent decision-making. They can lead and assist with incidents in Level 3 conditions and identify areas of less risk and work with other paddlers to move the group into safety.",
+      "name": "Launching and Landing",
+      "standard": "Launches and lands in a safe manner.",
+      "optional": false
+    },
+    {
+      "id": "l3-incident-prevention-and-management-04",
+      "level": "L3",
+      "category": "Core: Incident Prevention and Management",
+      "competency": "The paddler has an incident prevention mindset on and off the water. They make good choices and demonstrate competent decision-making. They can lead and assist with incidents in Level 3 conditions and identify areas of less risk and work with other paddlers to move the group into safety.",
+      "name": "Teamwork",
+      "standard": "Works with others to perform rescues and other essential team maneuvers and tasks. Can move the group to an area of less risk.",
+      "optional": false
+    },
+    {
+      "id": "l3-incident-prevention-and-management-05",
+      "level": "L3",
+      "category": "Core: Incident Prevention and Management",
+      "competency": "The paddler has an incident prevention mindset on and off the water. They make good choices and demonstrate competent decision-making. They can lead and assist with incidents in Level 3 conditions and identify areas of less risk and work with other paddlers to move the group into safety.",
+      "name": "Communication",
+      "standard": "Communicates clearly and effectively. Can direct others calmly, such as when called to execute a rescue.",
+      "optional": false
+    },
+    {
+      "id": "l3-incident-prevention-and-management-06",
+      "level": "L3",
+      "category": "Core: Incident Prevention and Management",
+      "competency": "The paddler has an incident prevention mindset on and off the water. They make good choices and demonstrate competent decision-making. They can lead and assist with incidents in Level 3 conditions and identify areas of less risk and work with other paddlers to move the group into safety.",
+      "name": "VHF Radio",
+      "standard": "Demonstrates proper use of a VHF radio.",
+      "optional": false
+    },
+    {
+      "id": "l3-incident-prevention-and-management-07",
+      "level": "L3",
+      "category": "Core: Incident Prevention and Management",
+      "competency": "The paddler has an incident prevention mindset on and off the water. They make good choices and demonstrate competent decision-making. They can lead and assist with incidents in Level 3 conditions and identify areas of less risk and work with other paddlers to move the group into safety.",
+      "name": "Distress Calls",
+      "standard": "Demonstrates knowledge and ability to request appropriate resources.",
+      "optional": false
+    },
+    {
+      "id": "l3-incident-prevention-and-management-08",
+      "level": "L3",
+      "category": "Core: Incident Prevention and Management",
+      "competency": "The paddler has an incident prevention mindset on and off the water. They make good choices and demonstrate competent decision-making. They can lead and assist with incidents in Level 3 conditions and identify areas of less risk and work with other paddlers to move the group into safety.",
+      "name": "Signaling Devices",
+      "standard": "Carries appropriate visual and auditory signaling devices and understands their use and limitations.",
+      "optional": false
+    },
+    {
+      "id": "l3-incident-prevention-and-management-09",
+      "level": "L3",
+      "category": "Core: Incident Prevention and Management",
+      "competency": "The paddler has an incident prevention mindset on and off the water. They make good choices and demonstrate competent decision-making. They can lead and assist with incidents in Level 3 conditions and identify areas of less risk and work with other paddlers to move the group into safety.",
+      "name": "Float Plan",
+      "standard": "Files a complete and accurate float plan with an appropriate point of contact.",
+      "optional": false
+    },
+    {
+      "id": "l3-trip-planning-and-navigation-01",
+      "level": "L3",
+      "category": "Core: Trip Planning and Navigation",
+      "competency": "The paddler successfully plans and executes routes in Level 3 conditions and venues, considering basic safety and location-specific issues. Their planning includes considering tides, currents, weather forecasts, and the makeup of their group and group members’ equipment. They carry a compass and an appropriate map or chart for the area and use them to navigate from point to point in Level 3 venues effectively.",
+      "name": "Forecasts",
+      "standard": "Gathers, understands, and utilizes appropriate weather and marine forecasts.",
+      "optional": false
+    },
+    {
+      "id": "l3-trip-planning-and-navigation-02",
+      "level": "L3",
+      "category": "Core: Trip Planning and Navigation",
+      "competency": "The paddler successfully plans and executes routes in Level 3 conditions and venues, considering basic safety and location-specific issues. Their planning includes considering tides, currents, weather forecasts, and the makeup of their group and group members’ equipment. They carry a compass and an appropriate map or chart for the area and use them to navigate from point to point in Level 3 venues effectively.",
+      "name": "Trip Planning",
+      "standard": "Demonstrates use of charts, forecasts, and knowledge of the paddling group when route planning.",
+      "optional": false
+    },
+    {
+      "id": "l3-trip-planning-and-navigation-03",
+      "level": "L3",
+      "category": "Core: Trip Planning and Navigation",
+      "competency": "The paddler successfully plans and executes routes in Level 3 conditions and venues, considering basic safety and location-specific issues. Their planning includes considering tides, currents, weather forecasts, and the makeup of their group and group members’ equipment. They carry a compass and an appropriate map or chart for the area and use them to navigate from point to point in Level 3 venues effectively.",
+      "name": "Trip Planning",
+      "standard": "Incorporates wind, waves, and swell into route plans and trip choices.",
+      "optional": false
+    },
+    {
+      "id": "l3-trip-planning-and-navigation-04",
+      "level": "L3",
+      "category": "Core: Trip Planning and Navigation",
+      "competency": "The paddler successfully plans and executes routes in Level 3 conditions and venues, considering basic safety and location-specific issues. Their planning includes considering tides, currents, weather forecasts, and the makeup of their group and group members’ equipment. They carry a compass and an appropriate map or chart for the area and use them to navigate from point to point in Level 3 venues effectively.",
+      "name": "Tidal Planning",
+      "standard": "Demonstrates ability to calculate stages of tide, depth, and current over time and incorporate this knowledge into route plans and trip choices.",
+      "optional": false
+    },
+    {
+      "id": "l3-trip-planning-and-navigation-05",
+      "level": "L3",
+      "category": "Core: Trip Planning and Navigation",
+      "competency": "The paddler successfully plans and executes routes in Level 3 conditions and venues, considering basic safety and location-specific issues. Their planning includes considering tides, currents, weather forecasts, and the makeup of their group and group members’ equipment. They carry a compass and an appropriate map or chart for the area and use them to navigate from point to point in Level 3 venues effectively.",
+      "name": "Chart Use and Route Finding",
+      "standard": "Demonstrates the ability to identify their location at all times.",
+      "optional": false
+    },
+    {
+      "id": "l3-trip-planning-and-navigation-06",
+      "level": "L3",
+      "category": "Core: Trip Planning and Navigation",
+      "competency": "The paddler successfully plans and executes routes in Level 3 conditions and venues, considering basic safety and location-specific issues. Their planning includes considering tides, currents, weather forecasts, and the makeup of their group and group members’ equipment. They carry a compass and an appropriate map or chart for the area and use them to navigate from point to point in Level 3 venues effectively.",
+      "name": "Compass Use",
+      "standard": "Demonstrates using handheld and deck-mounted compasses to take bearings, determine location, and maintain a course.",
+      "optional": false
+    },
+    {
+      "id": "l3-trip-planning-and-navigation-07",
+      "level": "L3",
+      "category": "Core: Trip Planning and Navigation",
+      "competency": "The paddler successfully plans and executes routes in Level 3 conditions and venues, considering basic safety and location-specific issues. Their planning includes considering tides, currents, weather forecasts, and the makeup of their group and group members’ equipment. They carry a compass and an appropriate map or chart for the area and use them to navigate from point to point in Level 3 venues effectively.",
+      "name": "Nautical Rules of the Road",
+      "standard": "Understands the Nautical Rules of the Road and demonstrates safe paddling in relation to boat traffic.",
+      "optional": false
+    },
+    {
+      "id": "l3-trip-planning-and-navigation-08",
+      "level": "L3",
+      "category": "Core: Trip Planning and Navigation",
+      "competency": "The paddler successfully plans and executes routes in Level 3 conditions and venues, considering basic safety and location-specific issues. Their planning includes considering tides, currents, weather forecasts, and the makeup of their group and group members’ equipment. They carry a compass and an appropriate map or chart for the area and use them to navigate from point to point in Level 3 venues effectively.",
+      "name": "Navigate from Point to Point",
+      "standard": "Understands drift caused by wind or current and can compensate for drift using ranges and ferry angles in Level 3 conditions.",
+      "optional": false
+    },
+    {
+      "id": "l3-tidal-currents-01",
+      "level": "L3",
+      "category": "Venue Specific: Tidal Currents",
+      "competency": "The paddler demonstrates an understanding of tidal currents with Level 3 conditions in various coastal settings. They can paddle through currents in control. The paddler understands the challenges of paddling in areas of current and positions themselves appropriately. They can identify eddy lines, understand ferry angles, and demonstrate rescues and towing to move into a safe area.",
+      "name": "Awareness",
+      "standard": "Demonstrates understanding of tides currents.",
+      "optional": false
+    },
+    {
+      "id": "l3-tidal-currents-02",
+      "level": "L3",
+      "category": "Venue Specific: Tidal Currents",
+      "competency": "The paddler demonstrates an understanding of tidal currents with Level 3 conditions in various coastal settings. They can paddle through currents in control. The paddler understands the challenges of paddling in areas of current and positions themselves appropriately. They can identify eddy lines, understand ferry angles, and demonstrate rescues and towing to move into a safe area.",
+      "name": "Reading Water and Boat Control",
+      "standard": "Identifies the direction of flow and eddies. Paddles through currents in control.",
+      "optional": false
+    },
+    {
+      "id": "l3-tidal-currents-03",
+      "level": "L3",
+      "category": "Venue Specific: Tidal Currents",
+      "competency": "The paddler demonstrates an understanding of tidal currents with Level 3 conditions in various coastal settings. They can paddle through currents in control. The paddler understands the challenges of paddling in areas of current and positions themselves appropriately. They can identify eddy lines, understand ferry angles, and demonstrate rescues and towing to move into a safe area.",
+      "name": "Hazards",
+      "standard": "Identifies hazards and positions themselves to avoid hazards.",
+      "optional": false
+    },
+    {
+      "id": "l3-tidal-currents-04",
+      "level": "L3",
+      "category": "Venue Specific: Tidal Currents",
+      "competency": "The paddler demonstrates an understanding of tidal currents with Level 3 conditions in various coastal settings. They can paddle through currents in control. The paddler understands the challenges of paddling in areas of current and positions themselves appropriately. They can identify eddy lines, understand ferry angles, and demonstrate rescues and towing to move into a safe area.",
+      "name": "Rescues",
+      "standard": "Performs a self-rescue, an assisted rescue, and contact towing in current.",
+      "optional": false
+    },
+    {
+      "id": "l3-wind-waves-and-surf-01",
+      "level": "L3",
+      "category": "Venue Specific: Wind, Waves and Surf",
+      "competency": "The paddler understands the \"why\" behind increasing sea state (fetch, direction, duration, intensity) and how onshore and offshore winds affect paddling conditions. They can launch, land, and paddle under control through Level 3 wind, waves, and surf. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
+      "name": "Awareness",
+      "standard": "Understands how onshore and offshore winds affect paddling conditions.",
+      "optional": false
+    },
+    {
+      "id": "l3-wind-waves-and-surf-02",
+      "level": "L3",
+      "category": "Venue Specific: Wind, Waves and Surf",
+      "competency": "The paddler understands the \"why\" behind increasing sea state (fetch, direction, duration, intensity) and how onshore and offshore winds affect paddling conditions. They can launch, land, and paddle under control through Level 3 wind, waves, and surf. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
+      "name": "Tactics",
+      "standard": "Applies strategies for paddling at various angles to the direction of the wind.",
+      "optional": false
+    },
+    {
+      "id": "l3-wind-waves-and-surf-03",
+      "level": "L3",
+      "category": "Venue Specific: Wind, Waves and Surf",
+      "competency": "The paddler understands the \"why\" behind increasing sea state (fetch, direction, duration, intensity) and how onshore and offshore winds affect paddling conditions. They can launch, land, and paddle under control through Level 3 wind, waves, and surf. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
+      "name": "Boat Control",
+      "standard": "Can control their direction and maintain stability in wind and waves.",
+      "optional": false
+    },
+    {
+      "id": "l3-wind-waves-and-surf-04",
+      "level": "L3",
+      "category": "Venue Specific: Wind, Waves and Surf",
+      "competency": "The paddler understands the \"why\" behind increasing sea state (fetch, direction, duration, intensity) and how onshore and offshore winds affect paddling conditions. They can launch, land, and paddle under control through Level 3 wind, waves, and surf. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
+      "name": "Rescues",
+      "standard": "Performs a self-rescue, an assisted rescue, and contact towing in wind and waves.",
+      "optional": false
+    },
+    {
+      "id": "l3-rocky-shorelines-01",
+      "level": "L3",
+      "category": "Venue Specific: Rocky Shorelines",
+      "competency": "The paddler understands the interaction of wind, waves, and current on immovable objects, hard surfaces, caves, and rocky shorelines and can assess associated risks. They maneuver around immovable objects (arches, buoys, pilings) in forward and reverse in Level 3 Conditions. They choose appropriate landings in rocky environments and perform appropriate rescues.",
+      "name": "Awareness",
+      "standard": "Identifies hazards and landing areas on a map or chart.",
+      "optional": false
+    },
+    {
+      "id": "l3-rocky-shorelines-02",
+      "level": "L3",
+      "category": "Venue Specific: Rocky Shorelines",
+      "competency": "The paddler understands the interaction of wind, waves, and current on immovable objects, hard surfaces, caves, and rocky shorelines and can assess associated risks. They maneuver around immovable objects (arches, buoys, pilings) in forward and reverse in Level 3 Conditions. They choose appropriate landings in rocky environments and perform appropriate rescues.",
+      "name": "Tactics",
+      "standard": "Chooses appropriate landings and areas to play in the rocks.",
+      "optional": false
+    },
+    {
+      "id": "l3-rocky-shorelines-03",
+      "level": "L3",
+      "category": "Venue Specific: Rocky Shorelines",
+      "competency": "The paddler understands the interaction of wind, waves, and current on immovable objects, hard surfaces, caves, and rocky shorelines and can assess associated risks. They maneuver around immovable objects (arches, buoys, pilings) in forward and reverse in Level 3 Conditions. They choose appropriate landings in rocky environments and perform appropriate rescues.",
+      "name": "Boat Control",
+      "standard": "Maneuvers along rocky shorelines safely, effectively, and efficiently.",
+      "optional": false
+    },
+    {
+      "id": "l3-rocky-shorelines-04",
+      "level": "L3",
+      "category": "Venue Specific: Rocky Shorelines",
+      "competency": "The paddler understands the interaction of wind, waves, and current on immovable objects, hard surfaces, caves, and rocky shorelines and can assess associated risks. They maneuver around immovable objects (arches, buoys, pilings) in forward and reverse in Level 3 Conditions. They choose appropriate landings in rocky environments and perform appropriate rescues.",
+      "name": "Rescues",
+      "standard": "Performs a self-rescue, an assisted rescue, and contact towing close to rock features.",
+      "optional": false
+    }
+  ]
+}

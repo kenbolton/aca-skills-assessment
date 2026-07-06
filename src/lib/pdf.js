@@ -39,9 +39,11 @@ export function downloadPaddlerPdf(session, paddlerId) {
   y += 20;
 
   doc.setFont('helvetica', 'bold');
-  const landingLabel = summary.landing === 'pending'
-    ? LANDING_LABEL.pending(summary.pendingCount)
-    : LANDING_LABEL[summary.landing] || summary.landing;
+  let landingLabel;
+  if (summary.landing === 'pending') landingLabel = LANDING_LABEL.pending(summary.pendingCount);
+  else if (summary.landing === 'meets_level') landingLabel = `Meets ${summary.target} standard`;
+  else if (summary.landing === 'below_level') landingLabel = `${summary.belowCount} below ${summary.target} standard`;
+  else landingLabel = LANDING_LABEL[summary.landing] || summary.landing;
   doc.text(`Target: ${summary.target}    Landing: ${landingLabel}`, marginX, y);
   y += 20;
 

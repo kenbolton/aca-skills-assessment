@@ -49,6 +49,8 @@ export function Review({ session, onBack, onReset }) {
             L1: 'Lands: Level 1',
             did_not_meet_L1: 'Did not meet Level 1',
             pending: `Pending — ${summary.pendingCount} not yet assessed`,
+            meets_level: `Meets ${summary.target} standard`,
+            below_level: `Not yet — ${summary.belowCount} below standard`,
           };
           return (
             <div className="review-card" key={paddler.id}>

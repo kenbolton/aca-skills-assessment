@@ -374,6 +374,18 @@ button { min-height: var(--hit); font-size: 18px; }
   border: 1px solid var(--l1);
 }
 
+.badge-landing-meets_level {
+  background: #eaf5eb;
+  color: var(--meet);
+  border: 1px solid var(--meet);
+}
+
+.badge-landing-below_level {
+  background: #fdecea;
+  color: var(--dnm);
+  border: 1px solid var(--dnm);
+}
+
 .review-target-line {
   margin: 0 0 0.5rem;
   font-size: 0.9rem;
