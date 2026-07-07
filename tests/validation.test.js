@@ -30,6 +30,14 @@ test('isSessionComplete requires all core rated and no invalid', () => {
   expect(isSessionComplete(withResults([{ skillId: 'd', rating: 'below', feedback: '' }]))).toBe(false);
 });
 
+test('isSessionComplete treats a required DNO as incomplete, but an optional DNO is fine', () => {
+  expect(isSessionComplete(withResults([{ skillId: 'd', rating: 'dno', feedback: '' }]))).toBe(false);
+  expect(isSessionComplete(withResults([
+    { skillId: 'd', rating: 'meets', feedback: '' },
+    { skillId: 'o', rating: 'dno', feedback: '' },
+  ]))).toBe(true);
+});
+
 test('skillStatus reflects completion across the paddlers a skill applies to', () => {
   const skill = { id: 'd', level: 'L2', optional: false, l1Standard: 'x' };
   const base = { scales: session.scales, paddlers: [{ id: 'p1', target: 'L2' }, { id: 'p2', target: 'L2' }], skills: [skill] };

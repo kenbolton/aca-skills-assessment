@@ -6,6 +6,9 @@ const skills = [
   { id: 'dual', level: 'L2', optional: false, l1Standard: 'x' },
   { id: 'only', level: 'L2', optional: false },
   { id: 'l1a', level: 'L1', optional: false },
+  { id: 's3', level: 'L3', optional: false },
+  { id: 's3b', level: 'L3', optional: false },
+  { id: 's3opt', level: 'L3', optional: true },
 ];
 function s(target, rs) {
   return { skills, paddlers: [{ id: 'p', target }], results: rs.map(([skillId, rating]) => ({ paddlerId: 'p', skillId, rating, feedback: '' })) };
@@ -31,4 +34,15 @@ test('L1: all pass -> L1; a no -> did_not_meet_L1; a dno -> pending', () => {
   expect(landingFor(s('L1', [['l1a', 'pass']]), 'p').landing).toBe('L1');
   expect(landingFor(s('L1', [['l1a', 'no']]), 'p').landing).toBe('did_not_meet_L1');
   expect(landingFor(s('L1', [['l1a', 'dno']]), 'p').landing).toBe('pending');
+});
+test('standalone: a required DNO -> pending (cannot pass on an unobserved skill)', () => {
+  const r = landingFor(s('L3', [['s3', 'meets'], ['s3b', 'dno']]), 'p');
+  expect(r.landing).toBe('pending'); expect(r.pendingCount).toBe(1);
+});
+test('standalone: all meets/exceeds with only an optional DNO -> meets_level', () => {
+  const r = landingFor(s('L3', [['s3', 'meets'], ['s3b', 'exceeds'], ['s3opt', 'dno']]), 'p');
+  expect(r.landing).toBe('meets_level');
+});
+test('L2: a required DNO -> pending', () => {
+  expect(landingFor(s('L2', [['dual', 'meets'], ['only', 'dno']]), 'p').landing).toBe('pending');
 });

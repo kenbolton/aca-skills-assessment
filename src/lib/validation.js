@@ -30,5 +30,6 @@ export function invalidResults(session) {
 
 export function isSessionComplete(session) {
   const core = session.results.filter(r => { const s = skillById(session, r.skillId); return s && !s.optional; });
-  return core.every(r => r.rating !== null) && invalidResults(session).length === 0;
+  // A "Did Not Observe" on a required skill leaves the assessment unresolved.
+  return core.every(r => r.rating !== null && r.rating !== 'dno') && invalidResults(session).length === 0;
 }

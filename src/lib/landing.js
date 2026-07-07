@@ -12,7 +12,9 @@ export function landingFor(session, paddlerId) {
     const s = skillById(session, r.skillId);
     return s && !s.optional;
   });
-  const pendingCount = rows.filter(r => r.rating === null || (target === 'L1' && r.rating === 'dno')).length;
+  // A required skill that is unrated, or explicitly "Did Not Observe", cannot
+  // support a pass — the verdict stays pending until it is actually observed.
+  const pendingCount = rows.filter(r => r.rating === null || r.rating === 'dno').length;
   if (pendingCount > 0) return { landing: 'pending', pendingCount };
 
   if (isStandaloneLevel(target)) {

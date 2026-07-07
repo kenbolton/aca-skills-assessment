@@ -26,7 +26,7 @@ test('each standalone data file ships an intro with a venue/conditions section',
 test('each standalone data file loads with a single level and Below/Meets/Exceeds scale', () => {
   for (const [lvl, cfg] of [['L3', L3], ['L4', L4], ['L5', L5]]) {
     expect(Object.keys(cfg.scales)).toEqual([lvl]);
-    expect(cfg.scales[lvl].map(o => o.value)).toEqual(['below', 'meets', 'exceeds']);
+    expect(cfg.scales[lvl].map(o => o.value)).toEqual(['below', 'meets', 'exceeds', 'dno']);
     expect(cfg.scales[lvl].find(o => o.value === 'below').requiresFeedback).toBe(true);
     expect(allSkills(cfg).every(s => s.level === lvl)).toBe(true);
     expect(allSkills(cfg).length).toBeGreaterThan(50);
@@ -48,7 +48,7 @@ test('L3 keeps short names; L4/L5 skills carry only the standard as the item', (
 
 test('optionsForSkill returns the full 3-point scale for a standalone level', () => {
   const s = allSkills(L4)[0];
-  expect(optionsForSkill(L4, s).map(o => o.value)).toEqual(['below', 'meets', 'exceeds']);
+  expect(optionsForSkill(L4, s).map(o => o.value)).toEqual(['below', 'meets', 'exceeds', 'dno']);
 });
 
 test('isStandaloneLevel flags L3/L4/L5 and not L1/L2', () => {

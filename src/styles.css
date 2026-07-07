@@ -267,6 +267,13 @@ button { min-height: var(--hit); font-size: 18px; }
   border-color: var(--l1);
 }
 
+/* Did Not Observe — a neutral, recorded non-rating (blocks a pass) */
+.chip-neutral {
+  background: #6b7280;
+  border-color: #6b7280;
+  color: #fff;
+}
+
 .feedback-box {
   width: 100%;
   min-height: 5rem;

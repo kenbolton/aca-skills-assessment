@@ -22,12 +22,12 @@ test('optionsForSkill: L1 skill -> L1 scale', () => {
 
 test('optionsForSkill: dual L2 skill -> Below/L1/Meets/Exceeds', () => {
   const s = allSkills(cfg).find(s => s.level === 'L2' && s.l1Standard);
-  expect(optionsForSkill(cfg, s).map(o => o.value)).toEqual(['below', 'l1', 'meets', 'exceeds']);
+  expect(optionsForSkill(cfg, s).map(o => o.value)).toEqual(['below', 'l1', 'meets', 'exceeds', 'dno']);
 });
 
 test('optionsForSkill: L2-only skill drops the dualOnly l1 tier', () => {
   const s = allSkills(cfg).find(s => s.level === 'L2' && !s.l1Standard);
-  expect(optionsForSkill(cfg, s).map(o => o.value)).toEqual(['below', 'meets', 'exceeds']);
+  expect(optionsForSkill(cfg, s).map(o => o.value)).toEqual(['below', 'meets', 'exceeds', 'dno']);
 });
 
 test('loadConfig passes belowStandard through (assessor-guide prose)', () => {

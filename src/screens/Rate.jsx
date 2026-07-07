@@ -218,7 +218,7 @@ export function Rate({ session, onChange, onDone }) {
                     const selected = result && result.rating === opt.value;
                     const chipClass = [
                       'chip',
-                      selected ? (opt.requiresFeedback ? 'chip-danger' : 'chip-positive') : '',
+                      selected ? (opt.value === 'dno' ? 'chip-neutral' : opt.requiresFeedback ? 'chip-danger' : 'chip-positive') : '',
                     ].filter(Boolean).join(' ');
                     return (
                       <button

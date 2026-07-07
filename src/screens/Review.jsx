@@ -37,7 +37,7 @@ export function Review({ session, onBack, onReset }) {
           {outstanding.length} below-standard ratings still need feedback — go back to fix before exporting.
         </p>
       ) : !complete ? (
-        <p className="hint review-note">Some core skills are still unrated.</p>
+        <p className="hint review-note">Some core skills are still unrated or marked not observed.</p>
       ) : null}
 
       <div className="review-cards">
