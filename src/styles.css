@@ -500,4 +500,5 @@ button { min-height: var(--hit); font-size: 18px; }
 .intro-text { margin: 0.4rem 0 0; font-size: 1rem; line-height: 1.45; }
 .intro-list { margin: 0.4rem 0 0; padding-left: 1.2rem; }
 .intro-list li { font-size: 1rem; line-height: 1.4; margin: 0.15rem 0; }
+.intro-link { color: var(--exc); font-weight: 700; }
 .skills-nav-intro { color: var(--exc); }

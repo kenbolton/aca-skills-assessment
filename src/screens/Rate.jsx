@@ -164,6 +164,11 @@ export function Rate({ session, onChange, onDone }) {
                     {sec.items.map((it, ii) => <li key={ii}>{it}</li>)}
                   </ul>
                 ) : null}
+                {sec.link ? (
+                  <p className="intro-text">
+                    <a className="intro-link" href={sec.link.href} target="_blank" rel="noreferrer">{sec.link.label} ↗</a>
+                  </p>
+                ) : null}
               </section>
             ))}
           </div>

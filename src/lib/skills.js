@@ -53,7 +53,11 @@ function normIntro(raw) {
       const items = s.items.filter(x => typeof x === 'string' && x);
       if (items.length) sec.items = items;
     }
-    if (sec.body || sec.items) sections.push(sec);
+    // An optional external reference link (e.g. ACA training guidance).
+    if (s.link && typeof s.link.href === 'string' && /^https?:\/\//.test(s.link.href) && typeof s.link.label === 'string' && s.link.label) {
+      sec.link = { href: s.link.href, label: s.link.label };
+    }
+    if (sec.body || sec.items || sec.link) sections.push(sec);
   }
   if (sections.length === 0) return null;
   const intro = { sections };
