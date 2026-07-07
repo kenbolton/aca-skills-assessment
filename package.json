@@ -12,12 +12,13 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "preact": "^10.24.0",
-    "jspdf": "^2.5.2"
+    "jspdf": "^2.5.2",
+    "preact": "^10.24.0"
   },
   "devDependencies": {
-    "vite": "^6.0.0",
     "@preact/preset-vite": "^2.9.0",
+    "fake-indexeddb": "^6.2.5",
+    "vite": "^6.0.0",
     "vite-plugin-pwa": "^0.21.0",
     "vitest": "^2.1.0"
   }
