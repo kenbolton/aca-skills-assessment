@@ -86,6 +86,17 @@ describe('metrics emission', () => {
     m.countEvent('/start/L1-L2/group', 'Assessment started');
     expect(calls).toEqual([{ path: '/start/L1-L2/group', title: 'Assessment started', event: true }]);
     expect(created.length).toBe(1); // script injected once
+    expect(created[0].src).toBe('//gc.zgo.at/count.js');
+    expect(created[0]['data-goatcounter']).toBe('https://aca-skills.goatcounter.com/count');
+    expect(created[0].async).toBe('true');
+  });
+
+  it('emits a page-view arg with the path/title and no event key', async () => {
+    vi.stubEnv('VITE_GOATCOUNTER_CODE', 'aca-skills');
+    const { calls } = fakeDom();
+    const m = await import('../src/lib/metrics.js');
+    m.countPageView();
+    expect(calls[0]).toEqual({ path: '/aca-skills-assessment/', title: 'ACA Skills Assessment' });
   });
 
   it('injects the script only once across multiple calls', async () => {
