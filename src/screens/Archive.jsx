@@ -2,7 +2,7 @@
 // On-device management of the assessment archive: list, resume, delete,
 // per-session export, whole-archive export, and import (single or bundle).
 import { useEffect, useState } from 'preact/hooks';
-import { listSummaries, getSession, deleteSession, exportAll, importSessions } from '../lib/store.js';
+import { listSummaries, getSession, deleteSession, exportBundle, importBundle, importSessions } from '../lib/store.js';
 import { sessionToCsv } from '../lib/csv.js';
 
 function download(name, text, type) {
@@ -22,8 +22,8 @@ export function Archive({ onResume, onBack }) {
   useEffect(() => { refresh(); }, []);
 
   async function exportJson(id) {
-    const s = await getSession(id);
-    if (s) download(`aca-assessment-${id}.json`, JSON.stringify(s, null, 2), 'application/json');
+    const b = await exportBundle([id]);
+    if (b.sessions.length) download(`aca-assessment-${id}.json`, JSON.stringify(b, null, 2), 'application/json');
   }
   async function exportCsv(id) {
     const s = await getSession(id);
@@ -34,16 +34,17 @@ export function Archive({ onResume, onBack }) {
     await deleteSession(id); refresh();
   }
   async function exportEverything() {
-    const all = await exportAll();
-    const date = (all[0] && String(all[0].createdAt).slice(0, 10)) || 'export';
-    download(`aca-archive-${date}.json`, JSON.stringify(all, null, 2), 'application/json');
+    const b = await exportBundle();
+    const date = (b.sessions[0] && String(b.sessions[0].createdAt).slice(0, 10)) || 'export';
+    download(`aca-archive-${date}.json`, JSON.stringify(b, null, 2), 'application/json');
   }
   async function importFile(e) {
     const f = e.target.files[0];
     if (!f) return;
     try {
       const data = JSON.parse(await f.text());
-      const n = await importSessions(data);
+      const isBundle = data && Array.isArray(data.sessions) && data.skillSets && typeof data.skillSets === 'object';
+      const n = isBundle ? await importBundle(data) : await importSessions(data);
       setMsg(n === 0 ? 'No valid assessments found in that file.' : `Imported ${n} assessment${n === 1 ? '' : 's'}.`);
       refresh();
     } catch { setMsg('That file is not a valid assessment JSON.'); }
