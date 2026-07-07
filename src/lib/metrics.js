@@ -28,9 +28,12 @@ export function loadGoatCounter() {
   if (injected) return;
   if (typeof document === 'undefined') return;
   injected = true;
-  // Ensure the global exists before count.js loads so early calls are queued
-  // by GoatCounter's own no-op shim (it replaces window.goatcounter on load).
-  if (typeof window !== 'undefined' && !window.goatcounter) window.goatcounter = { no_onload: true };
+  // count.js sends one page view automatically when it loads (using the
+  // current path/title). Our explicit countPageView() call at boot exists to
+  // trigger this injection; its own .count() no-ops on first load because
+  // count.js has not defined window.goatcounter.count yet. Custom events
+  // (install, assessment-started) fire later, after load, when .count IS
+  // defined.
   const s = document.createElement('script');
   s.setAttribute('src', '//gc.zgo.at/count.js');
   s.setAttribute('async', 'true');
