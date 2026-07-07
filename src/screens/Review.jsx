@@ -5,6 +5,7 @@ import { invalidResults, isSessionComplete } from '../lib/validation.js';
 import { downloadPaddlerPdf } from '../lib/pdf.js';
 import { SyncButton } from '../components/SyncButton.jsx';
 import { Attribution } from '../components/Attribution.jsx';
+import { BelowStandardDetail } from '../components/BelowStandardDetail.jsx';
 
 function download(name, text, type) {
   const blob = new Blob([text], { type });
@@ -18,7 +19,7 @@ function download(name, text, type) {
   URL.revokeObjectURL(url);
 }
 
-export function Review({ session, onChange, onBack, onReset }) {
+export function Review({ session, onChange, onBack, onReset, onEditSkill }) {
   const outstanding = invalidResults(session);
   const complete = isSessionComplete(session);
 
@@ -76,15 +77,7 @@ export function Review({ session, onChange, onBack, onReset }) {
                 <span className="count-unrated">   Unrated {summary.unrated}</span>
               </p>
 
-              {summary.flagged.length > 0 ? (
-                <ul className="review-below-list">
-                  {summary.flagged.map(item => (
-                    <li key={item.skillId}>
-                      <strong>{item.name}</strong> ({item.category}) — {item.ratingLabel}: {item.feedback}
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
+              <BelowStandardDetail items={summary.flagged} onEditSkill={onEditSkill} />
 
               {summary.optionalItems.length > 0 ? (
                 <p className="review-optional-line">

@@ -8,6 +8,7 @@ import { SyncButton } from './components/SyncButton.jsx';
 export function App() {
   const [session, setSession] = useState(() => loadSession());
   const [screen, setScreen] = useState(() => (session ? 'rate' : 'setup'));
+  const [focusSkillId, setFocusSkillId] = useState(null);
 
   function begin(s) {
     saveSession(s);
@@ -43,6 +44,7 @@ export function App() {
         </div>
         <Rate
           session={session}
+          focusSkillId={focusSkillId}
           onChange={update}
           onDone={() => setScreen('review')}
         />
@@ -54,8 +56,9 @@ export function App() {
     <Review
       session={session}
       onChange={update}
-      onBack={() => setScreen('rate')}
+      onBack={() => { setFocusSkillId(null); setScreen('rate'); }}
       onReset={reset}
+      onEditSkill={(skillId) => { setFocusSkillId(skillId); setScreen('rate'); }}
     />
   );
 }
