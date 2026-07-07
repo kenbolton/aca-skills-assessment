@@ -305,7 +305,9 @@
       "level": "L4",
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment, their performance, and decision-making relative to group members and adapts plans accordingly. The paddler clearly communicates with the group to make necessary changes, is properly equipped for the conditions, and uses equipment appropriately to maintain personal and group safety and comfort.",
-      "standard": "Understands the causes, prevention, recognition, and treatment of cold-water shock and hypothermia.",
+      "standard": "Understands the causes, prevention, recognition, and treatment of heat-related issues and hyperthermia.",
+      "exceedsStandard": "Properly prepared and takes necessary preventative action to prevent heat-related issues and hyperthermia for self and group. Recognizes signs and symptoms of hyperthermia and treatment for heat-related issues. Knows when to call for Emergency Medical Services.",
+      "belowStandard": "Unprepared for paddling conditions, or does not recognize signs and symptoms of hyperthermia and other heat-related issues, or does not take appropriate action to improve the situation.",
       "optional": false
     },
     {

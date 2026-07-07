@@ -342,6 +342,8 @@
       "category": "Core: Incident Prevention and Management",
       "competency": "The paddler has an incident-prevention mindset both on and off the water. They make good choices and demonstrate competent decision-making. They can lead and assist with managing incidents in Level 5 conditions. They can identify appropriate safe zones and work with other paddlers to ensure the entire group's safety.",
       "standard": "Communicates and directs others with a calm demeanor in stressful situations.",
+      "exceedsStandard": "Uses clear and concise communication, which is well-received by teammates and facilitates execution of the rescue. Demeanor de-escalates situations that may otherwise be, or become, stressful.",
+      "belowStandard": "The group is unresponsive to directions, or the atmosphere of stress is escalated. Or directives given during rescue are unclear or result in added confusion during the rescue.",
       "optional": false
     },
     {
