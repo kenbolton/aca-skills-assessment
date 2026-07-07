@@ -27,3 +27,8 @@ test('paddlerSummary reports landing, counts, and flagged items', () => {
   expect(s.flagged[0].ratingLabel).toBe('L1');
   expect(s.optionalItems.map(o => o.skillId)).toEqual(['opt']);
 });
+
+test('flagged items carry the skill standard text', () => {
+  const s = paddlerSummary(session, 'p');
+  expect(s.flagged[0].standard).toBe('s');
+});

@@ -10,7 +10,7 @@ export function paddlerSummary(session, paddlerId) {
   for (const o of scale) counts[o.value] = 0;
   const rows = session.results.filter(r => r.paddlerId === paddlerId);
   const { landing, pendingCount, belowCount = 0 } = landingFor(session, paddlerId);
-  const item = (r, s) => ({ skillId: r.skillId, name: skillLabel(s), category: s.category, rating: r.rating, ratingLabel: (scale.find(o => o.value === r.rating) || {}).label || '', feedback: r.feedback });
+  const item = (r, s) => ({ skillId: r.skillId, name: skillLabel(s), category: s.category, standard: s.standard, rating: r.rating, ratingLabel: (scale.find(o => o.value === r.rating) || {}).label || '', feedback: r.feedback });
   let coreTotal = 0, unrated = 0;
   const flagged = [], optionalItems = [];
   for (const r of rows) {
