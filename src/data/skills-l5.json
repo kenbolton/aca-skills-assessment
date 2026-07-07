@@ -18,6 +18,52 @@
       }
     ]
   },
+  "intro": {
+    "title": "Level 5: Advanced Open Water Coastal Kayaking — Assessment",
+    "sections": [
+      {
+        "heading": "Overview",
+        "body": "Evaluates advanced skills and knowledge for paddling in Level 5 conditions."
+      },
+      {
+        "heading": "Prerequisites",
+        "items": [
+          "Acknowledge personal compliance with the ACA Essential Eligibility Criteria (EEC)",
+          "Be a current ACA member"
+        ]
+      },
+      {
+        "heading": "Course duration",
+        "body": "Two days (16 hours) minimum."
+      },
+      {
+        "heading": "Venue & conditions",
+        "body": "An exposed location with an area of retreat accessible within 2.0 nm of shore. The paddler is assessed in 3 of the 4 conditions below.",
+        "items": [
+          "Wind: 15–25 knots",
+          "Waves: 3–5 ft (1–1.5 m)",
+          "Surf: 3–5 ft (1–1.5 m)",
+          "Tidal current: greater than 4 knots"
+        ]
+      },
+      {
+        "heading": "Venue selection",
+        "body": "The venue must allow assessment of all Core Skills categories plus a combination of at least two Venue-Specific categories: Expedition Paddling, Tide Races, Surf, and Rock Gardens & Sea Caves."
+      },
+      {
+        "heading": "Course size",
+        "body": "3 participants to 1 assessor; 6 to 2 with a qualified assistant. Maximum 6 participants."
+      },
+      {
+        "heading": "Assessor",
+        "body": "Offered by Level 5 Advanced Open Water Coastal Kayaking ACA Instructors, Instructor Trainers, or Instructor Trainer Educators."
+      },
+      {
+        "heading": "Source",
+        "body": "ACA Coastal Kayaking Committee · rev. 5/1/2024"
+      }
+    ]
+  },
   "skills": [
     {
       "id": "l5-boat-handling-01",

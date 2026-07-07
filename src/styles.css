@@ -445,3 +445,25 @@ button { min-height: var(--hit); font-size: 18px; }
 
 .checkbox-field { flex-direction: row; align-items: center; gap: 0.5rem; }
 .checkbox-field input { width: auto; min-height: auto; }
+
+/* Assessment intro (first page of the Rate flow) */
+.intro-body { margin-top: 0.5rem; }
+.intro-section {
+  background: #f2f6f7;
+  border: 1px solid #cfd9db;
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  margin-top: 0.6rem;
+}
+.intro-heading {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.intro-text { margin: 0.4rem 0 0; font-size: 1rem; line-height: 1.45; }
+.intro-list { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+.intro-list li { font-size: 1rem; line-height: 1.4; margin: 0.15rem 0; }
+.skills-nav-intro { color: var(--exc); }

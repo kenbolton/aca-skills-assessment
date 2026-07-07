@@ -13,6 +13,16 @@ const L3 = loadConfig(rawL3);
 const L4 = loadConfig(rawL4);
 const L5 = loadConfig(rawL5);
 
+test('each standalone data file ships an intro with a venue/conditions section', () => {
+  for (const [lvl, cfg] of [['L3', L3], ['L4', L4], ['L5', L5]]) {
+    expect(cfg.intro, `${lvl} intro`).toBeTruthy();
+    expect(cfg.intro.title).toContain(lvl.replace('L', 'Level '));
+    const venue = cfg.intro.sections.find(s => /venue/i.test(s.heading));
+    expect(venue, `${lvl} venue section`).toBeTruthy();
+    expect(venue.items.some(it => /knot/i.test(it)), `${lvl} lists conditions`).toBe(true);
+  }
+});
+
 test('each standalone data file loads with a single level and Below/Meets/Exceeds scale', () => {
   for (const [lvl, cfg] of [['L3', L3], ['L4', L4], ['L5', L5]]) {
     expect(Object.keys(cfg.scales)).toEqual([lvl]);

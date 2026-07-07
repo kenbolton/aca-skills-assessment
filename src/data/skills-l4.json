@@ -18,6 +18,43 @@
       }
     ]
   },
+  "intro": {
+    "title": "Level 4: Open Water Coastal Kayaking — Assessment",
+    "sections": [
+      {
+        "heading": "Overview",
+        "body": "Evaluates the skills and knowledge for open-water coastal kayaking in committing conditions."
+      },
+      {
+        "heading": "Course duration",
+        "body": "One day (8 hours)."
+      },
+      {
+        "heading": "Venue & conditions",
+        "body": "Open water with constant access to a safe landing, within 2 nm of shore. At least 3 of the 4 conditions in range, with surf required.",
+        "items": [
+          "Wind: 15–20 knots",
+          "Waves (chop): 3–5 ft (0.9–1.5 m)",
+          "Surf: 3–4 ft (0.9–1.2 m) — required",
+          "Current: 2–4 knots"
+        ]
+      },
+      {
+        "heading": "Assessor",
+        "body": "Offered by Level 4 Open Water Coastal Kayaking (or higher) ACA Instructors, Instructor Trainers, or Instructor Trainer Educators."
+      },
+      {
+        "heading": "Succeeding courses",
+        "items": [
+          "Level 3 or 4 Coastal Kayak Trip Leading Training & Assessment"
+        ]
+      },
+      {
+        "heading": "Source",
+        "body": "ACA Coastal Kayaking Committee · rev. 5/1/2024"
+      }
+    ]
+  },
   "skills": [
     {
       "id": "l4-boat-handling-01",

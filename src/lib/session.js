@@ -13,7 +13,7 @@ export function createSession({ id, createdAt, config, location = '', paddlers, 
       if (sk.level === p.target) results.push({ paddlerId: p.id, skillId: sk.id, rating: null, feedback: '' });
     }
   }
-  return { id, createdAt, location, selfAssessment: !!selfAssessment, scales: config.scales, paddlers: withIds, skills: config.skills, results };
+  return { id, createdAt, location, selfAssessment: !!selfAssessment, scales: config.scales, intro: config.intro || null, paddlers: withIds, skills: config.skills, results };
 }
 
 export function getResult(session, paddlerId, skillId) {

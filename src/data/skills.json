@@ -41,6 +41,44 @@
       }
     ]
   },
+  "intro": {
+    "title": "Level 2: Essentials of Kayak Touring — Assessment",
+    "sections": [
+      {
+        "heading": "Overview",
+        "body": "A benchmark of ability at the entry level of the ACA Coastal Kayak development program. The assessment focuses on Core Skills that apply across venues; the three Venue-Specific sets are optional \"Developing\" skills that show progression toward Level 3."
+      },
+      {
+        "heading": "Course duration",
+        "body": "One day (8 hours) minimum."
+      },
+      {
+        "heading": "Venue & conditions",
+        "body": "Calm, protected water with constant access to a safe landing, within 0.5 nm of shore.",
+        "items": [
+          "Wind: less than 10 knots",
+          "Waves / shore break: no higher than 1 ft (0.3 m)",
+          "Current: less than 1 knot"
+        ]
+      },
+      {
+        "heading": "Assessor",
+        "body": "Offered by Level 2 EKT (or higher) ACA Instructors, Instructor Trainers, or Instructor Trainer Educators."
+      },
+      {
+        "heading": "Determining success",
+        "body": "The paddler must meet or exceed the standard for every Assessed Skill. Any Below means an action plan outlining practice areas and a recommended return date. The CMS Paddler Evaluation records only Meets or Below, with detail in the comment fields."
+      },
+      {
+        "heading": "Momentary conditions",
+        "body": "If a momentary increase beyond the parameters prevents a skill, it cannot be scored Below — give the paddler another opportunity once conditions return to range."
+      },
+      {
+        "heading": "Source",
+        "body": "ACA Coastal Kayaking Committee · rev. 5/1/2024"
+      }
+    ]
+  },
   "skills": [
     {
       "id": "l1-secure-transport",

@@ -56,3 +56,10 @@ test('createSession stores selfAssessment, defaulting to false', () => {
   const solo = createSession({ id: 's2', createdAt: 't', config: cfg, selfAssessment: true, paddlers: [{ name: 'Me', target: 'L2' }] });
   expect(solo.selfAssessment).toBe(true);
 });
+
+test('createSession carries the config intro (null when absent)', () => {
+  expect(base().intro).toBeNull();
+  const intro = { title: 'T', sections: [{ heading: 'H', body: 'B' }] };
+  const s = createSession({ id: 's3', createdAt: 't', config: { ...cfg, intro }, paddlers: [{ name: 'Me', target: 'L2' }] });
+  expect(s.intro).toEqual(intro);
+});

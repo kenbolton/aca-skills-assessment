@@ -42,6 +42,29 @@ test('loadConfig passes belowStandard through (assessor-guide prose)', () => {
   }
 });
 
+test('loadConfig passes a well-formed intro through', () => {
+  expect(cfg.intro).toBeTruthy();
+  expect(cfg.intro.title).toMatch(/Level 2/);
+  expect(cfg.intro.sections.length).toBeGreaterThan(0);
+  const venue = cfg.intro.sections.find(s => /venue/i.test(s.heading));
+  expect(venue.items.some(it => /knot/i.test(it))).toBe(true);
+});
+
+test('loadConfig drops malformed intro sections and empties to no intro', () => {
+  const mk = sections => loadConfig({ scales: raw.scales, skills: raw.skills, intro: { title: 'X', sections } });
+  // A section with no heading, or with neither body nor items, is dropped.
+  const partial = mk([
+    { heading: '', body: 'no heading' },
+    { heading: 'Empty' },
+    { heading: 'Good', items: ['ok', 42, ''] },
+  ]);
+  expect(partial.intro.sections.map(s => s.heading)).toEqual(['Good']);
+  expect(partial.intro.sections[0].items).toEqual(['ok']);
+  // Nothing salvageable -> no intro key at all.
+  expect('intro' in mk([{ heading: 'x' }])).toBe(false);
+  expect('intro' in loadConfig({ scales: raw.scales, skills: raw.skills })).toBe(false);
+});
+
 test('loadConfig omits an empty or non-string belowStandard', () => {
   const base = { scales: raw.scales, skills: [
     { id: 'a', level: 'L2', category: 'c', name: 'n', standard: 's', belowStandard: '' },

@@ -18,6 +18,64 @@
       }
     ]
   },
+  "intro": {
+    "title": "Level 3: Coastal Kayaking — Assessment",
+    "sections": [
+      {
+        "heading": "Overview",
+        "body": "Evaluates the skills and knowledge for coastal kayaking. Candidates are expected to have completed at least three full-day journeys (longer than 8 nm) beforehand."
+      },
+      {
+        "heading": "Course duration",
+        "body": "One day (8 hours) or more at the assessor's discretion."
+      },
+      {
+        "heading": "Venue & conditions",
+        "body": "Lakes or coastal waters with potential exposure to mild wind and wave conditions, constant access to a safe landing, within 1.5 nm of shore. At least 3 of the 4 must be present during some part of the assessment.",
+        "items": [
+          "Wind: 10–15 knots",
+          "Waves (chop): 1–2 ft (0.3–0.6 m)",
+          "Surf: 1–2 ft (0.3–0.6 m)",
+          "Current: 1–2 knots"
+        ]
+      },
+      {
+        "heading": "Assessor",
+        "body": "Offered by Level 3 Coastal Kayaking (or higher) ACA Instructors, Instructor Trainers, or Instructor Trainer Educators."
+      },
+      {
+        "heading": "Equipment",
+        "items": [
+          "Touring or sea kayak with flotation and/or bulkheads and static deck lines",
+          "USCG-approved PFD, well-fitted spray deck, paddle, whistle, spare clothing, hiker’s compass, immersion-appropriate clothing",
+          "Food and water for the day"
+        ]
+      },
+      {
+        "heading": "Knowledge",
+        "items": [
+          "Weather resources and their impact on kayakers",
+          "Basic navigation: chart datum, plotting a course, adjusting for variation",
+          "Leave No Trace skills and ethics",
+          "Group awareness and communication",
+          "Hazard assessment and avoidance",
+          "Recognition and avoidance of hypothermia and hyperthermia"
+        ]
+      },
+      {
+        "heading": "Succeeding courses",
+        "items": [
+          "Level 3 Coastal Kayak Instructor IDW",
+          "Level 3 Coastal Kayak Trip Leading Training",
+          "Level 4 Open Water Coastal Kayaking Skills Assessment"
+        ]
+      },
+      {
+        "heading": "Source",
+        "body": "ACA Coastal Kayaking Committee · rev. 5/1/2024"
+      }
+    ]
+  },
   "skills": [
     {
       "id": "l3-strokes-and-maneuvers-01",

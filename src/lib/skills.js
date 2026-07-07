@@ -33,7 +33,32 @@ export function loadConfig(raw) {
     if (typeof s.belowStandard === 'string' && s.belowStandard) out.belowStandard = s.belowStandard;
     return out;
   });
-  return { scales, skills };
+  const config = { scales, skills };
+  const intro = normIntro(raw.intro);
+  if (intro) config.intro = intro;
+  return config;
+}
+
+// The optional per-assessment intro page: a title and a list of sections, each a
+// heading with body prose and/or a bulleted list. Malformed pieces are dropped
+// rather than throwing, so a partial intro still renders what it can.
+function normIntro(raw) {
+  if (!raw || typeof raw !== 'object' || !Array.isArray(raw.sections)) return null;
+  const sections = [];
+  for (const s of raw.sections) {
+    if (!s || typeof s.heading !== 'string' || !s.heading) continue;
+    const sec = { heading: s.heading };
+    if (typeof s.body === 'string' && s.body) sec.body = s.body;
+    if (Array.isArray(s.items)) {
+      const items = s.items.filter(x => typeof x === 'string' && x);
+      if (items.length) sec.items = items;
+    }
+    if (sec.body || sec.items) sections.push(sec);
+  }
+  if (sections.length === 0) return null;
+  const intro = { sections };
+  if (typeof raw.title === 'string' && raw.title) intro.title = raw.title;
+  return intro;
 }
 
 // The display label for a skill: its short name when it has one (L1/L2/L3),

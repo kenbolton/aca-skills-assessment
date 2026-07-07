@@ -54,12 +54,20 @@ export function Rate({ session, onChange, onDone }) {
     );
   }
 
-  const skill = visibleSkills[i];
-  const isLast = i === visibleSkills.length - 1;
-  const { rated: coreRated, total: coreTotal } = countRatedCoreSkills(session, visibleSkills);
+  // The optional assessment intro is the first page; the rest are the rateable skills.
+  const intro = session.intro && Array.isArray(session.intro.sections) && session.intro.sections.length
+    ? session.intro : null;
+  const pages = intro ? [{ intro: true }, ...visibleSkills] : visibleSkills;
+  const page = pages[i];
+  const onIntro = !!page.intro;
+  const skill = onIntro ? null : page;
 
-  const rowPaddlers = session.paddlers.filter(p => p.target === skill.level);
-  const options = optionsForSkillInSession(session, skill);
+  const isLast = i === pages.length - 1;
+  const { rated: coreRated, total: coreTotal } = countRatedCoreSkills(session, visibleSkills);
+  const skillNo = onIntro ? 0 : i - (intro ? 1 : 0) + 1;
+
+  const rowPaddlers = onIntro ? [] : session.paddlers.filter(p => p.target === skill.level);
+  const options = onIntro ? [] : optionsForSkillInSession(session, skill);
 
   const rowsInfo = rowPaddlers.map(paddler => {
     const result = getResult(session, paddler.id, skill.id);
@@ -90,7 +98,7 @@ export function Rate({ session, onChange, onDone }) {
   return (
     <main className="screen rate-screen">
       <button type="button" className="skills-nav-button" onClick={() => setNavOpen(true)}>
-        ☰ Skills {i + 1}/{visibleSkills.length}
+        ☰ Skills {i + 1}/{pages.length}
       </button>
 
       {navOpen ? (
@@ -101,18 +109,33 @@ export function Rate({ session, onChange, onDone }) {
               <button type="button" className="skills-nav-close" aria-label="Close" onClick={() => setNavOpen(false)}>✕</button>
             </div>
             <ul className="skills-nav-list">
-              {visibleSkills.map((s, idx) => {
-                const status = skillStatus(session, s);
+              {pages.map((p, idx) => {
+                if (p.intro) {
+                  return (
+                    <li key="__intro">
+                      <button
+                        type="button"
+                        className={`skills-nav-item skills-nav-intro${idx === i ? ' current' : ''}`}
+                        onClick={() => { setI(idx); setNavOpen(false); }}
+                      >
+                        <span className="skills-nav-mark">ⓘ</span>
+                        <span className="skills-nav-name">Overview</span>
+                        <span className="skills-nav-cat">about this assessment</span>
+                      </button>
+                    </li>
+                  );
+                }
+                const status = skillStatus(session, p);
                 return (
-                  <li key={s.id}>
+                  <li key={p.id}>
                     <button
                       type="button"
                       className={`skills-nav-item status-${status}${idx === i ? ' current' : ''}`}
                       onClick={() => { setI(idx); setNavOpen(false); }}
                     >
                       <span className="skills-nav-mark">{STATUS_MARK[status]}</span>
-                      <span className="skills-nav-name">{skillLabel(s)}</span>
-                      <span className="skills-nav-cat">{shortCat(s.category)}{s.optional ? ' · opt' : ''}</span>
+                      <span className="skills-nav-name">{skillLabel(p)}</span>
+                      <span className="skills-nav-cat">{shortCat(p.category)}{p.optional ? ' · opt' : ''}</span>
                     </button>
                   </li>
                 );
@@ -127,95 +150,117 @@ export function Rate({ session, onChange, onDone }) {
         </div>
       ) : null}
 
-      <div className="rate-header">
-        <p className="rate-meta">
-          {skill.category} &middot; Skill {i + 1}/{visibleSkills.length} &middot; Core rated {coreRated}/{coreTotal}
-        </p>
-        <h2 className="rate-skill-name">{skillLabel(skill)}</h2>
-        {skill.optional ? (
-          <span className="badge badge-optional">Optional — does not count against the paddler</span>
-        ) : null}
-        {skill.competency ? <p className="rate-competency">{skill.competency}</p> : null}
-        {/* When a skill has no short name (L4/L5), the standard is already the
-            heading above, so the standard-box would just repeat it. */}
-        {skill.name ? (
-          <div className="standard-box">
-            {skill.l1Standard ? (
-              <div className="standard-section">
-                <div className="standard-box-header"><span>L1 standard</span></div>
-                <p className="standard-box-text">{skill.l1Standard}</p>
-              </div>
-            ) : null}
-            {skill.belowStandard ? (
-              <div className="standard-section">
-                <div className="standard-box-header"><span>Below standard</span></div>
-                <p className="standard-box-text">{skill.belowStandard}</p>
-              </div>
-            ) : null}
-            <div className="standard-section">
-              <div className="standard-box-header"><span>{skill.level} standard</span></div>
-              <p className="standard-box-text">{skill.standard}</p>
-            </div>
-            {skill.exceedsStandard ? (
-              <div className="standard-section">
-                <div className="standard-box-header"><span>Exceeds standard</span></div>
-                <p className="standard-box-text">{skill.exceedsStandard}</p>
-              </div>
-            ) : null}
+      {onIntro ? (
+        <div className="rate-header intro-page">
+          <p className="rate-meta">Assessment overview</p>
+          <h2 className="rate-skill-name">{intro.title || 'Overview'}</h2>
+          <div className="intro-body">
+            {intro.sections.map((sec, si) => (
+              <section className="intro-section" key={si}>
+                <h3 className="intro-heading">{sec.heading}</h3>
+                {sec.body ? <p className="intro-text">{sec.body}</p> : null}
+                {sec.items ? (
+                  <ul className="intro-list">
+                    {sec.items.map((it, ii) => <li key={ii}>{it}</li>)}
+                  </ul>
+                ) : null}
+              </section>
+            ))}
           </div>
-        ) : null}
-      </div>
-
-      <div className="rate-rows">
-        {rowsInfo.map(({ paddler, result, needsFeedback }) => (
-          <div className="paddler-row" key={paddler.id}>
-            <div className="paddler-row-name">{paddler.name}</div>
-            <div className="chip-row">
-              {options.map(opt => {
-                const selected = result && result.rating === opt.value;
-                const chipClass = [
-                  'chip',
-                  selected ? (opt.requiresFeedback ? 'chip-danger' : 'chip-positive') : '',
-                ].filter(Boolean).join(' ');
-                return (
-                  <button
-                    key={opt.value}
-                    type="button"
-                    className={chipClass}
-                    data-value={opt.value}
-                    aria-pressed={selected}
-                    onClick={() => handleRate(paddler.id, opt.value)}
-                  >
-                    {opt.label}
-                  </button>
-                );
-              })}
-            </div>
-            <textarea
-              className={`feedback-box${needsFeedback ? ' feedback-required' : ''}`}
-              value={result ? result.feedback : ''}
-              placeholder={needsFeedback
-                ? 'Required: what did not meet the standard? (tap the keyboard mic to dictate)'
-                : 'Optional note (tap the keyboard mic to dictate)'}
-              onInput={e => handleFeedback(paddler.id, e.currentTarget.value)}
-            />
-          </div>
-        ))}
-      </div>
-
-      {PRIVATE && lessons[skill.id] && CONTENT_BY_SLUG[lessons[skill.id]] ? (
-        <div className="teaching">
-          <button type="button" className="link-button" onClick={() => setShowLesson(s => !s)}>
-            📖 {showLesson ? 'Hide' : 'Show'} teaching notes &amp; drills
-          </button>
-          {showLesson ? (
-            <div
-              className="lesson-content"
-              dangerouslySetInnerHTML={{ __html: CONTENT_BY_SLUG[lessons[skill.id]] }}
-            />
-          ) : null}
         </div>
-      ) : null}
+      ) : (
+        <>
+          <div className="rate-header">
+            <p className="rate-meta">
+              {skill.category} &middot; Skill {skillNo}/{visibleSkills.length} &middot; Core rated {coreRated}/{coreTotal}
+            </p>
+            <h2 className="rate-skill-name">{skillLabel(skill)}</h2>
+            {skill.optional ? (
+              <span className="badge badge-optional">Optional — does not count against the paddler</span>
+            ) : null}
+            {skill.competency ? <p className="rate-competency">{skill.competency}</p> : null}
+            {/* When a skill has no short name (L4/L5), the standard is already the
+                heading above, so the standard-box would just repeat it. */}
+            {skill.name ? (
+              <div className="standard-box">
+                {skill.l1Standard ? (
+                  <div className="standard-section">
+                    <div className="standard-box-header"><span>L1 standard</span></div>
+                    <p className="standard-box-text">{skill.l1Standard}</p>
+                  </div>
+                ) : null}
+                {skill.belowStandard ? (
+                  <div className="standard-section">
+                    <div className="standard-box-header"><span>Below standard</span></div>
+                    <p className="standard-box-text">{skill.belowStandard}</p>
+                  </div>
+                ) : null}
+                <div className="standard-section">
+                  <div className="standard-box-header"><span>{skill.level} standard</span></div>
+                  <p className="standard-box-text">{skill.standard}</p>
+                </div>
+                {skill.exceedsStandard ? (
+                  <div className="standard-section">
+                    <div className="standard-box-header"><span>Exceeds standard</span></div>
+                    <p className="standard-box-text">{skill.exceedsStandard}</p>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
+
+          <div className="rate-rows">
+            {rowsInfo.map(({ paddler, result, needsFeedback }) => (
+              <div className="paddler-row" key={paddler.id}>
+                <div className="paddler-row-name">{paddler.name}</div>
+                <div className="chip-row">
+                  {options.map(opt => {
+                    const selected = result && result.rating === opt.value;
+                    const chipClass = [
+                      'chip',
+                      selected ? (opt.requiresFeedback ? 'chip-danger' : 'chip-positive') : '',
+                    ].filter(Boolean).join(' ');
+                    return (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        className={chipClass}
+                        data-value={opt.value}
+                        aria-pressed={selected}
+                        onClick={() => handleRate(paddler.id, opt.value)}
+                      >
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
+                <textarea
+                  className={`feedback-box${needsFeedback ? ' feedback-required' : ''}`}
+                  value={result ? result.feedback : ''}
+                  placeholder={needsFeedback
+                    ? 'Required: what did not meet the standard? (tap the keyboard mic to dictate)'
+                    : 'Optional note (tap the keyboard mic to dictate)'}
+                  onInput={e => handleFeedback(paddler.id, e.currentTarget.value)}
+                />
+              </div>
+            ))}
+          </div>
+
+          {PRIVATE && lessons[skill.id] && CONTENT_BY_SLUG[lessons[skill.id]] ? (
+            <div className="teaching">
+              <button type="button" className="link-button" onClick={() => setShowLesson(s => !s)}>
+                📖 {showLesson ? 'Hide' : 'Show'} teaching notes &amp; drills
+              </button>
+              {showLesson ? (
+                <div
+                  className="lesson-content"
+                  dangerouslySetInnerHTML={{ __html: CONTENT_BY_SLUG[lessons[skill.id]] }}
+                />
+              ) : null}
+            </div>
+          ) : null}
+        </>
+      )}
 
       {blocked ? (
         <p className="error blocking-message">
@@ -233,7 +278,7 @@ export function Rate({ session, onChange, onDone }) {
           </button>
         ) : (
           <button type="button" onClick={goNext} disabled={blocked}>
-            Next ▶
+            {onIntro ? 'Begin rating ▶' : 'Next ▶'}
           </button>
         )}
       </div>
