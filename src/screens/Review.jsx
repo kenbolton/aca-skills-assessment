@@ -6,6 +6,7 @@ import { downloadPaddlerPdf } from '../lib/pdf.js';
 import { SyncButton } from '../components/SyncButton.jsx';
 import { Attribution } from '../components/Attribution.jsx';
 import { BelowStandardDetail } from '../components/BelowStandardDetail.jsx';
+import { CompetencyRadars } from '../components/CompetencyRadars.jsx';
 
 function download(name, text, type) {
   const blob = new Blob([text], { type });
@@ -78,6 +79,8 @@ export function Review({ session, onChange, onBack, onReset, onEditSkill }) {
               </p>
 
               <BelowStandardDetail items={summary.flagged} onEditSkill={onEditSkill} />
+
+              <CompetencyRadars session={session} paddlerId={paddler.id} />
 
               {summary.optionalItems.length > 0 ? (
                 <p className="review-optional-line">
