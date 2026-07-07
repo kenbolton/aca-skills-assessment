@@ -17,6 +17,17 @@ Open it on your phone and tap **Add to Home Screen** to install. It then runs
 fully offline — assess yourself (or a group), and export a PDF or CSV of the
 results. Nothing is uploaded; all data stays on your device.
 
+## Privacy
+
+Your assessments stay on your device — nothing you enter about a paddler is
+uploaded anywhere.
+
+The public website keeps **anonymous, cookieless** counts of page visits, PWA
+installs, and assessments started (via [GoatCounter](https://www.goatcounter.com/)).
+No personal data and no cookies are collected, and the counter honors your
+browser's **Do-Not-Track** setting. Counting is disabled entirely in the
+self-hosted build.
+
 ## Features
 
 - **Two official ACA levels**, each with its own rating scale:
@@ -54,6 +65,13 @@ npm run dev      # dev server
 npm test         # unit tests (Vitest)
 npm run build    # production build to dist/ (generates the service worker)
 ```
+
+### Usage metrics (optional)
+
+The public site can keep anonymous, cookieless usage counts via GoatCounter.
+Copy `.env.example` to `.env` and set `VITE_GOATCOUNTER_CODE` to your GoatCounter
+site code, then build. Leaving it unset disables metrics — this is how the
+self-hosted Pi build stays completely silent.
 
 ## Host + sync (Raspberry Pi or any always-on machine)
 

@@ -1,7 +1,10 @@
 import { useState } from 'preact/hooks';
 import { loadConfig } from '../lib/skills.js';
 import { createSession } from '../lib/session.js';
+import { countEvent } from '../lib/metrics.js';
+import { startEventPath } from '../lib/start-metric.js';
 import { Attribution } from '../components/Attribution.jsx';
+import { PrivacyStatement } from '../components/PrivacyStatement.jsx';
 import rawSkills from '../data/skills.json';
 import rawL3 from '../data/skills-l3.json';
 import rawL4 from '../data/skills-l4.json';
@@ -73,6 +76,7 @@ export function Setup({ onStart }) {
       return;
     }
     setError('');
+    countEvent(startEventPath(level, selfAssessment), 'Assessment started');
     onStart(session);
   }
 
@@ -159,6 +163,7 @@ export function Setup({ onStart }) {
 
       <button type="button" onClick={handleStart}>Start Assessment</button>
 
+      <PrivacyStatement />
       <Attribution />
     </main>
   );

@@ -503,3 +503,17 @@ button { min-height: var(--hit); font-size: 18px; }
 .intro-list li { font-size: 1rem; line-height: 1.4; margin: 0.15rem 0; }
 .intro-link { color: var(--exc); font-weight: 700; }
 .skills-nav-intro { color: var(--exc); }
+
+.privacy-statement {
+  margin: 1.5rem 0 0;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #d7e3e5;
+  color: #4a5a5d;
+  font-size: 0.85rem;
+}
+.privacy-statement h2 {
+  font-size: 0.9rem;
+  margin: 0 0 0.4rem;
+  color: #14323a;
+}
+.privacy-statement p { margin: 0 0 0.4rem; }
