@@ -26,7 +26,6 @@ const LEVEL_OPTIONS = [
   { key: 'L5', label: 'L5 — Advanced Open Water Coastal Kayaking' },
 ];
 const PADDLER_COUNT = 5;
-const PRIVATE = import.meta.env.VITE_PRIVATE === 'true';
 const TARGETS = ['L1', 'L2'];
 
 const CONDITION_SELECTS = [
