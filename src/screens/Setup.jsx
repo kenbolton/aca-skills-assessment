@@ -16,7 +16,7 @@ const CONFIGS = {
   L5: loadConfig(rawL5),
 };
 const LEVEL_OPTIONS = [
-  { key: 'L1/L2', label: 'L1 / L2 — combined (with landing)' },
+  { key: 'L1/L2', label: 'L1 / L2 — Essentials of Kayak Touring' },
   { key: 'L3', label: 'L3 — Coastal Kayaking' },
   { key: 'L4', label: 'L4 — Open Water Coastal Kayaking' },
   { key: 'L5', label: 'L5 — Advanced Open Water Coastal Kayaking' },
