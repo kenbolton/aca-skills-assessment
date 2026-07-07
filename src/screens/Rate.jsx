@@ -215,16 +215,16 @@ export function Rate({ session, onChange, onDone, focusSkillId = null }) {
                 Below/Exceeds descriptors still show. */}
             {(skill.name || skill.l1Standard || skill.belowStandard || skill.exceedsStandard) ? (
               <div className="standard-box">
-                {skill.l1Standard ? (
-                  <div className="standard-section">
-                    <div className="standard-box-header"><span>L1 standard</span></div>
-                    <p className="standard-box-text">{skill.l1Standard}</p>
-                  </div>
-                ) : null}
                 {skill.belowStandard ? (
                   <div className="standard-section">
                     <div className="standard-box-header"><span>Below standard</span></div>
                     <p className="standard-box-text">{skill.belowStandard}</p>
+                  </div>
+                ) : null}
+                {skill.l1Standard ? (
+                  <div className="standard-section">
+                    <div className="standard-box-header"><span>L1 standard</span></div>
+                    <p className="standard-box-text">{skill.l1Standard}</p>
                   </div>
                 ) : null}
                 {skill.name ? (
