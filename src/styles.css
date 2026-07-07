@@ -468,6 +468,14 @@ button { min-height: var(--hit); font-size: 18px; }
 .checkbox-field input { width: auto; min-height: auto; }
 
 .conditions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+
+.condition-spec {
+  display: block;
+  margin-top: .25rem;
+  font-size: .8rem;
+  color: #4a5a5d;
+}
+
 .review-venue-line { color: #555; margin: 0 0 0.5rem; }
 
 .attribution {

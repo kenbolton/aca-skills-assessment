@@ -9,6 +9,7 @@ import rawSkills from '../data/skills.json';
 import rawL3 from '../data/skills-l3.json';
 import rawL4 from '../data/skills-l4.json';
 import rawL5 from '../data/skills-l5.json';
+import { BEAUFORT, CURRENT_LEVELS, WAVE_HEIGHTS, beaufortSpec } from '../data/conditions.js';
 
 // One config per assessment mode. 'L1/L2' keeps the combined per-paddler-target
 // behavior (with cross-level landing); L3/L4/L5 are standalone single-level configs.
@@ -28,11 +29,11 @@ const PADDLER_COUNT = 5;
 const PRIVATE = import.meta.env.VITE_PRIVATE === 'true';
 const TARGETS = ['L1', 'L2'];
 
-const CONDITION_FIELDS = [
-  { key: 'wind', label: 'Wind', placeholder: 'e.g. 12 kn' },
-  { key: 'waves', label: 'Waves', placeholder: 'e.g. 1 ft' },
-  { key: 'surf', label: 'Surf', placeholder: 'e.g. 2 ft' },
-  { key: 'current', label: 'Current', placeholder: 'e.g. 1 kn' },
+const CONDITION_SELECTS = [
+  { key: 'wind', label: 'Wind', options: BEAUFORT.map(b => b.value), spec: true },
+  { key: 'waves', label: 'Waves', options: WAVE_HEIGHTS },
+  { key: 'surf', label: 'Surf', options: WAVE_HEIGHTS },
+  { key: 'current', label: 'Current', options: CURRENT_LEVELS },
 ];
 
 export function Setup({ onStart }) {
@@ -105,15 +106,19 @@ export function Setup({ onStart }) {
       <fieldset className="field conditions-fieldset">
         <legend>Observed conditions (optional)</legend>
         <div className="conditions-grid">
-          {CONDITION_FIELDS.map(f => (
+          {CONDITION_SELECTS.map(f => (
             <label className="field" key={f.key}>
               <span>{f.label}</span>
-              <input
-                type="text"
-                placeholder={f.placeholder}
+              <select
                 value={conditions[f.key]}
                 onChange={e => setConditions(c => ({ ...c, [f.key]: e.currentTarget.value }))}
-              />
+              >
+                <option value="">— not recorded</option>
+                {f.options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+              </select>
+              {f.spec && conditions[f.key] ? (
+                <span className="condition-spec">{beaufortSpec(conditions[f.key])}</span>
+              ) : null}
             </label>
           ))}
         </div>
