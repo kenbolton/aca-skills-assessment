@@ -1,6 +1,6 @@
 import { paddlerSummary } from '../lib/summary.js';
 import { sessionToCsv } from '../lib/csv.js';
-import { getActionPlan, setActionPlan } from '../lib/session.js';
+import { getActionPlan, setActionPlan, conditionsSummary } from '../lib/session.js';
 import { invalidResults, isSessionComplete } from '../lib/validation.js';
 import { downloadPaddlerPdf } from '../lib/pdf.js';
 import { SyncButton } from '../components/SyncButton.jsx';
@@ -29,9 +29,17 @@ export function Review({ session, onChange, onBack, onReset }) {
     download(`aca-assessment-${session.id}.json`, JSON.stringify(session, null, 2), 'application/json');
   }
 
+  const conditions = conditionsSummary(session);
+
   return (
     <main className="screen review-screen">
       <h2>Review</h2>
+
+      {session.location || conditions ? (
+        <p className="review-venue-line">
+          {[session.location, conditions].filter(Boolean).join(' · ')}
+        </p>
+      ) : null}
 
       {outstanding.length > 0 ? (
         <p className="error review-warning">

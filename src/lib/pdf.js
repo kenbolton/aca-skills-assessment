@@ -1,6 +1,6 @@
 import { jsPDF } from 'jspdf';
 import { paddlerSummary } from './summary.js';
-import { getActionPlan } from './session.js';
+import { getActionPlan, conditionsSummary } from './session.js';
 
 const LANDING_LABEL = {
   L2: 'Level 2',
@@ -35,9 +35,11 @@ export function downloadPaddlerPdf(session, paddlerId) {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(11);
   const dateLine = new Date(session.createdAt).toLocaleString();
-  const metaLine = session.location ? `${dateLine} · ${session.location}` : dateLine;
-  doc.text(metaLine, marginX, y);
-  y += 20;
+  const conditions = conditionsSummary(session);
+  const metaLine = [dateLine, session.location, conditions].filter(Boolean).join(' · ');
+  const metaWrapped = doc.splitTextToSize(metaLine, 480);
+  doc.text(metaWrapped, marginX, y);
+  y += metaWrapped.length * 14 + 6;
 
   doc.setFont('helvetica', 'bold');
   let landingLabel;

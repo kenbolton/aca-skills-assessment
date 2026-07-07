@@ -4,7 +4,17 @@ const KEY = 'aca-assessment:session';
 let seq = 0;
 function pid() { return `p${++seq}`; }
 
-export function createSession({ id, createdAt, config, location = '', paddlers, selfAssessment = false }) {
+const CONDITION_KEYS = ['wind', 'waves', 'surf', 'current'];
+function normConditions(raw) {
+  const out = {};
+  for (const k of CONDITION_KEYS) {
+    const v = raw && typeof raw[k] === 'string' ? raw[k].trim() : '';
+    if (v) out[k] = v;
+  }
+  return out;
+}
+
+export function createSession({ id, createdAt, config, location = '', conditions = {}, paddlers, selfAssessment = false }) {
   const people = paddlers.map(p => ({ name: (p.name || '').trim(), target: p.target })).filter(p => p.name);
   const withIds = people.map(p => ({ id: pid(), name: p.name, target: p.target }));
   const results = [];
@@ -13,7 +23,14 @@ export function createSession({ id, createdAt, config, location = '', paddlers, 
       if (sk.level === p.target) results.push({ paddlerId: p.id, skillId: sk.id, rating: null, feedback: '' });
     }
   }
-  return { id, createdAt, location, selfAssessment: !!selfAssessment, scales: config.scales, intro: config.intro || null, paddlers: withIds, skills: config.skills, results, actionPlans: {} };
+  return { id, createdAt, location, conditions: normConditions(conditions), selfAssessment: !!selfAssessment, scales: config.scales, intro: config.intro || null, paddlers: withIds, skills: config.skills, results, actionPlans: {} };
+}
+
+const CONDITION_LABELS = { wind: 'Wind', waves: 'Waves', surf: 'Surf', current: 'Current' };
+// A human line of the observed conditions actually recorded (present ones only).
+export function conditionsSummary(session) {
+  const c = session.conditions || {};
+  return CONDITION_KEYS.filter(k => c[k]).map(k => `${CONDITION_LABELS[k]} ${c[k]}`).join(' · ');
 }
 
 export function getResult(session, paddlerId, skillId) {

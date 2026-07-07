@@ -24,8 +24,16 @@ const PADDLER_COUNT = 5;
 const PRIVATE = import.meta.env.VITE_PRIVATE === 'true';
 const TARGETS = ['L1', 'L2'];
 
+const CONDITION_FIELDS = [
+  { key: 'wind', label: 'Wind', placeholder: 'e.g. 12 kn' },
+  { key: 'waves', label: 'Waves', placeholder: 'e.g. 1 ft' },
+  { key: 'surf', label: 'Surf', placeholder: 'e.g. 2 ft' },
+  { key: 'current', label: 'Current', placeholder: 'e.g. 1 kn' },
+];
+
 export function Setup({ onStart }) {
   const [location, setLocation] = useState('');
+  const [conditions, setConditions] = useState({ wind: '', waves: '', surf: '', current: '' });
   const [level, setLevel] = useState('L1/L2');
   const [selfAssessment, setSelfAssessment] = useState(false);
   const [paddlers, setPaddlers] = useState(
@@ -55,6 +63,7 @@ export function Setup({ onStart }) {
       createdAt: new Date().toISOString(),
       config: CONFIGS[level],
       location,
+      conditions,
       paddlers: chosen,
       selfAssessment,
     });
@@ -87,6 +96,23 @@ export function Setup({ onStart }) {
         <span>Location (optional)</span>
         <input type="text" value={location} onChange={e => setLocation(e.currentTarget.value)} />
       </label>
+
+      <fieldset className="field conditions-fieldset">
+        <legend>Observed conditions (optional)</legend>
+        <div className="conditions-grid">
+          {CONDITION_FIELDS.map(f => (
+            <label className="field" key={f.key}>
+              <span>{f.label}</span>
+              <input
+                type="text"
+                placeholder={f.placeholder}
+                value={conditions[f.key]}
+                onChange={e => setConditions(c => ({ ...c, [f.key]: e.currentTarget.value }))}
+              />
+            </label>
+          ))}
+        </div>
+      </fieldset>
 
       {selfAssessment ? (
         <fieldset className="field paddler-fieldset">

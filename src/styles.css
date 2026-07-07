@@ -466,6 +466,9 @@ button { min-height: var(--hit); font-size: 18px; }
 .checkbox-field { flex-direction: row; align-items: center; gap: 0.5rem; }
 .checkbox-field input { width: auto; min-height: auto; }
 
+.conditions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.review-venue-line { color: #555; margin: 0 0 0.5rem; }
+
 /* Assessment intro (first page of the Rate flow) */
 .intro-body { margin-top: 0.5rem; }
 .intro-section {

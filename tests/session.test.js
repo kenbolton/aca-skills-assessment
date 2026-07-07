@@ -1,5 +1,5 @@
 import { expect, test, beforeEach } from 'vitest';
-import { createSession, getResult, setRating, setFeedback, getActionPlan, setActionPlan, optionFor, saveSession, loadSession, clearSession } from '../src/lib/session.js';
+import { createSession, getResult, setRating, setFeedback, getActionPlan, setActionPlan, conditionsSummary, optionFor, saveSession, loadSession, clearSession } from '../src/lib/session.js';
 
 beforeEach(() => {
   const store = new Map();
@@ -55,6 +55,15 @@ test('createSession stores selfAssessment, defaulting to false', () => {
   expect(base().selfAssessment).toBe(false);
   const solo = createSession({ id: 's2', createdAt: 't', config: cfg, selfAssessment: true, paddlers: [{ name: 'Me', target: 'L2' }] });
   expect(solo.selfAssessment).toBe(true);
+});
+
+test('conditions: only non-empty observed values are stored and summarised in order', () => {
+  const s = createSession({ id: 'sc', createdAt: 't', config: cfg,
+    conditions: { wind: ' 12 kn ', waves: '', surf: '2 ft', current: '  ' },
+    paddlers: [{ name: 'Me', target: 'L2' }] });
+  expect(s.conditions).toEqual({ wind: '12 kn', surf: '2 ft' });
+  expect(conditionsSummary(s)).toBe('Wind 12 kn · Surf 2 ft');
+  expect(conditionsSummary({})).toBe('');
 });
 
 test('action plan: empty by default, set/get round-trips per paddler', () => {
