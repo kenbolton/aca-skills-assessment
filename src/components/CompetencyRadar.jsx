@@ -54,9 +54,12 @@ function RadarSvg({ levels }) {
 }
 
 function GaugeSvg({ levels }) {
-  // A short L1-L5 scale with a dot per skill at its level (label-free).
+  // A short L1-L5 scale with a dot per skill at its level (label-free). This
+  // is its own L1-L5 scale (divisor 5, dots aligned to its own ticks), unlike
+  // the radar's max of 5.5; a value is clamped to L5 so an Exceeds (T+.5) at a
+  // small L5 category can't overflow the viewBox.
   const W = 120, H = 28, padX = 8, y = 18;
-  const x = lvl => padX + ((W - 2 * padX) * (lvl / 5));
+  const x = lvl => padX + ((W - 2 * padX) * (Math.min(lvl, 5) / 5));
   return (
     <svg className="cr-svg cr-gauge" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="competency level gauge">
       <line className="cr-gauge-axis" x1={padX} y1={y} x2={W - padX} y2={y} />
