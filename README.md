@@ -66,6 +66,13 @@ npm test         # unit tests (Vitest)
 npm run build    # production build to dist/ (generates the service worker)
 ```
 
+### Usage metrics (optional)
+
+The public site can keep anonymous, cookieless usage counts via GoatCounter.
+Copy `.env.example` to `.env` and set `VITE_GOATCOUNTER_CODE` to your GoatCounter
+site code, then build. Leaving it unset disables metrics — this is how the
+self-hosted Pi build stays completely silent.
+
 ## Host + sync (Raspberry Pi or any always-on machine)
 
 `pi/sync-server.mjs` is a tiny dependency-free Node server that serves the built

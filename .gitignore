@@ -14,3 +14,7 @@ training-content/
 
 # personal permission-request draft (kept locally, never published)
 docs/aca-permission-request.md
+
+# local environment config (never commit real secrets/site codes)
+.env
+.env.local
