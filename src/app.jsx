@@ -11,6 +11,9 @@ export function App() {
   const [focusSkillId, setFocusSkillId] = useState(null);
 
   function begin(s) {
+    // A newly started assessment must open at its first page (intro/first
+    // skill), never at a skill left focused by a prior session's "Go to skill".
+    setFocusSkillId(null);
     saveSession(s);
     setSession(s);
     setScreen('rate');
