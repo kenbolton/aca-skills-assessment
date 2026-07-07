@@ -104,8 +104,8 @@ export function indexOfSkill(session, skillId) {
 Props: `items` (the `flagged` array) and `onEditSkill(skillId)`. For each item
 renders a block: a header line `name · category · ratingLabel`, the full
 `standard` (omitted if empty), the `feedback` note, and a **"Go to skill →"**
-button calling `onEditSkill(item.skillId)`. Renders nothing for an empty list.
-Keeps Review from growing and is independently testable.
+button calling `onEditSkill(item.skillId)`. Renders nothing for an empty list. A thin view
+that keeps Review focused (see Testing for why it is not unit-tested).
 
 ### 4. `src/screens/Review.jsx` — use the component
 
@@ -159,8 +159,11 @@ Skills-overlay "Review →".
 - **Unit — `rate-pages.js`:** `ratePages` includes the intro at index 0 when
   present and only paddler-applicable skills; `indexOfSkill` returns the correct
   page index for a present skill, and 0 for a missing/null id and for the intro.
-- **Unit — `BelowStandardDetail`:** renders one block per item with the standard
-  text and note, a "Go to skill" control per item, and nothing for `[]`.
+- **`BelowStandardDetail`, `Review`, `Rate`, `app` are thin views** — per the
+  repo convention (screens are thin views over unit-tested libs, and the node
+  test env has no DOM / no `preact-render-to-string`), they are **not** unit
+  tested by rendering. Their correctness is covered by the lib tests above plus
+  the manual check below. No new test dependency is added.
 - **Manual:** with a below-standard rating, the review page shows the full
   standard + note; "Go to skill" lands on that exact skill on the Rate screen;
   "◀ Back to rating" still opens the first page.
