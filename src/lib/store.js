@@ -4,9 +4,11 @@
 // of the durable store on purpose.
 import { sessionSummary } from './session-summary.js';
 import { isV3Session } from './session.js';
+import { skillSetRef, blobOf, isSlim, slimSession, fattenSession } from './skillset.js';
 
 const DB = 'aca-assessment';
 const STORE = 'sessions';
+const SKILLSETS = 'skillSets';
 const LEGACY_KEY = 'aca-assessment:session';
 const CURRENT_KEY = 'aca-assessment:current';
 
@@ -16,10 +18,11 @@ let dbInstance = null;
 function openDb() {
   if (dbPromise) return dbPromise;
   dbPromise = new Promise((resolve, reject) => {
-    const req = indexedDB.open(DB, 1);
+    const req = indexedDB.open(DB, 2);
     req.onupgradeneeded = () => {
       const db = req.result;
       if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE, { keyPath: 'id' });
+      if (!db.objectStoreNames.contains(SKILLSETS)) db.createObjectStore(SKILLSETS, { keyPath: 'ref' });
     };
     req.onsuccess = () => { dbInstance = req.result; resolve(req.result); };
     req.onerror = () => { dbPromise = null; reject(req.error); };
@@ -47,11 +50,48 @@ async function store(mode) {
   const db = await openDb();
   return db.transaction(STORE, mode).objectStore(STORE);
 }
+async function skillStore(mode) {
+  const db = await openDb();
+  return db.transaction(SKILLSETS, mode).objectStore(SKILLSETS);
+}
 
-export async function putSession(session) { await reqP((await store('readwrite')).put(session)); }
-export async function getSession(id) { return (await reqP((await store('readonly')).get(id))) || null; }
+export async function putSkillSet(ref, blob) {
+  await reqP((await skillStore('readwrite')).put({ ref, blob }));
+}
+export async function getSkillSet(ref) {
+  const rec = await reqP((await skillStore('readonly')).get(ref));
+  return rec ? rec.blob : null;
+}
+
+// Persist boundary: strip the shared blob out to the skillSets store.
+export async function dehydrate(session) {
+  if (isSlim(session) || !session.skills) return session;
+  const blob = blobOf(session);
+  const ref = skillSetRef(blob);
+  await putSkillSet(ref, blob);
+  return slimSession(session, ref);
+}
+// Read boundary: re-attach the blob so callers see a fat session.
+export async function hydrate(session) {
+  if (!session || session.skills || !session.skillSetRef) return session;
+  const blob = await getSkillSet(session.skillSetRef);
+  if (!blob) { console.warn('skillSet missing for session', session.id); return session; }
+  return fattenSession(session, blob);
+}
+
+export async function putSession(session) {
+  const rec = await dehydrate(session); // resolve before opening the write transaction: IndexedDB
+  await reqP((await store('readwrite')).put(rec)); // auto-commits it if a prior await yields first
+}
+export async function getSession(id) {
+  const rec = (await reqP((await store('readonly')).get(id))) || null;
+  return rec ? hydrate(rec) : null;
+}
 export async function deleteSession(id) { await reqP((await store('readwrite')).delete(id)); }
-export async function getAllSessions() { return (await reqP((await store('readonly')).getAll())) || []; }
+export async function getAllSessions() {
+  const all = (await reqP((await store('readonly')).getAll())) || [];
+  return Promise.all(all.map(hydrate));
+}
 export const exportAll = getAllSessions;
 
 export async function listSummaries() {

@@ -3,6 +3,7 @@ import { beforeEach, expect, test } from 'vitest';
 import {
   initStore, putSession, getSession, deleteSession, listSummaries, exportAll,
   importSessions, getCurrentId, setCurrentId, migrateLegacy, resetStore,
+  dehydrate, hydrate, getSkillSet,
 } from '../src/lib/store.js';
 import { createSession } from '../src/lib/session.js';
 
@@ -82,4 +83,31 @@ test('listSummaries skips a malformed record instead of throwing', async () => {
   await putSession(sess('good', '2026-01-01'));
   const rows = await listSummaries();
   expect(rows.map(r => r.id)).toEqual(['good']);
+});
+
+test('putSession stores a slim session; getSession returns the fat original', async () => {
+  const s = sess('a', '2026-01-01');       // sess(...) builds a fat session via createSession
+  await putSession(s);
+  expect(await getSession('a')).toEqual(s); // fat round-trip, deep-equal
+});
+
+test('dehydrate strips the blob into skillSets; hydrate restores it', async () => {
+  const s = sess('a', '2026-01-01');
+  const slim = await dehydrate(s);
+  expect(slim.skills).toBeUndefined();
+  expect(typeof slim.skillSetRef).toBe('string');
+  expect(await getSkillSet(slim.skillSetRef)).toEqual({ skills: s.skills, scales: s.scales, intro: s.intro ?? null });
+  expect(await hydrate(slim)).toEqual(s);
+});
+
+test('two sessions of the same config dedup to one skillSet ref', async () => {
+  const a = await dehydrate(sess('a', '2026-01-01'));
+  const b = await dehydrate(sess('b', '2026-01-02'));
+  expect(a.skillSetRef).toBe(b.skillSetRef); // same config -> same content hash -> one stored blob
+});
+
+test('hydrate leaves a fat/legacy session unchanged and does not throw on a missing ref', async () => {
+  const fat = sess('a', '2026-01-01');
+  expect(await hydrate(fat)).toBe(fat);                       // already fat -> identity
+  expect(await hydrate({ id: 'x', skillSetRef: 'sk-deadbeef' })).toEqual({ id: 'x', skillSetRef: 'sk-deadbeef' }); // missing blob -> unchanged
 });
