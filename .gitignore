@@ -11,3 +11,6 @@ lessons-content/*.html
 
 # private training guidance (generated from ACA PDFs; private build only)
 training-content/
+
+# personal permission-request draft (kept locally, never published)
+docs/aca-permission-request.md
