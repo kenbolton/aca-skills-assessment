@@ -4,6 +4,7 @@ import {
   initStore, putSession, getSession, deleteSession, listSummaries, exportAll,
   importSessions, getCurrentId, setCurrentId, migrateLegacy, resetStore,
   dehydrate, hydrate, getSkillSet,
+  exportBundle, importBundle, putSkillSet,
 } from '../src/lib/store.js';
 import { createSession } from '../src/lib/session.js';
 
@@ -110,4 +111,82 @@ test('hydrate leaves a fat/legacy session unchanged and does not throw on a miss
   const fat = sess('a', '2026-01-01');
   expect(await hydrate(fat)).toBe(fat);                       // already fat -> identity
   expect(await hydrate({ id: 'x', skillSetRef: 'sk-deadbeef' })).toEqual({ id: 'x', skillSetRef: 'sk-deadbeef' }); // missing blob -> unchanged
+});
+
+// Raw session put/get that bypass dehydrate/hydrate, to simulate a legacy fat
+// record and to inspect what is actually stored.
+function rawSessionOp(mode, fn) {
+  return new Promise((res, rej) => {
+    const open = indexedDB.open('aca-assessment', 2);
+    // Mirror store.js's openDb schema: a raw open with no upgrade handler
+    // would otherwise create an empty, store-less database when this runs
+    // before store.js has opened one (e.g. rawPut before any putSession).
+    open.onupgradeneeded = () => {
+      const db = open.result;
+      if (!db.objectStoreNames.contains('sessions')) db.createObjectStore('sessions', { keyPath: 'id' });
+      if (!db.objectStoreNames.contains('skillSets')) db.createObjectStore('skillSets', { keyPath: 'ref' });
+    };
+    open.onsuccess = () => {
+      const db = open.result;
+      const tx = db.transaction('sessions', mode);
+      const out = fn(tx.objectStore('sessions'));
+      tx.oncomplete = () => { db.close(); res(out && out.result !== undefined ? out.result : undefined); };
+      tx.onerror = () => { db.close(); rej(tx.error); };
+    };
+    open.onerror = () => rej(open.error);
+  });
+}
+const rawPut = (rec) => rawSessionOp('readwrite', (s) => s.put(rec));
+const rawGet = (id) => rawSessionOp('readonly', (s) => s.get(id));
+
+test('exportBundle returns a slim, self-contained bundle; dedups shared blobs', async () => {
+  await putSession(sess('a', '2026-01-01'));
+  await putSession(sess('b', '2026-01-02')); // same config -> same skillSet
+  const b = await exportBundle();
+  expect(b.format).toBe('aca-archive-v2');
+  expect(b.sessions.map(s => s.id).sort()).toEqual(['a', 'b']);
+  expect(b.sessions.every(s => !s.skills && typeof s.skillSetRef === 'string')).toBe(true);
+  expect(Object.keys(b.skillSets)).toHaveLength(1); // dedup: one shared blob
+  expect(b.skillSets[b.sessions[0].skillSetRef]).toBeTruthy();
+});
+
+test('exportBundle([id]) returns just that session and its blob', async () => {
+  await putSession(sess('a', '2026-01-01'));
+  await putSession(sess('b', '2026-01-02'));
+  const b = await exportBundle(['a']);
+  expect(b.sessions.map(s => s.id)).toEqual(['a']);
+  expect(Object.keys(b.skillSets)).toHaveLength(1);
+});
+
+test('exportBundle slims a legacy-fat record in-memory without mutating the store', async () => {
+  const fat = sess('a', '2026-01-01');           // fat (built by createSession)
+  await rawPut(fat);                              // stored fat, bypassing dehydrate
+  const b = await exportBundle();
+  expect(b.sessions[0].skills).toBeUndefined();   // slim in the bundle
+  expect(typeof b.sessions[0].skillSetRef).toBe('string');
+  expect((await rawGet('a')).skills).toBeTruthy(); // still fat in the store
+});
+
+test('importBundle round-trips: export -> clear -> import -> fat again', async () => {
+  await putSession(sess('a', '2026-01-01'));
+  const original = await getSession('a');
+  const b = await exportBundle();
+  // clear the DB
+  resetStore();
+  await new Promise((r) => { const d = indexedDB.deleteDatabase('aca-assessment'); d.onsuccess = d.onerror = () => r(); });
+  expect(await importBundle(b)).toBe(1);
+  expect(await getSession('a')).toEqual(original);
+});
+
+test('importSessions accepts a slim session when its blob is present, and still accepts fat', async () => {
+  // fat import stores session 'a' (as slim internally, via dehydrate)
+  expect(await importSessions(sess('a', '2026-01-01'))).toBe(1);
+  // slim import: take 'a' as a slim session + its blob, ensure the blob is stored, re-import
+  const bundle = await exportBundle(['a']);
+  const slim = bundle.sessions[0];
+  const blobRef = slim.skillSetRef;
+  await putSkillSet(blobRef, bundle.skillSets[blobRef]);
+  expect(await importSessions({ ...slim })).toBe(1);
+  // a slim session missing results is skipped by the gate
+  expect(await importSessions({ id: 'z', paddlers: [{ target: 'L3' }], skillSetRef: blobRef })).toBe(0);
 });

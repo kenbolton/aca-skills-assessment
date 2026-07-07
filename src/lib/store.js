@@ -9,6 +9,7 @@ import { skillSetRef, blobOf, isSlim, slimSession, fattenSession } from './skill
 const DB = 'aca-assessment';
 const STORE = 'sessions';
 const SKILLSETS = 'skillSets';
+const BUNDLE_FORMAT = 'aca-archive-v2';
 const LEGACY_KEY = 'aca-assessment:session';
 const CURRENT_KEY = 'aca-assessment:current';
 
@@ -106,11 +107,45 @@ export async function importSessions(input) {
   const arr = Array.isArray(input) ? input : [input];
   let n = 0;
   for (const s of arr) {
-    if (isV3Session(s) && typeof s.id === 'string' && Array.isArray(s.results) && Array.isArray(s.skills)) {
+    if (isV3Session(s) && typeof s.id === 'string' && Array.isArray(s.results)
+        && (Array.isArray(s.skills) || typeof s.skillSetRef === 'string')) {
       await putSession(s); n++;
     }
   }
   return n;
+}
+
+// A self-contained slim bundle for the given session ids (all when omitted):
+// slim sessions plus exactly the skillSet blobs they reference. A legacy-fat
+// stored record is slimmed in-memory here (no store write).
+export async function exportBundle(ids) {
+  const raw = (await reqP((await store('readonly')).getAll())) || [];
+  const selected = ids ? raw.filter(s => ids.includes(s.id)) : raw;
+  const skillSets = {};
+  const sessions = [];
+  for (const s of selected) {
+    if (s.skills) {
+      const blob = blobOf(s);
+      const ref = skillSetRef(blob);
+      skillSets[ref] = blob;
+      sessions.push(slimSession(s, ref));
+    } else {
+      sessions.push(s);
+      if (s.skillSetRef && !skillSets[s.skillSetRef]) {
+        const blob = await getSkillSet(s.skillSetRef);
+        if (blob) skillSets[s.skillSetRef] = blob;
+      }
+    }
+  }
+  return { format: BUNDLE_FORMAT, sessions, skillSets };
+}
+
+// Import a slim bundle: store its blobs first, then its (slim) sessions.
+export async function importBundle(bundle) {
+  for (const [ref, blob] of Object.entries((bundle && bundle.skillSets) || {})) {
+    await putSkillSet(ref, blob);
+  }
+  return importSessions((bundle && bundle.sessions) || []);
 }
 
 export function getCurrentId() {
