@@ -28,7 +28,12 @@ jobs:
       - run: npm ci
       - run: npm test
       # Default base '/aca-skills-assessment/' and sync hidden (public build).
+      # The GoatCounter site code is public (it ships in the page), not a secret;
+      # setting it only here means anonymous usage counting is on for the
+      # deployed public site but stays off in local dev/builds.
       - run: npm run build
+        env:
+          VITE_GOATCOUNTER_CODE: aca-skills-assessment
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
