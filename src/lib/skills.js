@@ -30,6 +30,7 @@ export function loadConfig(raw) {
     if (typeof s.competency === 'string' && s.competency) out.competency = s.competency;
     if (typeof s.l1Standard === 'string' && s.l1Standard) out.l1Standard = s.l1Standard;
     if (typeof s.exceedsStandard === 'string' && s.exceedsStandard) out.exceedsStandard = s.exceedsStandard;
+    if (typeof s.belowStandard === 'string' && s.belowStandard) out.belowStandard = s.belowStandard;
     return out;
   });
   return { scales, skills };

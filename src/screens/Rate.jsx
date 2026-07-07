@@ -146,6 +146,12 @@ export function Rate({ session, onChange, onDone }) {
                 <p className="standard-box-text">{skill.l1Standard}</p>
               </div>
             ) : null}
+            {skill.belowStandard ? (
+              <div className="standard-section">
+                <div className="standard-box-header"><span>Below standard</span></div>
+                <p className="standard-box-text">{skill.belowStandard}</p>
+              </div>
+            ) : null}
             <div className="standard-section">
               <div className="standard-box-header"><span>{skill.level} standard</span></div>
               <p className="standard-box-text">{skill.standard}</p>
