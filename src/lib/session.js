@@ -64,14 +64,18 @@ export function getActionPlan(session, paddlerId) {
 export function setActionPlan(session, paddlerId, text) {
   return { ...session, actionPlans: { ...(session.actionPlans || {}), [paddlerId]: text } };
 }
+// A v3 session has per-paddler `target`; v2 sessions and non-objects are rejected.
+export function isV3Session(s) {
+  return !!s && Array.isArray(s.paddlers) && (s.paddlers.length === 0 || 'target' in s.paddlers[0]);
+}
+
 export function saveSession(session) { localStorage.setItem(KEY, JSON.stringify(session)); }
 export function loadSession() {
   const raw = localStorage.getItem(KEY);
   if (!raw) return null;
   try {
     const s = JSON.parse(raw);
-    // v3 sessions have per-paddler `target`; discard a v2-shaped session.
-    if (!s || !Array.isArray(s.paddlers) || (s.paddlers.length > 0 && !('target' in s.paddlers[0]))) { clearSession(); return null; }
+    if (!isV3Session(s)) { clearSession(); return null; }
     return s;
   } catch { clearSession(); return null; }
 }

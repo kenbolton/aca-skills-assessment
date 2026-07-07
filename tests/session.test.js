@@ -1,5 +1,5 @@
 import { expect, test, beforeEach } from 'vitest';
-import { createSession, getResult, setRating, setFeedback, getActionPlan, setActionPlan, conditionsSummary, optionFor, saveSession, loadSession, clearSession } from '../src/lib/session.js';
+import { createSession, getResult, setRating, setFeedback, getActionPlan, setActionPlan, conditionsSummary, optionFor, saveSession, loadSession, clearSession, isV3Session } from '../src/lib/session.js';
 
 beforeEach(() => {
   const store = new Map();
@@ -83,4 +83,12 @@ test('createSession carries the config intro (null when absent)', () => {
   const intro = { title: 'T', sections: [{ heading: 'H', body: 'B' }] };
   const s = createSession({ id: 's3', createdAt: 't', config: { ...cfg, intro }, paddlers: [{ name: 'Me', target: 'L2' }] });
   expect(s.intro).toEqual(intro);
+});
+
+test('isV3Session accepts v3 shape and rejects v2/garbage', () => {
+  expect(isV3Session({ paddlers: [{ target: 'L3' }] })).toBe(true);
+  expect(isV3Session({ paddlers: [] })).toBe(true);          // empty group is valid
+  expect(isV3Session({ paddlers: [{ name: 'A' }] })).toBe(false); // v2 (no target)
+  expect(isV3Session(null)).toBe(false);
+  expect(isV3Session({})).toBe(false);
 });
