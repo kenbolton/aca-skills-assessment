@@ -3,17 +3,19 @@ import { skillById, optionFor, getResult } from './session.js';
 // Completion status of one skill across the paddlers it applies to:
 //   'done' — every applicable paddler is rated and no required note is missing
 //   'warn' — every applicable paddler is rated but a required note is still blank
+//   'dno'  — a required skill was marked "Did Not Observe" (blocks a pass)
 //   'todo' — at least one applicable paddler is unrated (or none apply)
 export function skillStatus(session, skill) {
   const applicable = session.paddlers.filter(p => p.target === skill.level);
   if (applicable.length === 0) return 'todo';
-  let anyNeedsFeedback = false;
+  let anyNeedsFeedback = false, anyDno = false;
   for (const p of applicable) {
     const r = getResult(session, p.id, skill.id);
     if (!r || r.rating === null) return 'todo';
+    if (r.rating === 'dno' && !skill.optional) anyDno = true;
     if (resultNeedsFeedback(session, r)) anyNeedsFeedback = true;
   }
-  return anyNeedsFeedback ? 'warn' : 'done';
+  return anyNeedsFeedback ? 'warn' : anyDno ? 'dno' : 'done';
 }
 
 export function resultNeedsFeedback(session, result) {

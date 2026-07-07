@@ -26,7 +26,7 @@ const TRAINING_BY_LEVEL = Object.fromEntries(
 );
 const PRIVATE = import.meta.env.VITE_PRIVATE === 'true';
 
-const STATUS_MARK = { done: '✓', warn: '⚠', todo: '○' };
+const STATUS_MARK = { done: '✓', warn: '⚠', dno: '⊘', todo: '○' };
 function shortCat(c) { return String(c).replace(/^(Core|Venue[^:]*):\s*/, ''); }
 
 function countRatedCoreSkills(session, visibleSkills) {

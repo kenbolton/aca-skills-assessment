@@ -48,6 +48,9 @@ test('skillStatus reflects completion across the paddlers a skill applies to', (
   expect(st([r('p1', 'meets'), r('p2', 'meets')])).toBe('done');
   expect(st([r('p1', 'meets'), r('p2', 'below')])).toBe('warn');
   expect(st([r('p1', 'meets'), r('p2', 'below', 'tippy')])).toBe('done');
+  // a required DNO gets its own status; a still-missing note (warn) outranks it
+  expect(st([r('p1', 'meets'), r('p2', 'dno')])).toBe('dno');
+  expect(st([r('p1', 'below'), r('p2', 'dno')])).toBe('warn');
 });
 
 test('self-assessment waives all required feedback', () => {

@@ -1,4 +1,3 @@
-import { jsPDF } from 'jspdf';
 import { paddlerSummary } from './summary.js';
 import { getActionPlan, conditionsSummary } from './session.js';
 
@@ -13,7 +12,10 @@ function safeName(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
-export function downloadPaddlerPdf(session, paddlerId) {
+export async function downloadPaddlerPdf(session, paddlerId) {
+  // jsPDF (and its html2canvas/purify deps) is heavy and only needed on export,
+  // so it is loaded on demand — keeping it out of the initial app bundle.
+  const { jsPDF } = await import('jspdf');
   const summary = paddlerSummary(session, paddlerId);
   const doc = new jsPDF({ unit: 'pt', format: 'letter' });
   const marginX = 56;

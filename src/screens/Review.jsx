@@ -108,7 +108,7 @@ export function Review({ session, onChange, onBack, onReset }) {
 
               <button
                 type="button"
-                onClick={() => downloadPaddlerPdf(session, paddler.id)}
+                onClick={() => { downloadPaddlerPdf(session, paddler.id).catch(err => console.error('PDF export failed', err)); }}
                 disabled={outstanding.length > 0}
               >
                 Download {summary.name}&rsquo;s PDF

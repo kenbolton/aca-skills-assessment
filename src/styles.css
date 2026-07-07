@@ -122,6 +122,7 @@ button { min-height: var(--hit); font-size: 18px; }
 .skills-nav-mark { width: 1.2rem; text-align: center; font-weight: 700; }
 .skills-nav-item.status-done .skills-nav-mark { color: #1f8a4c; }
 .skills-nav-item.status-warn .skills-nav-mark { color: #c77700; }
+.skills-nav-item.status-dno .skills-nav-mark { color: #6b7280; }
 .skills-nav-item.status-todo .skills-nav-mark { color: #bbb; }
 .skills-nav-name { flex: 1; }
 .skills-nav-cat { color: #888; font-size: 0.8rem; white-space: nowrap; }
