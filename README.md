@@ -2,12 +2,14 @@
 
 An offline-first Progressive Web App for running **ACA coastal kayaking skills
 assessments** on the water — for up to **5 paddlers at once** — against the
-official **Level 1 (Introduction to Kayaking)** and **Level 2 (Essentials of
-Kayak Touring)** standards.
+official **Level 1 through Level 5** coastal kayaking standards, from
+*Introduction to Kayaking* (L1) to *Advanced Open Water Coastal Kayaking* (L5).
 
 Built to be tapped on a phone from a kayak: it works with **zero network
-connectivity** once installed, and syncs finished sessions back to a home
-server (e.g. a Raspberry Pi over Tailscale) when back in range.
+connectivity** once installed. On the public site nothing leaves your device —
+you assess and export locally. A self-hosted build additionally syncs finished
+sessions back to a home server (e.g. a Raspberry Pi over Tailscale) when back in
+range.
 
 ## Try it
 
@@ -30,10 +32,20 @@ self-hosted build.
 
 ## Features
 
-- **Two official ACA levels**, each with its own rating scale:
-  - **L1** — 43 criteria, rated *Pass / No / Did Not Observe*.
-  - **L2** — 36 core skills + 19 optional "developing" skills, rated
-    *Exceeds / Meets / Below*.
+- **Five official ACA levels**, each with its own criteria and rating scale:
+  - **L1 (Introduction to Kayaking)** — 43 criteria, rated
+    *Pass / No / Did Not Observe*.
+  - **L2 (Essentials of Kayak Touring)** — 36 core + 19 optional "developing"
+    skills, rated *Exceeds / Meets / Below*, with cross-level landing to L1.
+  - **L3 (Coastal Kayaking)** — 60 core + 4 optional skills, rated
+    *Exceeds / Meets / Below / Did Not Observe*.
+  - **L4 (Open Water Coastal Kayaking)** — 74 core + 9 optional skills, same
+    scale.
+  - **L5 (Advanced Open Water Coastal Kayaking)** — 71 core + 1 optional skill,
+    same scale.
+- **L1/L2 combined mode**: assign each paddler a target level (L1 or L2) and
+  assess the group together; L3–L5 are standalone single-level assessments.
+- **Self-assessment mode**: flip one switch to self-review as a single paddler.
 - Each skill shows its **official ACA standard** as an on-screen reference.
 - **Enforced feedback**: a below-standard rating requires a written note before
   you can move on — dictate it with your phone keyboard's mic. Optional
@@ -41,12 +53,13 @@ self-hosted build.
 - **Rate by skill**: one skill on screen, a row per paddler — matches how a
   group performs the same skill together.
 - **Autosaves every tap** to the browser and resumes after a lock or refresh.
-- **Exports**: per-paddler PDF, full-session CSV, and sync to a home server.
+- **Exports**: per-paddler PDF and full-session CSV. The self-hosted build adds
+  one-tap sync of finished sessions to a home server.
 - **Installable, offline PWA** — the whole app (including the PDF engine) is
   precached by a service worker.
 
-> The skill lists and standards in `src/data/skills.json` are transcribed from
-> the official ACA assessment documents (rev. 2/25/2025). Verify against the
+> The skill lists and standards in `src/data/skills*.json` are transcribed from
+> the official ACA assessment documents (rev. 5/1/2024). Verify against the
 > current official sheets before relying on them for a formal assessment.
 
 ## Tech
@@ -80,11 +93,15 @@ self-hosted Pi build stays completely silent.
 service worker needs HTTPS, which `tailscale serve` provides on a tailnet.
 
 ```bash
-npm run build
-node pi/sync-server.mjs                       # serves app + /sync on :8787
+VITE_PRIVATE=true npm run build               # enables the Sync button + archive
+node pi/sync-server.mjs                        # serves app + /sync on :8787
 tailscale serve --https=443 http://localhost:8787
-tailscale serve status                        # prints the https URL
+tailscale serve status                         # prints the https URL
 ```
+
+The **Sync to Pi** button and the **Past assessments** archive exist only in the
+`VITE_PRIVATE=true` build — the public GitHub Pages build hides both, so visitors
+only ever assess and export locally.
 
 Open the HTTPS URL on your phone, **Add to Home Screen**, and it runs offline
 from then on. Because the app and `/sync` share an origin, the in-app **Sync to
