@@ -1,26 +1,43 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import { Setup } from './screens/Setup.jsx';
 import { Rate } from './screens/Rate.jsx';
 import { Review } from './screens/Review.jsx';
-import { saveSession, loadSession, clearSession } from './lib/session.js';
+import { Archive } from './screens/Archive.jsx';
+import { initStore, getSession, putSession, deleteSession, getCurrentId, setCurrentId } from './lib/store.js';
 import { SyncButton } from './components/SyncButton.jsx';
 
 export function App() {
-  const [session, setSession] = useState(() => loadSession());
-  const [screen, setScreen] = useState(() => (session ? 'rate' : 'setup'));
+  const [ready, setReady] = useState(false);
+  const [session, setSession] = useState(null);
+  const [screen, setScreen] = useState('setup');
   const [focusSkillId, setFocusSkillId] = useState(null);
 
+  useEffect(() => {
+    let live = true;
+    (async () => {
+      try {
+        await initStore();
+        const id = getCurrentId();
+        const s = id ? await getSession(id) : null;
+        if (!live) return;
+        if (s) { setSession(s); setScreen('rate'); }
+      } finally {
+        if (live) setReady(true);
+      }
+    })();
+    return () => { live = false; };
+  }, []);
+
   function begin(s) {
-    // A newly started assessment must open at its first page (intro/first
-    // skill), never at a skill left focused by a prior session's "Go to skill".
     setFocusSkillId(null);
-    saveSession(s);
+    putSession(s);            // fire-and-forget upsert
+    setCurrentId(s.id);
     setSession(s);
     setScreen('rate');
   }
 
   function update(s) {
-    saveSession(s);
+    putSession(s);            // autosave; never blocks the tap
     setSession(s);
   }
 
@@ -29,13 +46,32 @@ export function App() {
         !window.confirm('Start over? This clears the current assessment and cannot be undone.')) {
       return;
     }
-    clearSession();
+    const id = getCurrentId();
+    if (id) deleteSession(id);
+    setCurrentId(null);
     setSession(null);
     setScreen('setup');
   }
 
+  async function resume(id) {
+    const s = await getSession(id);
+    if (!s) return;
+    setFocusSkillId(null);
+    setCurrentId(id);
+    setSession(s);
+    setScreen('review');
+  }
+
+  if (!ready) {
+    return <main className="screen"><p className="hint">Loading…</p></main>;
+  }
+
+  if (screen === 'archive') {
+    return <Archive onResume={resume} onBack={() => setScreen('setup')} />;
+  }
+
   if (screen === 'setup' || !session) {
-    return <Setup onStart={begin} />;
+    return <Setup onStart={begin} onArchive={() => setScreen('archive')} />;
   }
 
   if (screen === 'rate') {
