@@ -20,10 +20,22 @@ export function metricsEnabled() {
   return Boolean(SITE_CODE) && !dntEnabled() && online();
 }
 
-// Side-effect boundary: overridden in Task 2 to inject the real script.
-// Kept as a named export so it is a single, mockable seam.
+// Side-effect boundary: injects GoatCounter's external count.js exactly
+// once, guarded by a module-level flag. Kept as a named export so it is a
+// single, mockable seam.
+let injected = false;
 export function loadGoatCounter() {
-  // Task 1: no-op. Task 2 replaces this body with real injection.
+  if (injected) return;
+  if (typeof document === 'undefined') return;
+  injected = true;
+  // Ensure the global exists before count.js loads so early calls are queued
+  // by GoatCounter's own no-op shim (it replaces window.goatcounter on load).
+  if (typeof window !== 'undefined' && !window.goatcounter) window.goatcounter = { no_onload: true };
+  const s = document.createElement('script');
+  s.setAttribute('src', '//gc.zgo.at/count.js');
+  s.setAttribute('async', 'true');
+  s.setAttribute('data-goatcounter', `https://${SITE_CODE}.goatcounter.com/count`);
+  document.head.appendChild(s);
 }
 
 // `buildArg` is a thunk, not a value: it must only be invoked after the

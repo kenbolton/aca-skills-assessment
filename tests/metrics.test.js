@@ -55,3 +55,45 @@ describe('metrics guards', () => {
     expect(() => m.countEvent('/start/L3/group', 'Assessment started')).not.toThrow();
   });
 });
+
+describe('metrics emission', () => {
+  beforeEach(() => { vi.resetModules(); });
+  afterEach(() => { vi.unstubAllEnvs(); delete globalThis.navigator; delete globalThis.window; delete globalThis.document; delete globalThis.location; });
+
+  function fakeDom() {
+    const created = [];
+    Object.defineProperty(globalThis, 'navigator', {
+      value: { doNotTrack: undefined, onLine: true },
+      configurable: true,
+      writable: true,
+    });
+    globalThis.location = { pathname: '/aca-skills-assessment/', search: '' };
+    globalThis.document = {
+      title: 'ACA Skills Assessment',
+      querySelector: () => null,
+      createElement: () => { const el = { setAttribute(k, v) { this[k] = v; } }; created.push(el); return el; },
+      head: { appendChild: () => {} },
+    };
+    const calls = [];
+    globalThis.window = { goatcounter: { count: (arg) => calls.push(arg) } };
+    return { calls, created };
+  }
+
+  it('emits an event arg with event:true and the given path/title', async () => {
+    vi.stubEnv('VITE_GOATCOUNTER_CODE', 'aca-skills');
+    const { calls, created } = fakeDom();
+    const m = await import('../src/lib/metrics.js');
+    m.countEvent('/start/L1-L2/group', 'Assessment started');
+    expect(calls).toEqual([{ path: '/start/L1-L2/group', title: 'Assessment started', event: true }]);
+    expect(created.length).toBe(1); // script injected once
+  });
+
+  it('injects the script only once across multiple calls', async () => {
+    vi.stubEnv('VITE_GOATCOUNTER_CODE', 'aca-skills');
+    const { created } = fakeDom();
+    const m = await import('../src/lib/metrics.js');
+    m.countPageView();
+    m.countEvent('/install', 'App installed');
+    expect(created.length).toBe(1);
+  });
+});
