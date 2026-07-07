@@ -46,9 +46,12 @@ Meets sits near ring 4, with Below skills pulled in to ring 3).
 
 - **One radar per non-optional category** the paddler was assessed in (their
   target level's categories — `Core:` and `Venue Specific:`; optional/"developing"
-  skills are excluded, as they never count against a paddler).
-- **Spokes = that category's core skills** (all of them, rated or not), labeled
-  with short skill names. Unrated/DNO skills draw as a gap at center.
+  skills are excluded, as they never count against a paddler). The **category
+  name** is the radar's heading — that's the only text; individual spokes are
+  **not labeled** (the value is the shape, not per-skill readout).
+- **Spokes = that category's core skills** (all of them, rated or not), one
+  unlabeled spoke each, evenly spaced clockwise from 12 o'clock. Unrated/DNO
+  skills draw as a gap at center.
 - **Radius = level attained** per the table above; concentric rings mark L1…L5.
 - **One set of radars per paddler**, inside that paddler's existing review card.
 - Hand-rolled inline **SVG** (no chart library — fits the offline/precache/jsPDF
@@ -71,15 +74,16 @@ Pure scoring/geometry in `src/lib/`; thin SVG views in `src/components/`.
 - `skillLevelValue(target: string, rating: string|null): number|null` —
   implements the table above; returns `null` for DNO/unrated (a gap). This is
   the semantic core and is exhaustively unit-tested.
-- `competencyRadars(session, paddlerId): Array<{ category: string, skills:
-  Array<{ id: string, name: string, level: number|null }> }>` — the paddler's
-  **non-optional** skills for their target level, grouped by category in skills
-  order, each skill carrying its `skillLevelValue`. Categories preserve first-seen
-  order. Consumers decide radar vs fallback by `skills.length`.
+- `competencyRadars(session, paddlerId): Array<{ category: string, levels:
+  Array<number|null> }>` — the paddler's **non-optional** skills for their target
+  level, grouped by category in skills order; each category carries the ordered
+  list of its skills' `skillLevelValue` (a `null` per unrated/DNO skill). No
+  per-skill labels are needed (spokes are unlabeled). Categories preserve
+  first-seen order. Consumers decide radar vs fallback by `levels.length`.
 
-Reuses existing helpers (`skillById`/`skillLabel`, the paddler's `target`, and
-the session `results`). Optional skills and skills for other levels are excluded
-(mirrors `paddlerSummary`'s core filtering).
+Uses the paddler's `target` and the session `results`/`skills`. Optional skills
+and skills for other levels are excluded (mirrors `paddlerSummary`'s core
+filtering).
 
 ### 2. `src/lib/radar-geometry.js` (new) — geometry (pure)
 
@@ -95,17 +99,19 @@ drawn at 1,2,3,4,5. Pure math, unit-tested; no DOM.
 
 ### 3. `src/components/CompetencyRadar.jsx` (new) — one category (thin view)
 
-Props: `{ category, skills }`. If `skills.length >= 3`, render an SVG radar
-(rings at L1–L5, one labeled spoke per skill, a filled polygon through the
-points, gaps for `null`); else render the compact labeled level readout. Skills
-colored per the category's color. Named export, no default.
+Props: `{ category, levels }`. The category name is a heading above the chart.
+If `levels.length >= 3`, render an SVG radar: concentric rings at L1–L5, one
+**unlabeled** spoke per level (evenly spaced from 12 o'clock), a filled polygon
+through the points, and a gap (no vertex / center mark) for each `null`. If
+`levels.length < 3` (can't form a polygon), render a compact **level gauge**
+instead: a short L1–L5 scale with a dot per skill at its level (still no
+per-skill labels). Named export, no default.
 
 ### 4. `src/components/CompetencyRadars.jsx` (new) — all of a paddler's radars
 
 Props: `{ session, paddlerId }`. Calls `competencyRadars`, renders a
-`CompetencyRadar` per category as a small-multiples grid, with a heading per
-category and a legend for the L1–L5 rings. Renders nothing if the paddler has no
-core skills.
+`CompetencyRadar` per category as a small-multiples grid (category heading on
+each). Renders nothing if the paddler has no core skills.
 
 ### 5. `src/screens/Review.jsx` — mount per card
 
@@ -114,8 +120,8 @@ paddlerId={paddler.id} />` (below the existing counts / below-standard detail).
 
 ### 6. `src/styles.css`
 
-Small-multiples grid layout, radar sizing (fits phone width), ring/spoke/label
-styles, category colors, and the fallback readout style.
+Small-multiples grid layout, radar sizing (fits phone width), ring/spoke/polygon
+styles, category-heading style, and the `<3` level-gauge fallback style.
 
 ## Data flow
 
@@ -144,9 +150,9 @@ over the existing session; nothing is stored.
 - **Unit — `competency.js`:** `targetLevelNum` for L1–L5 and unknown;
   `skillLevelValue` for every row of the table (L3/L4/L5 below/meets/exceeds →
   T−1/T/T+½; L2 below/l1/meets/exceeds → 0/1/2/2½; L1 no/pass → 0/1; dno & null →
-  `null`); `competencyRadars` groups a fixture paddler's core skills by category,
-  excludes optional and other-level skills, preserves order, and carries `null`
-  for unrated skills.
+  `null`); `competencyRadars` groups a fixture paddler's core skills by category
+  into ordered `levels` arrays, excludes optional and other-level skills,
+  preserves category order, and carries `null` for unrated/DNO skills.
 - **Unit — `radar-geometry.js`:** `radarPoints` returns one entry per value with
   the first spoke at 12 o'clock, radius proportional to `value/max`, and `null`
   passthrough for gaps; `ringPolygonPoints` yields `count` vertices for a ring.
