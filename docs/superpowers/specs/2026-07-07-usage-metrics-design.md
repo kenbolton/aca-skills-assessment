@@ -83,31 +83,38 @@ Responsibilities / guards (each short-circuits **before** any network attempt):
 - Register an `appinstalled` window listener →
   `countEvent('/install', 'App installed')`.
 
-### 3. `src/app.jsx` — `begin(s)`
+### 3. `src/screens/Setup.jsx` — `handleStart()`
 
-Single chokepoint where an assessment starts and the level is in hand. Add one
-call:
+The `level` value is **not** stored on the session object; it lives only as the
+`level` select state inside `Setup` (values: `L1/L2`, `L3`, `L4`, `L5`). So the
+"assessment started" event fires here, immediately before `onStart(session)`,
+where both `level` and `selfAssessment` are in scope. The slash in `L1/L2` is
+sanitized to `L1-L2` so it does not create a nested GoatCounter path:
 
 ```js
-countEvent('/start/' + s.level + (s.selfAssessment ? '/self' : '/group'),
+countEvent('/start/' + level.replace('/', '-') + (selfAssessment ? '/self' : '/group'),
            'Assessment started');
 ```
 
 Anonymous and aggregate; distinct GoatCounter paths yield the level + self/group
 breakdown.
 
-### 4. Disclosure (brand honesty)
+### 4. Disclosure — a privacy statement (brand honesty)
 
-- `src/components/Attribution.jsx` — add one sentence: anonymous, cookieless
-  page counts via GoatCounter; no personal data; honors Do-Not-Track.
-- `README.md` — same note near the privacy / "Try it" section.
+- **`src/components/PrivacyStatement.jsx` (new)** — a short, dedicated privacy
+  statement component covering the whole app's stance in plain language:
+  assessment data stays on the device; optional sync goes only to the owner's
+  private home server; the public site keeps anonymous, cookieless page counts
+  via GoatCounter (no personal data, no cookies) and honors Do-Not-Track.
+  Rendered on the Setup screen alongside the existing `Attribution` footer.
+- `README.md` — a matching **Privacy** section near "Try it".
 
 ## Data flow
 
 ```
 Online boot ─▶ countPageView()            (unless DNT)
 Install     ─▶ appinstalled ─▶ countEvent('/install', …)
-Start assess─▶ begin(s) ─▶ countEvent('/start/<level>/<self|group>', …)
+Start assess─▶ Setup.handleStart() ─▶ countEvent('/start/<level>/<self|group>', …)
 Offline     ─▶ every call is a silent no-op; assessment unaffected
 Reading data─▶ GoatCounter dashboard (Layer 1); Pi sessions/ (Layer 2)
 ```
