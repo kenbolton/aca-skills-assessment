@@ -70,3 +70,16 @@ test('initStore runs migration', async () => {
   await initStore();
   expect((await getSession('leg')).id).toBe('leg');
 });
+
+test('importSessions rejects a v3-shaped session missing results/skills', async () => {
+  const bad = { id: 'x', paddlers: [{ target: 'L3' }] };
+  expect(await importSessions(bad)).toBe(0);
+  expect(await getSession('x')).toBe(null);
+});
+
+test('listSummaries skips a malformed record instead of throwing', async () => {
+  await putSession({ id: 'bad', paddlers: [{ target: 'L3' }] });
+  await putSession(sess('good', '2026-01-01'));
+  const rows = await listSummaries();
+  expect(rows.map(r => r.id)).toEqual(['good']);
+});

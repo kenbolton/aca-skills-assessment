@@ -22,7 +22,7 @@ function openDb() {
       if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE, { keyPath: 'id' });
     };
     req.onsuccess = () => { dbInstance = req.result; resolve(req.result); };
-    req.onerror = () => reject(req.error);
+    req.onerror = () => { dbPromise = null; reject(req.error); };
   });
   return dbPromise;
 }
@@ -56,7 +56,9 @@ export const exportAll = getAllSessions;
 
 export async function listSummaries() {
   const all = await getAllSessions();
-  return all.map(sessionSummary)
+  return all
+    .map(s => { try { return sessionSummary(s); } catch { return null; } })
+    .filter(Boolean)
     .sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
 }
 
@@ -64,7 +66,9 @@ export async function importSessions(input) {
   const arr = Array.isArray(input) ? input : [input];
   let n = 0;
   for (const s of arr) {
-    if (isV3Session(s) && typeof s.id === 'string') { await putSession(s); n++; }
+    if (isV3Session(s) && typeof s.id === 'string' && Array.isArray(s.results) && Array.isArray(s.skills)) {
+      await putSession(s); n++;
+    }
   }
   return n;
 }

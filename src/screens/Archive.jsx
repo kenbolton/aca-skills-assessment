@@ -44,7 +44,7 @@ export function Archive({ onResume, onBack }) {
     try {
       const data = JSON.parse(await f.text());
       const n = await importSessions(data);
-      setMsg(`Imported ${n} assessment${n === 1 ? '' : 's'}.`);
+      setMsg(n === 0 ? 'No valid assessments found in that file.' : `Imported ${n} assessment${n === 1 ? '' : 's'}.`);
       refresh();
     } catch { setMsg('That file is not a valid assessment JSON.'); }
     e.target.value = '';

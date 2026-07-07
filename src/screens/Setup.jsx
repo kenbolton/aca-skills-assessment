@@ -63,7 +63,7 @@ export function Setup({ onStart, onArchive }) {
       ? [withTarget({ name: solo.name.trim() || 'Me', target: solo.target })]
       : paddlers.map(withTarget);
     const session = createSession({
-      id: `sess-${Date.now()}`,
+      id: `sess-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       createdAt: new Date().toISOString(),
       config: CONFIGS[level],
       location,

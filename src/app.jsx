@@ -30,14 +30,14 @@ export function App() {
 
   function begin(s) {
     setFocusSkillId(null);
-    putSession(s);            // fire-and-forget upsert
+    putSession(s).catch(err => console.error('save failed', err));            // fire-and-forget upsert
     setCurrentId(s.id);
     setSession(s);
     setScreen('rate');
   }
 
   function update(s) {
-    putSession(s);            // autosave; never blocks the tap
+    putSession(s).catch(err => console.error('autosave failed', err));            // autosave; never blocks the tap
     setSession(s);
   }
 
@@ -47,7 +47,7 @@ export function App() {
       return;
     }
     const id = getCurrentId();
-    if (id) deleteSession(id);
+    if (id) deleteSession(id).catch(err => console.error('delete failed', err));
     setCurrentId(null);
     setSession(null);
     setScreen('setup');
