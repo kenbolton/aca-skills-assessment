@@ -23,5 +23,8 @@ export function paddlerSummary(session, paddlerId) {
     const opt = optionFor(session, s, r.rating);
     if (opt && opt.requiresFeedback) flagged.push(item(r, s));
   }
-  return { name: paddler ? paddler.name : '', target, landing, pendingCount, belowCount, coreTotal, counts, unrated, flagged, optionalItems };
+  // The landing value that means the paddler met their target level.
+  const PASSING = { L1: 'L1', L2: 'L2', L3: 'meets_level', L4: 'meets_level', L5: 'meets_level' };
+  const passing = landing === PASSING[target];
+  return { name: paddler ? paddler.name : '', target, landing, passing, pendingCount, belowCount, coreTotal, counts, unrated, flagged, optionalItems };
 }

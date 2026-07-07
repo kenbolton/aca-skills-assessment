@@ -53,6 +53,7 @@ export function App() {
   return (
     <Review
       session={session}
+      onChange={update}
       onBack={() => setScreen('rate')}
       onReset={reset}
     />

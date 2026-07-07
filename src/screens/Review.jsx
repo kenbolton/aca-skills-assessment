@@ -1,5 +1,6 @@
 import { paddlerSummary } from '../lib/summary.js';
 import { sessionToCsv } from '../lib/csv.js';
+import { getActionPlan, setActionPlan } from '../lib/session.js';
 import { invalidResults, isSessionComplete } from '../lib/validation.js';
 import { downloadPaddlerPdf } from '../lib/pdf.js';
 import { SyncButton } from '../components/SyncButton.jsx';
@@ -16,7 +17,7 @@ function download(name, text, type) {
   URL.revokeObjectURL(url);
 }
 
-export function Review({ session, onBack, onReset }) {
+export function Review({ session, onChange, onBack, onReset }) {
   const outstanding = invalidResults(session);
   const complete = isSessionComplete(session);
 
@@ -82,6 +83,18 @@ export function Review({ session, onBack, onReset }) {
                   {' — '}
                   {summary.optionalItems.map(item => item.name).join(', ')}
                 </p>
+              ) : null}
+
+              {!summary.passing && summary.landing !== 'pending' ? (
+                <label className="review-action-plan">
+                  <span>Action plan &amp; return recommendation</span>
+                  <textarea
+                    className="feedback-box"
+                    value={getActionPlan(session, paddler.id)}
+                    placeholder="Areas to practice and when to return for reassessment"
+                    onInput={e => onChange && onChange(setActionPlan(session, paddler.id, e.currentTarget.value))}
+                  />
+                </label>
               ) : null}
 
               <button

@@ -13,7 +13,7 @@ export function createSession({ id, createdAt, config, location = '', paddlers, 
       if (sk.level === p.target) results.push({ paddlerId: p.id, skillId: sk.id, rating: null, feedback: '' });
     }
   }
-  return { id, createdAt, location, selfAssessment: !!selfAssessment, scales: config.scales, intro: config.intro || null, paddlers: withIds, skills: config.skills, results };
+  return { id, createdAt, location, selfAssessment: !!selfAssessment, scales: config.scales, intro: config.intro || null, paddlers: withIds, skills: config.skills, results, actionPlans: {} };
 }
 
 export function getResult(session, paddlerId, skillId) {
@@ -38,6 +38,14 @@ export function setRating(session, paddlerId, skillId, rating) {
 }
 export function setFeedback(session, paddlerId, skillId, feedback) {
   return mapResult(session, paddlerId, skillId, r => ({ ...r, feedback }));
+}
+// A per-paddler action plan / return recommendation, given when a paddler is
+// below standard. Kept in a map keyed by paddler id (absent on older sessions).
+export function getActionPlan(session, paddlerId) {
+  return (session.actionPlans && session.actionPlans[paddlerId]) || '';
+}
+export function setActionPlan(session, paddlerId, text) {
+  return { ...session, actionPlans: { ...(session.actionPlans || {}), [paddlerId]: text } };
 }
 export function saveSession(session) { localStorage.setItem(KEY, JSON.stringify(session)); }
 export function loadSession() {

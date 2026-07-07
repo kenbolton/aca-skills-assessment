@@ -1,5 +1,6 @@
 import { jsPDF } from 'jspdf';
 import { paddlerSummary } from './summary.js';
+import { getActionPlan } from './session.js';
 
 const LANDING_LABEL = {
   L2: 'Level 2',
@@ -107,6 +108,22 @@ export function downloadPaddlerPdf(session, paddlerId) {
         y += wrapped.length * 14 + 6;
       }
     }
+  }
+
+  const actionPlan = getActionPlan(session, paddlerId).trim();
+  if (actionPlan) {
+    y += 10;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(13);
+    ensureRoom(1);
+    doc.text('Action plan & return recommendation:', marginX, y);
+    y += 18;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(11);
+    const wrapped = doc.splitTextToSize(actionPlan, 480);
+    ensureRoom(wrapped.length);
+    doc.text(wrapped, marginX, y);
+    y += wrapped.length * 14 + 6;
   }
 
   doc.save(`aca-${summary.target}-${safeName(summary.name)}.pdf`);

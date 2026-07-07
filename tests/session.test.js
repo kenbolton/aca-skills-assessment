@@ -1,5 +1,5 @@
 import { expect, test, beforeEach } from 'vitest';
-import { createSession, getResult, setRating, setFeedback, optionFor, saveSession, loadSession, clearSession } from '../src/lib/session.js';
+import { createSession, getResult, setRating, setFeedback, getActionPlan, setActionPlan, optionFor, saveSession, loadSession, clearSession } from '../src/lib/session.js';
 
 beforeEach(() => {
   const store = new Map();
@@ -55,6 +55,18 @@ test('createSession stores selfAssessment, defaulting to false', () => {
   expect(base().selfAssessment).toBe(false);
   const solo = createSession({ id: 's2', createdAt: 't', config: cfg, selfAssessment: true, paddlers: [{ name: 'Me', target: 'L2' }] });
   expect(solo.selfAssessment).toBe(true);
+});
+
+test('action plan: empty by default, set/get round-trips per paddler', () => {
+  let s = base();
+  const alex = s.paddlers[0].id;
+  expect(getActionPlan(s, alex)).toBe('');
+  s = setActionPlan(s, alex, 'Practice rolling; return in 6 weeks');
+  expect(getActionPlan(s, alex)).toBe('Practice rolling; return in 6 weeks');
+  // other paddler unaffected
+  expect(getActionPlan(s, s.paddlers[1].id)).toBe('');
+  // reading an action plan from a pre-feature session (no map) is safe
+  expect(getActionPlan({}, alex)).toBe('');
 });
 
 test('createSession carries the config intro (null when absent)', () => {
