@@ -28,25 +28,53 @@ const GUIDES = [
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 // Turn pdftotext output into a simple, readable HTML fragment: blank-line-separated
-// blocks become paragraphs; short heading-like lines become <h4>. Drop page footers.
+// blocks become paragraphs; short heading-like lines become <h4>. PDF furniture —
+// page numbers, copyright footers, all-caps running headers, and "cont'd" section
+// markers — is dropped, and sentences split across a removed page break are rejoined.
 function toHtml(title, text) {
-  const isFooter = (l) => /^\s*(©|American Canoe Association|https?:\/\/|Date of last revision|Page \d|\d{1,3})\s*$/i.test(l)
-    || /American Canoe Association/i.test(l);
+  const dropLine = (l) => {
+    // Collapse the justified whitespace a PDF running header carries before testing.
+    const c = l.replace(/\s+/g, ' ').trim();
+    if (/American Canoe Association|©|https?:\/\/|Date of last revision/i.test(c)) return true;
+    if (/^(page\s*)?\d{1,3}$/i.test(c)) return true;                          // standalone page number
+    if (/^[a-z0-9]$/i.test(c)) return true;                                   // lone page-marker letter/digit
+    if (/\bcont['’`]?d\b/i.test(c) && c.length < 55) return true;             // "SURF ZONE cont'd"
+    // All-caps running header (ignore a "cont'd" suffix and a trailing page marker letter).
+    const alpha = c.replace(/\bcont['’`]?d\b/gi, '').replace(/\bcontinued\b/gi, '').replace(/\s+[a-z]\s*$/, '').replace(/[^A-Za-z]/g, '');
+    if (c.length < 55 && alpha.length >= 3 && alpha === alpha.toUpperCase()) return true;
+    return false;
+  };
+  const titleCase = (s) => s.replace(/\s+/g, ' ').trim().toLowerCase()
+    .replace(/\b([a-z])/g, (_, ch) => ch.toUpperCase()).replace(/\bL([45])\b/, 'L$1');
   const blocks = text.replace(/\r/g, '').split(/\n\s*\n/);
-  const parts = [`<h3>${esc(title)}</h3>`];
+  const items = [{ tag: 'h3', text: title }];
   for (const block of blocks) {
-    const lines = block.split('\n').map(l => l.trim()).filter(l => l && !isFooter(l));
+    const lines = block.split('\n').map(l => l.trim()).filter(l => l && !dropLine(l));
     if (!lines.length) continue;
-    const joined = lines.join(' ').replace(/\s+/g, ' ').trim();
+    let joined = lines.join(' ').replace(/\s+/g, ' ').trim();
     if (!joined) continue;
-    // A short line with no terminal punctuation reads as a heading.
-    if (lines.length === 1 && joined.length < 70 && !/[.!?:]$/.test(joined)) {
-      parts.push(`<h4>${esc(joined)}</h4>`);
+    // A section title (2+ all-caps words) glued to the front of its intro paragraph:
+    // split it into a heading + paragraph.
+    const glued = joined.match(/^([A-Z][A-Z’'&-]+(?:\s+(?:[A-Z][A-Z’'&-]+|L[45]|&|AND))+)\s+([A-Z][a-z].*)$/);
+    if (glued) {
+      items.push({ tag: 'h4', text: titleCase(glued[1]) });
+      joined = glued[2];
+    }
+    const tag = (lines.length === 1 && joined.length < 70 && !/[.!?:]$/.test(joined)) ? 'h4' : 'p';
+    items.push({ tag, text: joined });
+  }
+  // Rejoin a sentence split by removed page furniture: a paragraph starting lowercase
+  // right after a paragraph that didn't end in terminal punctuation.
+  const merged = [];
+  for (const it of items) {
+    const prev = merged[merged.length - 1];
+    if (it.tag === 'p' && prev && prev.tag === 'p' && !/[.!?:”"’)]\s*$/.test(prev.text) && /^[a-z(]/.test(it.text)) {
+      prev.text = (prev.text + ' ' + it.text).replace(/\s+/g, ' ');
     } else {
-      parts.push(`<p>${esc(joined)}</p>`);
+      merged.push(it);
     }
   }
-  return parts.join('\n');
+  return merged.map(it => `<${it.tag}>${esc(it.text)}</${it.tag}>`).join('\n');
 }
 
 await mkdir(CACHE, { recursive: true });
