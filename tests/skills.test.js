@@ -42,6 +42,12 @@ test('loadConfig passes belowStandard through (assessor-guide prose)', () => {
   }
 });
 
+test('L2 core skills carry a category competency (parity with L3/L4/L5)', () => {
+  const l2core = allSkills(cfg).filter(s => s.level === 'L2' && /^Core:/.test(s.category));
+  expect(l2core.length).toBeGreaterThan(0);
+  expect(l2core.every(s => typeof s.competency === 'string' && s.competency.length > 0)).toBe(true);
+});
+
 test('loadConfig passes a well-formed intro through', () => {
   expect(cfg.intro).toBeTruthy();
   expect(cfg.intro.title).toMatch(/Level 2/);
