@@ -17,6 +17,17 @@ Open it on your phone and tap **Add to Home Screen** to install. It then runs
 fully offline — assess yourself (or a group), and export a PDF or CSV of the
 results. Nothing is uploaded; all data stays on your device.
 
+## Privacy
+
+Your assessments stay on your device — nothing you enter about a paddler is
+uploaded anywhere.
+
+The public website keeps **anonymous, cookieless** counts of page visits, PWA
+installs, and assessments started (via [GoatCounter](https://www.goatcounter.com/)).
+No personal data and no cookies are collected, and the counter honors your
+browser's **Do-Not-Track** setting. Counting is disabled entirely in the
+self-hosted build.
+
 ## Features
 
 - **Two official ACA levels**, each with its own rating scale:
