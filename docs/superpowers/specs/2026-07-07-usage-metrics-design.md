@@ -102,11 +102,12 @@ breakdown.
 ### 4. Disclosure — a privacy statement (brand honesty)
 
 - **`src/components/PrivacyStatement.jsx` (new)** — a short, dedicated privacy
-  statement component covering the whole app's stance in plain language:
-  assessment data stays on the device; optional sync goes only to the owner's
-  private home server; the public site keeps anonymous, cookieless page counts
-  via GoatCounter (no personal data, no cookies) and honors Do-Not-Track.
-  Rendered on the Setup screen alongside the existing `Attribution` footer.
+  statement component in plain language: assessment data stays on the device;
+  the site keeps anonymous, cookieless page counts via GoatCounter (no personal
+  data, no cookies) and honors Do-Not-Track. It does **not** mention the
+  optional home-server sync — that is an owner/self-host concern, not relevant
+  to public visitors. Rendered on the Setup screen alongside the existing
+  `Attribution` footer.
 - `README.md` — a matching **Privacy** section near "Try it".
 
 ## Data flow

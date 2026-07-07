@@ -496,8 +496,7 @@ Expected: FAIL — cannot resolve `../src/components/PrivacyStatement.jsx`.
 // telemetry is anonymous, cookieless page/event counts on the public site.
 export const PRIVACY_TEXT = [
   'Your assessments stay on your device. Nothing you enter about a paddler is uploaded anywhere.',
-  'You can optionally sync a finished session to your own private home server; it is never sent to anyone else.',
-  'The public website keeps anonymous, cookieless counts of page visits, installs, and assessments started — no personal data, no cookies, and it honors your browser’s Do-Not-Track setting.',
+  'This site keeps anonymous, cookieless counts of page visits, installs, and assessments started — no personal data, no cookies, and it honors your browser’s Do-Not-Track setting.',
 ];
 
 export function PrivacyStatement() {
@@ -584,9 +583,7 @@ Insert after the "Try it" section:
 ## Privacy
 
 Your assessments stay on your device — nothing you enter about a paddler is
-uploaded anywhere. You can optionally sync a finished session to your own
-private home server (e.g. a Raspberry Pi over Tailscale); it is never sent to
-anyone else.
+uploaded anywhere.
 
 The public website keeps **anonymous, cookieless** counts of page visits, PWA
 installs, and assessments started (via [GoatCounter](https://www.goatcounter.com/)).
