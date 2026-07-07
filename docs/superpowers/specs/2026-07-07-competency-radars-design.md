@@ -61,8 +61,8 @@ Meets sits near ring 4, with Below skills pulled in to ring 3).
 
 A radar needs ≥3 spokes to be a polygon. A category with 1–2 core skills (only
 L1's "Safety and Rescue" = 2 in current data, but handle generally) renders
-instead as a compact **labeled level readout** — each skill as a row with its
-name and attained level (e.g. `Bracing — L3`), not a degenerate 2-spoke chart.
+instead as a compact **level gauge** — a short L1–L5 scale with one dot per skill
+at its attained level (still unlabeled), not a degenerate 2-spoke chart.
 
 ## Architecture
 
@@ -135,7 +135,8 @@ over the existing session; nothing is stored.
 
 - **DNO / unrated skill** → `skillLevelValue` returns `null` → a gap at center on
   its spoke (visible "not assessed", not silently averaged).
-- **Category with < 3 skills** → labeled level readout instead of a radar.
+- **Category with < 3 skills** → compact level gauge (dots on an L1–L5 scale)
+  instead of a radar.
 - **Paddler with no core skills** (shouldn't happen for a valid target) →
   `CompetencyRadars` renders nothing.
 - **Exceeds at L5** → 5½, capped by `max = 5.5` so it reaches the rim.
