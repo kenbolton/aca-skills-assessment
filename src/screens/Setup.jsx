@@ -36,7 +36,7 @@ const CONDITION_SELECTS = [
   { key: 'current', label: 'Current', options: CURRENT_LEVELS },
 ];
 
-export function Setup({ onStart }) {
+export function Setup({ onStart, onArchive }) {
   const [location, setLocation] = useState('');
   const [conditions, setConditions] = useState({ wind: '', waves: '', surf: '', current: '' });
   const [level, setLevel] = useState('L1/L2');
@@ -84,7 +84,7 @@ export function Setup({ onStart }) {
   return (
     <main className="screen setup-screen">
       <h1>New Assessment</h1>
-      {PRIVATE ? <p><a href="/sessions">Past assessments &rarr;</a></p> : null}
+      <p><button type="button" className="linklike" onClick={onArchive}>Past assessments &rarr;</button></p>
 
       <label className="field">
         <span>Assessment level</span>

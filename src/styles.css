@@ -553,3 +553,14 @@ button { min-height: var(--hit); font-size: 18px; }
 .cr-shape { fill: rgba(0,95,107,.25); stroke: #005f6b; stroke-width: 1.5; }
 .cr-dot { fill: #005f6b; }
 .cr-gauge-axis, .cr-gauge-tick { stroke: #b7c9cc; stroke-width: 1; }
+
+.archive-bar { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .5rem; }
+.archive-import { margin-left: auto; font-size: .9rem; }
+.archive-import input { display: block; }
+.archive-list { list-style: none; margin: 0; padding: 0; }
+.archive-row { border-bottom: 1px solid #ddd; padding: .6rem 0; }
+.archive-meta { display: flex; flex-direction: column; gap: .1rem; }
+.archive-meta span { font-size: .85rem; color: #4a5a5d; }
+.archive-actions { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .4rem; }
+.archive-del { background: #c0392b; color: #fff; border: 0; border-radius: 6px; }
+.linklike { background: none; border: 0; color: #005f6b; text-decoration: underline; cursor: pointer; padding: 0; font: inherit; }
