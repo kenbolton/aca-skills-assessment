@@ -25,11 +25,9 @@ function RadarSvg({ levels }) {
   // The filled shape connects each spoke's point; an unassessed (null) spoke
   // pinches to center so gaps read as "not yet assessed".
   const poly = pts
-    .map((p, i) => {
-      if (p) return `${p.x.toFixed(2)},${p.y.toFixed(2)}`;
-      const a = -Math.PI / 2 + (2 * Math.PI * i) / count;
-      return `${(GEO.cx + 0 * Math.cos(a)).toFixed(2)},${(GEO.cy).toFixed(2)}`;
-    })
+    // An unassessed (null) spoke pinches to the center, so gaps read as
+    // "not yet assessed" rather than a rated value.
+    .map(p => (p ? `${p.x.toFixed(2)},${p.y.toFixed(2)}` : `${GEO.cx.toFixed(2)},${GEO.cy.toFixed(2)}`))
     .join(' ');
   return (
     <svg className="cr-svg" viewBox="0 0 120 120" role="img" aria-label={`competency radar, ${count} skills`}>
