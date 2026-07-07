@@ -13,6 +13,21 @@ const L3 = loadConfig(rawL3);
 const L4 = loadConfig(rawL4);
 const L5 = loadConfig(rawL5);
 
+test('L3/L4/L5 skills carry Below/Exceeds descriptor prose from the assessor guides', () => {
+  for (const [lvl, cfg] of [['L3', L3], ['L4', L4], ['L5', L5]]) {
+    const assessed = allSkills(cfg).filter(s => !s.optional);
+    const withBoth = assessed.filter(s => s.belowStandard && s.exceedsStandard);
+    // The vast majority of assessed skills should have both descriptors.
+    expect(withBoth.length, `${lvl} descriptor coverage`).toBeGreaterThanOrEqual(assessed.length - 3);
+    for (const s of withBoth) {
+      expect(s.belowStandard.length).toBeGreaterThan(10);
+      expect(s.exceedsStandard.length).toBeGreaterThan(10);
+      // no page-footer artifacts leaked into the prose
+      expect(/American Canoe|CKC/i.test(s.belowStandard + s.exceedsStandard)).toBe(false);
+    }
+  }
+});
+
 test('each standalone data file ships an intro with a venue/conditions section', () => {
   for (const [lvl, cfg] of [['L3', L3], ['L4', L4], ['L5', L5]]) {
     expect(cfg.intro, `${lvl} intro`).toBeTruthy();

@@ -179,9 +179,11 @@ export function Rate({ session, onChange, onDone }) {
               <span className="badge badge-optional">Optional — does not count against the paddler</span>
             ) : null}
             {skill.competency ? <p className="rate-competency">{skill.competency}</p> : null}
-            {/* When a skill has no short name (L4/L5), the standard is already the
-                heading above, so the standard-box would just repeat it. */}
-            {skill.name ? (
+            {/* Show the box whenever there's calibration to show. When a skill has no
+                short name (L4/L5), the standard is already the heading above, so the
+                "level standard" row is skipped to avoid repeating it — but the
+                Below/Exceeds descriptors still show. */}
+            {(skill.name || skill.l1Standard || skill.belowStandard || skill.exceedsStandard) ? (
               <div className="standard-box">
                 {skill.l1Standard ? (
                   <div className="standard-section">
@@ -195,10 +197,12 @@ export function Rate({ session, onChange, onDone }) {
                     <p className="standard-box-text">{skill.belowStandard}</p>
                   </div>
                 ) : null}
-                <div className="standard-section">
-                  <div className="standard-box-header"><span>{skill.level} standard</span></div>
-                  <p className="standard-box-text">{skill.standard}</p>
-                </div>
+                {skill.name ? (
+                  <div className="standard-section">
+                    <div className="standard-box-header"><span>{skill.level} standard</span></div>
+                    <p className="standard-box-text">{skill.standard}</p>
+                  </div>
+                ) : null}
                 {skill.exceedsStandard ? (
                   <div className="standard-section">
                     <div className="standard-box-header"><span>Exceeds standard</span></div>

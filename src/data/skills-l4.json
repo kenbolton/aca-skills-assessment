@@ -67,6 +67,8 @@
       "category": "Core: Boat Handling",
       "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in the surf, rock gardens, tide races, wind, waves, and following seas. They comfortably blend strokes and modify maneuvers according to environmental conditions using both sides of the kayak effectively. They use their paddle appropriately while edging, demonstrating blade awareness relative to conditions (for example, when crossing eddylines and side surfing). They can recover when momentarily destabilized due to environmental factors and consistently roll in Level 4 conditions.",
       "standard": "Demonstrates ability to paddle and hold position in differing wind and wave directions.",
+      "exceedsStandard": "Uses wind and waves to their advantage and progresses against the wind. Paddler maintains position in relation to ranges/position fix.",
+      "belowStandard": "Unable to maintain directional control, or loses progress when paddling into wind or waves, or displays visual discomfort paddling in following seas, or cannot maintain their position.",
       "optional": false
     },
     {
@@ -75,6 +77,8 @@
       "category": "Core: Boat Handling",
       "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in the surf, rock gardens, tide races, wind, waves, and following seas. They comfortably blend strokes and modify maneuvers according to environmental conditions using both sides of the kayak effectively. They use their paddle appropriately while edging, demonstrating blade awareness relative to conditions (for example, when crossing eddylines and side surfing). They can recover when momentarily destabilized due to environmental factors and consistently roll in Level 4 conditions.",
       "standard": "Demonstrates ability to turn upwind and downwind efficiently.",
+      "exceedsStandard": "Uses wind and waves to their advantage to make upwind and downwind turns.",
+      "belowStandard": "Cannot turn their kayak upwind or downwind.",
       "optional": false
     },
     {
@@ -83,6 +87,8 @@
       "category": "Core: Boat Handling",
       "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in the surf, rock gardens, tide races, wind, waves, and following seas. They comfortably blend strokes and modify maneuvers according to environmental conditions using both sides of the kayak effectively. They use their paddle appropriately while edging, demonstrating blade awareness relative to conditions (for example, when crossing eddylines and side surfing). They can recover when momentarily destabilized due to environmental factors and consistently roll in Level 4 conditions.",
       "standard": "Uses forward and reverse paddling to reach an intended target or accomplish a specific task.",
+      "exceedsStandard": "Makes effective stroke choices and appropriately varies paddle angle and cadence (for example, to catch waves or break through an eddyline).",
+      "belowStandard": "Cannot reach the intended target due to loss of directional control or inability to make progress.",
       "optional": false
     },
     {
@@ -91,6 +97,8 @@
       "category": "Core: Boat Handling",
       "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in the surf, rock gardens, tide races, wind, waves, and following seas. They comfortably blend strokes and modify maneuvers according to environmental conditions using both sides of the kayak effectively. They use their paddle appropriately while edging, demonstrating blade awareness relative to conditions (for example, when crossing eddylines and side surfing). They can recover when momentarily destabilized due to environmental factors and consistently roll in Level 4 conditions.",
       "standard": "Uses forward and reverse sweep strokes to shape a course and avoid hazards.",
+      "exceedsStandard": "Uses sweep strokes effectively to shape an efficient course (for example, successfully attains upstream eddies, breaking in and out of an eddy, surfing with directional control).",
+      "belowStandard": "Cannot stay on course or needs excessive time or corrections to accomplish the task.",
       "optional": false
     },
     {
@@ -99,6 +107,8 @@
       "category": "Core: Boat Handling",
       "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in the surf, rock gardens, tide races, wind, waves, and following seas. They comfortably blend strokes and modify maneuvers according to environmental conditions using both sides of the kayak effectively. They use their paddle appropriately while edging, demonstrating blade awareness relative to conditions (for example, when crossing eddylines and side surfing). They can recover when momentarily destabilized due to environmental factors and consistently roll in Level 4 conditions.",
       "standard": "Uses bow, midship, and stern rudders to turn and maintain their course.",
+      "exceedsStandard": "Incorporates rudders while making dynamic moves (for example, turns on wave face).",
+      "belowStandard": "Unable to use rudders to change or maintain course effectively",
       "optional": false
     },
     {
@@ -107,6 +117,8 @@
       "category": "Core: Boat Handling",
       "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in the surf, rock gardens, tide races, wind, waves, and following seas. They comfortably blend strokes and modify maneuvers according to environmental conditions using both sides of the kayak effectively. They use their paddle appropriately while edging, demonstrating blade awareness relative to conditions (for example, when crossing eddylines and side surfing). They can recover when momentarily destabilized due to environmental factors and consistently roll in Level 4 conditions.",
       "standard": "Uses blade support to recover and maintain stability while underway, maneuvering, and holding position.",
+      "exceedsStandard": "Reflexively blends supportive strokes/bracing when maneuvering in rough water to avoid capsizing and consistently recovers if stability is lost.",
+      "belowStandard": "Cannot recover when stability is lost or is inconsistent with their ability to recover. Or, when underway, the paddler cannot consistently recover their stability and maintain momentum, resulting in an avoidable capsize.",
       "optional": false
     },
     {
@@ -115,6 +127,8 @@
       "category": "Core: Boat Handling",
       "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in the surf, rock gardens, tide races, wind, waves, and following seas. They comfortably blend strokes and modify maneuvers according to environmental conditions using both sides of the kayak effectively. They use their paddle appropriately while edging, demonstrating blade awareness relative to conditions (for example, when crossing eddylines and side surfing). They can recover when momentarily destabilized due to environmental factors and consistently roll in Level 4 conditions.",
       "standard": "Uses draw strokes for effective lateral movement, whether the kayak is static or dynamic.",
+      "exceedsStandard": "Consistently incorporates sideways maneuvers for lateral movement of their kayak.",
+      "belowStandard": "Cannot move sideways or avoid obstacles and resorts to corrective strokes (for example, stopping, backing up, sweep strokes) instead of draw strokes to maneuver into position.",
       "optional": false
     },
     {
@@ -123,6 +137,8 @@
       "category": "Core: Boat Handling",
       "competency": "The paddler uses appropriate strokes and maneuvers to position for optimal performance and moves purposefully in the surf, rock gardens, tide races, wind, waves, and following seas. They comfortably blend strokes and modify maneuvers according to environmental conditions using both sides of the kayak effectively. They use their paddle appropriately while edging, demonstrating blade awareness relative to conditions (for example, when crossing eddylines and side surfing). They can recover when momentarily destabilized due to environmental factors and consistently roll in Level 4 conditions.",
       "standard": "Able to roll kayak from both set-up and non-setup positions.",
+      "exceedsStandard": "Consistently rolls on the first attempt while paddling in dynamic water.",
+      "belowStandard": "Swims two or more times during the assessment due to missed rolls.",
       "optional": false
     },
     {
@@ -147,6 +163,8 @@
       "category": "Core: Rescues and Towing",
       "competency": "The paddler demonstrates competent rescue and towing skills in Level 4 conditions. They choose rescues and towing configurations appropriate for the circumstances (for example, what is most appropriate for a capsize in a surf zone or capsize in a tidal rapid) and demonstrate the ability to be an active and safe swimmer when being rescued.",
       "standard": "Performs one or more of the following assisted re-entries with an able swimmer: Side-by Side, Scoop, T-Rescue, Swimmer Deck Carry.",
+      "exceedsStandard": "Demonstrates two or more situation-appropriate rescues and moves the rescue to a position of less risk when necessary.",
+      "belowStandard": "Unable to rescue the swimmer or performs the rescue in an area of high risk.",
       "optional": false
     },
     {
@@ -155,6 +173,8 @@
       "category": "Core: Rescues and Towing",
       "competency": "The paddler demonstrates competent rescue and towing skills in Level 4 conditions. They choose rescues and towing configurations appropriate for the circumstances (for example, what is most appropriate for a capsize in a surf zone or capsize in a tidal rapid) and demonstrate the ability to be an active and safe swimmer when being rescued.",
       "standard": "Performs one or more assisted re-entries to aid an impaired swimmer: Scoop, Unresponsive Paddler, Swimmer Deck Carry.",
+      "exceedsStandard": "Demonstrates two or more situation-appropriate rescues and moves rescue to a position of less risk when necessary.",
+      "belowStandard": "Unable to rescue the swimmer or performs the rescue in an area of high risk.",
       "optional": false
     },
     {
@@ -163,6 +183,8 @@
       "category": "Core: Rescues and Towing",
       "competency": "The paddler demonstrates competent rescue and towing skills in Level 4 conditions. They choose rescues and towing configurations appropriate for the circumstances (for example, what is most appropriate for a capsize in a surf zone or capsize in a tidal rapid) and demonstrate the ability to be an active and safe swimmer when being rescued.",
       "standard": "Performs one or more of the following self-rescues: Re-enter and Roll, Paddle Float, and Scramble.",
+      "exceedsStandard": "Demonstrates two or more self-rescues and moves into a position of less risk when necessary.",
+      "belowStandard": "Unable to self-rescue.",
       "optional": false
     },
     {
@@ -171,6 +193,8 @@
       "category": "Core: Rescues and Towing",
       "competency": "The paddler demonstrates competent rescue and towing skills in Level 4 conditions. They choose rescues and towing configurations appropriate for the circumstances (for example, what is most appropriate for a capsize in a surf zone or capsize in a tidal rapid) and demonstrate the ability to be an active and safe swimmer when being rescued.",
       "standard": "Is an active and effective swimmer when being rescued.",
+      "exceedsStandard": "Maintains contact with their kayak and gear during a rescue, flips kayak right-side up, and holds decklines while maneuvering to their bow. Stays clear of an approaching rescuer by keeping their kayak between them and the approaching rescuer.",
+      "belowStandard": "Does not maintain contact with their kayak and gear during rescue or cannot re-enter their kayak.",
       "optional": false
     },
     {
@@ -179,6 +203,7 @@
       "category": "Core: Rescues and Towing",
       "competency": "The paddler demonstrates competent rescue and towing skills in Level 4 conditions. They choose rescues and towing configurations appropriate for the circumstances (for example, what is most appropriate for a capsize in a surf zone or capsize in a tidal rapid) and demonstrate the ability to be an active and safe swimmer when being rescued.",
       "standard": "Applies one or more of the following towing strategies with a towline: In-Line Tow, Rafted In-Line Tow, Anchor Tow.",
+      "exceedsStandard": "Demonstrates application of two or more situation-appropriate towing techniques, maintaining usefulness and moving rescue to a position of less risk when necessary.",
       "optional": false
     },
     {
@@ -187,6 +212,8 @@
       "category": "Core: Rescues and Towing",
       "competency": "The paddler demonstrates competent rescue and towing skills in Level 4 conditions. They choose rescues and towing configurations appropriate for the circumstances (for example, what is most appropriate for a capsize in a surf zone or capsize in a tidal rapid) and demonstrate the ability to be an active and safe swimmer when being rescued.",
       "standard": "Applies one or more of the following towing strategies without a towline: Contact Tow, Bulldozing, and Toggle Tow.",
+      "exceedsStandard": "Demonstrates application of two or more situation-appropriate towing techniques/strategies, maintaining usefulness, and moves swimmer/craft to a position of less risk when necessary.",
+      "belowStandard": "Unable to tow the swimmer or their kayak, or does not move to an area of less risk, or paddler chooses an unsafe towing strategy.",
       "optional": false
     },
     {
@@ -195,6 +222,8 @@
       "category": "Core: Rescues and Towing",
       "competency": "The paddler demonstrates competent rescue and towing skills in Level 4 conditions. They choose rescues and towing configurations appropriate for the circumstances (for example, what is most appropriate for a capsize in a surf zone or capsize in a tidal rapid) and demonstrate the ability to be an active and safe swimmer when being rescued.",
       "standard": "Effectively manages tow system and can release system while underway and following a capsize.",
+      "exceedsStandard": "Deploys tow system cleanly, demonstrates the ability to release tow system while underwater and roll up, and stows towline quickly.",
+      "belowStandard": "Towline does not deploy, or they cannot release the tow system while underway or stow the towline.",
       "optional": false
     },
     {
@@ -203,6 +232,8 @@
       "category": "Core: Rescues and Towing",
       "competency": "The paddler demonstrates competent rescue and towing skills in Level 4 conditions. They choose rescues and towing configurations appropriate for the circumstances (for example, what is most appropriate for a capsize in a surf zone or capsize in a tidal rapid) and demonstrate the ability to be an active and safe swimmer when being rescued.",
       "standard": "Able to rescue a swimmer who has been separated from their kayak and reconnect the swimmer to their kayak.",
+      "exceedsStandard": "Makes the most efficient choice of rescue priority for the situation and reconnects the swimmer to their kayak with or without a towline.",
+      "belowStandard": "Unable to reconnect the swimmer to their kayak.",
       "optional": false
     },
     {
@@ -211,6 +242,8 @@
       "category": "Core: Rescues and Towing",
       "competency": "The paddler demonstrates competent rescue and towing skills in Level 4 conditions. They choose rescues and towing configurations appropriate for the circumstances (for example, what is most appropriate for a capsize in a surf zone or capsize in a tidal rapid) and demonstrate the ability to be an active and safe swimmer when being rescued.",
       "standard": "Able to assist another paddler’s recovery from capsize by presenting their kayak or paddle.",
+      "exceedsStandard": "Moves their kayak into position and maintains position to effectively assist another paddler’s recovery from multiple orientations (for example, bow presentation, stern presentation, side-by-side, paddle presentation).",
+      "belowStandard": "Causes failed recovery attempts due to their inability to position their kayak or maintain the position of their kayak.",
       "optional": false
     },
     {
@@ -235,6 +268,8 @@
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment, their performance, and decision-making relative to group members and adapts plans accordingly. The paddler clearly communicates with the group to make necessary changes, is properly equipped for the conditions, and uses equipment appropriately to maintain personal and group safety and comfort.",
       "standard": "Understands the effects of wind, tide, current, and land masses on the marine environment.",
+      "exceedsStandard": "Can effectively share with the group what is happening and why regarding environmental factors. Maintains an openness to comprehend, adapt, and apply what is actually happening. Not locked into their expectations. Views forecasts and tables as tools, not absolutes.",
+      "belowStandard": "Unable to comprehend how these variables act upon each other or is locked into prior expectations or information.",
       "optional": false
     },
     {
@@ -243,6 +278,8 @@
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment, their performance, and decision-making relative to group members and adapts plans accordingly. The paddler clearly communicates with the group to make necessary changes, is properly equipped for the conditions, and uses equipment appropriately to maintain personal and group safety and comfort.",
       "standard": "Practices Leave No Trace and demonstrates appropriate interactions with the ecosystem and wildlife.",
+      "exceedsStandard": "Knows LNT Principles and unconsciously models best practices of LNT Principles. Knows NOAA Marine Wildlife Viewing Guidelines and respectfully informs group members of best practices.",
+      "belowStandard": "Is unaware of, or does not adhere to, LNT Principles and NOAA Marine Wildlife Viewing Guidelines.",
       "optional": false
     },
     {
@@ -251,6 +288,8 @@
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment, their performance, and decision-making relative to group members and adapts plans accordingly. The paddler clearly communicates with the group to make necessary changes, is properly equipped for the conditions, and uses equipment appropriately to maintain personal and group safety and comfort.",
       "standard": "Understands the causes, prevention, recognition, and treatment of cold-water shock and hypothermia.",
+      "exceedsStandard": "Properly prepared and takes necessary preventative action for self and group. Recognizes signs and symptoms of hypothermia and treatment for cold-related issues. Knows when to call for Emergency Medical Services.",
+      "belowStandard": "Is unprepared for paddling conditions or does not recognize signs and symptoms of hypothermia. Or does not take appropriate action to improve the situation.",
       "optional": false
     },
     {
@@ -267,6 +306,8 @@
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment, their performance, and decision-making relative to group members and adapts plans accordingly. The paddler clearly communicates with the group to make necessary changes, is properly equipped for the conditions, and uses equipment appropriately to maintain personal and group safety and comfort.",
       "standard": "Understands personal and group capabilities relative to the environment and makes decisions accordingly.",
+      "exceedsStandard": "Makes route choices and decisions that keep the group within the remit for L4.",
+      "belowStandard": "Makes route choices and decisions which take themself outside the remit for L4.",
       "optional": false
     },
     {
@@ -275,6 +316,8 @@
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment, their performance, and decision-making relative to group members and adapts plans accordingly. The paddler clearly communicates with the group to make necessary changes, is properly equipped for the conditions, and uses equipment appropriately to maintain personal and group safety and comfort.",
       "standard": "Paddles as a cohesive member of the group and positions to provide support.",
+      "exceedsStandard": "Demonstrates awareness of hazards and keeps members of the group in positions to avoid them, communicates effectively, maintains line of sight, and position of most usefulness to the group at all times.",
+      "belowStandard": "Is unaware of hazards, loses communication with group members or line of sight with group members, or does not maintain a position of most usefulness to the group.",
       "optional": false
     },
     {
@@ -283,6 +326,8 @@
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment, their performance, and decision-making relative to group members and adapts plans accordingly. The paddler clearly communicates with the group to make necessary changes, is properly equipped for the conditions, and uses equipment appropriately to maintain personal and group safety and comfort.",
       "standard": "Maintains properly outfitted kayak and has working knowledge of paddling equipment.",
+      "exceedsStandard": "Kayak is appropriately outfitted for conditions, and the paddler uses equipment to take care of the group's needs and themselves.",
+      "belowStandard": "Kayak needs proper floatation or rigging, and the paddler needs to be equipped and sufficiently dressed for the conditions. Or gear choices are detrimental to the success of the group.",
       "optional": false
     },
     {
@@ -291,6 +336,8 @@
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment, their performance, and decision-making relative to group members and adapts plans accordingly. The paddler clearly communicates with the group to make necessary changes, is properly equipped for the conditions, and uses equipment appropriately to maintain personal and group safety and comfort.",
       "standard": "Understands how to pack and properly trim their kayak.",
+      "exceedsStandard": "The kayak is packed with equipment needed to take care of group members with quick access while maintaining a properly trimmed kayak.",
+      "belowStandard": "The paddler cannot access equipment needed on the water, or the kayak is not properly trimmed, so it is constantly lee-cocking or weather cocking due to the unbalanced packing of the kayak.",
       "optional": false
     },
     {
@@ -299,6 +346,8 @@
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment, their performance, and decision-making relative to group members and adapts plans accordingly. The paddler clearly communicates with the group to make necessary changes, is properly equipped for the conditions, and uses equipment appropriately to maintain personal and group safety and comfort.",
       "standard": "Performs repairs allowing the paddler to return safely to the launch site.",
+      "exceedsStandard": "Carries the equipment necessary to perform repairs for other group members and demonstrates knowledge of likely repairs.",
+      "belowStandard": "Does not carry the equipment necessary to repair their kayak to paddle to an access point.",
       "optional": false
     },
     {
@@ -307,6 +356,8 @@
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment, their performance, and decision-making relative to group members and adapts plans accordingly. The paddler clearly communicates with the group to make necessary changes, is properly equipped for the conditions, and uses equipment appropriately to maintain personal and group safety and comfort.",
       "standard": "Carries appropriate visual and auditory signaling device(s) and understands their use and limitations.",
+      "exceedsStandard": "Carries a variety of signaling devices and can instruct others on proper use and limitations.",
+      "belowStandard": "Does not carry appropriate visual and auditory signaling devices or understand their use.",
       "optional": false
     },
     {
@@ -315,6 +366,8 @@
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment, their performance, and decision-making relative to group members and adapts plans accordingly. The paddler clearly communicates with the group to make necessary changes, is properly equipped for the conditions, and uses equipment appropriately to maintain personal and group safety and comfort.",
       "standard": "Can tie Bowline, Clove Hitch, Figure 8, and Trucker’s Hitch knots.",
+      "exceedsStandard": "Demonstrates the ability to teach and troubleshoot other group members’ knot work. Knows more knots than these four, as well as the proper usage of the knots.",
+      "belowStandard": "Cannot tie the required knots or know the proper usage of the specific knot(s).",
       "optional": false
     },
     {
@@ -323,6 +376,8 @@
       "category": "Core: Incident Prevention and Management",
       "competency": "The paddler has an incident prevention mindset both on and off the water. They make good choices and demonstrate competent decision-making. The paddler can lead and assist with managing incidents in Level 4 conditions. They can identify appropriate safe zones and work with other paddlers to ensure the entire group's safety.",
       "standard": "Safely transports, unloads, and carries kayaks at the launch site.",
+      "exceedsStandard": "The paddler recognizes unsafe transport and carrying of the kayaks and steps in to assist others when loading, unloading, and moving the kayaks.",
+      "belowStandard": "The method by which they transport their kayak is a hazard to other vehicles, or the unloading or carrying method puts the paddler at risk.",
       "optional": false
     },
     {
@@ -331,6 +386,8 @@
       "category": "Core: Incident Prevention and Management",
       "competency": "The paddler has an incident prevention mindset both on and off the water. They make good choices and demonstrate competent decision-making. The paddler can lead and assist with managing incidents in Level 4 conditions. They can identify appropriate safe zones and work with other paddlers to ensure the entire group's safety.",
       "standard": "Actively participates in pre-trip and post-trip debrief sessions.",
+      "exceedsStandard": "Helps facilitate effective briefing and debriefing sessions and provides “leader level” insight during these sessions.",
+      "belowStandard": "Does not participate in pre-trip briefing or post-trip debriefing sessions.",
       "optional": false
     },
     {
@@ -339,6 +396,8 @@
       "category": "Core: Incident Prevention and Management",
       "competency": "The paddler has an incident prevention mindset both on and off the water. They make good choices and demonstrate competent decision-making. The paddler can lead and assist with managing incidents in Level 4 conditions. They can identify appropriate safe zones and work with other paddlers to ensure the entire group's safety.",
       "standard": "Launches and lands in a safe manner.",
+      "exceedsStandard": "Performs leadership in launching and landing the group in L4 conditions.",
+      "belowStandard": "Is unable to launch or land successfully in L4 conditions. Or exits their kayak land side when landing.",
       "optional": false
     },
     {
@@ -347,6 +406,8 @@
       "category": "Core: Incident Prevention and Management",
       "competency": "The paddler has an incident prevention mindset both on and off the water. They make good choices and demonstrate competent decision-making. The paddler can lead and assist with managing incidents in Level 4 conditions. They can identify appropriate safe zones and work with other paddlers to ensure the entire group's safety.",
       "standard": "Communicates and directs others calmly in stressful situations (for example, during rescues).",
+      "exceedsStandard": "Uses clear and concise communication, which is well-received by teammates and facilitates execution of the rescue. Demeanor de-escalates situations that may otherwise be or become stressful.",
+      "belowStandard": "The group is unresponsive to directions, or the atmosphere of stress is escalated. Or, directives given during rescue need to be clarified or result in added confusion during the rescue.",
       "optional": false
     },
     {
@@ -355,6 +416,8 @@
       "category": "Core: Incident Prevention and Management",
       "competency": "The paddler has an incident prevention mindset both on and off the water. They make good choices and demonstrate competent decision-making. The paddler can lead and assist with managing incidents in Level 4 conditions. They can identify appropriate safe zones and work with other paddlers to ensure the entire group's safety.",
       "standard": "Works with others to perform rescues and move the group to a position of less risk.",
+      "exceedsStandard": "Able to adapt and follow the lead of others and the environment even when different from their preferred methods (except where absolute safety is contradicted). Can facilitate a meaningful debriefing and “lessons learned” session post-incident.",
+      "belowStandard": "Disregards input and direction from others in the group or forces solutions or does not participate in post- incident debriefing and “lessons learned” session.",
       "optional": false
     },
     {
@@ -363,6 +426,8 @@
       "category": "Core: Incident Prevention and Management",
       "competency": "The paddler has an incident prevention mindset both on and off the water. They make good choices and demonstrate competent decision-making. The paddler can lead and assist with managing incidents in Level 4 conditions. They can identify appropriate safe zones and work with other paddlers to ensure the entire group's safety.",
       "standard": "Demonstrates proper use of VHF radio and the ability to hail appropriate resources.",
+      "exceedsStandard": "Demonstrates the ability to instruct others on the proper use of a VHF radio and different services for hailing assistance appropriate to the situation or incident.",
+      "belowStandard": "Does not carry a VHF radio, or does not know how to use VHF, or uses inappropriate radio etiquette.",
       "optional": false
     },
     {
@@ -371,6 +436,8 @@
       "category": "Core: Trip Planning and Navigation",
       "competency": "The paddler successfully plans, plots, and executes routes in Level 4 conditions and venues. Their chosen routes will incorporate a holistic view of all the variables within the venue and contain contingency plans.",
       "standard": "Gathers, understands, and utilizes appropriate forecasts (weather, marine, surf, and tidal).",
+      "exceedsStandard": "Comes prepared with all pertinent forecast data and can assist others in finding data for the area.",
+      "belowStandard": "Cannot provide pertinent forecast data for the day when requested by the assessor.",
       "optional": false
     },
     {
@@ -379,6 +446,8 @@
       "category": "Core: Trip Planning and Navigation",
       "competency": "The paddler successfully plans, plots, and executes routes in Level 4 conditions and venues. Their chosen routes will incorporate a holistic view of all the variables within the venue and contain contingency plans.",
       "standard": "Demonstrates use of charts, forecast(s), and knowledge of paddling group when route planning.",
+      "exceedsStandard": "Demonstrates a high level of understanding when route planning.",
+      "belowStandard": "Is unsuccessful in completing the tabletop/“decktop” navigation exercise.",
       "optional": false
     },
     {
@@ -387,6 +456,8 @@
       "category": "Core: Trip Planning and Navigation",
       "competency": "The paddler successfully plans, plots, and executes routes in Level 4 conditions and venues. Their chosen routes will incorporate a holistic view of all the variables within the venue and contain contingency plans.",
       "standard": "Incorporates wind, waves, and swell direction into route plans and trip choices.",
+      "exceedsStandard": "Gathers forecasts and understands how wave and swell characteristics (size, direction, period) can be influenced by wind conditions. Applies a more in-depth understanding of wind forecasts (strength, trend, and direction) and can infer the effect on the group’s plan from relief maps and headlands.",
+      "belowStandard": "Unable to gather and use forecast data on wind, wave, and swell conditions to determine if the route is feasible and fails to adjust the trip plan to deal with adverse conditions when necessary.",
       "optional": false
     },
     {
@@ -395,6 +466,8 @@
       "category": "Core: Trip Planning and Navigation",
       "competency": "The paddler successfully plans, plots, and executes routes in Level 4 conditions and venues. Their chosen routes will incorporate a holistic view of all the variables within the venue and contain contingency plans.",
       "standard": "Demonstrates ability to calculate stages of the tide and incorporate them into a route plan.",
+      "exceedsStandard": "Able to calculate the depth of tidal waters over time in relation to chart symbols using a nautical chart and tide chart/log upon request of the assessor. Tide tables and marine charts can be used to determine water depth due to tide at any position or time along the route. Applies calculations to route plans and decisions on the water and can explain concepts to others clearly and understandably.",
+      "belowStandard": "Unable to calculate the depth of tidal waters in relation to the chart or fails to incorporate calculations into their route plan or trip decisions.",
       "optional": false
     },
     {
@@ -403,6 +476,8 @@
       "category": "Core: Trip Planning and Navigation",
       "competency": "The paddler successfully plans, plots, and executes routes in Level 4 conditions and venues. Their chosen routes will incorporate a holistic view of all the variables within the venue and contain contingency plans.",
       "standard": "Demonstrates ability to calculate tidal drift and incorporate drift into a route plan.",
+      "exceedsStandard": "Able to calculate the amount of drift and apply the calculation to a route plan upon request of the assessor. The paddler shall be able to calculate drift direction and distance for a crossing of more than 2.0 nautical miles where the current changes direction hourly.",
+      "belowStandard": "Paddler is unfamiliar with, or unable to, calculate drift into their route plan.",
       "optional": false
     },
     {
@@ -411,6 +486,8 @@
       "category": "Core: Trip Planning and Navigation",
       "competency": "The paddler successfully plans, plots, and executes routes in Level 4 conditions and venues. Their chosen routes will incorporate a holistic view of all the variables within the venue and contain contingency plans.",
       "standard": "Demonstrates the ability to calculate current strength and timing and incorporate them into route plans.",
+      "exceedsStandard": "Able to determine when, how fast, and in what direction currents will be running; applies calculations to route plan and decisions on the water upon request of the assessor and can explain concepts to others clearly and understandably.",
+      "belowStandard": "Unable to determine when, how fast, and in what direction currents will be running.",
       "optional": false
     },
     {
@@ -419,6 +496,8 @@
       "category": "Core: Trip Planning and Navigation",
       "competency": "The paddler successfully plans, plots, and executes routes in Level 4 conditions and venues. Their chosen routes will incorporate a holistic view of all the variables within the venue and contain contingency plans.",
       "standard": "Demonstrates use of chart and compass to paddle a course.",
+      "exceedsStandard": "The level of understanding is such that they can lead a group in L4 conditions and explain navigation concepts to other paddlers.",
+      "belowStandard": "Does not use chart or compass properly while attempting to paddle the course. Or cannot maintain course in L4 conditions or struggles to answer questions about location or observed features.",
       "optional": false
     },
     {
@@ -427,6 +506,8 @@
       "category": "Core: Trip Planning and Navigation",
       "competency": "The paddler successfully plans, plots, and executes routes in Level 4 conditions and venues. Their chosen routes will incorporate a holistic view of all the variables within the venue and contain contingency plans.",
       "standard": "Demonstrates ability to identify their location at all times.",
+      "exceedsStandard": "Continuously shows an understanding of location and is future-minded about destination and speed of travel.",
+      "belowStandard": "Is unable to accurately point to their current location on a chart within 10 seconds of request from the assessor.",
       "optional": false
     },
     {
@@ -435,6 +516,8 @@
       "category": "Core: Trip Planning and Navigation",
       "competency": "The paddler successfully plans, plots, and executes routes in Level 4 conditions and venues. Their chosen routes will incorporate a holistic view of all the variables within the venue and contain contingency plans.",
       "standard": "Understands the Nautical Rules of the Road and aids to navigation, and demonstrates safe paddling in relation to boat traffic.",
+      "exceedsStandard": "Understands a wide variety of rules. Leads a connected group safely through an area of active boating, correctly honoring aids to navigation and including major shipping channels. Has a \"Plan B\" route in mind if the planned route proves hazardous due to excessive boat activity.",
+      "belowStandard": "Knows some rules or no rules. Or paddles a haphazard route through areas of boat traffic and aids to navigation.",
       "optional": false
     },
     {
@@ -459,6 +542,8 @@
       "category": "Venue Specific: Expedition Paddling",
       "competency": "The paddler successfully utilizes knowledge and resources to plan a multi-day trip. Their understanding of the environment allows the paddler to anticipate conditions during their trip and make decisions to adjust the plan accordingly. During a multi-day journey, they successfully apply Level 4 paddling skills in the environment/venue.",
       "standard": "Provides evidence of multi-day journeys that involve overnight camping.",
+      "exceedsStandard": "Provides evidence of multi-day journeys with exposure to a variety of conditions.",
+      "belowStandard": "Does not provide evidence of a multi-day trip where conditions were present.",
       "optional": false
     },
     {
@@ -467,6 +552,8 @@
       "category": "Venue Specific: Expedition Paddling",
       "competency": "The paddler successfully utilizes knowledge and resources to plan a multi-day trip. Their understanding of the environment allows the paddler to anticipate conditions during their trip and make decisions to adjust the plan accordingly. During a multi-day journey, they successfully apply Level 4 paddling skills in the environment/venue.",
       "standard": "Demonstrates ability to plan a successful multi-day journey using available and appropriate planning resources.",
+      "exceedsStandard": "Gathers and appropriately utilizes resources (for example, charts, forecasts, and local information) to plan the assessment trip. The trip plan considers likely risks and the compounding effect of multiple days of paddling in L4 conditions. Knowledge check indicates a high level of planning competency, field forecasting ability, and a leadership mindset.",
+      "belowStandard": "Does not come prepared with needed planning resources, or is unable to apply forecasts and local knowledge to the trip, or needs to consider the breadth of the journey when planning each day.",
       "optional": false
     },
     {
@@ -475,6 +562,8 @@
       "category": "Venue Specific: Expedition Paddling",
       "competency": "The paddler successfully utilizes knowledge and resources to plan a multi-day trip. Their understanding of the environment allows the paddler to anticipate conditions during their trip and make decisions to adjust the plan accordingly. During a multi-day journey, they successfully apply Level 4 paddling skills in the environment/venue.",
       "standard": "Makes appropriate expedition decisions both before and during the trip.",
+      "exceedsStandard": "Maintains a holistic approach to decision-making during the trip considering venue, conditions, and group well-being. Demonstrates appropriate energy management regarding group pacing, distances, and provisioning (fueling for the journey and planning for delays). Utilizes contingency plans when necessary and effectively communicates their approach to the group.",
+      "belowStandard": "Chooses unrealistic determinations concerning times and distances, or route choices, or the ability of the group, or when to launch and land.",
       "optional": false
     },
     {
@@ -483,6 +572,8 @@
       "category": "Venue Specific: Expedition Paddling",
       "competency": "The paddler successfully utilizes knowledge and resources to plan a multi-day trip. Their understanding of the environment allows the paddler to anticipate conditions during their trip and make decisions to adjust the plan accordingly. During a multi-day journey, they successfully apply Level 4 paddling skills in the environment/venue.",
       "standard": "Is appropriately equipped for a multi-day journey in a planned environment and is well-versed in the use of equipment.",
+      "exceedsStandard": "Has equipment needed to care for themselves and group members on and off the water. Equipment is accessible and appropriate for solving problems they are likely to encounter.",
+      "belowStandard": "Lacking equipment needed to care for themselves on and off the water, or equipment is not accessible or does not apply to problems they are likely to encounter.",
       "optional": false
     },
     {
@@ -491,6 +582,8 @@
       "category": "Venue Specific: Expedition Paddling",
       "competency": "The paddler successfully utilizes knowledge and resources to plan a multi-day trip. Their understanding of the environment allows the paddler to anticipate conditions during their trip and make decisions to adjust the plan accordingly. During a multi-day journey, they successfully apply Level 4 paddling skills in the environment/venue.",
       "standard": "Demonstrates all “Core Skills” with a fully laden kayak.",
+      "exceedsStandard": "Functions at a high level in L4 conditions with a fully laden kayak.",
+      "belowStandard": "Unable to perform competently with a fully laden kayak.",
       "optional": false
     },
     {
@@ -499,6 +592,8 @@
       "category": "Venue Specific: Tide Races",
       "competency": "The paddler demonstrates an understanding of the tidal environment and can paddle through a tide race in control. They understand the challenges of paddling in areas of current and positions themselves appropriately to ensure individual and group safety.",
       "standard": "Identifies features of a tide race (eddy, eddyline, current, standing waves).",
+      "exceedsStandard": "Understands the relationship between current (flow direction and speed), wind (direction, velocity, and duration), waves (direction, height, and period), and landforms (seabed and headlands). Uses available data and understanding of these relationships to predict features of the race before arriving at the site.",
+      "belowStandard": "Is unfamiliar with, or needs help to identify, the features of a tide race.",
       "optional": false
     },
     {
@@ -507,6 +602,8 @@
       "category": "Venue Specific: Tide Races",
       "competency": "The paddler demonstrates an understanding of the tidal environment and can paddle through a tide race in control. They understand the challenges of paddling in areas of current and positions themselves appropriately to ensure individual and group safety.",
       "standard": "Effectively paddles a downstream course through the current.",
+      "exceedsStandard": "Able to safely lead a group through a tide race and maximize features in the race to achieve a position of maximum usefulness.",
+      "belowStandard": "Cannot determine their route through the tide race or are out of control while paddling in a tide race.",
       "optional": false
     },
     {
@@ -515,6 +612,8 @@
       "category": "Venue Specific: Tide Races",
       "competency": "The paddler demonstrates an understanding of the tidal environment and can paddle through a tide race in control. They understand the challenges of paddling in areas of current and positions themselves appropriately to ensure individual and group safety.",
       "standard": "Able to select an appropriate route and return to the top of the tide race.",
+      "exceedsStandard": "Able to safely lead a group to the top of the tide race and maximize features in the race to achieve a position of maximum usefulness.",
+      "belowStandard": "Cannot determine their route to return to the top of the tide race or does not use eddies or waves and paddles against the current when moving upstream.",
       "optional": false
     },
     {
@@ -523,6 +622,8 @@
       "category": "Venue Specific: Tide Races",
       "competency": "The paddler demonstrates an understanding of the tidal environment and can paddle through a tide race in control. They understand the challenges of paddling in areas of current and positions themselves appropriately to ensure individual and group safety.",
       "standard": "Demonstrates control while breaking in and out of eddies.",
+      "exceedsStandard": "Varies kayak position, angle of approach, kayak edge, speed, and strokes to make both wide and tight turns on eddylines.",
+      "belowStandard": "Loses directional control or stability when crossing eddylines.",
       "optional": false
     },
     {
@@ -531,6 +632,8 @@
       "category": "Venue Specific: Tide Races",
       "competency": "The paddler demonstrates an understanding of the tidal environment and can paddle through a tide race in control. They understand the challenges of paddling in areas of current and positions themselves appropriately to ensure individual and group safety.",
       "standard": "Demonstrates using a ferry glide to reach an intended target while crossing the current.",
+      "exceedsStandard": "Varies kayak position, angle of approach, kayak edge, speed, and strokes to ferry glide across the flow and attain upstream.",
+      "belowStandard": "Loses angle or does not reach the target.",
       "optional": false
     },
     {
@@ -539,6 +642,8 @@
       "category": "Venue Specific: Tide Races",
       "competency": "The paddler demonstrates an understanding of the tidal environment and can paddle through a tide race in control. They understand the challenges of paddling in areas of current and positions themselves appropriately to ensure individual and group safety.",
       "standard": "Demonstrates appropriate rescue and towing skills and moves rescue to an area of less risk when necessary.",
+      "exceedsStandard": "Provides overwatch with appropriate positioning. Reaches rescue efficiently, performs rescue effectively, and moves rescue into eddy or other areas of less risk when necessary.",
+      "belowStandard": "Cannot reach, perform, or manage rescue. Venue Specific: Tide Races (continued)",
       "optional": false
     },
     {
@@ -571,6 +676,8 @@
       "category": "Venue Specific: Surf Zone",
       "competency": "The paddler demonstrates the use of forecasting tools in combination with charts and maps to predict areas of surf and breaking waves. They can identify the features of the surf zone and the types of waves. They demonstrate the ability to launch, land, and paddle through the surf in control. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Identifies features of a surf zone (soup, impact, outside, rip, and longshore currents).",
+      "exceedsStandard": "Understands the relationship between fetch, wind (direction, velocity, duration), waves (direction, height, period), and landforms (seabed, headlands). Uses available data and understanding of these relationships to predict whether the surf zone is appropriate for sea kayak surfing.",
+      "belowStandard": "Unable to describe what they observe in the surf zone beyond “breaking waves.”",
       "optional": false
     },
     {
@@ -579,6 +686,8 @@
       "category": "Venue Specific: Surf Zone",
       "competency": "The paddler demonstrates the use of forecasting tools in combination with charts and maps to predict areas of surf and breaking waves. They can identify the features of the surf zone and the types of waves. They demonstrate the ability to launch, land, and paddle through the surf in control. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Identifies different wave types and parts of the wave.",
+      "exceedsStandard": "Correctly identifies and understands the characteristics of different wave types and parts of the wave.",
+      "belowStandard": "Is unfamiliar with, or needs help to identify, different wave types and parts of the wave.",
       "optional": false
     },
     {
@@ -587,6 +696,8 @@
       "category": "Venue Specific: Surf Zone",
       "competency": "The paddler demonstrates the use of forecasting tools in combination with charts and maps to predict areas of surf and breaking waves. They can identify the features of the surf zone and the types of waves. They demonstrate the ability to launch, land, and paddle through the surf in control. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Is aware of surf etiquette and applies concepts with situational awareness and appropriate positioning.",
+      "exceedsStandard": "Understands surf etiquette and applies concepts with situational awareness and appropriate positioning when moving through the surf zone and catching waves. For example, receives compliments from other surfers at the break.",
+      "belowStandard": "Is unfamiliar with surf etiquette or needs help to apply concepts when positioning in and paddling through the surf zone. For example, encounters avoidable collisions with other paddlers or surfers.",
       "optional": false
     },
     {
@@ -595,6 +706,8 @@
       "category": "Venue Specific: Surf Zone",
       "competency": "The paddler demonstrates the use of forecasting tools in combination with charts and maps to predict areas of surf and breaking waves. They can identify the features of the surf zone and the types of waves. They demonstrate the ability to launch, land, and paddle through the surf in control. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Demonstrates control while launching and landing.",
+      "exceedsStandard": "Is intentional, patient, and strategic in location and timing of launch and landing.",
+      "belowStandard": "Paddler requires more than two attempts to launch or land without assistance. For example, unintentionally surfs, broaches, or capsizes when launching or landing.",
       "optional": false
     },
     {
@@ -603,6 +716,8 @@
       "category": "Venue Specific: Surf Zone",
       "competency": "The paddler demonstrates the use of forecasting tools in combination with charts and maps to predict areas of surf and breaking waves. They can identify the features of the surf zone and the types of waves. They demonstrate the ability to launch, land, and paddle through the surf in control. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Demonstrates the ability to identify a route to shore when sitting outside the surf break and paddle in under control.",
+      "exceedsStandard": "Able to identify possible routes and guide fellow paddlers through the surf zone. Uses coastal features in addition to observed wave action to determine their route.",
+      "belowStandard": "Unable to identify and successfully paddle a route through the surf zone from outside the break.",
       "optional": false
     },
     {
@@ -611,6 +726,8 @@
       "category": "Venue Specific: Surf Zone",
       "competency": "The paddler demonstrates the use of forecasting tools in combination with charts and maps to predict areas of surf and breaking waves. They can identify the features of the surf zone and the types of waves. They demonstrate the ability to launch, land, and paddle through the surf in control. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Demonstrates control while paddling through the surf and breaking waves to the outside or against the breaking waves.",
+      "exceedsStandard": "Able to safely direct a group through the surf and breaking waves. Clearly communicates the chosen route and maintains a position of maximum usefulness.",
+      "belowStandard": "Cannot determine their route through the surf and breaking waves. Or is unaware of their relationship to other paddlers and hazards or regularly experiences unintentional surfing.",
       "optional": false
     },
     {
@@ -619,6 +736,8 @@
       "category": "Venue Specific: Surf Zone",
       "competency": "The paddler demonstrates the use of forecasting tools in combination with charts and maps to predict areas of surf and breaking waves. They can identify the features of the surf zone and the types of waves. They demonstrate the ability to launch, land, and paddle through the surf in control. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Side-surfs (bongo slides) with balance and intention.",
+      "exceedsStandard": "Able to proactively begin side surfing with intention when a wave closes out and can recover from a side surf to surfing perpendicularly with control after the wave energy weakens.",
+      "belowStandard": "Unable to recover from a broach with a balanced side surf, resulting in capsize (after repeated attempts). Or demonstrates a lack of control while side surfing in a way that poses a hazard to others enjoying the surf zone.",
       "optional": false
     },
     {
@@ -627,6 +746,8 @@
       "category": "Venue Specific: Surf Zone",
       "competency": "The paddler demonstrates the use of forecasting tools in combination with charts and maps to predict areas of surf and breaking waves. They can identify the features of the surf zone and the types of waves. They demonstrate the ability to launch, land, and paddle through the surf in control. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Chooses the direction of travel and exits the wave under control.",
+      "exceedsStandard": "Able to establish a position of control on the wave and refine or change direction while surfing, exits a wave with awareness of their position in relation to the next wave.",
+      "belowStandard": "Unable to establish position or direction on the wave. Exits only when the wave loses energy or with an unintentional broach.",
       "optional": false
     },
     {
@@ -635,6 +756,8 @@
       "category": "Venue Specific: Surf Zone",
       "competency": "The paddler demonstrates the use of forecasting tools in combination with charts and maps to predict areas of surf and breaking waves. They can identify the features of the surf zone and the types of waves. They demonstrate the ability to launch, land, and paddle through the surf in control. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Can effectively swim and move their kayak to shore when capsized in the surf zone or performs a re-entry and roll.",
+      "exceedsStandard": "Uses wave energy to manage risk and advance to shore. Can identify hazards while in the water and adjust accordingly.",
+      "belowStandard": "Unable to swim and move their kayak to shore following a capsize in the surf zone. Or struggles to gain composure and make efficient decisions while out of their kayak in the surf zone.",
       "optional": false
     },
     {
@@ -643,6 +766,8 @@
       "category": "Venue Specific: Surf Zone",
       "competency": "The paddler demonstrates the use of forecasting tools in combination with charts and maps to predict areas of surf and breaking waves. They can identify the features of the surf zone and the types of waves. They demonstrate the ability to launch, land, and paddle through the surf in control. They can self-rescue in the surf zone, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Demonstrates appropriate rescue and towing skills and moves rescue to an area of less risk when necessary.",
+      "exceedsStandard": "Demonstrates patient urgency and intention when assessing rescue options and adapts approach as needed through a spectrum of options (for example, swimmer support, contact tows, assisted rescues).",
+      "belowStandard": "Cannot reach, perform, or manage rescue. Or is locked into a single-choice or dogmatic approach (for example, “We never do assisted rescues in the surf.”).",
       "optional": false
     },
     {
@@ -651,6 +776,8 @@
       "category": "Venue Specific: Rock Gardens and Sea Caves",
       "competency": "The paddler uses forecasting tools with charts and maps to predict appropriate locations for rock garden and sea cave exploration. They demonstrate the ability to paddle through rock gardens and sea caves safely and efficiently. They can self-rescue in rock gardens, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Identify the zones of a rock garden (safe zones, transition zones, danger zones, play features).",
+      "exceedsStandard": "Understands the relationship between wind (direction, velocity, duration), waves (direction, height, period), tide height, and landforms (seabed, headlands). Uses available data and understanding of these relationships to predict features before arriving at the site. Can consistently and correctly identify zones and features in a rock gardening venue or environment they are encountering for the first time or given unfamiliar conditions.",
+      "belowStandard": "Unfamiliar with or needs help to identify zones or features within a rock garden environment.",
       "optional": false
     },
     {
@@ -659,6 +786,8 @@
       "category": "Venue Specific: Rock Gardens and Sea Caves",
       "competency": "The paddler uses forecasting tools with charts and maps to predict appropriate locations for rock garden and sea cave exploration. They demonstrate the ability to paddle through rock gardens and sea caves safely and efficiently. They can self-rescue in rock gardens, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Is appropriately equipped for paddling in rock gardens.",
+      "exceedsStandard": "Kayak and gear setup is suitable for paddling in conditions and can explain rock garden-specific choices (for example, plastic kayak, whitewater paddle, bow, and stern grab lines).",
+      "belowStandard": "Kayak and gear setup is not suitable for paddling in rock gardens resulting in damage beyond normal wear and tear, or the paddler cannot complete all assessed skills.",
       "optional": false
     },
     {
@@ -667,6 +796,8 @@
       "category": "Venue Specific: Rock Gardens and Sea Caves",
       "competency": "The paddler uses forecasting tools with charts and maps to predict appropriate locations for rock garden and sea cave exploration. They demonstrate the ability to paddle through rock gardens and sea caves safely and efficiently. They can self-rescue in rock gardens, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Demonstrates the ability to traverse zones of a rock garden safely.",
+      "exceedsStandard": "Able to safely lead a group through a rock garden and maximize features in the environment to maintain a line of sight and achieve a position of maximum usefulness.",
+      "belowStandard": "Cannot determine their route through the rock garden or is out of control while paddling in a rock garden.",
       "optional": false
     },
     {
@@ -675,6 +806,8 @@
       "category": "Venue Specific: Rock Gardens and Sea Caves",
       "competency": "The paddler uses forecasting tools with charts and maps to predict appropriate locations for rock garden and sea cave exploration. They demonstrate the ability to paddle through rock gardens and sea caves safely and efficiently. They can self-rescue in rock gardens, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Demonstrates the ability to run an appropriate play feature (for example, rock slot, pour-over).",
+      "exceedsStandard": "Identifies, assesses for safety, and successfully runs an appropriate play feature. Achieves position of maximum usefulness before and after running the feature to support group members.",
+      "belowStandard": "Unable to maintain stability or directional control while running an appropriate play feature.",
       "optional": false
     },
     {
@@ -683,6 +816,8 @@
       "category": "Venue Specific: Rock Gardens and Sea Caves",
       "competency": "The paddler uses forecasting tools with charts and maps to predict appropriate locations for rock garden and sea cave exploration. They demonstrate the ability to paddle through rock gardens and sea caves safely and efficiently. They can self-rescue in rock gardens, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Demonstrates the ability to explore sea caves safely.",
+      "exceedsStandard": "Able to safely lead a group on a sea cave exploration while maintaining line of sight and achieving a position of maximum usefulness.",
+      "belowStandard": "Unable to maintain stability or directional control when entering, exiting, or paddling within a confined space.",
       "optional": false
     },
     {
@@ -691,6 +826,8 @@
       "category": "Venue Specific: Rock Gardens and Sea Caves",
       "competency": "The paddler uses forecasting tools with charts and maps to predict appropriate locations for rock garden and sea cave exploration. They demonstrate the ability to paddle through rock gardens and sea caves safely and efficiently. They can self-rescue in rock gardens, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Demonstrates the ability to both land on and launch from the rocks.",
+      "exceedsStandard": "Identifies an appropriate location for a rocky landing and independently lands on and launches from the rocks.",
+      "belowStandard": "Needs assistance to land on, or launch from, the rocks with assistance from another paddler.",
       "optional": false
     },
     {
@@ -699,6 +836,8 @@
       "category": "Venue Specific: Rock Gardens and Sea Caves",
       "competency": "The paddler uses forecasting tools with charts and maps to predict appropriate locations for rock garden and sea cave exploration. They demonstrate the ability to paddle through rock gardens and sea caves safely and efficiently. They can self-rescue in rock gardens, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Demonstrate appropriate rescue and towing skills and moves rescue to an area of less risk when necessary.",
+      "exceedsStandard": "Provides overwatch with appropriate positioning. Reaches rescue efficiently, performs rescue effectively, and moves rescue into an area of less risk when necessary.",
+      "belowStandard": "Cannot reach, perform, or manage rescue.",
       "optional": false
     },
     {
@@ -707,6 +846,8 @@
       "category": "Venue Specific: Rock Gardens and Sea Caves",
       "competency": "The paddler uses forecasting tools with charts and maps to predict appropriate locations for rock garden and sea cave exploration. They demonstrate the ability to paddle through rock gardens and sea caves safely and efficiently. They can self-rescue in rock gardens, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Transport a swimmer into an area of less risk.",
+      "exceedsStandard": "Demonstrates two or more ways to transport a swimmer into an area of less risk.",
+      "belowStandard": "Cannot transport a swimmer into an area of less risk.",
       "optional": false
     },
     {
@@ -715,6 +856,8 @@
       "category": "Venue Specific: Rock Gardens and Sea Caves",
       "competency": "The paddler uses forecasting tools with charts and maps to predict appropriate locations for rock garden and sea cave exploration. They demonstrate the ability to paddle through rock gardens and sea caves safely and efficiently. They can self-rescue in rock gardens, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Convey a swimmer’s kayak to an area of less risk.",
+      "exceedsStandard": "Demonstrates two or more ways to transport a swimmer’s kayak into an area of less risk.",
+      "belowStandard": "Unable to transport a swimmer’s kayak into an area of less risk.",
       "optional": false
     },
     {
@@ -723,6 +866,8 @@
       "category": "Venue Specific: Rock Gardens and Sea Caves",
       "competency": "The paddler uses forecasting tools with charts and maps to predict appropriate locations for rock garden and sea cave exploration. They demonstrate the ability to paddle through rock gardens and sea caves safely and efficiently. They can self-rescue in rock gardens, perform assisted rescues, and tow where and when appropriate.",
       "standard": "Can effectively swim and move their kayak to an area of less risk following a capsize in the rocks.",
+      "exceedsStandard": "Able to swim among the rocks and demonstrates more than one technique for moving their kayak to an area of less risk.",
+      "belowStandard": "Paddler cannot effectively swim among the rocks and move their kayak to an area of less risk.",
       "optional": false
     }
   ]
