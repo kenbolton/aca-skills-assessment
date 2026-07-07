@@ -8,3 +8,6 @@ pi/sessions/
 
 # private teaching content (generated fragments; bundled only in the private build)
 lessons-content/*.html
+
+# private training guidance (generated from ACA PDFs; private build only)
+training-content/

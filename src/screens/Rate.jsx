@@ -14,6 +14,16 @@ const CONTENT_BY_SLUG = Object.fromEntries(
     ([path, html]) => [path.split('/').pop().replace(/\.html$/, ''), html],
   ),
 );
+// Training-guidance fragments, keyed by level (l4/l5). Same private-only pattern:
+// training-content/ is git-ignored and empty in the public build, so this is {}.
+const TRAINING_FRAGMENTS = import.meta.glob('/training-content/*.html', {
+  eager: true, query: '?raw', import: 'default',
+});
+const TRAINING_BY_LEVEL = Object.fromEntries(
+  Object.entries(TRAINING_FRAGMENTS).map(
+    ([path, html]) => [path.split('/').pop().replace(/\.html$/, '').toLowerCase(), html],
+  ),
+);
 const PRIVATE = import.meta.env.VITE_PRIVATE === 'true';
 
 const STATUS_MARK = { done: '✓', warn: '⚠', todo: '○' };
@@ -36,6 +46,7 @@ function countRatedCoreSkills(session, visibleSkills) {
 export function Rate({ session, onChange, onDone }) {
   const [i, setI] = useState(0);
   const [showLesson, setShowLesson] = useState(false);
+  const [showTraining, setShowTraining] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
 
   // The whole page scrolls as one document, so moving to another skill
@@ -57,6 +68,8 @@ export function Rate({ session, onChange, onDone }) {
   // The optional assessment intro is the first page; the rest are the rateable skills.
   const intro = session.intro && Array.isArray(session.intro.sections) && session.intro.sections.length
     ? session.intro : null;
+  // The assessment's level, used to pick the (private-build-only) training fragment.
+  const introLevel = (visibleSkills[0] && visibleSkills[0].level || '').toLowerCase();
   const pages = intro ? [{ intro: true }, ...visibleSkills] : visibleSkills;
   const page = pages[i];
   const onIntro = !!page.intro;
@@ -168,6 +181,18 @@ export function Rate({ session, onChange, onDone }) {
                   <p className="intro-text">
                     <a className="intro-link" href={sec.link.href} target="_blank" rel="noreferrer">{sec.link.label} ↗</a>
                   </p>
+                ) : null}
+                {/* Full guidance text is embedded only in the private build, where the
+                    training-content fragment for this level exists. */}
+                {sec.link && PRIVATE && TRAINING_BY_LEVEL[introLevel] ? (
+                  <div className="teaching">
+                    <button type="button" className="link-button" onClick={() => setShowTraining(v => !v)}>
+                      📄 {showTraining ? 'Hide' : 'Show'} full training guidance
+                    </button>
+                    {showTraining ? (
+                      <div className="lesson-content" dangerouslySetInnerHTML={{ __html: TRAINING_BY_LEVEL[introLevel] }} />
+                    ) : null}
+                  </div>
                 ) : null}
               </section>
             ))}
