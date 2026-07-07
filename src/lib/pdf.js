@@ -128,5 +128,17 @@ export function downloadPaddlerPdf(session, paddlerId) {
     y += wrapped.length * 14 + 6;
   }
 
+  // Copyright attribution on the exported record.
+  ensureRoom(3);
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(8);
+  doc.setTextColor(120);
+  const notice = doc.splitTextToSize(
+    'Skills standards and assessment criteria © American Canoe Association, reproduced from the ACA Coastal Kayaking curriculum (rev. 5/1/2024). Independent, non-commercial instructor tool; not published or endorsed by the ACA.',
+    480,
+  );
+  doc.text(notice, marginX, Math.min(y + 14, pageBottom + 24));
+  doc.setTextColor(0);
+
   doc.save(`aca-${summary.target}-${safeName(summary.name)}.pdf`);
 }

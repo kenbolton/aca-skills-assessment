@@ -1,6 +1,7 @@
 import { useState } from 'preact/hooks';
 import { loadConfig } from '../lib/skills.js';
 import { createSession } from '../lib/session.js';
+import { Attribution } from '../components/Attribution.jsx';
 import rawSkills from '../data/skills.json';
 import rawL3 from '../data/skills-l3.json';
 import rawL4 from '../data/skills-l4.json';
@@ -157,6 +158,8 @@ export function Setup({ onStart }) {
       {error ? <p className="error">{error}</p> : null}
 
       <button type="button" onClick={handleStart}>Start Assessment</button>
+
+      <Attribution />
     </main>
   );
 }

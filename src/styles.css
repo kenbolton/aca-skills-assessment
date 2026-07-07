@@ -469,6 +469,17 @@ button { min-height: var(--hit); font-size: 18px; }
 .conditions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
 .review-venue-line { color: #555; margin: 0 0 0.5rem; }
 
+.attribution {
+  margin-top: 2rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #dbe4e6;
+  color: #777;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+.attribution p { margin: 0 0 0.4rem; }
+.attribution a { color: #777; }
+
 /* Assessment intro (first page of the Rate flow) */
 .intro-body { margin-top: 0.5rem; }
 .intro-section {

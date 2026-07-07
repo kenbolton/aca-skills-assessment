@@ -4,6 +4,7 @@ import { getActionPlan, setActionPlan, conditionsSummary } from '../lib/session.
 import { invalidResults, isSessionComplete } from '../lib/validation.js';
 import { downloadPaddlerPdf } from '../lib/pdf.js';
 import { SyncButton } from '../components/SyncButton.jsx';
+import { Attribution } from '../components/Attribution.jsx';
 
 function download(name, text, type) {
   const blob = new Blob([text], { type });
@@ -124,6 +125,8 @@ export function Review({ session, onChange, onBack, onReset }) {
         <button type="button" onClick={onReset}>Start over</button>
         <SyncButton session={session} />
       </div>
+
+      <Attribution />
     </main>
   );
 }
