@@ -2,6 +2,7 @@ import { useState, useEffect } from 'preact/hooks';
 import { getResult, setRating, setFeedback, optionsForSkillInSession } from '../lib/session.js';
 import { skillLabel } from '../lib/skills.js';
 import { resultNeedsFeedback, skillStatus } from '../lib/validation.js';
+import { ratePages, indexOfSkill } from '../lib/rate-pages.js';
 import lessons from '../data/lessons.json';
 
 // Lesson HTML fragments are bundled ONLY in the private build. The public build's
@@ -43,8 +44,8 @@ function countRatedCoreSkills(session, visibleSkills) {
   return { rated, total: coreSkills.length };
 }
 
-export function Rate({ session, onChange, onDone }) {
-  const [i, setI] = useState(0);
+export function Rate({ session, onChange, onDone, focusSkillId = null }) {
+  const [i, setI] = useState(() => indexOfSkill(session, focusSkillId));
   const [showLesson, setShowLesson] = useState(false);
   const [showTraining, setShowTraining] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
@@ -55,7 +56,10 @@ export function Rate({ session, onChange, onDone }) {
 
   // A skill is only shown if at least one paddler's target matches its level;
   // skills with no applicable paddler are auto-skipped by never appearing here.
-  const visibleSkills = session.skills.filter(s => session.paddlers.some(p => p.target === s.level));
+  // The optional assessment intro is the first page; the rest are the rateable skills.
+  const pages = ratePages(session);
+  const visibleSkills = pages.filter(p => !p.intro);
+  const intro = pages.length > 0 && pages[0].intro ? session.intro : null;
 
   if (visibleSkills.length === 0) {
     return (
@@ -65,12 +69,8 @@ export function Rate({ session, onChange, onDone }) {
     );
   }
 
-  // The optional assessment intro is the first page; the rest are the rateable skills.
-  const intro = session.intro && Array.isArray(session.intro.sections) && session.intro.sections.length
-    ? session.intro : null;
   // The assessment's level, used to pick the (private-build-only) training fragment.
   const introLevel = (visibleSkills[0] && visibleSkills[0].level || '').toLowerCase();
-  const pages = intro ? [{ intro: true }, ...visibleSkills] : visibleSkills;
   const page = pages[i];
   const onIntro = !!page.intro;
   const skill = onIntro ? null : page;
