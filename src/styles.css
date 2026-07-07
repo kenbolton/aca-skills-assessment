@@ -543,3 +543,13 @@ button { min-height: var(--hit); font-size: 18px; }
 }
 .bsd-standard { margin: .3rem 0; color: #14323a; font-size: .9rem; }
 .bsd-note { margin: .3rem 0 0; font-size: .9rem; }
+
+.competency-radars { display: flex; flex-wrap: wrap; gap: .75rem; margin: .75rem 0 0; }
+.competency-radar { margin: 0; width: 140px; }
+.cr-title { font-size: .8rem; font-weight: 600; color: #14323a; margin: 0 0 .2rem; line-height: 1.15; }
+.cr-svg { width: 100%; height: auto; display: block; }
+.cr-ring { fill: none; stroke: #d7e3e5; stroke-width: .5; }
+.cr-spoke { stroke: #e4edee; stroke-width: .5; }
+.cr-shape { fill: rgba(0,95,107,.25); stroke: #005f6b; stroke-width: 1.5; }
+.cr-dot { fill: #005f6b; }
+.cr-gauge-axis, .cr-gauge-tick { stroke: #b7c9cc; stroke-width: 1; }
