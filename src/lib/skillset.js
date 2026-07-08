@@ -32,3 +32,19 @@ export function fattenSession(session, blob) {
   const { skillSetRef, ...rest } = session;
   return { ...rest, skills: blob.skills, scales: blob.scales, intro: blob.intro ?? null };
 }
+
+export const BUNDLE_FORMAT = 'aca-archive-v2';
+
+// Build a bundle from in-memory (fat) sessions: slim each and collect its blob,
+// deduped by content ref. An already-slim session passes through as-is.
+export function bundleOf(sessions) {
+  const skillSets = {};
+  const slim = sessions.map(s => {
+    if (!s.skills) return s;
+    const blob = blobOf(s);
+    const ref = skillSetRef(blob);
+    skillSets[ref] = blob;
+    return slimSession(s, ref);
+  });
+  return { format: BUNDLE_FORMAT, sessions: slim, skillSets };
+}

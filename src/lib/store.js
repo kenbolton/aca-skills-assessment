@@ -4,12 +4,11 @@
 // of the durable store on purpose.
 import { sessionSummary } from './session-summary.js';
 import { isV3Session } from './session.js';
-import { skillSetRef, blobOf, isSlim, slimSession, fattenSession } from './skillset.js';
+import { skillSetRef, blobOf, isSlim, slimSession, fattenSession, BUNDLE_FORMAT } from './skillset.js';
 
 const DB = 'aca-assessment';
 const STORE = 'sessions';
 const SKILLSETS = 'skillSets';
-const BUNDLE_FORMAT = 'aca-archive-v2';
 const LEGACY_KEY = 'aca-assessment:session';
 const CURRENT_KEY = 'aca-assessment:current';
 
