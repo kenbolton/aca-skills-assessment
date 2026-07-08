@@ -1,3 +1,5 @@
+import { bundleOf } from './skillset.js';
+
 // Base URL of the Pi's sync endpoint. Empty string = same origin as the app
 // (works when the app is hosted on the Pi). Overridable for testing.
 export const SYNC_BASE = '';
@@ -7,7 +9,7 @@ export async function syncSession(session, baseUrl = SYNC_BASE) {
     const res = await fetch(`${baseUrl}/sync`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(session),
+      body: JSON.stringify(bundleOf([session])),
     });
     if (!res.ok) return { ok: false, error: `Server responded ${res.status}` };
     const data = await res.json().catch(() => ({}));
