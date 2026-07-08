@@ -4,11 +4,35 @@ import { extname, join, normalize } from 'node:path';
 import { sessionSummary } from '../src/lib/session-summary.js';
 import { safeSessionPath } from '../src/lib/safe-session-path.js';
 import { sessionToCsv } from '../src/lib/csv.js';
+import { fattenSession } from '../src/lib/skillset.js';
 
 const PORT = process.env.PORT || 8787;
 const DIST = decodeURI(new URL('../dist/', import.meta.url).pathname);
 const SESSIONS = decodeURI(new URL('./sessions/', import.meta.url).pathname);
 await mkdir(SESSIONS, { recursive: true });
+
+const SKILLSETS = decodeURI(new URL('./skillsets/', import.meta.url).pathname);
+await mkdir(SKILLSETS, { recursive: true });
+
+function safeSkillSetPath(ref) {
+  return /^sk-[0-9a-f]{8}$/.test(ref) ? join(SKILLSETS, ref + '.json') : null;
+}
+async function readSkillSet(ref) {
+  const p = safeSkillSetPath(ref);
+  if (!p) return null;
+  try { return JSON.parse(await readFile(p, 'utf8')); } catch { return null; }
+}
+async function writeSkillSet(ref, blob) {
+  const p = safeSkillSetPath(ref);
+  if (p) await writeFile(p, JSON.stringify(blob, null, 2));
+}
+
+// Re-attach a slim session's shared blob; fat/legacy sessions pass through.
+async function hydrate(session) {
+  if (!session || session.skills || typeof session.skillSetRef !== 'string') return session;
+  const blob = await readSkillSet(session.skillSetRef);
+  return blob ? fattenSession(session, blob) : session;
+}
 
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.svg': 'image/svg+xml', '.webmanifest': 'application/manifest+json' };
 
@@ -27,7 +51,7 @@ async function listSummaries() {
   const files = (await readdir(SESSIONS)).filter(f => f.endsWith('.json'));
   const out = [];
   for (const f of files) {
-    try { out.push(sessionSummary(JSON.parse(await readFile(join(SESSIONS, f), 'utf8')))); }
+    try { out.push(sessionSummary(await hydrate(JSON.parse(await readFile(join(SESSIONS, f), 'utf8'))))); }
     catch (e) { console.error('skip bad session file', f, e.message); }
   }
   out.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
@@ -124,11 +148,23 @@ const server = createServer(async (req, res) => {
 
   if (req.method === 'POST' && url === '/sync') {
     try {
-      const session = JSON.parse(await body(req));
-      if (!session || typeof session.id !== 'string' || !Array.isArray(session.results)) throw new Error('bad payload');
-      const p = safeSessionPath(SESSIONS, session.id);
+      const data = JSON.parse(await body(req));
+      // A slim bundle: store each blob, then each slim session.
+      if (data && Array.isArray(data.sessions) && data.skillSets && typeof data.skillSets === 'object') {
+        for (const [ref, blob] of Object.entries(data.skillSets)) await writeSkillSet(ref, blob);
+        let imported = 0;
+        for (const s of data.sessions) {
+          if (!s || typeof s.id !== 'string' || !Array.isArray(s.results)) continue;
+          const p = safeSessionPath(SESSIONS, s.id);
+          if (p) { await writeFile(p, JSON.stringify(s, null, 2)); imported++; }
+        }
+        return sendJson(res, 200, { syncedAt: new Date().toISOString(), imported });
+      }
+      // A legacy fat single session.
+      if (!data || typeof data.id !== 'string' || !Array.isArray(data.results)) throw new Error('bad payload');
+      const p = safeSessionPath(SESSIONS, data.id);
       if (!p) throw new Error('bad id');
-      await writeFile(p, JSON.stringify(session, null, 2));
+      await writeFile(p, JSON.stringify(data, null, 2));
       return sendJson(res, 200, { syncedAt: new Date().toISOString() });
     } catch (e) { return sendJson(res, 400, { error: String(e.message || e) }); }
   }
@@ -152,10 +188,10 @@ const server = createServer(async (req, res) => {
     const safeName = String(id).replace(/[^a-z0-9_-]/gi, '_');
     if (m[2] === '.csv') {
       res.writeHead(200, { 'Content-Type': 'text/csv', 'Content-Disposition': `attachment; filename="${safeName}.csv"` });
-      return res.end(sessionToCsv(session));
+      return res.end(sessionToCsv(await hydrate(session)));
     }
     res.writeHead(200, { 'Content-Type': 'application/json', 'Content-Disposition': `attachment; filename="${safeName}.json"` });
-    return res.end(JSON.stringify(session, null, 2));
+    return res.end(JSON.stringify(await hydrate(session), null, 2));
   }
 
   if (req.method === 'GET' && url === '/sessions') {
