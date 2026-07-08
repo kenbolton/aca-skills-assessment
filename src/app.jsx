@@ -3,7 +3,7 @@ import { Setup } from './screens/Setup.jsx';
 import { Rate } from './screens/Rate.jsx';
 import { Review } from './screens/Review.jsx';
 import { Archive } from './screens/Archive.jsx';
-import { initStore, getSession, putSession, deleteSession, getCurrentId, setCurrentId } from './lib/store.js';
+import { initStore, getSession, putSession, getCurrentId, setCurrentId } from './lib/store.js';
 import { SyncButton } from './components/SyncButton.jsx';
 
 export function App() {
@@ -42,12 +42,13 @@ export function App() {
   }
 
   function reset() {
+    // "Start over" leaves the current assessment in the archive (it is autosaved
+    // on every tap) and just returns to a fresh Setup — it is not destructive.
     if (typeof window !== 'undefined' &&
-        !window.confirm('Start over? This clears the current assessment and cannot be undone.')) {
+        !window.confirm('Start a new assessment? The current one stays in Past assessments.')) {
       return;
     }
-    const id = getCurrentId();
-    if (id) deleteSession(id).catch(err => console.error('delete failed', err));
+    setFocusSkillId(null);
     setCurrentId(null);
     setSession(null);
     setScreen('setup');
