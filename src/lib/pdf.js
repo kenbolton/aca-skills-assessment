@@ -1,11 +1,11 @@
 import { paddlerSummary } from './summary.js';
 import { getActionPlan, conditionsSummary } from './session.js';
+import {
+  ACA_ATTRIBUTION, INDEPENDENCE_NOTICE, LEDGER_NOTICE, SELF_ASSESSMENT_NOTICE,
+} from './notices.js';
 
-// Exported so the wording can be tested and reused: it IS the safeguard, not
-// decoration. A self-assessment is a paddler's own record — it is not an ACA
-// assessment and must not read like one.
-export const SELF_ASSESSMENT_NOTICE =
-  'SELF-ASSESSMENT — not an ACA assessment. This is the paddler\'s own record of their skills against the published standards. It was not conducted or verified by a certified ACA assessor and confers no ACA certification or level.';
+// Re-exported for the existing test import path; notices.js is the source.
+export { SELF_ASSESSMENT_NOTICE };
 
 const LANDING_LABEL = {
   L2: 'Level 2',
@@ -148,16 +148,21 @@ export async function downloadPaddlerPdf(session, paddlerId) {
     y += wrapped.length * 14 + 6;
   }
 
-  // Copyright attribution on the exported record.
-  ensureRoom(3);
+  // Footer on the exported record: whose work the criteria are, what this tool is,
+  // and — for an assessor's export — that the document is a ledger, not a
+  // certificate. The paddler receives this PDF; the assessor knows what it is, but
+  // the paddler is the one who might read "ACA Assessment" as a credential.
+  // Wording comes from lib/notices.js so it cannot drift from the in-app footer.
+  ensureRoom(4);
   doc.setFont('helvetica', 'italic');
   doc.setFontSize(8);
   doc.setTextColor(120);
-  const notice = doc.splitTextToSize(
-    'Skills standards and assessment criteria © American Canoe Association, reproduced from the ACA Coastal Kayaking curriculum (rev. 5/1/2024). Independent, non-commercial instructor tool; not published or endorsed by the ACA.',
+  const footer = doc.splitTextToSize(
+    [session.selfAssessment ? null : LEDGER_NOTICE, ACA_ATTRIBUTION, INDEPENDENCE_NOTICE]
+      .filter(Boolean).join(' '),
     480,
   );
-  doc.text(notice, marginX, Math.min(y + 14, pageBottom + 24));
+  doc.text(footer, marginX, Math.min(y + 14, pageBottom + 24));
   doc.setTextColor(0);
 
   doc.save(`aca-${summary.target}-${safeName(summary.name)}.pdf`);

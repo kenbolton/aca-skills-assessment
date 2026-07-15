@@ -1,7 +1,39 @@
 import { expect, test } from 'vitest';
 import { SELF_ASSESSMENT_NOTICE } from '../src/lib/pdf.js';
+import {
+  ACA_ATTRIBUTION, INDEPENDENCE_NOTICE, LEDGER_NOTICE,
+  SELF_ASSESSMENT_NOTICE as NOTICE_SOURCE,
+} from '../src/lib/notices.js';
+import { Attribution } from '../src/components/Attribution.jsx';
 import { sessionToCsv } from '../src/lib/csv.js';
 import { resultNeedsFeedback } from '../src/lib/validation.js';
+
+// The attribution wording was duplicated between Attribution.jsx and pdf.js and
+// silently drifted: the component named the Jan-2025 verification while the
+// exported PDF still claimed only rev. 5/1/2024. One source now; these keep it so.
+
+test('pdf.js re-exports the notice from notices.js rather than keeping a copy', () => {
+  expect(SELF_ASSESSMENT_NOTICE).toBe(NOTICE_SOURCE);
+});
+
+test('the in-app footer renders the shared attribution strings verbatim', () => {
+  const vdom = Attribution();
+  const rendered = JSON.stringify(vdom);
+  expect(rendered).toContain(ACA_ATTRIBUTION);
+  expect(rendered).toContain(INDEPENDENCE_NOTICE);
+});
+
+test('the attribution names both the transcribed revision and what verified it', () => {
+  expect(ACA_ATTRIBUTION).toMatch(/rev\. 5\/1\/2024/);
+  expect(ACA_ATTRIBUTION).toMatch(/January 2025/);
+  expect(ACA_ATTRIBUTION).toMatch(/the guides govern/i);
+});
+
+test('the ledger notice denies that an assessor export is a certificate', () => {
+  expect(LEDGER_NOTICE).toMatch(/not a certificate/i);
+  expect(LEDGER_NOTICE).toMatch(/confers no ACA level/i);
+  expect(LEDGER_NOTICE).toMatch(/issued by the ACA/i);
+});
 
 // A self-assessment leaving this app must never be mistakable for an ACA
 // assessment. The distinction lived only in the data and the Archive view; the
