@@ -94,7 +94,7 @@ export function Setup({ onStart, onArchive }) {
 
       <label className="field checkbox-field">
         <input type="checkbox" checked={selfAssessment} onChange={e => setSelfAssessment(e.currentTarget.checked)} />
-        <span>Self-assessment (just me — notes optional)</span>
+        <span>Self-assessment (just me — not an ACA assessment)</span>
       </label>
 
       <label className="field">

@@ -18,8 +18,11 @@ export function skillStatus(session, skill) {
   return anyNeedsFeedback ? 'warn' : anyDno ? 'dno' : 'done';
 }
 
+// Feedback is required on a below-standard rating in EVERY mode, including
+// self-assessment. Writing down *why* you rated yourself Below is where the
+// learning is — waiving it for self-review made the weaker mode the laxer one,
+// which is backwards for a tool whose point is honest self-appraisal.
 export function resultNeedsFeedback(session, result) {
-  if (session.selfAssessment) return false;
   const skill = skillById(session, result.skillId);
   if (!skill || skill.optional) return false;
   const opt = optionFor(session, skill, result.rating);

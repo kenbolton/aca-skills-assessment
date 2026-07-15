@@ -53,10 +53,15 @@ test('skillStatus reflects completion across the paddlers a skill applies to', (
   expect(st([r('p1', 'below'), r('p2', 'dno')])).toBe('warn');
 });
 
-test('self-assessment waives all required feedback', () => {
+// Self-assessment used to waive required feedback. It no longer does: writing
+// down *why* you rated yourself Below is where the learning is, so the mode with
+// no assessor should not be the lax one.
+test('a below-standard rating requires feedback in self-assessment too', () => {
   const s = withResults([]);
-  expect(resultNeedsFeedback({ ...s, selfAssessment: true }, { skillId: 'd', rating: 'l1', feedback: ' ' })).toBe(false);
-  expect(resultNeedsFeedback({ ...s, selfAssessment: true }, { skillId: 'd', rating: 'below', feedback: '' })).toBe(false);
-  // control: without the flag the same below rating still needs feedback
+  expect(resultNeedsFeedback({ ...s, selfAssessment: true }, { skillId: 'd', rating: 'below', feedback: '' })).toBe(true);
+  expect(resultNeedsFeedback({ ...s, selfAssessment: true }, { skillId: 'd', rating: 'l1', feedback: ' ' })).toBe(true);
+  // a note satisfies it, in either mode
+  expect(resultNeedsFeedback({ ...s, selfAssessment: true }, { skillId: 'd', rating: 'below', feedback: 'tippy' })).toBe(false);
+  // instructor mode is unchanged
   expect(resultNeedsFeedback(s, { skillId: 'd', rating: 'below', feedback: '' })).toBe(true);
 });

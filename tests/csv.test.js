@@ -8,11 +8,23 @@ const session = {
   results: [{ paddlerId: 'p', skillId: 'd', rating: 'l1', feedback: 'said "hi", ok' }],
 };
 
-test('CSV header + row includes Target, Landing, CMS Grade, and the rating label', () => {
+test('CSV header + row includes Type, Target, Landing, CMS Grade, and the rating label', () => {
   const lines = sessionToCsv(session).split('\n');
-  expect(lines[0]).toBe('Paddler,Target,Landing,Category,Skill,Optional,Rating,CMS Grade,Feedback');
+  expect(lines[0]).toBe('Type,Paddler,Target,Landing,Category,Skill,Optional,Rating,CMS Grade,Feedback');
   // an l1 mark on a dual skill is below the L2 standard -> CMS "Below"
-  expect(lines[1]).toBe('Alex,L2,L1,Strokes,Fwd,,L1,Below,"said ""hi"", ok"');
+  expect(lines[1]).toBe('Assessment,Alex,L2,L1,Strokes,Fwd,,L1,Below,"said ""hi"", ok"');
+});
+
+// The CMS Paddler Evaluation form is a certified assessor's official record. A
+// self-review must never emit CMS-shaped grades, or it invites transcription into
+// the ACA's system as though an assessor made the call.
+test('a self-assessment is labelled Type=Self-assessment and emits no CMS grade', () => {
+  const lines = sessionToCsv({ ...session, selfAssessment: true }).split('\n');
+  expect(lines[1].startsWith('Self-assessment,')).toBe(true);
+  const cms = lines[1].split(',')[8];
+  expect(cms).toBe('');
+  // the rating itself is still recorded — only the CMS column is withheld
+  expect(lines[1]).toContain('L1');
 });
 
 test('cmsGrade collapses the scale to the official Meets/Below (blank when nothing to enter)', () => {

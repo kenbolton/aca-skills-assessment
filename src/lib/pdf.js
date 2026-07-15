@@ -1,6 +1,12 @@
 import { paddlerSummary } from './summary.js';
 import { getActionPlan, conditionsSummary } from './session.js';
 
+// Exported so the wording can be tested and reused: it IS the safeguard, not
+// decoration. A self-assessment is a paddler's own record — it is not an ACA
+// assessment and must not read like one.
+export const SELF_ASSESSMENT_NOTICE =
+  'SELF-ASSESSMENT — not an ACA assessment. This is the paddler\'s own record of their skills against the published standards. It was not conducted or verified by a certified ACA assessor and confers no ACA certification or level.';
+
 const LANDING_LABEL = {
   L2: 'Level 2',
   L1: 'Level 1',
@@ -31,7 +37,10 @@ export async function downloadPaddlerPdf(session, paddlerId) {
 
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(18);
-  doc.text(`ACA Assessment — ${summary.name}`, marginX, y);
+  // A self-assessment must never export a document headed "ACA Assessment". The
+  // PDF is the artifact that leaves the app and gets shown to people; unlabelled,
+  // it is indistinguishable from a certified assessor's result.
+  doc.text(`${session.selfAssessment ? 'ACA Self-Assessment' : 'ACA Assessment'} — ${summary.name}`, marginX, y);
   y += 24;
 
   doc.setFont('helvetica', 'normal');
@@ -42,6 +51,15 @@ export async function downloadPaddlerPdf(session, paddlerId) {
   const metaWrapped = doc.splitTextToSize(metaLine, 480);
   doc.text(metaWrapped, marginX, y);
   y += metaWrapped.length * 14 + 6;
+
+  if (session.selfAssessment) {
+    doc.setFont('helvetica', 'bold');
+    const notice = doc.splitTextToSize(SELF_ASSESSMENT_NOTICE, 480);
+    ensureRoom(notice.length);
+    doc.text(notice, marginX, y);
+    y += notice.length * 14 + 6;
+    doc.setFont('helvetica', 'normal');
+  }
 
   doc.setFont('helvetica', 'bold');
   let landingLabel;

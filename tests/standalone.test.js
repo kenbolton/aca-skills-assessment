@@ -123,12 +123,13 @@ test('paddlerSummary surfaces belowCount for a standalone session', () => {
   expect(paddlerSummary(s, s._pid).belowCount).toBe(1);
 });
 
-test('resultNeedsFeedback: a below with no note requires feedback in instructor mode', () => {
+test('resultNeedsFeedback: a below with no note requires feedback in every mode', () => {
   const s = createSession({ id: 's', createdAt: 't', config: L3, paddlers: [{ name: 'Ada', target: 'L3' }] });
   const core = s.skills.find(x => !x.optional);
   const result = { skillId: core.id, rating: 'below', feedback: '' };
   expect(resultNeedsFeedback(s, result)).toBe(true);
-  expect(resultNeedsFeedback({ ...s, selfAssessment: true }, result)).toBe(false);
+  // self-assessment no longer waives it — the note is the point of the exercise
+  expect(resultNeedsFeedback({ ...s, selfAssessment: true }, result)).toBe(true);
 });
 
 test('sessionSummary labels a standalone session with its level', () => {
