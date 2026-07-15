@@ -1,15 +1,18 @@
 # ACA Skills Assessment
 
-An offline-first Progressive Web App for running **ACA coastal kayaking skills
-assessments** on the water — for up to **5 paddlers at once** — against the
-official **Level 1 through Level 5** coastal kayaking standards, from
-*Introduction to Kayaking* (L1) to *Advanced Open Water Coastal Kayaking* (L5).
+An offline-first Progressive Web App for running ACA coastal kayaking skills
+assessments on the water — for up to **5 paddlers at once** — against the
+**Level 1 through Level 5** coastal kayaking standards, from *Introduction to
+Kayaking* (L1) to *Advanced Open Water Coastal Kayaking* (L5).
+
+An independent tool built by an ACA-certified instructor. It is **not an official
+ACA product** — see [Attribution](#attribution).
 
 Built to be tapped on a phone from a kayak: it works with **zero network
-connectivity** once installed. On the public site nothing leaves your device —
-you assess and export locally. A self-hosted build additionally syncs finished
-sessions back to a home server (e.g. a Raspberry Pi over Tailscale) when back in
-range.
+connectivity** once installed. **Nothing you enter about a paddler leaves your
+device** — you assess and export locally. A self-hosted build additionally syncs
+finished sessions back to a home server (e.g. a Raspberry Pi over Tailscale) when
+back in range.
 
 ## Try it
 
@@ -17,12 +20,17 @@ range.
 
 Open it on your phone and tap **Add to Home Screen** to install. It then runs
 fully offline — assess yourself (or a group), and export a PDF or CSV of the
-results. Nothing is uploaded; all data stays on your device.
+results. Paddler data stays on your device; the public site keeps anonymous
+usage counts only, described under [Privacy](#privacy).
 
 ## Privacy
 
 Your assessments stay on your device — nothing you enter about a paddler is
-uploaded anywhere.
+uploaded anywhere. The app has no accounts and no cross-site trackers, and every
+assessment works with the network off entirely.
+
+Stated precisely, because the difference matters: **paddler data never leaves
+your device. Anonymous usage counts do.**
 
 The public website keeps **anonymous, cookieless** counts of page visits, PWA
 installs, and assessments started (via [GoatCounter](https://www.goatcounter.com/)).
@@ -32,7 +40,7 @@ self-hosted build.
 
 ## Features
 
-- **Five official ACA levels**, each with its own criteria and rating scale:
+- **Five ACA levels**, each with its own criteria and rating scale:
   - **L1 (Introduction to Kayaking)** — 43 criteria, rated
     *Pass / No / Did Not Observe*.
   - **L2 (Essentials of Kayak Touring)** — 36 core + 19 optional "developing"
@@ -46,7 +54,7 @@ self-hosted build.
 - **L1/L2 combined mode**: assign each paddler a target level (L1 or L2) and
   assess the group together; L3–L5 are standalone single-level assessments.
 - **Self-assessment mode**: flip one switch to self-review as a single paddler.
-- Each skill shows its **official ACA standard** as an on-screen reference.
+- Each skill shows the **ACA standard text** as an on-screen reference.
 - **Enforced feedback**: a below-standard rating requires a written note before
   you can move on — dictate it with your phone keyboard's mic. Optional
   developing skills never block and never count against a paddler.
@@ -59,8 +67,30 @@ self-hosted build.
   precached by a service worker.
 
 > The skill lists and standards in `src/data/skills*.json` are transcribed from
-> the official ACA assessment documents (rev. 5/1/2024). Verify against the
-> current official sheets before relying on them for a formal assessment.
+> the ACA assessment documents (rev. 5/1/2024) and remain the ACA's work — see
+> [Attribution](#attribution). Verify against the current official sheets before
+> relying on them for a formal assessment.
+
+## Attribution
+
+The skills criteria, level definitions, and standard text in
+`src/data/skills*.json` are **transcribed from the American Canoe Association's
+coastal kayaking assessment documents (rev. 5/1/2024)**. That material is the
+ACA's, not this project's, and no claim of ownership is made over it. "ACA" and
+"American Canoe Association" are the ACA's marks, used here nominatively to say
+which standards the tool assesses against.
+
+This tool is built and maintained by an ACA-certified instructor. **It was built
+independently: the ACA did not author, review, endorse, or approve this software,
+and nothing here is an official ACA publication.** Where this app and the current
+official ACA sheets disagree, the official sheets govern.
+
+Everything under `lessons-content/` is original work by the maintainer.
+
+**This repository is intentionally unlicensed.** No license is granted for the
+material described above, because this project does not own it and cannot grant
+rights in it. Please do not redistribute the contents of `src/data/skills*.json`;
+refer to the ACA for the current official documents.
 
 ## Tech
 
