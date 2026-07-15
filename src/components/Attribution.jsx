@@ -6,7 +6,9 @@ export function Attribution() {
     <footer className="attribution">
       <p>
         Skills standards and assessment criteria © American Canoe Association,
-        reproduced from the ACA Coastal Kayaking curriculum (rev. 5/1/2024).
+        reproduced from the ACA Coastal Kayaking curriculum (rev. 5/1/2024) and
+        verified against the ACA's CKC January 2025 assessor's guides for L2–L5.
+        Where this app and the current official guides differ, the guides govern.
       </p>
       <p>
         This is an independent, non-commercial tool built by an ACA instructor to
