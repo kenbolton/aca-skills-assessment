@@ -123,7 +123,7 @@
       "level": "L5",
       "category": "Core: Rescues and Towing",
       "competency": "The paddler demonstrates competent rescue and towing skills in Level 5 conditions. They possess a 360-degree sphere of awareness and are present and flexible while under pressure. They understand rescue priorities and can execute situation-appropriate rescues. They move rescues from dynamic water to positions of less risk when necessary and keep the group organized until the risk is no longer imminent.",
-      "standard": "Performs one or more of the following assisted re-entries with an able swimmer: Side-by-Side, Scoop, T- Rescue, Swimmer Deck Carry.",
+      "standard": "Performs one or more of the following assisted re-entries with an able swimmer: Side-by-Side, Scoop, T-Rescue, Swimmer Deck Carry.",
       "exceedsStandard": "Demonstrates two or more situation-appropriate rescues and moves the rescue to a position of less risk when necessary.",
       "belowStandard": "Unable to rescue the swimmer or perform the rescue in an area of high risk.",
       "optional": false
@@ -353,7 +353,7 @@
       "competency": "The paddler has an incident-prevention mindset both on and off the water. They make good choices and demonstrate competent decision-making. They can lead and assist with managing incidents in Level 5 conditions. They can identify appropriate safe zones and work with other paddlers to ensure the entire group's safety.",
       "standard": "Works with others to perform rescues and move the group to a position of less risk.",
       "exceedsStandard": "Able to adapt and follow the lead of others and the environment even when different from their preferred methods (except where absolute safety is contradicted). Can facilitate a meaningful debriefing and “lessons learned” session post-incident.",
-      "belowStandard": "Disregards input and direction from others in the group, forces solutions, or does not participate in post- incident debriefing or “lessons learned” session.",
+      "belowStandard": "Disregards input and direction from others in the group, forces solutions, or does not participate in post-incident debriefing or “lessons learned” session.",
       "optional": false
     },
     {
@@ -702,7 +702,7 @@
       "category": "Venue Specific: Rock Gardens and Sea Caves",
       "competency": "The paddler demonstrates the use of forecasting tools in combination with charts and maps to predict appropriate locations for rock gardens and sea cave exploration. They select and run play features and can paddle through rock gardens and sea caves safely and efficiently. They can self-rescue in rock gardens, perform assisted rescues, and towing where and when appropriate.",
       "standard": "Is appropriately equipped for paddling in rock gardens.",
-      "exceedsStandard": "Kayak and gear setup is suitable for paddling in conditions, and the paddler can explain rock garden- specific choices (for example, plastic kayak, whitewater paddle, bow, and stern grab lines).",
+      "exceedsStandard": "Kayak and gear setup is suitable for paddling in conditions, and the paddler can explain rock garden-specific choices (for example, plastic kayak, whitewater paddle, bow, and stern grab lines).",
       "belowStandard": "Kayak and gear setup is not suitable for paddling in rock gardens resulting in damage beyond normal wear and tear, or the paddler cannot complete all assessed skills.",
       "optional": false
     },

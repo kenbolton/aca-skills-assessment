@@ -322,7 +322,7 @@
       "category": "Core: Rescues and Towing",
       "competency": "The paddler demonstrates competent rescue and towing skills in Level 3 conditions. They choose rescues and towing configurations appropriate for the conditions (for example, what is most appropriate for capsize in breaking waves or in current). They also demonstrate the ability to be an active and safe swimmer when being rescued.",
       "name": "Towing Using a Tow Line",
-      "standard": "Demonstrates one or more towing strategies with a towline: In-Line Tow, Rafted In- Line Tow, or Anchor Tow.",
+      "standard": "Demonstrates one or more towing strategies with a towline: In-Line Tow, Rafted In-Line Tow, or Anchor Tow.",
       "exceedsStandard": "The paddler demonstrates the application of two or more situation-appropriate towing techniques, maintaining usefulness and always moving tow into a position of safety.",
       "belowStandard": "The paddler chooses an unsafe towing strategy, connects the towline incorrectly, or does not manage the line.",
       "optional": false
@@ -428,7 +428,7 @@
       "category": "Core: Awareness and Seamanship",
       "competency": "The paddler has a heightened awareness of the environment and paddler performance, adapts plans accordingly, and communicates clearly with the group to make necessary changes. They are properly equipped for the conditions and use equipment appropriately to maintain personal and group comfort.",
       "name": "Hypothermia and Cold-Water Shock",
-      "standard": "Understands the causes, prevention, recognition, and treatment of cold- water shock and hypothermia.",
+      "standard": "Understands the causes, prevention, recognition, and treatment of cold-water shock and hypothermia.",
       "exceedsStandard": "Properly prepared and takes necessary preventative action for self and group. Recognizes signs and symptoms of hypothermia as well as treatment for cold-related issues. Knows when to call for Emergency Medical Services.",
       "belowStandard": "The paddler is unprepared for paddling conditions or does not recognize signs and symptoms of hypothermia. Or does not take action to improve the situation.",
       "optional": false
@@ -647,7 +647,7 @@
       "category": "Venue Specific: Tidal Currents",
       "competency": "The paddler demonstrates an understanding of tidal currents with Level 3 conditions in various coastal settings. They can paddle through currents in control. The paddler understands the challenges of paddling in areas of current and positions themselves appropriately. They can identify eddy lines, understand ferry angles, and demonstrate rescues and towing to move into a safe area.",
       "name": "Awareness",
-      "standard": "Demonstrates understanding of tides currents.",
+      "standard": "Demonstrates understanding of tides and currents.",
       "exceedsStandard": "Has a thorough understanding of the specific challenges of paddling in current in L3 conditions and can do so safely while leading a group or on their own. Demonstrates the ability to calculate the rate of tidal flow, tidal drift, and stages of tide, and incorporate results into a route plan.",
       "belowStandard": "Is unclear as to the specific challenges of paddling in current in L3 conditions, or they cannot do so safely on their own or in a group.",
       "optional": false
