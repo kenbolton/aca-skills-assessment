@@ -1,7 +1,7 @@
 node_modules/
 dist/
-pi/sessions/
-pi/skillsets/
+self-host/sessions/
+self-host/skillsets/
 
 # editor/OS/agent cruft
 .DS_Store

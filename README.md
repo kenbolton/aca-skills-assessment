@@ -116,27 +116,31 @@ Copy `.env.example` to `.env` and set `VITE_GOATCOUNTER_CODE` to your GoatCounte
 site code, then build. Leaving it unset disables metrics — this is how the
 self-hosted Pi build stays completely silent.
 
-## Host + sync (Raspberry Pi or any always-on machine)
+## Host + sync (any always-on machine)
 
-`pi/sync-server.mjs` is a tiny dependency-free Node server that serves the built
-`dist/` **and** accepts `POST /sync` to archive finished sessions as JSON. A
-service worker needs HTTPS, which `tailscale serve` provides on a tailnet.
+`self-host/sync-server.mjs` is a tiny dependency-free Node server that serves the
+built `dist/` **and** accepts `POST /sync` to archive finished sessions as JSON.
+The hardware is irrelevant — a Raspberry Pi, an old laptop, a NAS, or a VPS you
+control all work, as long as it runs Node 22+.
+
+A service worker needs HTTPS, so the server needs a TLS origin. `tailscale serve`
+is one way; a reverse proxy with a local certificate is another.
 
 ```bash
-VITE_PRIVATE=true npm run build               # enables the Sync button + archive
-node pi/sync-server.mjs                        # serves app + /sync on :8787
+VITE_PRIVATE=true npm run build                 # enables the Sync button + archive
+node self-host/sync-server.mjs                  # serves app + /sync on :8787
 tailscale serve --https=443 http://localhost:8787
-tailscale serve status                         # prints the https URL
+tailscale serve status                          # prints the https URL
 ```
 
-The **Sync to Pi** button and the **Past assessments** archive exist only in the
-`VITE_PRIVATE=true` build — the public GitHub Pages build hides both, so visitors
-only ever assess and export locally.
+The **Sync to server** button and the **Past assessments** archive exist only in
+the `VITE_PRIVATE=true` build — the public GitHub Pages build hides both, so
+visitors only ever assess and export locally.
 
 Open the HTTPS URL on your phone, **Add to Home Screen**, and it runs offline
 from then on. Because the app and `/sync` share an origin, the in-app **Sync to
-Pi** button works with no extra configuration. Full details in
-[`pi/README.md`](pi/README.md).
+server** button works with no extra configuration. Full details in
+[`self-host/README.md`](self-host/README.md).
 
 ## Project docs
 

@@ -3,8 +3,8 @@ import { syncSession } from '../lib/sync.js';
 
 // Sync-to-server is opt-in at build time (VITE_PRIVATE=true). It is hidden on
 // the public build, where visitors self-assess and export locally. Sync is not
-// gated on completeness — the instructor can save progress to the Pi from any
-// page mid-assessment.
+// gated on completeness — the instructor can save progress to the server from
+// any page mid-assessment.
 const SYNC_ENABLED = import.meta.env.VITE_PRIVATE === 'true';
 
 export function SyncButton({ session, className }) {
@@ -21,7 +21,7 @@ export function SyncButton({ session, className }) {
 
   return (
     <span className={`sync-control${className ? ` ${className}` : ''}`}>
-      <button type="button" onClick={doSync} disabled={sync.state === 'busy'}>Sync to Pi</button>
+      <button type="button" onClick={doSync} disabled={sync.state === 'busy'}>Sync to server</button>
       {sync.msg ? <span className={`sync-msg${sync.state === 'err' ? ' error' : ''}`}>{sync.msg}</span> : null}
     </span>
   );

@@ -156,8 +156,8 @@ export function setCurrentId(id) {
 }
 
 // Drain a legacy single-session localStorage entry into the archive. This both
-// migrates an existing user's session and lands the Pi "Resume" (which writes
-// this same key before loading the app) into the archive.
+// migrates an existing user's session and lands the server-side "Resume" (which
+// writes this same key before loading the app) into the archive.
 export async function migrateLegacy() {
   let raw = null;
   try { raw = localStorage.getItem(LEGACY_KEY); } catch { return; }
