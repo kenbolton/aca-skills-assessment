@@ -50,17 +50,31 @@ rsync -a lessons-content/ ken@pi.tailc5e20.ts.net:~/aca-skills-assessment/lesson
 Then on the server:
 
 ```bash
-cd ~/aca-skills-assessment
-git pull
-BASE_PATH=/ VITE_PRIVATE=true npm run build
-sudo systemctl restart aca-assessment
+~/aca-skills-assessment/self-host/deploy.sh
 ```
+
+That script does the pull, test, build, restart, and a health check in one
+step — see [Updating](#updating) below.
 
 The `lessons-content/*.html` fragments are git-ignored (private) and reach the
 server only via rsync. The public GitHub Pages build has an empty
 `lessons-content/`, so it bundles no teaching content.
 
-## Run the server
+## Updating
+
+```bash
+~/aca-skills-assessment/self-host/deploy.sh
+```
+
+Pulls, runs `npm ci`, runs the tests as a gate, builds with the right flags,
+restarts `aca-assessment`, then proves the app answers on `:8787`. It refuses to
+deploy if the tests fail, and exits non-zero with the service log if the health
+check never passes.
+
+It never touches `lessons-content/`, which is git-ignored and arrives by rsync,
+so a deploy cannot silently drop the private teaching content.
+
+## Run the server (first time)
 
 ```bash
 node self-host/sync-server.mjs
