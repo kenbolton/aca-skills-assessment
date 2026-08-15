@@ -59,12 +59,21 @@ function main() {
   const skills = JSON.parse(fs.readFileSync(SKILLS_PATH, 'utf8')).skills;
   const progression = seedProgression(skills);
   const json = JSON.stringify(progression, null, 2) + '\n';
-  if (process.argv.includes('--write')) {
-    fs.writeFileSync(OUT_PATH, json);
-    process.stderr.write(`wrote ${path.relative(ROOT, OUT_PATH)}\n`);
-  } else {
+  if (!process.argv.includes('--write')) {
     process.stdout.write(json);
+    return;
   }
+  // The committed file is refined by hand after the first bootstrap. Refuse to
+  // clobber an existing one unless the caller is explicit, so a stray --write
+  // never silently discards that work.
+  const rel = path.relative(ROOT, OUT_PATH);
+  if (fs.existsSync(OUT_PATH) && !process.argv.includes('--force')) {
+    process.stderr.write(`refusing to overwrite ${rel} (hand-refined). Re-run with --force to replace it.\n`);
+    process.exitCode = 1;
+    return;
+  }
+  fs.writeFileSync(OUT_PATH, json);
+  process.stderr.write(`wrote ${rel}\n`);
 }
 
 // Run only when invoked directly, so tests can import `seedProgression`.
