@@ -13,9 +13,17 @@ export const progression = progressionData;
 // A skill counts as "met" at L2 when rated meets or exceeds. Below, l1, dno, and
 // unrated all count as not met.
 const MET_RATINGS = new Set(['meets', 'exceeds']);
-// A rating is "below standard" when it is an explicit sub-standard mark. These
-// are the L2 ratings that require feedback and drive the Review touchpoint.
-const BELOW_RATINGS = new Set(['below', 'l1']);
+// A rating is "below standard" when it is an explicit sub-standard mark. Across
+// levels these are `below` and `l1` (L2 dual) and `no` (L1); all require
+// feedback and drive the Review touchpoint.
+const BELOW_RATINGS = new Set(['below', 'l1', 'no']);
+
+// The level a skill id belongs to, read from its `l<n>-` prefix (l2-forward →
+// L2). Used to keep per-level frontier scans from leaking across levels.
+export function levelOfId(skillId) {
+  const m = /^l([1-5])-/.exec(skillId);
+  return m ? `L${m[1]}` : null;
+}
 
 function metSkillIds(session, paddlerId) {
   const met = new Set();
@@ -85,9 +93,15 @@ export function nextStep(session, paddlerId, prog = progression) {
 }
 
 export function edgeSkills(session, paddlerId, prog = progression) {
+  const paddler = (session.paddlers || []).find(p => p.id === paddlerId);
+  const target = paddler ? paddler.target : null;
   const met = metSkillIds(session, paddlerId);
+  // Exclude a skill only when its id encodes a level that differs from the
+  // target — this keeps the combined all-level file from leaking across levels,
+  // while ids without a level prefix (test fixtures) still pass.
+  const inLevel = id => { const l = levelOfId(id); return !target || !l || l === target; };
   const frontier = Object.keys(prog.skills)
-    .filter(id => !met.has(id) && prog.skills[id].prereqs.every(p => met.has(p)));
+    .filter(id => inLevel(id) && !met.has(id) && prog.skills[id].prereqs.every(p => met.has(p)));
   frontier.sort(orderCmp(prog));
   return frontier.slice(0, 3);
 }

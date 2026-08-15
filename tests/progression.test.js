@@ -1,5 +1,8 @@
 import { expect, test, describe } from 'vitest';
 import skillsRaw from '../src/data/skills.json';
+import skillsL3 from '../src/data/skills-l3.json';
+import skillsL4 from '../src/data/skills-l4.json';
+import skillsL5 from '../src/data/skills-l5.json';
 import realProgression from '../src/data/progression.json';
 import {
   strandOf,
@@ -7,7 +10,13 @@ import {
   startHere,
   nextStep,
   edgeSkills,
+  levelOfId,
 } from '../src/lib/progression.js';
+
+// Every core skill across all five levels, from the four source files.
+const ALL_CORE = [skillsRaw, skillsL3, skillsL4, skillsL5]
+  .flatMap(f => f.skills)
+  .filter(s => !s.optional && /^L[1-5]$/.test(s.level));
 
 // A small synthetic progression keeps the logic tests stable even after the
 // real prerequisite graph is refined by hand. Two strands, a three-stage chain
@@ -97,11 +106,25 @@ describe('refined real-data prerequisites (instructor model)', () => {
   });
 });
 
-describe('real progression.json integrity', () => {
-  const l2core = skillsRaw.skills.filter(s => s.level === 'L2' && !s.optional);
+describe('generalised coverage (all levels seeded parallel)', () => {
+  const nobody = { id: 's', createdAt: 't', paddlers: [{ id: 'p', name: 'A', target: 'L3' }], skills: [], results: [] };
 
-  test('every L2 core skill has a progression entry', () => {
-    const missing = l2core.map(s => s.id).filter(id => !realProgression.skills[id]);
+  test('a freshly-seeded higher level is parallel: no prerequisites', () => {
+    // Pick any L3 core skill; the seed gives every non-L2 skill empty prereqs.
+    const l3 = skillsL3.skills.find(s => !s.optional);
+    expect(prereqsOf(l3.id, realProgression)).toEqual([]);
+    expect(startHere(nobody, 'p', l3.id, realProgression)).toBe(l3.id); // itself → no panel
+  });
+  test('edgeSkills stays within the paddler target level', () => {
+    const frontier = edgeSkills(nobody, 'p', realProgression);
+    expect(frontier.length).toBeGreaterThan(0);
+    expect(frontier.every(id => levelOfId(id) === 'L3')).toBe(true);
+  });
+});
+
+describe('real progression.json integrity', () => {
+  test('every core skill across L1–L5 has a progression entry', () => {
+    const missing = ALL_CORE.map(s => s.id).filter(id => !realProgression.skills[id]);
     expect(missing).toEqual([]);
   });
   test('every referenced strand exists', () => {

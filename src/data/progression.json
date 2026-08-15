@@ -1,78 +1,425 @@
 {
   "version": 1,
   "strands": {
-    "core-incident-prevention-and-management": {
-      "name": "Core: Incident Prevention and Management",
+    "l1-preparing-to-depart": {
+      "name": "Preparing to Depart",
       "order": 1
     },
-    "core-strokes": {
-      "name": "Core: Strokes",
+    "l1-maneuvers-strokes": {
+      "name": "Maneuvers & Strokes",
       "order": 2
     },
-    "core-maneuvers": {
-      "name": "Core: Maneuvers",
+    "l1-technical-knowledge": {
+      "name": "Technical Knowledge",
       "order": 3
     },
-    "core-edging-and-support": {
-      "name": "Core: Edging and Support",
+    "l1-safety-and-rescue": {
+      "name": "Safety and Rescue",
       "order": 4
     },
-    "core-awareness-and-seamanship": {
-      "name": "Core: Awareness and Seamanship",
+    "l1-swimming-and-wading-skills": {
+      "name": "Swimming and Wading Skills",
       "order": 5
     },
-    "core-trip-planning-and-navigation": {
-      "name": "Core: Trip Planning and Navigation",
+    "l1-kayak-based-rescues": {
+      "name": "Kayak-based Rescues",
       "order": 6
     },
-    "core-rescues-and-towing": {
-      "name": "Core: Rescues and Towing",
+    "l2-core-incident-prevention-and-management": {
+      "name": "Core: Incident Prevention and Management",
       "order": 7
+    },
+    "l2-core-strokes": {
+      "name": "Core: Strokes",
+      "order": 8
+    },
+    "l2-core-maneuvers": {
+      "name": "Core: Maneuvers",
+      "order": 9
+    },
+    "l2-core-edging-and-support": {
+      "name": "Core: Edging and Support",
+      "order": 10
+    },
+    "l2-core-awareness-and-seamanship": {
+      "name": "Core: Awareness and Seamanship",
+      "order": 11
+    },
+    "l2-core-trip-planning-and-navigation": {
+      "name": "Core: Trip Planning and Navigation",
+      "order": 12
+    },
+    "l2-core-rescues-and-towing": {
+      "name": "Core: Rescues and Towing",
+      "order": 13
+    },
+    "l3-core-strokes-and-maneuvers": {
+      "name": "Core: Strokes and Maneuvers",
+      "order": 14
+    },
+    "l3-core-edging-and-support": {
+      "name": "Core: Edging and Support",
+      "order": 15
+    },
+    "l3-core-rescues-and-towing": {
+      "name": "Core: Rescues and Towing",
+      "order": 16
+    },
+    "l3-core-awareness-and-seamanship": {
+      "name": "Core: Awareness and Seamanship",
+      "order": 17
+    },
+    "l3-core-incident-prevention-and-management": {
+      "name": "Core: Incident Prevention and Management",
+      "order": 18
+    },
+    "l3-core-trip-planning-and-navigation": {
+      "name": "Core: Trip Planning and Navigation",
+      "order": 19
+    },
+    "l3-venue-specific-tidal-currents": {
+      "name": "Venue Specific: Tidal Currents",
+      "order": 20
+    },
+    "l3-venue-specific-wind-waves-and-surf": {
+      "name": "Venue Specific: Wind, Waves and Surf",
+      "order": 21
+    },
+    "l3-venue-specific-rocky-shorelines": {
+      "name": "Venue Specific: Rocky Shorelines",
+      "order": 22
+    },
+    "l4-core-boat-handling": {
+      "name": "Core: Boat Handling",
+      "order": 23
+    },
+    "l4-core-rescues-and-towing": {
+      "name": "Core: Rescues and Towing",
+      "order": 24
+    },
+    "l4-core-awareness-and-seamanship": {
+      "name": "Core: Awareness and Seamanship",
+      "order": 25
+    },
+    "l4-core-incident-prevention-and-management": {
+      "name": "Core: Incident Prevention and Management",
+      "order": 26
+    },
+    "l4-core-trip-planning-and-navigation": {
+      "name": "Core: Trip Planning and Navigation",
+      "order": 27
+    },
+    "l4-venue-specific-expedition-paddling": {
+      "name": "Venue Specific: Expedition Paddling",
+      "order": 28
+    },
+    "l4-venue-specific-tide-races": {
+      "name": "Venue Specific: Tide Races",
+      "order": 29
+    },
+    "l4-venue-specific-surf-zone": {
+      "name": "Venue Specific: Surf Zone",
+      "order": 30
+    },
+    "l4-venue-specific-rock-gardens-and-sea-caves": {
+      "name": "Venue Specific: Rock Gardens and Sea Caves",
+      "order": 31
+    },
+    "l5-core-boat-handling": {
+      "name": "Core: Boat Handling",
+      "order": 32
+    },
+    "l5-core-rescues-and-towing": {
+      "name": "Core: Rescues and Towing",
+      "order": 33
+    },
+    "l5-core-awareness-and-seamanship": {
+      "name": "Core: Awareness and Seamanship",
+      "order": 34
+    },
+    "l5-core-incident-prevention-and-management": {
+      "name": "Core: Incident Prevention and Management",
+      "order": 35
+    },
+    "l5-core-trip-planning-and-navigation": {
+      "name": "Core: Trip Planning and Navigation",
+      "order": 36
+    },
+    "l5-venue-specific-expedition-paddling": {
+      "name": "Venue Specific: Expedition Paddling",
+      "order": 37
+    },
+    "l5-venue-specific-tide-races": {
+      "name": "Venue Specific: Tide Races",
+      "order": 38
+    },
+    "l5-venue-specific-surf": {
+      "name": "Venue Specific: Surf",
+      "order": 39
+    },
+    "l5-venue-specific-rock-gardens-and-sea-caves": {
+      "name": "Venue Specific: Rock Gardens and Sea Caves",
+      "order": 40
     }
   },
   "skills": {
+    "l1-secure-transport": {
+      "strand": "l1-preparing-to-depart",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l1-lift-carry": {
+      "strand": "l1-preparing-to-depart",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l1-weather-hazards": {
+      "strand": "l1-preparing-to-depart",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l1-life-jacket": {
+      "strand": "l1-preparing-to-depart",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l1-inspect-equipment": {
+      "strand": "l1-preparing-to-depart",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l1-safe-boating": {
+      "strand": "l1-preparing-to-depart",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l1-prepare-departure": {
+      "strand": "l1-preparing-to-depart",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l1-float-plan": {
+      "strand": "l1-preparing-to-depart",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l1-paddle-grip": {
+      "strand": "l1-preparing-to-depart",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l1-launch": {
+      "strand": "l1-maneuvers-strokes",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l1-forward-straight": {
+      "strand": "l1-maneuvers-strokes",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l1-stop": {
+      "strand": "l1-maneuvers-strokes",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l1-reverse": {
+      "strand": "l1-maneuvers-strokes",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l1-draw": {
+      "strand": "l1-maneuvers-strokes",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l1-turn-stationary": {
+      "strand": "l1-maneuvers-strokes",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l1-turn-moving": {
+      "strand": "l1-maneuvers-strokes",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l1-figure-8": {
+      "strand": "l1-maneuvers-strokes",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l1-tripping": {
+      "strand": "l1-maneuvers-strokes",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l1-land": {
+      "strand": "l1-maneuvers-strokes",
+      "stage": 10,
+      "prereqs": []
+    },
+    "l1-secure-unattended": {
+      "strand": "l1-maneuvers-strokes",
+      "stage": 11,
+      "prereqs": []
+    },
+    "l1-equipment": {
+      "strand": "l1-technical-knowledge",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l1-safety-knowledge": {
+      "strand": "l1-technical-knowledge",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l1-cold-water": {
+      "strand": "l1-technical-knowledge",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l1-signals": {
+      "strand": "l1-technical-knowledge",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l1-nav-rules": {
+      "strand": "l1-technical-knowledge",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l1-group-awareness": {
+      "strand": "l1-technical-knowledge",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l1-principles-rescue": {
+      "strand": "l1-safety-and-rescue",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l1-rescue-gear": {
+      "strand": "l1-safety-and-rescue",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l1-wading-risks": {
+      "strand": "l1-swimming-and-wading-skills",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l1-swim-positions": {
+      "strand": "l1-swimming-and-wading-skills",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l1-swim-with-gear": {
+      "strand": "l1-swimming-and-wading-skills",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l1-conserve-energy": {
+      "strand": "l1-swimming-and-wading-skills",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l1-rescue-kayak-types": {
+      "strand": "l1-kayak-based-rescues",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l1-wet-exit": {
+      "strand": "l1-kayak-based-rescues",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l1-paddle-recovery": {
+      "strand": "l1-kayak-based-rescues",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l1-kayak-recovery": {
+      "strand": "l1-kayak-based-rescues",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l1-swimmer-tow": {
+      "strand": "l1-kayak-based-rescues",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l1-reentry": {
+      "strand": "l1-kayak-based-rescues",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l1-bulldozing": {
+      "strand": "l1-kayak-based-rescues",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l1-kayak-towing": {
+      "strand": "l1-kayak-based-rescues",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l1-kayak-rescues": {
+      "strand": "l1-kayak-based-rescues",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l1-unresponsive": {
+      "strand": "l1-kayak-based-rescues",
+      "stage": 10,
+      "prereqs": []
+    },
+    "l1-emptying-water": {
+      "strand": "l1-kayak-based-rescues",
+      "stage": 11,
+      "prereqs": []
+    },
     "l2-secure-rack": {
-      "strand": "core-incident-prevention-and-management",
+      "strand": "l2-core-incident-prevention-and-management",
       "stage": 1,
       "prereqs": []
     },
     "l2-lift-carry": {
-      "strand": "core-incident-prevention-and-management",
+      "strand": "l2-core-incident-prevention-and-management",
       "stage": 2,
       "prereqs": []
     },
     "l2-launch-land": {
-      "strand": "core-incident-prevention-and-management",
+      "strand": "l2-core-incident-prevention-and-management",
       "stage": 3,
       "prereqs": []
     },
     "l2-signaling": {
-      "strand": "core-incident-prevention-and-management",
+      "strand": "l2-core-incident-prevention-and-management",
       "stage": 4,
       "prereqs": []
     },
     "l2-comm-device": {
-      "strand": "core-incident-prevention-and-management",
+      "strand": "l2-core-incident-prevention-and-management",
       "stage": 5,
       "prereqs": []
     },
     "l2-float-plan": {
-      "strand": "core-incident-prevention-and-management",
+      "strand": "l2-core-incident-prevention-and-management",
       "stage": 6,
       "prereqs": []
     },
     "l2-forward": {
-      "strand": "core-strokes",
+      "strand": "l2-core-strokes",
       "stage": 1,
       "prereqs": []
     },
     "l2-reverse": {
-      "strand": "core-strokes",
+      "strand": "l2-core-strokes",
       "stage": 2,
       "prereqs": []
     },
     "l2-stopping": {
-      "strand": "core-strokes",
+      "strand": "l2-core-strokes",
       "stage": 3,
       "prereqs": [
         "l2-forward",
@@ -80,42 +427,42 @@
       ]
     },
     "l2-sweep": {
-      "strand": "core-strokes",
+      "strand": "l2-core-strokes",
       "stage": 4,
       "prereqs": []
     },
     "l2-rotate-360": {
-      "strand": "core-maneuvers",
+      "strand": "l2-core-maneuvers",
       "stage": 1,
       "prereqs": []
     },
     "l2-turning-move": {
-      "strand": "core-maneuvers",
+      "strand": "l2-core-maneuvers",
       "stage": 2,
       "prereqs": []
     },
     "l2-draw": {
-      "strand": "core-maneuvers",
+      "strand": "l2-core-maneuvers",
       "stage": 3,
       "prereqs": []
     },
     "l2-stern-rudder": {
-      "strand": "core-maneuvers",
+      "strand": "l2-core-maneuvers",
       "stage": 4,
       "prereqs": []
     },
     "l2-low-brace-recovery": {
-      "strand": "core-edging-and-support",
+      "strand": "l2-core-edging-and-support",
       "stage": 1,
       "prereqs": []
     },
     "l2-low-brace-turn": {
-      "strand": "core-edging-and-support",
+      "strand": "l2-core-edging-and-support",
       "stage": 2,
       "prereqs": []
     },
     "l2-edge-control": {
-      "strand": "core-edging-and-support",
+      "strand": "l2-core-edging-and-support",
       "stage": 3,
       "prereqs": [
         "l2-low-brace-turn",
@@ -123,109 +470,1134 @@
       ]
     },
     "l2-awareness": {
-      "strand": "core-awareness-and-seamanship",
+      "strand": "l2-core-awareness-and-seamanship",
       "stage": 1,
       "prereqs": []
     },
     "l2-lnt": {
-      "strand": "core-awareness-and-seamanship",
+      "strand": "l2-core-awareness-and-seamanship",
       "stage": 2,
       "prereqs": []
     },
     "l2-kayak-knowledge": {
-      "strand": "core-awareness-and-seamanship",
+      "strand": "l2-core-awareness-and-seamanship",
       "stage": 3,
       "prereqs": []
     },
     "l2-equipment": {
-      "strand": "core-awareness-and-seamanship",
+      "strand": "l2-core-awareness-and-seamanship",
       "stage": 4,
       "prereqs": []
     },
     "l2-cold-water-shock": {
-      "strand": "core-awareness-and-seamanship",
+      "strand": "l2-core-awareness-and-seamanship",
       "stage": 5,
       "prereqs": []
     },
     "l2-thermal": {
-      "strand": "core-awareness-and-seamanship",
+      "strand": "l2-core-awareness-and-seamanship",
       "stage": 6,
       "prereqs": []
     },
     "l2-forecasts": {
-      "strand": "core-trip-planning-and-navigation",
+      "strand": "l2-core-trip-planning-and-navigation",
       "stage": 1,
       "prereqs": []
     },
     "l2-chart-use": {
-      "strand": "core-trip-planning-and-navigation",
+      "strand": "l2-core-trip-planning-and-navigation",
       "stage": 2,
       "prereqs": []
     },
     "l2-trip-conditions": {
-      "strand": "core-trip-planning-and-navigation",
+      "strand": "l2-core-trip-planning-and-navigation",
       "stage": 3,
       "prereqs": []
     },
     "l2-trip-flow": {
-      "strand": "core-trip-planning-and-navigation",
+      "strand": "l2-core-trip-planning-and-navigation",
       "stage": 4,
       "prereqs": []
     },
     "l2-route-finding": {
-      "strand": "core-trip-planning-and-navigation",
+      "strand": "l2-core-trip-planning-and-navigation",
       "stage": 5,
       "prereqs": []
     },
     "l2-compass": {
-      "strand": "core-trip-planning-and-navigation",
+      "strand": "l2-core-trip-planning-and-navigation",
       "stage": 6,
       "prereqs": []
     },
     "l2-nautical-rules": {
-      "strand": "core-trip-planning-and-navigation",
+      "strand": "l2-core-trip-planning-and-navigation",
       "stage": 7,
       "prereqs": []
     },
     "l2-wet-exit": {
-      "strand": "core-rescues-and-towing",
+      "strand": "l2-core-rescues-and-towing",
       "stage": 1,
       "prereqs": []
     },
     "l2-assisted-rescue": {
-      "strand": "core-rescues-and-towing",
+      "strand": "l2-core-rescues-and-towing",
       "stage": 2,
       "prereqs": [
         "l2-wet-exit"
       ]
     },
     "l2-self-rescue": {
-      "strand": "core-rescues-and-towing",
+      "strand": "l2-core-rescues-and-towing",
       "stage": 3,
       "prereqs": [
         "l2-assisted-rescue"
       ]
     },
     "l2-swim-rescue": {
-      "strand": "core-rescues-and-towing",
+      "strand": "l2-core-rescues-and-towing",
       "stage": 4,
       "prereqs": [
         "l2-self-rescue"
       ]
     },
     "l2-move-capsized": {
-      "strand": "core-rescues-and-towing",
+      "strand": "l2-core-rescues-and-towing",
       "stage": 5,
       "prereqs": [
         "l2-swim-rescue"
       ]
     },
     "l2-swimmer-tows": {
-      "strand": "core-rescues-and-towing",
+      "strand": "l2-core-rescues-and-towing",
       "stage": 6,
       "prereqs": [
         "l2-move-capsized"
       ]
+    },
+    "l3-strokes-and-maneuvers-01": {
+      "strand": "l3-core-strokes-and-maneuvers",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l3-strokes-and-maneuvers-02": {
+      "strand": "l3-core-strokes-and-maneuvers",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l3-strokes-and-maneuvers-03": {
+      "strand": "l3-core-strokes-and-maneuvers",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l3-strokes-and-maneuvers-04": {
+      "strand": "l3-core-strokes-and-maneuvers",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l3-strokes-and-maneuvers-05": {
+      "strand": "l3-core-strokes-and-maneuvers",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l3-strokes-and-maneuvers-06": {
+      "strand": "l3-core-strokes-and-maneuvers",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l3-strokes-and-maneuvers-07": {
+      "strand": "l3-core-strokes-and-maneuvers",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l3-strokes-and-maneuvers-08": {
+      "strand": "l3-core-strokes-and-maneuvers",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l3-strokes-and-maneuvers-09": {
+      "strand": "l3-core-strokes-and-maneuvers",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l3-strokes-and-maneuvers-10": {
+      "strand": "l3-core-strokes-and-maneuvers",
+      "stage": 10,
+      "prereqs": []
+    },
+    "l3-edging-and-support-01": {
+      "strand": "l3-core-edging-and-support",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l3-edging-and-support-02": {
+      "strand": "l3-core-edging-and-support",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l3-edging-and-support-03": {
+      "strand": "l3-core-edging-and-support",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l3-rescues-and-towing-01": {
+      "strand": "l3-core-rescues-and-towing",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l3-rescues-and-towing-02": {
+      "strand": "l3-core-rescues-and-towing",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l3-rescues-and-towing-03": {
+      "strand": "l3-core-rescues-and-towing",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l3-rescues-and-towing-04": {
+      "strand": "l3-core-rescues-and-towing",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l3-rescues-and-towing-05": {
+      "strand": "l3-core-rescues-and-towing",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l3-rescues-and-towing-06": {
+      "strand": "l3-core-rescues-and-towing",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l3-rescues-and-towing-07": {
+      "strand": "l3-core-rescues-and-towing",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l3-rescues-and-towing-08": {
+      "strand": "l3-core-rescues-and-towing",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l3-rescues-and-towing-09": {
+      "strand": "l3-core-rescues-and-towing",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l3-awareness-and-seamanship-01": {
+      "strand": "l3-core-awareness-and-seamanship",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l3-awareness-and-seamanship-02": {
+      "strand": "l3-core-awareness-and-seamanship",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l3-awareness-and-seamanship-03": {
+      "strand": "l3-core-awareness-and-seamanship",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l3-awareness-and-seamanship-04": {
+      "strand": "l3-core-awareness-and-seamanship",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l3-awareness-and-seamanship-05": {
+      "strand": "l3-core-awareness-and-seamanship",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l3-awareness-and-seamanship-06": {
+      "strand": "l3-core-awareness-and-seamanship",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l3-awareness-and-seamanship-07": {
+      "strand": "l3-core-awareness-and-seamanship",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l3-awareness-and-seamanship-08": {
+      "strand": "l3-core-awareness-and-seamanship",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l3-awareness-and-seamanship-09": {
+      "strand": "l3-core-awareness-and-seamanship",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l3-incident-prevention-and-management-01": {
+      "strand": "l3-core-incident-prevention-and-management",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l3-incident-prevention-and-management-02": {
+      "strand": "l3-core-incident-prevention-and-management",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l3-incident-prevention-and-management-03": {
+      "strand": "l3-core-incident-prevention-and-management",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l3-incident-prevention-and-management-04": {
+      "strand": "l3-core-incident-prevention-and-management",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l3-incident-prevention-and-management-05": {
+      "strand": "l3-core-incident-prevention-and-management",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l3-incident-prevention-and-management-06": {
+      "strand": "l3-core-incident-prevention-and-management",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l3-incident-prevention-and-management-07": {
+      "strand": "l3-core-incident-prevention-and-management",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l3-incident-prevention-and-management-08": {
+      "strand": "l3-core-incident-prevention-and-management",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l3-incident-prevention-and-management-09": {
+      "strand": "l3-core-incident-prevention-and-management",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l3-trip-planning-and-navigation-01": {
+      "strand": "l3-core-trip-planning-and-navigation",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l3-trip-planning-and-navigation-02": {
+      "strand": "l3-core-trip-planning-and-navigation",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l3-trip-planning-and-navigation-03": {
+      "strand": "l3-core-trip-planning-and-navigation",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l3-trip-planning-and-navigation-04": {
+      "strand": "l3-core-trip-planning-and-navigation",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l3-trip-planning-and-navigation-05": {
+      "strand": "l3-core-trip-planning-and-navigation",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l3-trip-planning-and-navigation-06": {
+      "strand": "l3-core-trip-planning-and-navigation",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l3-trip-planning-and-navigation-07": {
+      "strand": "l3-core-trip-planning-and-navigation",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l3-trip-planning-and-navigation-08": {
+      "strand": "l3-core-trip-planning-and-navigation",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l3-tidal-currents-01": {
+      "strand": "l3-venue-specific-tidal-currents",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l3-tidal-currents-02": {
+      "strand": "l3-venue-specific-tidal-currents",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l3-tidal-currents-03": {
+      "strand": "l3-venue-specific-tidal-currents",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l3-tidal-currents-04": {
+      "strand": "l3-venue-specific-tidal-currents",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l3-wind-waves-and-surf-01": {
+      "strand": "l3-venue-specific-wind-waves-and-surf",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l3-wind-waves-and-surf-02": {
+      "strand": "l3-venue-specific-wind-waves-and-surf",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l3-wind-waves-and-surf-03": {
+      "strand": "l3-venue-specific-wind-waves-and-surf",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l3-wind-waves-and-surf-04": {
+      "strand": "l3-venue-specific-wind-waves-and-surf",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l3-rocky-shorelines-01": {
+      "strand": "l3-venue-specific-rocky-shorelines",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l3-rocky-shorelines-02": {
+      "strand": "l3-venue-specific-rocky-shorelines",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l3-rocky-shorelines-03": {
+      "strand": "l3-venue-specific-rocky-shorelines",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l3-rocky-shorelines-04": {
+      "strand": "l3-venue-specific-rocky-shorelines",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l4-boat-handling-01": {
+      "strand": "l4-core-boat-handling",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l4-boat-handling-02": {
+      "strand": "l4-core-boat-handling",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l4-boat-handling-03": {
+      "strand": "l4-core-boat-handling",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l4-boat-handling-04": {
+      "strand": "l4-core-boat-handling",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l4-boat-handling-05": {
+      "strand": "l4-core-boat-handling",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l4-boat-handling-06": {
+      "strand": "l4-core-boat-handling",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l4-boat-handling-07": {
+      "strand": "l4-core-boat-handling",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l4-boat-handling-08": {
+      "strand": "l4-core-boat-handling",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l4-rescues-and-towing-01": {
+      "strand": "l4-core-rescues-and-towing",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l4-rescues-and-towing-02": {
+      "strand": "l4-core-rescues-and-towing",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l4-rescues-and-towing-03": {
+      "strand": "l4-core-rescues-and-towing",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l4-rescues-and-towing-04": {
+      "strand": "l4-core-rescues-and-towing",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l4-rescues-and-towing-05": {
+      "strand": "l4-core-rescues-and-towing",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l4-rescues-and-towing-06": {
+      "strand": "l4-core-rescues-and-towing",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l4-rescues-and-towing-07": {
+      "strand": "l4-core-rescues-and-towing",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l4-rescues-and-towing-08": {
+      "strand": "l4-core-rescues-and-towing",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l4-rescues-and-towing-09": {
+      "strand": "l4-core-rescues-and-towing",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l4-awareness-and-seamanship-01": {
+      "strand": "l4-core-awareness-and-seamanship",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l4-awareness-and-seamanship-02": {
+      "strand": "l4-core-awareness-and-seamanship",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l4-awareness-and-seamanship-03": {
+      "strand": "l4-core-awareness-and-seamanship",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l4-awareness-and-seamanship-04": {
+      "strand": "l4-core-awareness-and-seamanship",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l4-awareness-and-seamanship-05": {
+      "strand": "l4-core-awareness-and-seamanship",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l4-awareness-and-seamanship-06": {
+      "strand": "l4-core-awareness-and-seamanship",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l4-awareness-and-seamanship-07": {
+      "strand": "l4-core-awareness-and-seamanship",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l4-awareness-and-seamanship-08": {
+      "strand": "l4-core-awareness-and-seamanship",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l4-awareness-and-seamanship-09": {
+      "strand": "l4-core-awareness-and-seamanship",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l4-awareness-and-seamanship-10": {
+      "strand": "l4-core-awareness-and-seamanship",
+      "stage": 10,
+      "prereqs": []
+    },
+    "l4-awareness-and-seamanship-11": {
+      "strand": "l4-core-awareness-and-seamanship",
+      "stage": 11,
+      "prereqs": []
+    },
+    "l4-incident-prevention-and-management-01": {
+      "strand": "l4-core-incident-prevention-and-management",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l4-incident-prevention-and-management-02": {
+      "strand": "l4-core-incident-prevention-and-management",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l4-incident-prevention-and-management-03": {
+      "strand": "l4-core-incident-prevention-and-management",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l4-incident-prevention-and-management-04": {
+      "strand": "l4-core-incident-prevention-and-management",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l4-incident-prevention-and-management-05": {
+      "strand": "l4-core-incident-prevention-and-management",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l4-incident-prevention-and-management-06": {
+      "strand": "l4-core-incident-prevention-and-management",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l4-trip-planning-and-navigation-01": {
+      "strand": "l4-core-trip-planning-and-navigation",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l4-trip-planning-and-navigation-02": {
+      "strand": "l4-core-trip-planning-and-navigation",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l4-trip-planning-and-navigation-03": {
+      "strand": "l4-core-trip-planning-and-navigation",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l4-trip-planning-and-navigation-04": {
+      "strand": "l4-core-trip-planning-and-navigation",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l4-trip-planning-and-navigation-05": {
+      "strand": "l4-core-trip-planning-and-navigation",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l4-trip-planning-and-navigation-06": {
+      "strand": "l4-core-trip-planning-and-navigation",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l4-trip-planning-and-navigation-07": {
+      "strand": "l4-core-trip-planning-and-navigation",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l4-trip-planning-and-navigation-08": {
+      "strand": "l4-core-trip-planning-and-navigation",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l4-trip-planning-and-navigation-09": {
+      "strand": "l4-core-trip-planning-and-navigation",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l4-expedition-paddling-01": {
+      "strand": "l4-venue-specific-expedition-paddling",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l4-expedition-paddling-02": {
+      "strand": "l4-venue-specific-expedition-paddling",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l4-expedition-paddling-03": {
+      "strand": "l4-venue-specific-expedition-paddling",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l4-expedition-paddling-04": {
+      "strand": "l4-venue-specific-expedition-paddling",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l4-expedition-paddling-05": {
+      "strand": "l4-venue-specific-expedition-paddling",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l4-tide-races-01": {
+      "strand": "l4-venue-specific-tide-races",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l4-tide-races-02": {
+      "strand": "l4-venue-specific-tide-races",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l4-tide-races-03": {
+      "strand": "l4-venue-specific-tide-races",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l4-tide-races-04": {
+      "strand": "l4-venue-specific-tide-races",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l4-tide-races-05": {
+      "strand": "l4-venue-specific-tide-races",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l4-tide-races-06": {
+      "strand": "l4-venue-specific-tide-races",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l4-surf-zone-01": {
+      "strand": "l4-venue-specific-surf-zone",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l4-surf-zone-02": {
+      "strand": "l4-venue-specific-surf-zone",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l4-surf-zone-03": {
+      "strand": "l4-venue-specific-surf-zone",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l4-surf-zone-04": {
+      "strand": "l4-venue-specific-surf-zone",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l4-surf-zone-05": {
+      "strand": "l4-venue-specific-surf-zone",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l4-surf-zone-06": {
+      "strand": "l4-venue-specific-surf-zone",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l4-surf-zone-07": {
+      "strand": "l4-venue-specific-surf-zone",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l4-surf-zone-08": {
+      "strand": "l4-venue-specific-surf-zone",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l4-surf-zone-09": {
+      "strand": "l4-venue-specific-surf-zone",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l4-surf-zone-10": {
+      "strand": "l4-venue-specific-surf-zone",
+      "stage": 10,
+      "prereqs": []
+    },
+    "l4-rock-gardens-and-sea-caves-01": {
+      "strand": "l4-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l4-rock-gardens-and-sea-caves-02": {
+      "strand": "l4-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l4-rock-gardens-and-sea-caves-03": {
+      "strand": "l4-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l4-rock-gardens-and-sea-caves-04": {
+      "strand": "l4-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l4-rock-gardens-and-sea-caves-05": {
+      "strand": "l4-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l4-rock-gardens-and-sea-caves-06": {
+      "strand": "l4-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l4-rock-gardens-and-sea-caves-07": {
+      "strand": "l4-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l4-rock-gardens-and-sea-caves-08": {
+      "strand": "l4-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l4-rock-gardens-and-sea-caves-09": {
+      "strand": "l4-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l4-rock-gardens-and-sea-caves-10": {
+      "strand": "l4-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 10,
+      "prereqs": []
+    },
+    "l5-boat-handling-01": {
+      "strand": "l5-core-boat-handling",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l5-boat-handling-02": {
+      "strand": "l5-core-boat-handling",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l5-boat-handling-03": {
+      "strand": "l5-core-boat-handling",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l5-boat-handling-04": {
+      "strand": "l5-core-boat-handling",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l5-rescues-and-towing-01": {
+      "strand": "l5-core-rescues-and-towing",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l5-rescues-and-towing-02": {
+      "strand": "l5-core-rescues-and-towing",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l5-rescues-and-towing-03": {
+      "strand": "l5-core-rescues-and-towing",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l5-rescues-and-towing-04": {
+      "strand": "l5-core-rescues-and-towing",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l5-rescues-and-towing-05": {
+      "strand": "l5-core-rescues-and-towing",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l5-rescues-and-towing-06": {
+      "strand": "l5-core-rescues-and-towing",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l5-rescues-and-towing-07": {
+      "strand": "l5-core-rescues-and-towing",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l5-rescues-and-towing-08": {
+      "strand": "l5-core-rescues-and-towing",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l5-rescues-and-towing-09": {
+      "strand": "l5-core-rescues-and-towing",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l5-awareness-and-seamanship-01": {
+      "strand": "l5-core-awareness-and-seamanship",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l5-awareness-and-seamanship-02": {
+      "strand": "l5-core-awareness-and-seamanship",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l5-awareness-and-seamanship-03": {
+      "strand": "l5-core-awareness-and-seamanship",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l5-awareness-and-seamanship-04": {
+      "strand": "l5-core-awareness-and-seamanship",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l5-awareness-and-seamanship-05": {
+      "strand": "l5-core-awareness-and-seamanship",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l5-awareness-and-seamanship-06": {
+      "strand": "l5-core-awareness-and-seamanship",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l5-awareness-and-seamanship-07": {
+      "strand": "l5-core-awareness-and-seamanship",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l5-awareness-and-seamanship-08": {
+      "strand": "l5-core-awareness-and-seamanship",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l5-awareness-and-seamanship-09": {
+      "strand": "l5-core-awareness-and-seamanship",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l5-incident-prevention-and-management-01": {
+      "strand": "l5-core-incident-prevention-and-management",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l5-incident-prevention-and-management-02": {
+      "strand": "l5-core-incident-prevention-and-management",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l5-incident-prevention-and-management-03": {
+      "strand": "l5-core-incident-prevention-and-management",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l5-incident-prevention-and-management-04": {
+      "strand": "l5-core-incident-prevention-and-management",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l5-incident-prevention-and-management-05": {
+      "strand": "l5-core-incident-prevention-and-management",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l5-incident-prevention-and-management-06": {
+      "strand": "l5-core-incident-prevention-and-management",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l5-trip-planning-and-navigation-01": {
+      "strand": "l5-core-trip-planning-and-navigation",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l5-trip-planning-and-navigation-02": {
+      "strand": "l5-core-trip-planning-and-navigation",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l5-trip-planning-and-navigation-03": {
+      "strand": "l5-core-trip-planning-and-navigation",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l5-trip-planning-and-navigation-04": {
+      "strand": "l5-core-trip-planning-and-navigation",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l5-trip-planning-and-navigation-05": {
+      "strand": "l5-core-trip-planning-and-navigation",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l5-trip-planning-and-navigation-06": {
+      "strand": "l5-core-trip-planning-and-navigation",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l5-trip-planning-and-navigation-07": {
+      "strand": "l5-core-trip-planning-and-navigation",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l5-expedition-paddling-01": {
+      "strand": "l5-venue-specific-expedition-paddling",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l5-expedition-paddling-02": {
+      "strand": "l5-venue-specific-expedition-paddling",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l5-expedition-paddling-03": {
+      "strand": "l5-venue-specific-expedition-paddling",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l5-expedition-paddling-04": {
+      "strand": "l5-venue-specific-expedition-paddling",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l5-expedition-paddling-05": {
+      "strand": "l5-venue-specific-expedition-paddling",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l5-expedition-paddling-06": {
+      "strand": "l5-venue-specific-expedition-paddling",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l5-expedition-paddling-07": {
+      "strand": "l5-venue-specific-expedition-paddling",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l5-expedition-paddling-08": {
+      "strand": "l5-venue-specific-expedition-paddling",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l5-tide-races-01": {
+      "strand": "l5-venue-specific-tide-races",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l5-tide-races-02": {
+      "strand": "l5-venue-specific-tide-races",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l5-tide-races-03": {
+      "strand": "l5-venue-specific-tide-races",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l5-tide-races-04": {
+      "strand": "l5-venue-specific-tide-races",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l5-tide-races-05": {
+      "strand": "l5-venue-specific-tide-races",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l5-tide-races-06": {
+      "strand": "l5-venue-specific-tide-races",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l5-tide-races-07": {
+      "strand": "l5-venue-specific-tide-races",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l5-tide-races-08": {
+      "strand": "l5-venue-specific-tide-races",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l5-tide-races-09": {
+      "strand": "l5-venue-specific-tide-races",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l5-surf-01": {
+      "strand": "l5-venue-specific-surf",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l5-surf-02": {
+      "strand": "l5-venue-specific-surf",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l5-surf-03": {
+      "strand": "l5-venue-specific-surf",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l5-surf-04": {
+      "strand": "l5-venue-specific-surf",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l5-surf-05": {
+      "strand": "l5-venue-specific-surf",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l5-surf-06": {
+      "strand": "l5-venue-specific-surf",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l5-surf-07": {
+      "strand": "l5-venue-specific-surf",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l5-surf-08": {
+      "strand": "l5-venue-specific-surf",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l5-rock-gardens-and-sea-caves-01": {
+      "strand": "l5-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l5-rock-gardens-and-sea-caves-02": {
+      "strand": "l5-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 2,
+      "prereqs": []
+    },
+    "l5-rock-gardens-and-sea-caves-03": {
+      "strand": "l5-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 3,
+      "prereqs": []
+    },
+    "l5-rock-gardens-and-sea-caves-04": {
+      "strand": "l5-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 4,
+      "prereqs": []
+    },
+    "l5-rock-gardens-and-sea-caves-05": {
+      "strand": "l5-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 5,
+      "prereqs": []
+    },
+    "l5-rock-gardens-and-sea-caves-06": {
+      "strand": "l5-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 6,
+      "prereqs": []
+    },
+    "l5-rock-gardens-and-sea-caves-07": {
+      "strand": "l5-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 7,
+      "prereqs": []
+    },
+    "l5-rock-gardens-and-sea-caves-08": {
+      "strand": "l5-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 8,
+      "prereqs": []
+    },
+    "l5-rock-gardens-and-sea-caves-09": {
+      "strand": "l5-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 9,
+      "prereqs": []
+    },
+    "l5-rock-gardens-and-sea-caves-10": {
+      "strand": "l5-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 10,
+      "prereqs": []
+    },
+    "l5-rock-gardens-and-sea-caves-11": {
+      "strand": "l5-venue-specific-rock-gardens-and-sea-caves",
+      "stage": 11,
+      "prereqs": []
     }
   }
 }

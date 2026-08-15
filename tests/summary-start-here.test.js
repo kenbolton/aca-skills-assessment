@@ -41,7 +41,9 @@ test('no start-here when every prerequisite is already met (would point at the s
   expect(stopping.startHere).toBeUndefined();
 });
 
-test('non-L2 flagged items get no start-here (this increment is L2 only)', () => {
+test('a parallel-competency flagged item gets no start-here (L1 seeded, empty prereqs)', () => {
+  // L1 is covered by the progression now, but seeded parallel — so a below-
+  // standard L1 skill has no prerequisite to redirect to, and no panel shows.
   const skills = [mk('l1-secure-transport', 'L1', 'Preparing to Depart', 'Secure for transport')];
   const session = {
     id: 's', createdAt: 't', scales: { L1: L1_SCALE },
