@@ -39,37 +39,27 @@
     "l2-lift-carry": {
       "strand": "core-incident-prevention-and-management",
       "stage": 2,
-      "prereqs": [
-        "l2-secure-rack"
-      ]
+      "prereqs": []
     },
     "l2-launch-land": {
       "strand": "core-incident-prevention-and-management",
       "stage": 3,
-      "prereqs": [
-        "l2-lift-carry"
-      ]
+      "prereqs": []
     },
     "l2-signaling": {
       "strand": "core-incident-prevention-and-management",
       "stage": 4,
-      "prereqs": [
-        "l2-launch-land"
-      ]
+      "prereqs": []
     },
     "l2-comm-device": {
       "strand": "core-incident-prevention-and-management",
       "stage": 5,
-      "prereqs": [
-        "l2-signaling"
-      ]
+      "prereqs": []
     },
     "l2-float-plan": {
       "strand": "core-incident-prevention-and-management",
       "stage": 6,
-      "prereqs": [
-        "l2-comm-device"
-      ]
+      "prereqs": []
     },
     "l2-forward": {
       "strand": "core-strokes",
@@ -79,23 +69,20 @@
     "l2-reverse": {
       "strand": "core-strokes",
       "stage": 2,
-      "prereqs": [
-        "l2-forward"
-      ]
+      "prereqs": []
     },
     "l2-stopping": {
       "strand": "core-strokes",
       "stage": 3,
       "prereqs": [
+        "l2-forward",
         "l2-reverse"
       ]
     },
     "l2-sweep": {
       "strand": "core-strokes",
       "stage": 4,
-      "prereqs": [
-        "l2-stopping"
-      ]
+      "prereqs": []
     },
     "l2-rotate-360": {
       "strand": "core-maneuvers",
@@ -105,23 +92,17 @@
     "l2-turning-move": {
       "strand": "core-maneuvers",
       "stage": 2,
-      "prereqs": [
-        "l2-rotate-360"
-      ]
+      "prereqs": []
     },
     "l2-draw": {
       "strand": "core-maneuvers",
       "stage": 3,
-      "prereqs": [
-        "l2-turning-move"
-      ]
+      "prereqs": []
     },
     "l2-stern-rudder": {
       "strand": "core-maneuvers",
       "stage": 4,
-      "prereqs": [
-        "l2-draw"
-      ]
+      "prereqs": []
     },
     "l2-low-brace-recovery": {
       "strand": "core-edging-and-support",
@@ -131,15 +112,14 @@
     "l2-low-brace-turn": {
       "strand": "core-edging-and-support",
       "stage": 2,
-      "prereqs": [
-        "l2-low-brace-recovery"
-      ]
+      "prereqs": []
     },
     "l2-edge-control": {
       "strand": "core-edging-and-support",
       "stage": 3,
       "prereqs": [
-        "l2-low-brace-turn"
+        "l2-low-brace-turn",
+        "l2-turning-move"
       ]
     },
     "l2-awareness": {
@@ -150,37 +130,27 @@
     "l2-lnt": {
       "strand": "core-awareness-and-seamanship",
       "stage": 2,
-      "prereqs": [
-        "l2-awareness"
-      ]
+      "prereqs": []
     },
     "l2-kayak-knowledge": {
       "strand": "core-awareness-and-seamanship",
       "stage": 3,
-      "prereqs": [
-        "l2-lnt"
-      ]
+      "prereqs": []
     },
     "l2-equipment": {
       "strand": "core-awareness-and-seamanship",
       "stage": 4,
-      "prereqs": [
-        "l2-kayak-knowledge"
-      ]
+      "prereqs": []
     },
     "l2-cold-water-shock": {
       "strand": "core-awareness-and-seamanship",
       "stage": 5,
-      "prereqs": [
-        "l2-equipment"
-      ]
+      "prereqs": []
     },
     "l2-thermal": {
       "strand": "core-awareness-and-seamanship",
       "stage": 6,
-      "prereqs": [
-        "l2-cold-water-shock"
-      ]
+      "prereqs": []
     },
     "l2-forecasts": {
       "strand": "core-trip-planning-and-navigation",
@@ -190,44 +160,32 @@
     "l2-chart-use": {
       "strand": "core-trip-planning-and-navigation",
       "stage": 2,
-      "prereqs": [
-        "l2-forecasts"
-      ]
+      "prereqs": []
     },
     "l2-trip-conditions": {
       "strand": "core-trip-planning-and-navigation",
       "stage": 3,
-      "prereqs": [
-        "l2-chart-use"
-      ]
+      "prereqs": []
     },
     "l2-trip-flow": {
       "strand": "core-trip-planning-and-navigation",
       "stage": 4,
-      "prereqs": [
-        "l2-trip-conditions"
-      ]
+      "prereqs": []
     },
     "l2-route-finding": {
       "strand": "core-trip-planning-and-navigation",
       "stage": 5,
-      "prereqs": [
-        "l2-trip-flow"
-      ]
+      "prereqs": []
     },
     "l2-compass": {
       "strand": "core-trip-planning-and-navigation",
       "stage": 6,
-      "prereqs": [
-        "l2-route-finding"
-      ]
+      "prereqs": []
     },
     "l2-nautical-rules": {
       "strand": "core-trip-planning-and-navigation",
       "stage": 7,
-      "prereqs": [
-        "l2-compass"
-      ]
+      "prereqs": []
     },
     "l2-wet-exit": {
       "strand": "core-rescues-and-towing",

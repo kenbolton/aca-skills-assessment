@@ -80,6 +80,23 @@ describe('edgeSkills (frontier: prerequisites met, not yet met)', () => {
   });
 });
 
+describe('refined real-data prerequisites (instructor model)', () => {
+  const nobody = { id: 's', createdAt: 't', paddlers: [{ id: 'p', name: 'A', target: 'L2' }], skills: [], results: [] };
+
+  test('a below rescue chains down to the wet exit foundation', () => {
+    expect(startHere(nobody, 'p', 'l2-swimmer-tows', realProgression)).toBe('l2-wet-exit');
+    expect(startHere(nobody, 'p', 'l2-self-rescue', realProgression)).toBe('l2-wet-exit');
+  });
+  test('edge control points back to the turn it is discovered through', () => {
+    // Both turns are unmet; the earlier-strand turn (turning on the move) wins.
+    expect(startHere(nobody, 'p', 'l2-edge-control', realProgression)).toBe('l2-turning-move');
+  });
+  test('a parallel competency has no prerequisite, so start-here is itself', () => {
+    expect(startHere(nobody, 'p', 'l2-float-plan', realProgression)).toBe('l2-float-plan');
+    expect(prereqsOf('l2-float-plan', realProgression)).toEqual([]);
+  });
+});
+
 describe('real progression.json integrity', () => {
   const l2core = skillsRaw.skills.filter(s => s.level === 'L2' && !s.optional);
 
