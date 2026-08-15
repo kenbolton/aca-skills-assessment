@@ -1,6 +1,7 @@
 import { skillById, optionFor } from './session.js';
 import { skillLabel } from './skills.js';
 import { landingFor } from './landing.js';
+import { startHere } from './progression.js';
 
 export function paddlerSummary(session, paddlerId) {
   const paddler = session.paddlers.find(p => p.id === paddlerId);
@@ -22,6 +23,18 @@ export function paddlerSummary(session, paddlerId) {
     if (r.rating in counts) counts[r.rating]++;
     const opt = optionFor(session, s, r.rating);
     if (opt && opt.requiresFeedback) flagged.push(item(r, s));
+  }
+  // Formative overlay (L2 only this increment): point each below-standard skill
+  // at the deepest prerequisite the paddler has not met yet — where to start.
+  // Omitted when it would point at the skill itself (no unmet prerequisite).
+  if (target === 'L2') {
+    for (const f of flagged) {
+      const sh = startHere(session, paddlerId, f.skillId);
+      if (sh !== f.skillId) {
+        const shSkill = skillById(session, sh);
+        f.startHere = { skillId: sh, name: shSkill ? skillLabel(shSkill) : sh };
+      }
+    }
   }
   // The landing value that means the paddler met their target level.
   const PASSING = { L1: 'L1', L2: 'L2', L3: 'meets_level', L4: 'meets_level', L5: 'meets_level' };

@@ -543,6 +543,20 @@ button { min-height: var(--hit); font-size: 18px; }
 }
 .bsd-standard { margin: .3rem 0; color: #14323a; font-size: .9rem; }
 .bsd-note { margin: .3rem 0 0; font-size: .9rem; }
+/* Formative next step: where to start practising to close the gap. */
+.bsd-start-here {
+  margin: .4rem 0 0;
+  padding: .35rem .5rem;
+  background: #e6f4f1;
+  border-left: 3px solid #00707e;
+  border-radius: 3px;
+  font-size: .9rem;
+  color: #14323a;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .4rem;
+}
 
 .competency-radars { display: flex; flex-wrap: wrap; gap: .75rem; margin: .75rem 0 0; }
 .competency-radar { margin: 0; width: 140px; }

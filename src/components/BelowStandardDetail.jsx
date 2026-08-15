@@ -19,6 +19,16 @@ export function BelowStandardDetail({ items, onEditSkill }) {
           </div>
           {item.standard ? <p className="bsd-standard">{item.standard}</p> : null}
           {item.feedback ? <p className="bsd-note"><strong>Note:</strong> {item.feedback}</p> : null}
+          {item.startHere ? (
+            <p className="bsd-start-here">
+              <strong>Start here:</strong> {item.startHere.name}
+              {onEditSkill ? (
+                <button type="button" className="bsd-goto" onClick={() => onEditSkill(item.startHere.skillId)}>
+                  Practice →
+                </button>
+              ) : null}
+            </p>
+          ) : null}
         </section>
       ))}
     </div>

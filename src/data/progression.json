@@ -1,0 +1,273 @@
+{
+  "version": 1,
+  "strands": {
+    "core-incident-prevention-and-management": {
+      "name": "Core: Incident Prevention and Management",
+      "order": 1
+    },
+    "core-strokes": {
+      "name": "Core: Strokes",
+      "order": 2
+    },
+    "core-maneuvers": {
+      "name": "Core: Maneuvers",
+      "order": 3
+    },
+    "core-edging-and-support": {
+      "name": "Core: Edging and Support",
+      "order": 4
+    },
+    "core-awareness-and-seamanship": {
+      "name": "Core: Awareness and Seamanship",
+      "order": 5
+    },
+    "core-trip-planning-and-navigation": {
+      "name": "Core: Trip Planning and Navigation",
+      "order": 6
+    },
+    "core-rescues-and-towing": {
+      "name": "Core: Rescues and Towing",
+      "order": 7
+    }
+  },
+  "skills": {
+    "l2-secure-rack": {
+      "strand": "core-incident-prevention-and-management",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l2-lift-carry": {
+      "strand": "core-incident-prevention-and-management",
+      "stage": 2,
+      "prereqs": [
+        "l2-secure-rack"
+      ]
+    },
+    "l2-launch-land": {
+      "strand": "core-incident-prevention-and-management",
+      "stage": 3,
+      "prereqs": [
+        "l2-lift-carry"
+      ]
+    },
+    "l2-signaling": {
+      "strand": "core-incident-prevention-and-management",
+      "stage": 4,
+      "prereqs": [
+        "l2-launch-land"
+      ]
+    },
+    "l2-comm-device": {
+      "strand": "core-incident-prevention-and-management",
+      "stage": 5,
+      "prereqs": [
+        "l2-signaling"
+      ]
+    },
+    "l2-float-plan": {
+      "strand": "core-incident-prevention-and-management",
+      "stage": 6,
+      "prereqs": [
+        "l2-comm-device"
+      ]
+    },
+    "l2-forward": {
+      "strand": "core-strokes",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l2-reverse": {
+      "strand": "core-strokes",
+      "stage": 2,
+      "prereqs": [
+        "l2-forward"
+      ]
+    },
+    "l2-stopping": {
+      "strand": "core-strokes",
+      "stage": 3,
+      "prereqs": [
+        "l2-reverse"
+      ]
+    },
+    "l2-sweep": {
+      "strand": "core-strokes",
+      "stage": 4,
+      "prereqs": [
+        "l2-stopping"
+      ]
+    },
+    "l2-rotate-360": {
+      "strand": "core-maneuvers",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l2-turning-move": {
+      "strand": "core-maneuvers",
+      "stage": 2,
+      "prereqs": [
+        "l2-rotate-360"
+      ]
+    },
+    "l2-draw": {
+      "strand": "core-maneuvers",
+      "stage": 3,
+      "prereqs": [
+        "l2-turning-move"
+      ]
+    },
+    "l2-stern-rudder": {
+      "strand": "core-maneuvers",
+      "stage": 4,
+      "prereqs": [
+        "l2-draw"
+      ]
+    },
+    "l2-low-brace-recovery": {
+      "strand": "core-edging-and-support",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l2-low-brace-turn": {
+      "strand": "core-edging-and-support",
+      "stage": 2,
+      "prereqs": [
+        "l2-low-brace-recovery"
+      ]
+    },
+    "l2-edge-control": {
+      "strand": "core-edging-and-support",
+      "stage": 3,
+      "prereqs": [
+        "l2-low-brace-turn"
+      ]
+    },
+    "l2-awareness": {
+      "strand": "core-awareness-and-seamanship",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l2-lnt": {
+      "strand": "core-awareness-and-seamanship",
+      "stage": 2,
+      "prereqs": [
+        "l2-awareness"
+      ]
+    },
+    "l2-kayak-knowledge": {
+      "strand": "core-awareness-and-seamanship",
+      "stage": 3,
+      "prereqs": [
+        "l2-lnt"
+      ]
+    },
+    "l2-equipment": {
+      "strand": "core-awareness-and-seamanship",
+      "stage": 4,
+      "prereqs": [
+        "l2-kayak-knowledge"
+      ]
+    },
+    "l2-cold-water-shock": {
+      "strand": "core-awareness-and-seamanship",
+      "stage": 5,
+      "prereqs": [
+        "l2-equipment"
+      ]
+    },
+    "l2-thermal": {
+      "strand": "core-awareness-and-seamanship",
+      "stage": 6,
+      "prereqs": [
+        "l2-cold-water-shock"
+      ]
+    },
+    "l2-forecasts": {
+      "strand": "core-trip-planning-and-navigation",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l2-chart-use": {
+      "strand": "core-trip-planning-and-navigation",
+      "stage": 2,
+      "prereqs": [
+        "l2-forecasts"
+      ]
+    },
+    "l2-trip-conditions": {
+      "strand": "core-trip-planning-and-navigation",
+      "stage": 3,
+      "prereqs": [
+        "l2-chart-use"
+      ]
+    },
+    "l2-trip-flow": {
+      "strand": "core-trip-planning-and-navigation",
+      "stage": 4,
+      "prereqs": [
+        "l2-trip-conditions"
+      ]
+    },
+    "l2-route-finding": {
+      "strand": "core-trip-planning-and-navigation",
+      "stage": 5,
+      "prereqs": [
+        "l2-trip-flow"
+      ]
+    },
+    "l2-compass": {
+      "strand": "core-trip-planning-and-navigation",
+      "stage": 6,
+      "prereqs": [
+        "l2-route-finding"
+      ]
+    },
+    "l2-nautical-rules": {
+      "strand": "core-trip-planning-and-navigation",
+      "stage": 7,
+      "prereqs": [
+        "l2-compass"
+      ]
+    },
+    "l2-wet-exit": {
+      "strand": "core-rescues-and-towing",
+      "stage": 1,
+      "prereqs": []
+    },
+    "l2-assisted-rescue": {
+      "strand": "core-rescues-and-towing",
+      "stage": 2,
+      "prereqs": [
+        "l2-wet-exit"
+      ]
+    },
+    "l2-self-rescue": {
+      "strand": "core-rescues-and-towing",
+      "stage": 3,
+      "prereqs": [
+        "l2-assisted-rescue"
+      ]
+    },
+    "l2-swim-rescue": {
+      "strand": "core-rescues-and-towing",
+      "stage": 4,
+      "prereqs": [
+        "l2-self-rescue"
+      ]
+    },
+    "l2-move-capsized": {
+      "strand": "core-rescues-and-towing",
+      "stage": 5,
+      "prereqs": [
+        "l2-swim-rescue"
+      ]
+    },
+    "l2-swimmer-tows": {
+      "strand": "core-rescues-and-towing",
+      "stage": 6,
+      "prereqs": [
+        "l2-move-capsized"
+      ]
+    }
+  }
+}
