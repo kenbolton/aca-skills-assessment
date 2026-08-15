@@ -193,6 +193,23 @@ button { min-height: var(--hit); font-size: 18px; }
   line-height: 1.4;
 }
 
+/* Plain-language learner gloss — deliberately distinct from the ACA standard
+   box above it, so it never reads as the official rubric. */
+.plain-terms {
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 0.6rem;
+  background: #f4f1e8;
+  border-left: 3px solid #b8a468;
+  border-radius: 3px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #3a3527;
+}
+.plain-terms-label {
+  font-weight: 600;
+  color: #6b5d2f;
+}
+
 .standard-section + .standard-section {
   margin-top: 0.6rem;
   padding-top: 0.6rem;
