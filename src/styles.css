@@ -588,6 +588,24 @@ button { min-height: var(--hit); font-size: 18px; }
 .archive-bar { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .5rem; }
 .archive-import { margin-left: auto; font-size: .9rem; }
 .archive-import input { display: block; }
+/* Paddlers-over-time summary at the top of the Archive screen. */
+.learner-summary { margin: 0 0 1rem; }
+.learner-summary h3 { margin: 0 0 .4rem; color: #00707e; }
+.learner-list { list-style: none; margin: 0; padding: 0; }
+.learner-row {
+  padding: .5rem .6rem;
+  margin-bottom: .4rem;
+  background: #eef5f4;
+  border-left: 3px solid #00707e;
+  border-radius: 3px;
+}
+.learner-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem; }
+.learner-name { font-size: 1rem; }
+.learner-meta { color: #4a5b5e; font-size: .85rem; }
+.learner-stats { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .25rem; font-size: .9rem; }
+.learner-grew { color: #1a7a4a; }
+.learner-next { color: #14323a; }
+
 .archive-list { list-style: none; margin: 0; padding: 0; }
 .archive-row { border-bottom: 1px solid #ddd; padding: .6rem 0; }
 .archive-meta { display: flex; flex-direction: column; gap: .1rem; }

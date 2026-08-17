@@ -12,7 +12,7 @@ export const progression = progressionData;
 
 // A skill counts as "met" at L2 when rated meets or exceeds. Below, l1, dno, and
 // unrated all count as not met.
-const MET_RATINGS = new Set(['meets', 'exceeds']);
+const MET_RATINGS = new Set(['pass', 'meets', 'exceeds']);
 // A rating is "below standard" when it is an explicit sub-standard mark. Across
 // levels these are `below` and `l1` (L2 dual) and `no` (L1); all require
 // feedback and drive the Review touchpoint.
