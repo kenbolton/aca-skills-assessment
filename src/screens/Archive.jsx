@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { listSummaries, getAllSessions, getSession, deleteSession, exportBundle, importBundle, importSessions } from '../lib/store.js';
 import { sessionToCsv } from '../lib/csv.js';
-import { learnerRows } from '../lib/learner.js';
+import { learnerRows, learnerJourney } from '../lib/learner.js';
 import { LearnerSummary } from '../components/LearnerSummary.jsx';
 
 function download(name, text, type) {
@@ -16,18 +16,25 @@ function download(name, text, type) {
   URL.revokeObjectURL(url);
 }
 
-export function Archive({ onResume, onBack }) {
+export function Archive({ onResume, onBack, onOpenLearner }) {
   const [rows, setRows] = useState(null);
   const [learners, setLearners] = useState([]);
+  const [sessions, setSessions] = useState([]);
   const [msg, setMsg] = useState('');
 
   async function refresh() {
     setRows(await listSummaries());
     // The learner summary needs full sessions (per-skill results), not summaries.
     // `new Date()` drives the spaced re-check schedule (interval since last seen).
-    setLearners(learnerRows(await getAllSessions(), new Date()));
+    const all = await getAllSessions();
+    setSessions(all);
+    setLearners(learnerRows(all, new Date()));
   }
   useEffect(() => { refresh(); }, []);
+
+  function openLearner(key) {
+    if (onOpenLearner) onOpenLearner(learnerJourney(sessions, key, new Date()));
+  }
 
   async function exportJson(id) {
     const b = await exportBundle([id]);
@@ -68,7 +75,7 @@ export function Archive({ onResume, onBack }) {
           <input type="file" accept="application/json,.json" onChange={importFile} />
         </label>
       </div>
-      <LearnerSummary rows={learners} />
+      <LearnerSummary rows={learners} onOpen={openLearner} />
 
       <h2>Past assessments</h2>
       {msg ? <p className="hint">{msg}</p> : null}

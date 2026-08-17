@@ -8,7 +8,9 @@
 // UI shows the grouping so those cases stay visible.
 
 import { skillLabel } from './skills.js';
-import { nextStep } from './progression.js';
+import { nextStep, progression, strandOf, levelOfId, progressionRank } from './progression.js';
+import { landingFor } from './landing.js';
+import { plainFor } from './plain-language.js';
 import { dueRechecks } from './recheck.js';
 
 // Met across every scale: L1 `pass`, L2–L5 `meets`/`exceeds`.
@@ -137,6 +139,63 @@ export function learnerRows(sessions, now = null) {
       dueTopName: due.length ? (names[due[0].skillId] || due[0].skillId) : null,
     };
   });
+}
+
+// Per-strand progress at a level: met skills over the strand's full size, in
+// strand order. "Total" is the whole strand from the progression, so an
+// unassessed skill reads as not-yet-mastered — an honest breadth measure.
+function strandProgress(current, target) {
+  const groups = new Map();
+  for (const id of Object.keys(progression.skills)) {
+    if (levelOfId(id) !== target) continue;
+    const st = strandOf(id);
+    if (!st) continue;
+    if (!groups.has(st.key)) groups.set(st.key, { key: st.key, name: st.name, order: st.order, met: 0, total: 0 });
+    const g = groups.get(st.key);
+    g.total++;
+    if (MET.has(current[id])) g.met++;
+  }
+  return [...groups.values()].sort((a, b) => a.order - b.order).map(({ order, ...rest }) => rest);
+}
+
+// The learner's own sessions as a dated history, newest first, each with its
+// landing verdict.
+function learnerSessions(sessions, key) {
+  const out = [];
+  for (const s of sessions || []) {
+    for (const p of s.paddlers || []) {
+      if (normalizeName(p.name) !== key) continue;
+      out.push({ id: s.id, at: s.createdAt, target: p.target, landing: landingFor(s, p.id).landing });
+    }
+  }
+  return out.sort((a, b) => String(b.at).localeCompare(String(a.at)));
+}
+
+// The full learner-facing journey view-model: identity, strand progress, growth,
+// the working edge (with a plain-language gloss), re-checks due, and history.
+export function learnerJourney(sessions, key, now = null) {
+  const rec = learnerRecord(sessions, key);
+  if (!rec) return null;
+  const names = skillNameMap(sessions);
+  const nm = id => names[id] || id;
+  const strands = strandProgress(rec.current, rec.latestTarget);
+  const due = now ? dueRechecks(rec, now) : [];
+  return {
+    key: rec.key,
+    name: rec.name,
+    latestTarget: rec.latestTarget,
+    sessionCount: rec.sessionCount,
+    firstAt: rec.firstAt,
+    lastAt: rec.lastAt,
+    metCount: rec.metCount,
+    totalSkills: strands.reduce((a, s) => a + s.total, 0),
+    strands,
+    newlyMet: rec.newlyMet.map(nm),
+    gaps: [...rec.gaps].sort((a, b) => progressionRank(a) - progressionRank(b)).map(nm),
+    next: rec.next ? { skillId: rec.next, name: nm(rec.next), gloss: plainFor(rec.next) } : null,
+    due: due.map(d => ({ skillId: d.skillId, name: nm(d.skillId), overdueDays: d.overdueDays })),
+    history: learnerSessions(sessions, key),
+  };
 }
 
 // skillId → display label, gathered from every session's skill list. Lets a

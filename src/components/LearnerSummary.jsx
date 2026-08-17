@@ -7,7 +7,7 @@ function fmtDate(iso) {
   return isNaN(d) ? '' : d.toLocaleDateString();
 }
 
-export function LearnerSummary({ rows }) {
+export function LearnerSummary({ rows, onOpen }) {
   if (!rows || rows.length === 0) return null;
   return (
     <section className="learner-summary">
@@ -16,7 +16,7 @@ export function LearnerSummary({ rows }) {
         {rows.map(r => (
           <li className="learner-row" key={r.key}>
             <div className="learner-head">
-              <strong className="learner-name">{r.name}</strong>
+              <button type="button" className="learner-name linklike" onClick={() => onOpen && onOpen(r.key)}>{r.name}</button>
               <span className="learner-meta">
                 {`${r.sessionCount} session${r.sessionCount === 1 ? '' : 's'} · ${r.latestTarget}`}
                 {r.sessionCount > 1 ? ` · ${fmtDate(r.firstAt)}–${fmtDate(r.lastAt)}` : ` · ${fmtDate(r.lastAt)}`}
