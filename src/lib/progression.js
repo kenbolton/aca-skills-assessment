@@ -46,6 +46,16 @@ export function prereqsOf(skillId, prog = progression) {
   return entry ? entry.prereqs.slice() : [];
 }
 
+// A sortable rank placing skills foundation-first: earlier strand, then lower
+// stage. Skills absent from the progression sort last. Use it to order gaps in
+// the sensible sequence to work them.
+export function progressionRank(skillId, prog = progression) {
+  const entry = prog.skills[skillId];
+  if (!entry) return Number.MAX_SAFE_INTEGER;
+  const order = prog.strands[entry.strand]?.order ?? 9999;
+  return order * 1000 + entry.stage;
+}
+
 // Sort skill ids foundation-first: earlier strand, then lower stage. Unknown
 // skills sort last, in id order, so the result stays deterministic.
 function orderCmp(prog) {

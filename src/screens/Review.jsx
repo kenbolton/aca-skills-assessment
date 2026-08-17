@@ -6,6 +6,7 @@ import { downloadPaddlerPdf } from '../lib/pdf.js';
 import { SyncButton } from '../components/SyncButton.jsx';
 import { Attribution } from '../components/Attribution.jsx';
 import { BelowStandardDetail } from '../components/BelowStandardDetail.jsx';
+import { FeedbackSummary } from '../components/FeedbackSummary.jsx';
 import { CompetencyRadars } from '../components/CompetencyRadars.jsx';
 
 function download(name, text, type) {
@@ -77,6 +78,8 @@ export function Review({ session, onChange, onBack, onReset, onEditSkill }) {
                 ))}
                 <span className="count-unrated">   Unrated {summary.unrated}</span>
               </p>
+
+              <FeedbackSummary summary={summary} />
 
               <BelowStandardDetail items={summary.flagged} onEditSkill={onEditSkill} />
 
