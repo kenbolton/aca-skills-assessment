@@ -162,28 +162,18 @@ type PaddlerSummary = {
 };
 ```
 
-- `counts` is keyed by each scale option `value`; a value with zero core results
-  still appears with `0`.
-- `belowItems` = core skills whose rating maps to a `requiresFeedback` option
-  (the "must fix"/"did not meet" list), with feedback.
-- Optional skills are summarized separately and never appear in `belowItems`,
-  `counts`, or `unrated`.
+- `counts` is keyed by each scale option `value`; a value with zero results still
+  appears as `0`.
+- Optional skills never appear in `flagged`, `counts`, or `unrated`.
 
-## Downstream (Tasks 6–12) deltas from the original plan
+## Exports
 
-- **CSV (Task 6):** columns `Level,Paddler,Category,Skill,Optional,Rating,Feedback`.
-  `Rating` is the scale `label` (e.g. "Below"), empty when null. `Optional` is
-  `yes`/``.
-- **Setup (Task 7):** level `<select>` built from `levelIds(config)` /
-  `getLevel().name`.
-- **Rate (Task 8):** chips built from `session.scale` (label per option). The
-  category `competency` shows above the skill when present. Optional skills show
-  an "Optional — does not count" badge and never block navigation. The
-  requiresFeedback option triggers the inline feedback box.
-- **Review/PDF (Task 9):** show `counts` per scale label, the `belowItems` list
-  with feedback, and an "Optional skills assessed" subsection. PDF title uses
-  `levelName`.
-- Tasks 10 (sync), 11 (PWA), 12 (Pi) are unchanged by v2.
+- **CSV** (`csv.js`): columns
+  `Type, Paddler, Target, Landing, Category, Skill, Optional, Rating, CMS Grade, Feedback`.
+  `Rating` is the scale `label`; `Optional` is `yes`/blank. "CMS Grade" maps the
+  rating to the ACA CMS form's Meets/Below where applicable.
+- **PDF** (`pdf.js`): per-paddler export; the archive screen also offers per-
+  session CSV/JSON and a whole-archive bundle.
 
 ## Learning overlays (read-only, additive)
 
