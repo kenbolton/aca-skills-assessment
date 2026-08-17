@@ -352,6 +352,24 @@ button { min-height: var(--hit); font-size: 18px; }
   color: #aaa;
 }
 
+/* Top Tips: progressive coaching cues under the next/prev navigation. */
+.top-tips { margin: 1rem 0 0; padding: .6rem .7rem; background: #f4f1e8; border-radius: 5px; }
+.top-tips-head { margin: 0 0 .4rem; font-size: 1rem; color: #6b5d2f; }
+.top-tips-count { font-weight: 600; color: #b26a00; }
+.top-tips-list, .top-tips-done { list-style: none; margin: 0; padding: 0; }
+.top-tips-done { margin-top: .3rem; }
+.tt-item {
+  display: flex; align-items: baseline; gap: .5rem; width: 100%;
+  text-align: left; background: none; border: none; padding: .35rem .2rem;
+  font: inherit; color: #3a3527; cursor: pointer; line-height: 1.35;
+  border-radius: 3px;
+}
+.tt-item:hover { background: rgba(0,0,0,.04); }
+.tt-box { font-size: 1.1rem; color: #6b5d2f; }
+.tt-mastered { color: #8a8577; }
+.tt-mastered .tt-box { color: #1a7a4a; }
+.tt-all { margin: .2rem 0; color: #1a7a4a; font-weight: 600; }
+
 /* Review screen */
 .review-screen {
   max-width: 640px;

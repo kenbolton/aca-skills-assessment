@@ -9,6 +9,7 @@ import { skillSetRef, blobOf, isSlim, slimSession, fattenSession, BUNDLE_FORMAT 
 const DB = 'aca-assessment';
 const STORE = 'sessions';
 const SKILLSETS = 'skillSets';
+const TIPCHECKS = 'tipChecks';
 const LEGACY_KEY = 'aca-assessment:session';
 const CURRENT_KEY = 'aca-assessment:current';
 
@@ -18,11 +19,13 @@ let dbInstance = null;
 function openDb() {
   if (dbPromise) return dbPromise;
   dbPromise = new Promise((resolve, reject) => {
-    const req = indexedDB.open(DB, 2);
+    const req = indexedDB.open(DB, 3);
     req.onupgradeneeded = () => {
       const db = req.result;
       if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE, { keyPath: 'id' });
       if (!db.objectStoreNames.contains(SKILLSETS)) db.createObjectStore(SKILLSETS, { keyPath: 'ref' });
+      // v3: per-learner Top Tips progress, keyed by normalized learner name.
+      if (!db.objectStoreNames.contains(TIPCHECKS)) db.createObjectStore(TIPCHECKS, { keyPath: 'learnerKey' });
     };
     req.onsuccess = () => { dbInstance = req.result; resolve(req.result); };
     req.onerror = () => { dbPromise = null; reject(req.error); };
@@ -53,6 +56,20 @@ async function store(mode) {
 async function skillStore(mode) {
   const db = await openDb();
   return db.transaction(SKILLSETS, mode).objectStore(SKILLSETS);
+}
+async function tipStore(mode) {
+  const db = await openDb();
+  return db.transaction(TIPCHECKS, mode).objectStore(TIPCHECKS);
+}
+
+// Top Tips progress for one learner: { learnerKey, checks: { [skillId]: [tipId] } }.
+// Returns an empty record (never null) so callers can read straight away.
+export async function getTipChecks(learnerKey) {
+  const rec = await reqP((await tipStore('readonly')).get(learnerKey));
+  return rec || { learnerKey, checks: {} };
+}
+export async function putTipChecks(record) {
+  await reqP((await tipStore('readwrite')).put(record));
 }
 
 export async function putSkillSet(ref, blob) {
