@@ -117,7 +117,7 @@ test('hydrate leaves a fat/legacy session unchanged and does not throw on a miss
 // record and to inspect what is actually stored.
 function rawSessionOp(mode, fn) {
   return new Promise((res, rej) => {
-    const open = indexedDB.open('aca-assessment', 2);
+    const open = indexedDB.open('aca-assessment', 3);
     // Mirror store.js's openDb schema: a raw open with no upgrade handler
     // would otherwise create an empty, store-less database when this runs
     // before store.js has opened one (e.g. rawPut before any putSession).
@@ -125,6 +125,7 @@ function rawSessionOp(mode, fn) {
       const db = open.result;
       if (!db.objectStoreNames.contains('sessions')) db.createObjectStore('sessions', { keyPath: 'id' });
       if (!db.objectStoreNames.contains('skillSets')) db.createObjectStore('skillSets', { keyPath: 'ref' });
+      if (!db.objectStoreNames.contains('tipChecks')) db.createObjectStore('tipChecks', { keyPath: 'learnerKey' });
     };
     open.onsuccess = () => {
       const db = open.result;

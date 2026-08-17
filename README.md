@@ -34,7 +34,8 @@ your device. Anonymous usage counts do.**
 
 The **"Paddlers over time"** view groups a paddler's past assessments by name.
 This grouping is computed **on your device** from assessments already stored
-there; it adds no new stored data and uploads nothing.
+there. Your **Top Tips** progress is stored on your device too, keyed by paddler
+name. Neither is uploaded; the self-hosted build syncs finished **sessions** only.
 
 The public website keeps **anonymous, cookieless** counts of page visits, PWA
 installs, and assessments started (via [GoatCounter](https://www.goatcounter.com/)).
@@ -60,6 +61,9 @@ self-hosted build.
 - **Self-assessment mode**: flip one switch to self-review as a single paddler.
 - Each skill shows the **ACA standard text** as an on-screen reference, with an
   optional plain-language **"In plain terms"** gloss beneath it for learners.
+- **Top Tips**: under the skill navigation, a short progressive checklist of
+  coaching cues — the top four show at once; check one off and the next
+  surfaces. Progress is saved per paddler across sessions.
 - **Feedback for learning** (on Review): each paddler gets a short summary —
   progress toward the level, strengths, and one **"Start with"** priority — and
   every below-standard skill points to the **next step to work** (its deepest
