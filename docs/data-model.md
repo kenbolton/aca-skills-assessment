@@ -1,128 +1,164 @@
-# ACA Skills Assessment — Data Model v2 (authoritative)
+# ACA Skills Assessment — Data Model (authoritative)
 
-Supersedes the flat-skill model in Tasks 2–4 of the original plan. Reason: the
-official ACA L1 and L2 assessments share **no skills** and use **different
-rating scales**, and L2 has **optional "Developing" skills** that must never
-count against a paddler. This document is the single source of truth for the
-`skills.json` shape and the `skills.js` / `session.js` / `validation.js` /
-`summary.js` contracts. Rating values are per-level scale `value` strings.
+Single source of truth for the `skills*.json` shape and the `skills.js` /
+`session.js` / `store.js` / `landing.js` / `validation.js` / `summary.js`
+contracts. Rating values are per-level scale `value` strings.
 
-## skills.json shape
+The official ACA L1 and L2 assessments share **no skills** and use **different
+rating scales**; L2 also has **optional "developing" skills** that never count
+against a paddler. L1 and L2 live together in `skills.json` and are assessed
+**combined**, with a cross-level landing. L3, L4, and L5 each have their own file
+(`skills-l3.json` / `skills-l4.json` / `skills-l5.json`) and are **standalone**
+single-level assessments.
+
+## skills.json shape (flat)
 
 ```jsonc
 {
-  "_source": "…provenance…",
-  "levels": [
-    {
-      "id": "L1",                       // string, unique
-      "name": "Level 1: Introduction to Kayaking",
-      "note": "…optional level-wide note…",
-      "scale": [                        // ordered, worst → best for display
-        { "value": "no",   "label": "No",              "requiresFeedback": true },
-        { "value": "pass", "label": "Pass" },
-        { "value": "dno",  "label": "Did Not Observe" }
-      ],
-      "categories": [
-        {
-          "name": "Preparing to Depart",
-          "competency": "…optional category competency statement…",
-          "skills": [
-            { "id": "l1-…", "name": "…", "standard": "…", "optional": false }
-          ]
-        }
-      ]
-    }
+  "scales": {                              // one entry per level in this file
+    "L1": [
+      { "value": "no",   "label": "No",              "requiresFeedback": true },
+      { "value": "pass", "label": "Pass" },
+      { "value": "dno",  "label": "Did Not Observe" }
+    ],
+    "L2": [
+      { "value": "below",   "label": "Below",   "requiresFeedback": true },
+      { "value": "l1",      "label": "L1",       "requiresFeedback": true, "dualOnly": true },
+      { "value": "meets",   "label": "Meets" },
+      { "value": "exceeds", "label": "Exceeds" },
+      { "value": "dno",     "label": "DNO" }
+    ]
+  },
+  "intro": {                               // optional per-assessment intro page
+    "title": "…",
+    "sections": [ { "heading": "…", "body": "…", "items": ["…"], "link": { "href", "label" } } ]
+  },
+  "skills": [                              // flat list; each skill names its level + category
+    { "id": "l1-…", "level": "L1", "category": "Preparing to Depart",
+      "name": "…", "standard": "…", "optional": false }
   ]
 }
 ```
 
-- `skill.id` is unique across **all** levels.
+- `skill.id` is unique across **all** files.
 - `skill.optional` defaults to `false` when absent.
-- Exactly one scale option per level SHOULD have `requiresFeedback: true` (the
-  "below standard" band). Loader does not enforce count, but treats missing
-  `requiresFeedback` as `false`.
+- A scale option with `requiresFeedback: true` is the "below standard" band (it
+  forces a written note). `dualOnly: true` marks a cross-level landing option
+  (the L2 "l1" value: the paddler met L1 but not L2).
+- L3–L5 skills often carry only `standard` (used as the on-screen item) plus
+  optional `competency`, `l1Standard`, `exceedsStandard`, `belowStandard`.
 
 ## Types
 
 ```ts
-type ScaleOption = { value: string; label: string; requiresFeedback: boolean };
-type FlatSkill   = { id: string; name: string; standard: string;
-                     optional: boolean; category: string; competency: string };
-type Level       = { id: string; name: string; note: string;
-                     scale: ScaleOption[]; categories: Category[] };
-type Config      = { levels: Level[] };
+type ScaleOption = { value: string; label: string;
+                     requiresFeedback: boolean; dualOnly?: boolean };
+type FlatSkill   = { id: string; level: string; category: string;
+                     standard: string; optional: boolean;
+                     name?: string; competency?: string; l1Standard?: string;
+                     exceedsStandard?: string; belowStandard?: string };
+type Config      = { scales: Record<string, ScaleOption[]>;   // keyed by level id
+                     skills: FlatSkill[]; intro?: Intro };
+type Paddler     = { id: string; name: string; target: string };  // target = level id
 type SkillResult = { paddlerId: string; skillId: string;
                      rating: string | null; feedback: string };
-type Session     = { id: string; createdAt: string; levelId: string;
-                     levelName: string; location: string;
-                     scale: ScaleOption[]; paddlers: {id,name}[];
-                     skills: FlatSkill[]; results: SkillResult[];
-                     syncedAt?: string };
+type Session     = { id: string; createdAt: string; location: string;
+                     conditions: Record<string,string>; selfAssessment: boolean;
+                     scales: Record<string, ScaleOption[]>; intro: Intro | null;
+                     paddlers: Paddler[]; skills: FlatSkill[];
+                     results: SkillResult[];
+                     actionPlans: Record<string, string> };  // keyed by paddlerId
 ```
+
+- A session carries **per-paddler `target`**. In an L1/L2 session, paddlers may
+  target different levels; a paddler has results only for skills whose
+  `level === paddler.target`. In an L3/L4/L5 session every paddler shares the one
+  level.
+- `selfAssessment` marks a single-paddler self-review (never an ACA assessment).
 
 ## src/lib/skills.js
 
-- `loadConfig(raw): Config` — validates and normalizes. Throws `Error` with a
-  clear message when: `raw.levels` is not a non-empty array; a level is missing
-  `id`/`name`; a level `scale` is not a non-empty array or an option is missing
-  `value`/`label`; `categories` is not an array; a skill is missing
-  `id`/`name`/`standard`; or a `skill.id` is duplicated across the whole config.
-  Normalizes each option's `requiresFeedback` to boolean and each skill's
-  `optional` to boolean; fills `note`/`competency` with `''` when absent.
-- `levelIds(config): string[]` — e.g. `['L1','L2']`.
-- `getLevel(config, levelId): Level | undefined`.
-- `scaleForLevel(config, levelId): ScaleOption[]` — `[]` if level not found.
-- `skillsForLevel(config, levelId): FlatSkill[]` — categories flattened in
-  order; each skill carries its `category` and the category's `competency`.
+- `loadConfig(raw): Config` — validates and normalizes. Reads `raw.scales`
+  (per-level option arrays) and the flat `raw.skills` array; carries `raw.intro`
+  through when present. Throws with a clear message when: `scales` defines no
+  level; a level scale is not a non-empty array or an option lacks `value`/
+  `label`; `skills` is empty; a skill lacks `id`/`category`/`standard`, has an
+  unknown `level`, or a duplicate `id`. Normalizes `requiresFeedback`/`optional`
+  to booleans.
+- `skillLabel(skill): string` — `skill.name` when present, else `skill.standard`.
+- `allSkills(config): FlatSkill[]`.
+- `optionsForSkill(config, skill): ScaleOption[]` — the scale for the skill's
+  level.
 
 ## src/lib/session.js
 
-- `createSession({ id, createdAt, config, levelId, location = '', paddlerNames }): Session`
-  - `paddlers`: trimmed non-empty names → `{ id, name }` (ids from an internal
-    counter, as in v1).
-  - `skills`: `skillsForLevel(config, levelId)` snapshot.
-  - `scale`: `scaleForLevel(config, levelId)` snapshot.
-  - `levelName`: the level's `name`.
+- `createSession({ id, createdAt, config, location, conditions, paddlers, selfAssessment }): Session`
+  - `paddlers`: `{ name, target }[]` in → trimmed non-empty → `{ id, name, target }`.
   - `results`: one `{ paddlerId, skillId, rating: null, feedback: '' }` per
-    (paddler × snapshot skill).
-- `getResult(session, paddlerId, skillId): SkillResult | undefined`.
-- `skillById(session, skillId): FlatSkill | undefined`.
-- `optionFor(session, rating): ScaleOption | undefined` — find in `session.scale`.
-- `setRating(session, paddlerId, skillId, rating): Session` — new session; if the
-  new rating's option is absent or has `requiresFeedback === false`, clear that
-  result's `feedback` to `''`. (Feedback is retained only for a
-  `requiresFeedback` option.)
-- `setFeedback(session, paddlerId, skillId, feedback): Session` — new session.
-- `saveSession/loadSession/clearSession` — localStorage key `aca-assessment:session`.
-- No mutation: every updater returns a new session; nested `results` entries are
-  replaced, not mutated.
+    (paddler × skill where `skill.level === paddler.target`).
+  - snapshots `config.scales`, `config.skills`, and `config.intro`.
+- `getResult` / `skillById` / `optionsForSkillInSession(session, skill)` /
+  `optionFor(session, skill, rating)`.
+- `setRating(session, paddlerId, skillId, rating): Session` — a note attached to
+  a skill is preserved when the rating changes.
+- `setFeedback(session, paddlerId, skillId, feedback): Session`.
+- `getActionPlan(session, paddlerId)` / `setActionPlan(session, paddlerId, text)`
+  — a per-paddler return recommendation (kept in `actionPlans`).
+- `isV3Session(s)` — a v3 session has per-paddler `target`.
+- `saveSession` / `loadSession` / `clearSession` — a **legacy** single-session
+  localStorage key (`aca-assessment:session`); the durable archive is `store.js`.
+- No mutation: every updater returns a new session.
+
+## src/lib/store.js — persistence
+
+The archive is the single source of truth, in **IndexedDB** (database
+`aca-assessment`):
+
+- object store `sessions`, keyPath `id` — every session, including the open one.
+- object store `skillSets`, keyPath `ref` — the shared skill list is stripped out
+  and de-duplicated across sessions (a session is stored "slim" with a
+  `skillSetRef`, then re-hydrated on read).
+- localStorage `aca-assessment:current` — a tiny "which session is open" pointer.
+- localStorage `aca-assessment:session` — the legacy single-session key, drained
+  into the archive by `migrateLegacy()` on boot.
+
+Key functions: `putSession` / `getSession` / `deleteSession` / `getAllSessions` /
+`listSummaries` / `exportBundle` / `importBundle` / `getCurrentId` /
+`setCurrentId` / `initStore`.
+
+## src/lib/landing.js
+
+- `landingFor(session, paddlerId): { landing, pendingCount, belowCount? }`.
+- `landing` values: `pending` (a required skill unrated or DNO);
+  standalone L3–L5 → `meets_level` / `below_level`;
+  combined L1/L2 → `L1`, `L2`, or `did_not_meet_L1`.
+- `STANDALONE_LEVELS = ['L3','L4','L5']`.
 
 ## src/lib/validation.js
 
-- `resultNeedsFeedback(session, result): boolean` — `true` iff the result's
-  skill is **not** optional AND `optionFor(session, result.rating)` has
-  `requiresFeedback === true` AND `result.feedback.trim() === ''`.
-- `invalidResults(session): SkillResult[]` — results where `resultNeedsFeedback`.
-- `isSessionComplete(session): boolean` — every **core** (non-optional) result
-  has a non-null rating AND `invalidResults(session).length === 0`. Optional
-  skills may remain unrated and never block completeness.
+- `skillStatus(session, skill)` — per-skill progress marker (done/warn/dno/todo).
+- `resultNeedsFeedback(session, result): boolean` — `true` iff the skill is
+  **not** optional AND its rating's option has `requiresFeedback` AND the
+  feedback is blank.
+- `invalidResults(session): SkillResult[]` — results needing feedback.
+- `isSessionComplete(session): boolean` — every core (non-optional) result has a
+  rating AND `invalidResults` is empty. Optional skills never block completeness.
 
 ## src/lib/summary.js
 
 - `paddlerSummary(session, paddlerId): PaddlerSummary`
 
 ```ts
-type SummaryItem = { skillId, name, category, rating, feedback };
 type PaddlerSummary = {
   name: string;
-  levelId: string; levelName: string;
-  scale: ScaleOption[];
-  coreTotal: number;                      // # non-optional skills
-  counts: Record<string, number>;         // per scale value, CORE skills only
-  unrated: number;                        // CORE skills with null rating
-  belowItems: SummaryItem[];              // CORE skills whose rating requiresFeedback
-  optionalAssessed: number;               // optional skills with non-null rating
-  optionalItems: SummaryItem[];           // optional skills that were rated (any value)
+  target: string;                          // the paddler's level
+  landing: string; passing: boolean;       // from landing.js
+  pendingCount: number; belowCount: number;
+  coreTotal: number;                       // # non-optional skills for this paddler
+  counts: Record<string, number>;          // per scale value, CORE skills only
+  unrated: number;                         // CORE skills with null rating
+  flagged: SummaryItem[];                  // CORE below-standard items (requiresFeedback), with feedback
+  optionalItems: SummaryItem[];            // optional skills that were rated
 };
 ```
 
