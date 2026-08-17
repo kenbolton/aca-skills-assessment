@@ -3,6 +3,7 @@ import { Setup } from './screens/Setup.jsx';
 import { Rate } from './screens/Rate.jsx';
 import { Review } from './screens/Review.jsx';
 import { Archive } from './screens/Archive.jsx';
+import { Journey } from './screens/Journey.jsx';
 import { initStore, getSession, putSession, getCurrentId, setCurrentId } from './lib/store.js';
 import { SyncButton } from './components/SyncButton.jsx';
 
@@ -11,6 +12,7 @@ export function App() {
   const [session, setSession] = useState(null);
   const [screen, setScreen] = useState('setup');
   const [focusSkillId, setFocusSkillId] = useState(null);
+  const [journey, setJourney] = useState(null);
 
   useEffect(() => {
     let live = true;
@@ -67,8 +69,18 @@ export function App() {
     return <main className="screen"><p className="hint">Loading…</p></main>;
   }
 
+  if (screen === 'journey') {
+    return <Journey journey={journey} onBack={() => setScreen('archive')} />;
+  }
+
   if (screen === 'archive') {
-    return <Archive onResume={resume} onBack={() => setScreen('setup')} />;
+    return (
+      <Archive
+        onResume={resume}
+        onBack={() => setScreen('setup')}
+        onOpenLearner={(j) => { setJourney(j); setScreen('journey'); }}
+      />
+    );
   }
 
   if (screen === 'setup' || !session) {

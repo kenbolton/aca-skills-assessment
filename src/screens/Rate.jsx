@@ -3,6 +3,8 @@ import { getResult, setRating, setFeedback, optionsForSkillInSession } from '../
 import { skillLabel } from '../lib/skills.js';
 import { resultNeedsFeedback, skillStatus } from '../lib/validation.js';
 import { ratePages, indexOfSkill } from '../lib/rate-pages.js';
+import { plainFor } from '../lib/plain-language.js';
+import { PlainTerms } from '../components/PlainTerms.jsx';
 import lessons from '../data/lessons.json';
 
 // Lesson HTML fragments are bundled ONLY in the private build. The public build's
@@ -241,6 +243,7 @@ export function Rate({ session, onChange, onDone, focusSkillId = null }) {
                 ) : null}
               </div>
             ) : null}
+            <PlainTerms gloss={plainFor(skill.id)} />
           </div>
 
           <div className="rate-rows">

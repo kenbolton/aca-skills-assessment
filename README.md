@@ -32,6 +32,10 @@ assessment works with the network off entirely.
 Stated precisely, because the difference matters: **paddler data never leaves
 your device. Anonymous usage counts do.**
 
+The **"Paddlers over time"** view groups a paddler's past assessments by name.
+This grouping is computed **on your device** from assessments already stored
+there; it adds no new stored data and uploads nothing.
+
 The public website keeps **anonymous, cookieless** counts of page visits, PWA
 installs, and assessments started (via [GoatCounter](https://www.goatcounter.com/)).
 No personal data and no cookies are collected, and the counter honors your
@@ -54,7 +58,15 @@ self-hosted build.
 - **L1/L2 combined mode**: assign each paddler a target level (L1 or L2) and
   assess the group together; L3–L5 are standalone single-level assessments.
 - **Self-assessment mode**: flip one switch to self-review as a single paddler.
-- Each skill shows the **ACA standard text** as an on-screen reference.
+- Each skill shows the **ACA standard text** as an on-screen reference, with an
+  optional plain-language **"In plain terms"** gloss beneath it for learners.
+- **Feedback for learning** (on Review): each paddler gets a short summary —
+  progress toward the level, strengths, and one **"Start with"** priority — and
+  every below-standard skill points to the **next step to work** (its deepest
+  unmet prerequisite), ordered as a learning path.
+- **Paddlers over time**: the archive groups a paddler's assessments (by name,
+  on device) into a **Journey** — per-strand progress, skills newly met, what to
+  work next, and which skills are **due for a spaced re-check**.
 - **Enforced feedback**: a below-standard rating requires a written note before
   you can move on — dictate it with your phone keyboard's mic. Optional
   developing skills never block and never count against a paddler.
@@ -85,7 +97,12 @@ independently: the ACA did not author, review, endorse, or approve this software
 and nothing here is an official ACA publication.** Where this app and the current
 official ACA sheets disagree, the official sheets govern.
 
-Everything under `lessons-content/` is original work by the maintainer.
+Everything under `lessons-content/` is original work by the maintainer. So are
+the plain-language glosses (`src/data/plain-language.json`) and the learning
+progression (`src/data/progression.json`): these are the maintainer's own
+pedagogical additions, kept in **separate files** so the ACA standard text in
+`skills*.json` stays reproduced verbatim. A gloss restates a skill in everyday
+words for a learner; it is **not** the official standard.
 
 **This repository is intentionally unlicensed.** No license is granted for the
 material described above, because this project does not own it and cannot grant

@@ -193,6 +193,23 @@ button { min-height: var(--hit); font-size: 18px; }
   line-height: 1.4;
 }
 
+/* Plain-language learner gloss — deliberately distinct from the ACA standard
+   box above it, so it never reads as the official rubric. */
+.plain-terms {
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 0.6rem;
+  background: #f4f1e8;
+  border-left: 3px solid #b8a468;
+  border-radius: 3px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #3a3527;
+}
+.plain-terms-label {
+  font-weight: 600;
+  color: #6b5d2f;
+}
+
 .standard-section + .standard-section {
   margin-top: 0.6rem;
   padding-top: 0.6rem;
@@ -526,6 +543,18 @@ button { min-height: var(--hit); font-size: 18px; }
 }
 .privacy-statement p { margin: 0 0 0.4rem; }
 
+/* Formative "where to next" panel on Review: goal, strengths, one priority. */
+.feedback-summary {
+  margin: .6rem 0 0;
+  padding: .5rem .6rem;
+  background: #eef5f4;
+  border-radius: 4px;
+}
+.feedback-summary p { margin: .15rem 0; font-size: .92rem; color: #14323a; }
+.feedback-label { font-weight: 600; color: #00707e; }
+.feedback-strengths { color: #1a7a4a; }
+.feedback-next .feedback-label { color: #b26a00; }
+
 .below-standard-detail { margin: .5rem 0 0; }
 .bsd-item {
   border-left: 3px solid #c0392b;
@@ -543,6 +572,20 @@ button { min-height: var(--hit); font-size: 18px; }
 }
 .bsd-standard { margin: .3rem 0; color: #14323a; font-size: .9rem; }
 .bsd-note { margin: .3rem 0 0; font-size: .9rem; }
+/* Formative next step: where to start practising to close the gap. */
+.bsd-start-here {
+  margin: .4rem 0 0;
+  padding: .35rem .5rem;
+  background: #e6f4f1;
+  border-left: 3px solid #00707e;
+  border-radius: 3px;
+  font-size: .9rem;
+  color: #14323a;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .4rem;
+}
 
 .competency-radars { display: flex; flex-wrap: wrap; gap: .75rem; margin: .75rem 0 0; }
 .competency-radar { margin: 0; width: 140px; }
@@ -557,6 +600,40 @@ button { min-height: var(--hit); font-size: 18px; }
 .archive-bar { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .5rem; }
 .archive-import { margin-left: auto; font-size: .9rem; }
 .archive-import input { display: block; }
+/* Paddlers-over-time summary at the top of the Archive screen. */
+.learner-summary { margin: 0 0 1rem; }
+.learner-summary h3 { margin: 0 0 .4rem; color: #00707e; }
+.learner-list { list-style: none; margin: 0; padding: 0; }
+.learner-row {
+  padding: .5rem .6rem;
+  margin-bottom: .4rem;
+  background: #eef5f4;
+  border-left: 3px solid #00707e;
+  border-radius: 3px;
+}
+.learner-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem; }
+.learner-name { font-size: 1rem; }
+.learner-meta { color: #4a5b5e; font-size: .85rem; }
+.learner-stats { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .25rem; font-size: .9rem; }
+.learner-grew { color: #1a7a4a; }
+.learner-next { color: #14323a; }
+.learner-due { color: #b26a00; font-weight: 600; }
+
+/* Learner Journey screen. */
+.journey-screen h3 { margin: 1rem 0 .4rem; color: #00707e; }
+.journey-meta { color: #4a5b5e; font-size: .95rem; margin: .2rem 0; }
+.journey-strands { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .35rem; }
+.journey-strand { display: grid; grid-template-columns: 1fr 6rem auto; align-items: center; gap: .5rem; font-size: .9rem; }
+.journey-strand-name { color: #14323a; }
+.journey-strand-bar { background: #dbe4e6; border-radius: 4px; height: .6rem; overflow: hidden; }
+.journey-strand-fill { display: block; height: 100%; background: #00707e; }
+.journey-strand-count { color: #4a5b5e; font-variant-numeric: tabular-nums; }
+.journey-grew { color: #1a7a4a; }
+.journey-next { color: #14323a; }
+.journey-gaps { color: #4a5b5e; font-size: .9rem; }
+.journey-due { color: #b26a00; margin: .2rem 0; padding-left: 1.2rem; }
+.journey-history { color: #4a5b5e; font-size: .9rem; margin: .2rem 0; padding-left: 1.2rem; }
+
 .archive-list { list-style: none; margin: 0; padding: 0; }
 .archive-row { border-bottom: 1px solid #ddd; padding: .6rem 0; }
 .archive-meta { display: flex; flex-direction: column; gap: .1rem; }
