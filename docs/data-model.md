@@ -204,3 +204,19 @@ per learner, a per-skill history, current mastery (latest rating wins), skills
 newly met, the working edge (via the progression), and spaced re-checks due
 (`src/lib/recheck.js`). It is **pure aggregation over existing sessions** — no
 new storage, nothing uploaded.
+
+## Top Tips storage (IndexedDB v3)
+
+`store.js` bumps the IndexedDB schema to **version 3** and adds a `tipChecks`
+object store, keyed by `learnerKey` (the paddler name, normalized: trimmed,
+whitespace-collapsed, lowercased).
+
+```ts
+type TipChecks = { learnerKey: string; checks: { [skillId: string]: string[] } };
+```
+
+- `checks[skillId]` is the list of mastered tip ids for that skill.
+- Progress is per learner **across sessions** — it is not part of a session
+  record and is never synced to the server.
+- Tip content lives in `src/data/top-tips.json` as `{ [skillId]: {id,text}[] }`,
+  an ordered list; checks reference the stable tip `id`, not an array position.
