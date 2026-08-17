@@ -148,3 +148,23 @@ type PaddlerSummary = {
   with feedback, and an "Optional skills assessed" subsection. PDF title uses
   `levelName`.
 - Tasks 10 (sync), 11 (PWA), 12 (Pi) are unchanged by v2.
+
+## Learning overlays (read-only, additive)
+
+These sit beside `skills*.json` so the ACA standard text stays verbatim.
+
+- `src/data/progression.json` — strands and prerequisites per skill:
+  `{ version, strands: { key: {name,order} }, skills: { skillId: {strand,stage,prereqs[]} } }`.
+  Prerequisites use `precedes`-style edges; most skills are parallel (empty
+  `prereqs`). Read via `src/lib/progression.js`.
+- `src/data/plain-language.json` — `{ skillId: "gloss" }`, a learner-facing
+  restatement of a skill. Never the official standard. Read via
+  `src/lib/plain-language.js`.
+
+## Learner model (derived, not stored)
+
+`src/lib/learner.js` groups the archive by normalized paddler name and computes,
+per learner, a per-skill history, current mastery (latest rating wins), skills
+newly met, the working edge (via the progression), and spaced re-checks due
+(`src/lib/recheck.js`). It is **pure aggregation over existing sessions** — no
+new storage, nothing uploaded.
