@@ -617,6 +617,7 @@ button { min-height: var(--hit); font-size: 18px; }
 .learner-stats { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .25rem; font-size: .9rem; }
 .learner-grew { color: #1a7a4a; }
 .learner-next { color: #14323a; }
+.learner-due { color: #b26a00; font-weight: 600; }
 
 .archive-list { list-style: none; margin: 0; padding: 0; }
 .archive-row { border-bottom: 1px solid #ddd; padding: .6rem 0; }

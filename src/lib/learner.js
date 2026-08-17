@@ -9,6 +9,7 @@
 
 import { skillLabel } from './skills.js';
 import { nextStep } from './progression.js';
+import { dueRechecks } from './recheck.js';
 
 // Met across every scale: L1 `pass`, L2–L5 `meets`/`exceeds`.
 const MET = new Set(['pass', 'meets', 'exceeds']);
@@ -116,10 +117,11 @@ export function learnerRecord(sessions, key) {
 
 // One display row per learner for the Archive summary: identity, activity, the
 // growth count, and the named working edge. A thin view-model over the model.
-export function learnerRows(sessions) {
+export function learnerRows(sessions, now = null) {
   const names = skillNameMap(sessions);
   return learners(sessions).map(l => {
     const rec = learnerRecord(sessions, l.key);
+    const due = now ? dueRechecks(rec, now) : [];
     return {
       key: l.key,
       name: l.name,
@@ -131,6 +133,8 @@ export function learnerRows(sessions) {
       belowCount: rec.belowCount,
       metCount: rec.metCount,
       nextName: rec.next ? (names[rec.next] || rec.next) : null,
+      dueCount: due.length,
+      dueTopName: due.length ? (names[due[0].skillId] || due[0].skillId) : null,
     };
   });
 }

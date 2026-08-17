@@ -24,7 +24,8 @@ export function Archive({ onResume, onBack }) {
   async function refresh() {
     setRows(await listSummaries());
     // The learner summary needs full sessions (per-skill results), not summaries.
-    setLearners(learnerRows(await getAllSessions()));
+    // `new Date()` drives the spaced re-check schedule (interval since last seen).
+    setLearners(learnerRows(await getAllSessions(), new Date()));
   }
   useEffect(() => { refresh(); }, []);
 

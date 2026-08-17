@@ -29,6 +29,11 @@ export function LearnerSummary({ rows }) {
               {r.nextName ? (
                 <span className="learner-next"><strong>Working on:</strong> {r.nextName}</span>
               ) : null}
+              {r.dueCount > 0 ? (
+                <span className="learner-due">
+                  {`${r.dueCount} due for re-check`}{r.dueTopName ? `: ${r.dueTopName}` : ''}
+                </span>
+              ) : null}
             </div>
           </li>
         ))}

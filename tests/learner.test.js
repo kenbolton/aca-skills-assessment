@@ -89,5 +89,14 @@ describe('learnerRows', () => {
     expect(alex.belowCount).toBe(1);
     // No skill objects in these fixtures, so the name falls back to the id.
     expect(alex.nextName).toBe('l2-stopping');
+    expect(alex.dueCount).toBe(0); // no `now` → no re-check computed
+  });
+
+  test('with a now reference, counts re-checks due and names the most overdue', () => {
+    // Latest ratings are from 2026-08-14; by 2026-09-01 all three are due.
+    const rows = learnerRows(sessions, new Date('2026-09-01T00:00:00Z'));
+    const alex = rows.find(rw => rw.key === 'alex');
+    expect(alex.dueCount).toBe(3);
+    expect(alex.dueTopName).toBe('l2-stopping'); // below → 7d, most overdue
   });
 });

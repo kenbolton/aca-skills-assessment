@@ -35,3 +35,15 @@ test('omits the working-edge line when there is no current gap', () => {
   const out = text(LearnerSummary({ rows: done }));
   expect(out).not.toMatch(/Working on:/);
 });
+
+test('shows a re-check-due line naming the most overdue skill', () => {
+  const due = [{ ...rows[0], dueCount: 2, dueTopName: 'Stopping' }];
+  const out = text(LearnerSummary({ rows: due }));
+  expect(out).toMatch(/2 due for re-check/);
+  expect(out).toMatch(/Stopping/);
+});
+
+test('omits the re-check line when nothing is due', () => {
+  const none = [{ ...rows[0], dueCount: 0, dueTopName: null }];
+  expect(text(LearnerSummary({ rows: none }))).not.toMatch(/re-check/);
+});
