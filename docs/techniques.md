@@ -25,10 +25,16 @@ level where the technique appears. Two axes, kept separate:
 | `src/data/skill-techniques.json` | `{ "l2-forward": "forward-stroke", … }` | maps each ACA skill to its technique |
 | `src/data/top-tips.json` | `{ "forward-stroke": [ { "id", "text" } ] }` | the cues, keyed by technique |
 
-`tipsFor(skillId)` resolves *skill → technique → cues*, so the Rate panel, the
-Skills & Tips home, and the Review/Journey preview all work off a skill id
-without knowing about techniques. Mastery is stored **per technique**, so
-mastering a cue at one level counts at every level.
+`tipsFor(skillId)` resolves *skill → technique → cues*, so the Rate panel and
+the Review/Journey preview work off a skill id without knowing about techniques.
+Mastery is stored **per technique**, so mastering a cue at one level counts at
+every level.
+
+The Skills & Tips home is the exception: it lists **techniques**, not skills, and
+shows no level at all. Listing skills there would repeat one cue set under every
+level that examines it — three "Stopping" rows whose counters all move together,
+because mastery is per technique. Level says where a technique is assessed, which
+is the assessment screens' job; they already know the level.
 
 ## Order is a readiness ladder
 

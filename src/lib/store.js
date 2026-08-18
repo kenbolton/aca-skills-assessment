@@ -5,12 +5,15 @@
 import { sessionSummary } from './session-summary.js';
 import { isV3Session } from './session.js';
 import { skillSetRef, blobOf, isSlim, slimSession, fattenSession, BUNDLE_FORMAT } from './skillset.js';
+import { learnerKey, LOCAL_LEARNER } from './top-tips.js';
 
 const DB = 'aca-assessment';
 const STORE = 'sessions';
 const SKILLSETS = 'skillSets';
 const TIPCHECKS = 'tipChecks';
 const LEGACY_KEY = 'aca-assessment:session';
+const LEGACY_PRACTICE_NAME = 'aca-assessment:practice-name';
+const TIP_OWNER_MIGRATED = 'aca-assessment:tips-local';
 const CURRENT_KEY = 'aca-assessment:current';
 
 let dbPromise = null;
@@ -58,6 +61,10 @@ export function resetStore() {
   dbInstance = null;
 }
 
+function readLocal(key) { try { return localStorage.getItem(key); } catch { return null; } }
+function writeLocal(key, value) { try { localStorage.setItem(key, value); } catch { /* storage off */ } }
+function removeLocal(key) { try { localStorage.removeItem(key); } catch { /* storage off */ } }
+
 function reqP(request) {
   return new Promise((resolve, reject) => {
     request.onsuccess = () => resolve(request.result);
@@ -85,6 +92,37 @@ export async function getTipChecks(learnerKey) {
 }
 export async function putTipChecks(record) {
   await reqP((await tipStore('readwrite')).put(record));
+}
+
+// Fold name-keyed tip progress into the local owner's record. Two things used
+// to key mastery by a name: the "Practising as" field on Skills & Tips, and a
+// self-assessment (keyed by its one paddler). Both now write to LOCAL_LEARNER,
+// so without this their progress would be stranded under the old key. Runs
+// once, unions per technique, and drops each source record.
+export async function migrateTipOwners() {
+  if (readLocal(TIP_OWNER_MIGRATED)) return;
+  const legacy = new Set();
+  const name = readLocal(LEGACY_PRACTICE_NAME);
+  if (name && name.trim()) legacy.add(learnerKey(name));
+  for (const s of await getAllSessions()) {
+    if (s.selfAssessment && (s.paddlers || []).length === 1) legacy.add(learnerKey(s.paddlers[0].name));
+  }
+  legacy.delete(LOCAL_LEARNER);
+  legacy.delete('');
+  if (legacy.size) {
+    const local = await getTipChecks(LOCAL_LEARNER);
+    const checks = { ...(local.checks || {}) };
+    for (const key of legacy) {
+      const rec = await getTipChecks(key);
+      for (const [technique, ids] of Object.entries(rec.checks || {})) {
+        checks[technique] = [...new Set([...(checks[technique] || []), ...ids])];
+      }
+      await reqP((await tipStore('readwrite')).delete(key));
+    }
+    await putTipChecks({ learnerKey: LOCAL_LEARNER, checks });
+  }
+  removeLocal(LEGACY_PRACTICE_NAME);
+  writeLocal(TIP_OWNER_MIGRATED, '1');
 }
 
 export async function putSkillSet(ref, blob) {
@@ -201,4 +239,10 @@ export async function migrateLegacy() {
   try { localStorage.removeItem(LEGACY_KEY); } catch { /* ignore */ }
 }
 
-export async function initStore() { await openDb(); await migrateLegacy(); }
+// The tip-owner migration is best-effort: a single unreadable session must not
+// keep the app on "Loading…".
+export async function initStore() {
+  await openDb();
+  await migrateLegacy();
+  await migrateTipOwners().catch(err => console.error('tip owner migration skipped', err));
+}

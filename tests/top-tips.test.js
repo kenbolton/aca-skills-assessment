@@ -1,5 +1,5 @@
 import { expect, test, describe } from 'vitest';
-import { learnerKey, tipsFor, visibleTips, toggleMastered, masteredIds } from '../src/lib/top-tips.js';
+import { learnerKey, tipsFor, visibleTips, toggleMastered, masteredIds, sessionLearnerKey, LOCAL_LEARNER } from '../src/lib/top-tips.js';
 
 describe('learnerKey', () => {
   test('normalizes name: trim, collapse whitespace, lowercase', () => {
@@ -68,5 +68,27 @@ describe('checks map helpers', () => {
     const migrated = toggleMastered(legacy, 'l2-forward', 'f2');
     expect(migrated['forward-stroke'].sort()).toEqual(['f1', 'f2']);
     expect(migrated['l2-forward']).toBeUndefined();
+  });
+});
+
+describe('sessionLearnerKey', () => {
+  test('a self-assessment belongs to the device owner, not a name', () => {
+    const s = { selfAssessment: true, paddlers: [{ name: 'Me' }] };
+    expect(sessionLearnerKey(s)).toBe(LOCAL_LEARNER);
+  });
+
+  test('a coach rating one named paddler keeps that paddler key', () => {
+    const s = { selfAssessment: false, paddlers: [{ name: 'Alex ' }] };
+    expect(sessionLearnerKey(s)).toBe('alex');
+  });
+
+  test('a multi-paddler session has no single owner', () => {
+    expect(sessionLearnerKey({ paddlers: [{ name: 'A' }, { name: 'B' }] })).toBe(null);
+    expect(sessionLearnerKey(null)).toBe(null);
+  });
+
+  test('no paddler name can collide with the local key', () => {
+    expect(learnerKey(LOCAL_LEARNER)).not.toBe(LOCAL_LEARNER);
+    expect(learnerKey('@local')).not.toBe(LOCAL_LEARNER);
   });
 });

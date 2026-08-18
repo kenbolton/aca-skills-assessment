@@ -355,9 +355,6 @@ button { min-height: var(--hit); font-size: 18px; }
 /* Top Tips: progressive coaching cues under the next/prev navigation. */
 /* Skills & Tips standalone screen */
 .setup-links { display: flex; flex-wrap: wrap; gap: 1rem; }
-.practice-name { max-width: 20rem; }
-.skills-tips-screen h3 { margin: 1rem 0 .3rem; color: #00707e; }
-.tips-strand-name { margin: .5rem 0 .3rem; font-size: .95rem; color: #4a5b5e; }
 .tips-skill-list { list-style: none; margin: 0 0 .5rem; padding: 0; }
 .tips-skill {
   display: flex; align-items: center; justify-content: space-between; gap: .5rem;
@@ -372,8 +369,6 @@ button { min-height: var(--hit); font-size: 18px; }
 .tips-suggest a { color: #00707e; font-weight: 600; text-decoration: none; }
 .tips-suggest a:hover { text-decoration: underline; }
 .tips-suggest-alt { font-weight: 400; color: #4a5b5e; font-size: .9rem; }
-.tips-detail-meta { color: #4a5b5e; font-size: .85rem; margin: .1rem 0 .5rem; }
-.tips-detail-standard { margin: .3rem 0; color: #14323a; }
 
 /* Read-only Top Tips preview under a named next-skill (Review, Journey). */
 .tips-preview { margin: .3rem 0 .2rem; padding: .35rem .5rem; background: #f4f1e8; border-left: 3px solid #b8a468; border-radius: 3px; }

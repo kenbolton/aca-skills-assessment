@@ -21,6 +21,20 @@ export function learnerKey(name) {
   return (name || '').trim().replace(/\s+/g, ' ').toLowerCase();
 }
 
+// The device owner's own progress. Skills & Tips never asks who is practising —
+// whoever holds the device knows their own name — and a self-assessment is by
+// definition the owner, so both write here. The uppercase is load-bearing:
+// `learnerKey` lowercases, so no paddler name can ever produce this key, not
+// even a paddler called "@local".
+export const LOCAL_LEARNER = '@LOCAL';
+
+// The learner key for a session's tip progress, or null when tips do not apply.
+// Tips are per-learner, so a multi-paddler session has no single owner.
+export function sessionLearnerKey(session) {
+  if (!session || (session.paddlers || []).length !== 1) return null;
+  return session.selfAssessment ? LOCAL_LEARNER : learnerKey(session.paddlers[0].name);
+}
+
 // The technique a skill belongs to, or null if the skill is not mapped.
 export function techniqueOf(skillId) {
   return skillTechniques[skillId] || null;
