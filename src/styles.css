@@ -355,9 +355,6 @@ button { min-height: var(--hit); font-size: 18px; }
 /* Top Tips: progressive coaching cues under the next/prev navigation. */
 /* Skills & Tips standalone screen */
 .setup-links { display: flex; flex-wrap: wrap; gap: 1rem; }
-.practice-name { max-width: 20rem; }
-.skills-tips-screen h3 { margin: 1rem 0 .3rem; color: #00707e; }
-.tips-strand-name { margin: .5rem 0 .3rem; font-size: .95rem; color: #4a5b5e; }
 .tips-skill-list { list-style: none; margin: 0 0 .5rem; padding: 0; }
 .tips-skill {
   display: flex; align-items: center; justify-content: space-between; gap: .5rem;
@@ -372,8 +369,6 @@ button { min-height: var(--hit); font-size: 18px; }
 .tips-suggest a { color: #00707e; font-weight: 600; text-decoration: none; }
 .tips-suggest a:hover { text-decoration: underline; }
 .tips-suggest-alt { font-weight: 400; color: #4a5b5e; font-size: .9rem; }
-.tips-detail-meta { color: #4a5b5e; font-size: .85rem; margin: .1rem 0 .5rem; }
-.tips-detail-standard { margin: .3rem 0; color: #14323a; }
 
 /* Read-only Top Tips preview under a named next-skill (Review, Journey). */
 .tips-preview { margin: .3rem 0 .2rem; padding: .35rem .5rem; background: #f4f1e8; border-left: 3px solid #b8a468; border-radius: 3px; }
@@ -383,8 +378,25 @@ button { min-height: var(--hit); font-size: 18px; }
 .tips-preview-more { display: inline-block; margin-top: .2rem; font-size: .8rem; color: #6b5d2f; }
 
 .top-tips { margin: 1rem 0 0; padding: .6rem .7rem; background: #f4f1e8; border-radius: 5px; }
-.top-tips-head { margin: 0 0 .4rem; font-size: 1rem; color: #6b5d2f; }
+.top-tips-head {
+  display: flex; align-items: center; gap: .4rem; flex-wrap: wrap;
+  margin: 0 0 .4rem; font-size: 1rem; color: #6b5d2f;
+}
 .top-tips-count { font-weight: 600; color: #b26a00; }
+/* Whelm meter: over → under, sitting at the end of the Top Tips header. */
+.whelm { display: inline-flex; align-items: center; gap: .2rem; margin-left: auto; }
+.whelm-label { font-size: .75rem; font-weight: 400; color: #8a7c4e; margin-right: .1rem; }
+.whelm-step {
+  min-height: auto; padding: .15rem .45rem; font: inherit; font-size: .75rem;
+  background: #eae4d2; border: 1px solid #d6cdb4; color: #6b5d2f;
+  cursor: pointer; border-radius: 0;
+}
+.whelm-step:first-of-type { border-radius: 10px 0 0 10px; }
+.whelm-step:last-of-type { border-radius: 0 10px 10px 0; }
+.whelm-step + .whelm-step { border-left: 0; }
+.whelm-step:hover { background: #e0d8c0; }
+.whelm-on { background: #6b5d2f; border-color: #6b5d2f; color: #f4f1e8; font-weight: 600; }
+.whelm-on:hover { background: #5b4f28; }
 .top-tips-list, .top-tips-done { list-style: none; margin: 0; padding: 0; }
 .top-tips-done { margin-top: .3rem; }
 .tt-item {

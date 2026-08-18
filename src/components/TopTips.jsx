@@ -1,16 +1,22 @@
 // Top Tips panel for the Rate screen. Shows the top few unchecked coaching cues
 // for the current skill; checking one marks it mastered and surfaces the next.
-// Presentational — the current mastered set and persistence are managed above.
+// How many "few" means is the paddler's call — the whelm meter, shown whenever
+// a caller offers to store the choice.
+// Presentational — the current mastered set, the whelm step, and persistence
+// are all managed above.
 import { visibleTips } from '../lib/top-tips.js';
+import { revealFor, DEFAULT_WHELM } from '../lib/whelm.js';
+import { WhelmMeter } from './WhelmMeter.jsx';
 
-export function TopTips({ tips, mastered = [], onToggle, n = 4, title = 'Top Tips' }) {
+export function TopTips({ tips, mastered = [], onToggle, whelm = DEFAULT_WHELM, onWhelmChange, title = 'Top Tips' }) {
   if (!tips || tips.length === 0) return null;
-  const { visible, mastered: done, total } = visibleTips(tips, mastered, n);
+  const { visible, mastered: done, total } = visibleTips(tips, mastered, revealFor(whelm));
   const toggle = id => () => onToggle && onToggle(id);
   return (
     <section className="top-tips">
       <h3 className="top-tips-head">
         {title} <span className="top-tips-count">{`${done.length}/${total}`}</span>
+        {onWhelmChange ? <WhelmMeter value={whelm} onChange={onWhelmChange} /> : null}
       </h3>
       {visible.length ? (
         <ul className="top-tips-list">

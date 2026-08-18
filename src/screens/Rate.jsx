@@ -5,9 +5,10 @@ import { resultNeedsFeedback, skillStatus } from '../lib/validation.js';
 import { ratePages, indexOfSkill } from '../lib/rate-pages.js';
 import { plainFor } from '../lib/plain-language.js';
 import { PlainTerms } from '../components/PlainTerms.jsx';
-import { tipsFor, learnerKey, masteredIds, toggleMastered } from '../lib/top-tips.js';
+import { tipsFor, sessionLearnerKey, masteredIds, toggleMastered } from '../lib/top-tips.js';
 import { getTipChecks, putTipChecks } from '../lib/store.js';
 import { TopTips } from '../components/TopTips.jsx';
+import { readWhelm, writeWhelm } from '../lib/whelm.js';
 import lessons from '../data/lessons.json';
 
 // Lesson HTML fragments are bundled ONLY in the private build. The public build's
@@ -55,17 +56,20 @@ export function Rate({ session, onChange, onDone, focusSkillId = null }) {
   const [showTraining, setShowTraining] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
 
-  // Top Tips are per-learner. This increment shows them only when a single
-  // paddler is in focus (self-assessment or a one-paddler session).
-  const soloPaddler = session.paddlers.length === 1 ? session.paddlers[0] : null;
-  const lKey = soloPaddler ? learnerKey(soloPaddler.name) : null;
+  // Top Tips are per-learner, so they show only when a single paddler is in
+  // focus. A self-assessment is the device owner, and its progress is shared
+  // with the Skills & Tips screen under the one local key; a coach rating a
+  // named paddler keeps that paddler's own key.
+  const lKey = sessionLearnerKey(session);
   const [tipChecks, setTipChecks] = useState({});
+  const [whelm, setWhelm] = useState(readWhelm);
   useEffect(() => {
     if (!lKey) { setTipChecks({}); return undefined; }
     let live = true;
     getTipChecks(lKey).then(rec => { if (live) setTipChecks(rec.checks || {}); }).catch(() => {});
     return () => { live = false; };
   }, [lKey]);
+  function changeWhelm(step) { setWhelm(step); writeWhelm(step); }
   function toggleTip(skillId, tipId) {
     const next = toggleMastered(tipChecks, skillId, tipId);
     setTipChecks(next);                          // optimistic; autosave never blocks the tap
@@ -345,6 +349,8 @@ export function Rate({ session, onChange, onDone, focusSkillId = null }) {
           tips={tipsFor(skill.id)}
           mastered={masteredIds(tipChecks, skill.id)}
           onToggle={(tipId) => toggleTip(skill.id, tipId)}
+          whelm={whelm}
+          onWhelmChange={changeWhelm}
         />
       ) : null}
     </main>

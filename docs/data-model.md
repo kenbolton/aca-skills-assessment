@@ -202,11 +202,18 @@ object store, keyed by `learnerKey` (the paddler name, normalized: trimmed,
 whitespace-collapsed, lowercased).
 
 ```ts
-type TipChecks = { learnerKey: string; checks: { [skillId: string]: string[] } };
+type TipChecks = { learnerKey: string; checks: { [technique: string]: string[] } };
 ```
 
-- `checks[skillId]` is the list of mastered tip ids for that skill.
+- `checks[technique]` is the list of mastered tip ids for that technique — see
+  [`techniques.md`](techniques.md). Cues are authored per technique, so mastery
+  is stored per technique too.
+- Two owners share one key, `@LOCAL`: the Skills & Tips home (which never asks
+  who is practising) and a self-assessment (whose one paddler is the device
+  owner). `learnerKey` lowercases, so no paddler name can produce `@LOCAL`.
+  A coach rating a named paddler still gets that paddler's own key.
+  `migrateTipOwners()` folds pre-`@LOCAL` records in once, at boot.
 - Progress is per learner **across sessions** — it is not part of a session
   record and is never synced to the server.
-- Tip content lives in `src/data/top-tips.json` as `{ [skillId]: {id,text}[] }`,
+- Tip content lives in `src/data/top-tips.json` as `{ [technique]: {id,text}[] }`,
   an ordered list; checks reference the stable tip `id`, not an array position.
