@@ -371,6 +371,7 @@ button { min-height: var(--hit); font-size: 18px; }
 .tips-suggest { margin: .5rem 0 0; }
 .tips-suggest a { color: #00707e; font-weight: 600; text-decoration: none; }
 .tips-suggest a:hover { text-decoration: underline; }
+.tips-suggest-alt { font-weight: 400; color: #4a5b5e; font-size: .9rem; }
 .tips-detail-meta { color: #4a5b5e; font-size: .85rem; margin: .1rem 0 .5rem; }
 .tips-detail-standard { margin: .3rem 0; color: #14323a; }
 

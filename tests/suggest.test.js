@@ -1,5 +1,9 @@
 import { expect, test, describe } from 'vitest';
-import { suggestTipUrl } from '../src/lib/suggest.js';
+import { suggestTipUrl, DISCORD_URL } from '../src/lib/suggest.js';
+
+test('DISCORD_URL is a Discord invite', () => {
+  expect(DISCORD_URL).toMatch(/^https:\/\/discord\.gg\/\w+$/);
+});
 
 function params(url) {
   return new URL(url).searchParams;

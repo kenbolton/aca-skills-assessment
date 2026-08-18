@@ -204,10 +204,12 @@ it (or reload).
 
 ## Contributing
 
-The **Top Tips** coaching cues are crowdsourced — see
-[`CONTRIBUTING.md`](CONTRIBUTING.md) for the file, the schema, and the one rule
-that matters (stable tip ids). The ACA skills and standards themselves are
-reproduced verbatim and are not open for edits — see [Attribution](#attribution).
+The **Top Tips** coaching cues are crowdsourced. The easiest way to suggest one
+is the **#top-tips** channel on [Discord](https://discord.gg/65QRCEbwX4) — no
+GitHub account needed. To edit the data directly, see
+[`CONTRIBUTING.md`](CONTRIBUTING.md) for the schema and the one rule that matters
+(stable tip ids). The ACA skills and standards themselves are reproduced verbatim
+and are not open for edits — see [Attribution](#attribution).
 
 ## Project docs
 

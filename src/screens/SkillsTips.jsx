@@ -8,7 +8,7 @@ import { tipsFor, learnerKey, masteredIds, toggleMastered } from '../lib/top-tip
 import { getTipChecks, putTipChecks } from '../lib/store.js';
 import { plainFor } from '../lib/plain-language.js';
 import { TopTips } from '../components/TopTips.jsx';
-import { suggestTipUrl } from '../lib/suggest.js';
+import { suggestTipUrl, DISCORD_URL } from '../lib/suggest.js';
 
 const NAME_KEY = 'aca-assessment:practice-name';
 function readName() { try { return localStorage.getItem(NAME_KEY) || ''; } catch { return ''; } }
@@ -61,7 +61,9 @@ export function SkillsTips({ onBack }) {
           ) : null}
           <TopTips tips={tipsFor(openId)} mastered={masteredIds(tipChecks, openId)} onToggle={id => toggleTip(openId, id)} />
           <p className="tips-suggest">
-            <a href={suggestTipUrl(meta)} target="_blank" rel="noopener noreferrer">Suggest a tip for this skill →</a>
+            <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer">Suggest a tip in Discord</a>
+            {' (#top-tips) · '}
+            <a className="tips-suggest-alt" href={suggestTipUrl(meta)} target="_blank" rel="noopener noreferrer">or a GitHub issue</a>
           </p>
         </section>
       ) : (
@@ -95,7 +97,9 @@ export function SkillsTips({ onBack }) {
             <a href="https://github.com/kenbolton/aca-skills-assessment/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a>.
           </p>
           <p className="tips-suggest">
-            <a href={suggestTipUrl(null)} target="_blank" rel="noopener noreferrer">Suggest a tip →</a>
+            <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer">Suggest a tip in Discord</a>
+            {' (#top-tips) · '}
+            <a className="tips-suggest-alt" href={suggestTipUrl(null)} target="_blank" rel="noopener noreferrer">or a GitHub issue</a>
           </p>
         </>
       )}

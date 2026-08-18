@@ -4,6 +4,14 @@ Thanks for helping improve the coaching cues. This project welcomes contribution
 to **one thing**: the **Top Tips** — short, practical cues shown where a paddler
 is working a skill, revealed a few at a time as they master them.
 
+## Easiest way: Discord — no GitHub account needed
+
+Just have a cue in mind? Post it in the **#top-tips** channel on Discord:
+**<https://discord.gg/65QRCEbwX4>**. Say which skill it's for and, if you can,
+whether it's a beginner cue or one for harder conditions. The maintainer keys it
+to a technique and adds it. The rest of this guide is for editing the data
+directly via a GitHub pull request, if you prefer.
+
 ## What is and isn't open
 
 - ✅ **Top Tips** (`src/data/top-tips.json`) and the **skill→technique map**

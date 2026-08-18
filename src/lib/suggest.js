@@ -4,6 +4,10 @@
 
 const NEW_ISSUE = 'https://github.com/kenbolton/aca-skills-assessment/issues/new';
 
+// The easiest place to suggest a tip — no GitHub account needed. The #top-tips
+// channel is where suggestions are gathered.
+export const DISCORD_URL = 'https://discord.gg/65QRCEbwX4';
+
 export function suggestTipUrl(skill) {
   const title = skill && skill.name
     ? `Top Tip suggestion: ${skill.name}${skill.level ? ` (${skill.level})` : ''}`
