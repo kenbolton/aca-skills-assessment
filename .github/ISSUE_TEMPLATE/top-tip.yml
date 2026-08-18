@@ -1,0 +1,41 @@
+name: Top Tip suggestion
+description: Suggest a coaching cue for a skill or technique.
+title: "Top Tip suggestion: "
+labels: ["top-tip"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping! One short, actionable cue at a time is ideal.
+        See [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md) for how tips work.
+  - type: input
+    id: skill
+    attributes:
+      label: Skill or technique
+      description: Which skill is this for? e.g. "Forward Paddling (L2)".
+    validations:
+      required: true
+  - type: textarea
+    id: cue
+    attributes:
+      label: Your cue
+      description: One short, actionable line — plain imperative voice.
+      placeholder: "Wind up your torso; power comes from rotation, not the arms."
+    validations:
+      required: true
+  - type: dropdown
+    id: readiness
+    attributes:
+      label: When does it land?
+      description: This helps place it in the reveal order (foundational cues first).
+      options:
+        - A beginner can use it right away
+        - Intermediate
+        - Only lands in harder conditions (advanced)
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else (optional)
+      description: A common mistake it fixes, or where you learned it.
