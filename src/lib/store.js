@@ -27,8 +27,23 @@ function openDb() {
       // v3: per-learner Top Tips progress, keyed by normalized learner name.
       if (!db.objectStoreNames.contains(TIPCHECKS)) db.createObjectStore(TIPCHECKS, { keyPath: 'learnerKey' });
     };
-    req.onsuccess = () => { dbInstance = req.result; resolve(req.result); };
+    req.onsuccess = () => {
+      const db = req.result;
+      // If another tab opens a newer schema version, release this connection so
+      // we never block its upgrade. Without this, an older tab left open wedges
+      // the newer tab on "Loading…" forever (the boot-hang).
+      db.onversionchange = () => { try { db.close(); } catch { /* already closed */ } resetStore(); };
+      dbInstance = db;
+      resolve(db);
+    };
     req.onerror = () => { dbPromise = null; reject(req.error); };
+    // A blocked upgrade (an older tab holding the DB open) would otherwise leave
+    // this promise pending forever. Fail fast with a clear, actionable error so
+    // the app can tell the user to close other tabs and reload — never hang.
+    req.onblocked = () => {
+      dbPromise = null;
+      reject(new Error('Storage is open in another tab of this app. Close the other tab and reload.'));
+    };
   });
   return dbPromise;
 }
