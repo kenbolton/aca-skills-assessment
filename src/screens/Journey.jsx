@@ -1,6 +1,8 @@
 // The learner-facing Journey: one paddler's development over time, assembled
 // from the learner model. Read-only; reached by tapping a paddler on the
 // Archive summary. A thin view — all logic lives in learner.js.
+import { SkillTipsPreview } from '../components/SkillTipsPreview.jsx';
+
 function fmtDate(iso) {
   const d = new Date(iso);
   return isNaN(d) ? '' : d.toLocaleDateString();
@@ -59,6 +61,7 @@ export function Journey({ journey, onBack }) {
           <p className="journey-next">
             <strong>{j.next.name}</strong>{j.next.gloss ? ` — ${j.next.gloss}` : ''}
           </p>
+          <SkillTipsPreview skillId={j.next.skillId} />
           {j.gaps.filter(g => g !== j.next.name).length ? (
             <p className="journey-gaps">{`Then: ${j.gaps.filter(g => g !== j.next.name).join(', ')}`}</p>
           ) : null}

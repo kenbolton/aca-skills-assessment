@@ -49,6 +49,12 @@ test('renders growth, working-on with gloss, due, and history', () => {
   expect(out).toMatch(/2026/);                    // history date
 });
 
+test('previews the working-on skill\'s tips', () => {
+  const out = text(Journey({ journey, onBack: () => {} })); // next = l2-stopping (has tips)
+  expect(out).toMatch(/How to work on it/);
+  expect(out).toMatch(/Sit up/); // stopping's first cue
+});
+
 test('omits empty sections gracefully', () => {
   const bare = { ...journey, newlyMet: [], next: null, due: [] };
   const out = text(Journey({ journey: bare, onBack: () => {} }));

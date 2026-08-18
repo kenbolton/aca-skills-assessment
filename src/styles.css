@@ -371,6 +371,13 @@ button { min-height: var(--hit); font-size: 18px; }
 .tips-detail-meta { color: #4a5b5e; font-size: .85rem; margin: .1rem 0 .5rem; }
 .tips-detail-standard { margin: .3rem 0; color: #14323a; }
 
+/* Read-only Top Tips preview under a named next-skill (Review, Journey). */
+.tips-preview { margin: .3rem 0 .2rem; padding: .35rem .5rem; background: #f4f1e8; border-left: 3px solid #b8a468; border-radius: 3px; }
+.tips-preview-label { font-weight: 600; font-size: .82rem; color: #6b5d2f; }
+.tips-preview-list { margin: .2rem 0 0; padding-left: 1.1rem; font-size: .88rem; color: #3a3527; }
+.tips-preview-list li { margin: .1rem 0; }
+.tips-preview-more { display: inline-block; margin-top: .2rem; font-size: .8rem; color: #6b5d2f; }
+
 .top-tips { margin: 1rem 0 0; padding: .6rem .7rem; background: #f4f1e8; border-radius: 5px; }
 .top-tips-head { margin: 0 0 .4rem; font-size: 1rem; color: #6b5d2f; }
 .top-tips-count { font-weight: 600; color: #b26a00; }
