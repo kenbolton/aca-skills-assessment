@@ -3,6 +3,7 @@ import { Setup } from './screens/Setup.jsx';
 import { Rate } from './screens/Rate.jsx';
 import { Review } from './screens/Review.jsx';
 import { Archive } from './screens/Archive.jsx';
+import { SkillsTips } from './screens/SkillsTips.jsx';
 import { Journey } from './screens/Journey.jsx';
 import { initStore, getSession, putSession, getCurrentId, setCurrentId } from './lib/store.js';
 import { SyncButton } from './components/SyncButton.jsx';
@@ -83,8 +84,12 @@ export function App() {
     );
   }
 
+  if (screen === 'skills-tips') {
+    return <SkillsTips onBack={() => setScreen('setup')} />;
+  }
+
   if (screen === 'setup' || !session) {
-    return <Setup onStart={begin} onArchive={() => setScreen('archive')} />;
+    return <Setup onStart={begin} onArchive={() => setScreen('archive')} onSkillsTips={() => setScreen('skills-tips')} />;
   }
 
   if (screen === 'rate') {
