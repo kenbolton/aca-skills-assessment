@@ -14,6 +14,7 @@ import { techniqueCatalog, techniqueMeta } from '../lib/tips-catalog.js';
 import { tipsFor, masteredIds, toggleMastered, LOCAL_LEARNER } from '../lib/top-tips.js';
 import { getTipChecks, putTipChecks } from '../lib/store.js';
 import { plainFor } from '../lib/plain-language.js';
+import { readWhelm, writeWhelm } from '../lib/whelm.js';
 import { TopTips } from '../components/TopTips.jsx';
 import { suggestTipUrl, DISCORD_URL } from '../lib/suggest.js';
 
@@ -23,6 +24,7 @@ export function SkillsTips({ onBack }) {
   const cat = techniqueCatalog();
   const [openId, setOpenId] = useState(null);
   const [tipChecks, setTipChecks] = useState({});
+  const [whelm, setWhelm] = useState(readWhelm);
 
   useEffect(() => {
     let live = true;
@@ -30,6 +32,7 @@ export function SkillsTips({ onBack }) {
     return () => { live = false; };
   }, []);
 
+  function changeWhelm(step) { setWhelm(step); writeWhelm(step); }
   function toggleTip(skillId, tipId) {
     const next = toggleMastered(tipChecks, skillId, tipId);
     setTipChecks(next);                          // optimistic; the save never blocks the tap
@@ -61,6 +64,8 @@ export function SkillsTips({ onBack }) {
             tips={tipsFor(example.skillId)}
             mastered={masteredIds(tipChecks, example.skillId)}
             onToggle={id => toggleTip(example.skillId, id)}
+            whelm={whelm}
+            onWhelmChange={changeWhelm}
           />
           <p className="tips-suggest">
             <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer">Suggest a tip in Discord</a>

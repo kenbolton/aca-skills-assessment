@@ -39,3 +39,22 @@ test('all mastered shows the completion note and no to-do items', () => {
 test('renders nothing when a skill has no tips', () => {
   expect(TopTips({ tips: [], mastered: [], onToggle: () => {} })).toBe(null);
 });
+
+test('the whelm meter widens or narrows the reveal', () => {
+  const over = text(TopTips({ tips, mastered: [], onToggle: () => {}, whelm: 'over' }));
+  expect(over).toMatch(/\bfive\b/);       // 5 revealed
+  expect(over).not.toMatch(/\bsix\b/);
+
+  const under = text(TopTips({ tips, mastered: [], onToggle: () => {}, whelm: 'under' }));
+  expect(under).toMatch(/\bthree\b/);     // 3 revealed
+  expect(under).not.toMatch(/\bfour\b/);
+});
+
+test('the meter shows only when a caller can store the choice', () => {
+  const withMeter = text(TopTips({ tips, mastered: [], onToggle: () => {}, onWhelmChange: () => {} }));
+  expect(withMeter).toMatch(/whelm/);
+  expect(withMeter).toMatch(/over.*mid.*under/s);
+
+  const without = text(TopTips({ tips, mastered: [], onToggle: () => {} }));
+  expect(without).not.toMatch(/whelm/);
+});

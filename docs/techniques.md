@@ -45,6 +45,10 @@ few unmastered cues and a paddler *earns* the later ones by mastering the
 earlier. No per-cue "level" tag is needed — the order carries it, and the
 progressive reveal is the gate.
 
+How many cues "the top few" means is the paddler's own call: the **whelm meter**
+in the Top Tips header runs over (5) → mid (4) → under (3). It is device-wide
+(`src/lib/whelm.js`), like tip progress, and defaults to mid.
+
 ## Current state
 
 Three techniques, with a seeded map proving cross-level reuse:
