@@ -8,6 +8,7 @@ import { tipsFor, learnerKey, masteredIds, toggleMastered } from '../lib/top-tip
 import { getTipChecks, putTipChecks } from '../lib/store.js';
 import { plainFor } from '../lib/plain-language.js';
 import { TopTips } from '../components/TopTips.jsx';
+import { suggestTipUrl } from '../lib/suggest.js';
 
 const NAME_KEY = 'aca-assessment:practice-name';
 function readName() { try { return localStorage.getItem(NAME_KEY) || ''; } catch { return ''; } }
@@ -59,6 +60,9 @@ export function SkillsTips({ onBack }) {
             <p className="plain-terms"><span className="plain-terms-label">In plain terms:</span> {plainFor(openId)}</p>
           ) : null}
           <TopTips tips={tipsFor(openId)} mastered={masteredIds(tipChecks, openId)} onToggle={id => toggleTip(openId, id)} />
+          <p className="tips-suggest">
+            <a href={suggestTipUrl(meta)} target="_blank" rel="noopener noreferrer">Suggest a tip for this skill →</a>
+          </p>
         </section>
       ) : (
         <>
@@ -89,6 +93,9 @@ export function SkillsTips({ onBack }) {
           <p className="hint tips-more">
             {`${cat.skillCount} skill${cat.skillCount === 1 ? '' : 's'} have tips so far. More welcome — see `}
             <a href="https://github.com/kenbolton/aca-skills-assessment/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a>.
+          </p>
+          <p className="tips-suggest">
+            <a href={suggestTipUrl(null)} target="_blank" rel="noopener noreferrer">Suggest a tip →</a>
           </p>
         </>
       )}
