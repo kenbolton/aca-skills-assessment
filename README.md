@@ -163,6 +163,13 @@ from then on. Because the app and `/sync` share an origin, the in-app **Sync to
 server** button works with no extra configuration. Full details in
 [`self-host/README.md`](self-host/README.md).
 
+## Contributing
+
+The **Top Tips** coaching cues are crowdsourced — see
+[`CONTRIBUTING.md`](CONTRIBUTING.md) for the file, the schema, and the one rule
+that matters (stable tip ids). The ACA skills and standards themselves are
+reproduced verbatim and are not open for edits — see [Attribution](#attribution).
+
 ## Project docs
 
 - [`docs/design.md`](docs/design.md) — design & architecture.

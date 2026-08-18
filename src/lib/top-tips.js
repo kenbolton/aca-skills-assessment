@@ -43,3 +43,37 @@ export function visibleTips(tips, mastered, n = 4) {
     remaining: unchecked.length,
   };
 }
+
+// Validate a Top Tips data object against the known skill ids. Returns a list of
+// human-readable problems (empty = valid). This guards crowdsourced tips: a bad
+// skill id, a duplicate tip id (which would corrupt saved progress), a
+// non-array, or empty text all fail loudly in CI / the deploy gate.
+export function validateTopTips(data, validSkillIds) {
+  const errors = [];
+  if (!data || typeof data !== 'object' || Array.isArray(data)) {
+    errors.push('top-tips.json must be an object keyed by skill id');
+    return errors;
+  }
+  const known = validSkillIds instanceof Set ? validSkillIds : new Set(validSkillIds || []);
+  for (const [skillId, tips] of Object.entries(data)) {
+    if (!known.has(skillId)) errors.push(`unknown skill id: "${skillId}"`);
+    if (!Array.isArray(tips) || tips.length === 0) {
+      errors.push(`"${skillId}": tips must be a non-empty array`);
+      continue;
+    }
+    const seen = new Set();
+    tips.forEach((tip, i) => {
+      if (!tip || typeof tip.id !== 'string' || !tip.id.trim()) {
+        errors.push(`"${skillId}"[${i}]: each tip needs a non-empty "id"`);
+      } else if (seen.has(tip.id)) {
+        errors.push(`"${skillId}": duplicate tip id "${tip.id}"`);
+      } else {
+        seen.add(tip.id);
+      }
+      if (!tip || typeof tip.text !== 'string' || !tip.text.trim()) {
+        errors.push(`"${skillId}"[${i}]: each tip needs non-empty "text"`);
+      }
+    });
+  }
+  return errors;
+}
