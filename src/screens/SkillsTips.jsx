@@ -87,7 +87,8 @@ export function SkillsTips({ onBack }) {
             </section>
           ))}
           <p className="hint tips-more">
-            {`${cat.skillCount} skill${cat.skillCount === 1 ? '' : 's'} have tips so far. More welcome — see CONTRIBUTING.md.`}
+            {`${cat.skillCount} skill${cat.skillCount === 1 ? '' : 's'} have tips so far. More welcome — see `}
+            <a href="https://github.com/kenbolton/aca-skills-assessment/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a>.
           </p>
         </>
       )}
