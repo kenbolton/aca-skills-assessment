@@ -43,6 +43,28 @@ No personal data and no cookies are collected, and the counter honors your
 browser's **Do-Not-Track** setting. Counting is disabled entirely in the
 self-hosted build.
 
+## Backup & recovery
+
+Your data lives in this browser (or the installed app), not on a server — see
+[Privacy](#privacy). Nothing is uploaded, so **you are the backup.**
+
+- **Back up:** open **Past assessments** and tap **Export all** to save a JSON
+  bundle of your whole archive. You can also export a single session as JSON or
+  CSV, and a per-paddler PDF from the Review screen.
+- **Restore:** open **Past assessments → Import** and choose a JSON bundle (or a
+  single-session JSON) you exported earlier.
+- **Move to a new device or browser:** export a bundle on the old one, import it
+  on the new one.
+- **Self-hosted build:** finished sessions also **sync to your server**, giving
+  you a second copy off the device.
+
+Because the data sits in the browser's storage, **clearing the browser's site
+data erases it** — export a bundle first. Export periodically if the assessments
+matter.
+
+**If the app is stuck on "Loading…"** it is waiting on the local database, usually
+because another tab of the app is open. **Close the other tabs and reload.**
+
 ## Features
 
 - **Five ACA levels**, each with its own criteria and rating scale:
@@ -154,14 +176,31 @@ tailscale serve --https=443 http://localhost:8787
 tailscale serve status                          # prints the https URL
 ```
 
-The **Sync to server** button and the **Past assessments** archive exist only in
-the `VITE_PRIVATE=true` build — the public GitHub Pages build hides both, so
-visitors only ever assess and export locally.
+The **Sync to server** button exists only in the `VITE_PRIVATE=true` build — the
+public GitHub Pages build hides it, so public visitors assess, browse their
+**Past assessments**, and export locally, with no server involved.
 
 Open the HTTPS URL on your phone, **Add to Home Screen**, and it runs offline
 from then on. Because the app and `/sync` share an origin, the in-app **Sync to
 server** button works with no extra configuration. Full details in
 [`self-host/README.md`](self-host/README.md).
+
+## Updating
+
+The app **updates itself.** It is a PWA with background auto-update, so a new
+version is fetched quietly and applied the next time you fully close and reopen
+it (or reload).
+
+- **Apply an update:** close **all** tabs and windows of the app, then reopen it.
+  A single reload usually suffices; closing every tab guarantees the new version
+  takes effect. Installed to your home screen? Just close and reopen.
+- **Storage upgrades:** some updates change the on-device database format. The
+  upgrade runs automatically on the next open — but a stale tab left open can
+  block it, so close other tabs when updating (see
+  [Backup & recovery](#backup--recovery) if it seems stuck).
+- **Self-hosted build:** update the server by running the one-command deploy
+  **on it** — `self-host/deploy.sh` pulls, runs the tests, builds, restarts the
+  service, and health-checks. See [Host + sync](#host--sync-any-always-on-machine).
 
 ## Contributing
 
