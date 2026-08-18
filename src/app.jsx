@@ -14,6 +14,7 @@ export function App() {
   const [screen, setScreen] = useState('setup');
   const [focusSkillId, setFocusSkillId] = useState(null);
   const [journey, setJourney] = useState(null);
+  const [storeError, setStoreError] = useState(null);
 
   useEffect(() => {
     let live = true;
@@ -24,6 +25,10 @@ export function App() {
         const s = id ? await getSession(id) : null;
         if (!live) return;
         if (s) { setSession(s); setScreen('rate'); }
+      } catch (err) {
+        // Storage could not open (e.g. blocked by another tab). Surface a
+        // recoverable message rather than hanging on "Loading…" or failing silently.
+        if (live) setStoreError(err);
       } finally {
         if (live) setReady(true);
       }
@@ -68,6 +73,16 @@ export function App() {
 
   if (!ready) {
     return <main className="screen"><p className="hint">Loading…</p></main>;
+  }
+
+  if (storeError) {
+    return (
+      <main className="screen">
+        <p className="error">Storage could not open.</p>
+        <p className="hint">{storeError.message || 'Close any other tabs of this app, then reload.'}</p>
+        <button type="button" onClick={() => window.location.reload()}>Reload</button>
+      </main>
+    );
   }
 
   if (screen === 'journey') {
