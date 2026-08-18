@@ -1,35 +1,59 @@
-// Top Tips: a per-skill ordered list of short coaching cues, revealed
-// progressively. A learner masters the top few, and the next cues surface. The
-// mastered set persists per learner across sessions (see store.js tipChecks).
+// Top Tips: ordered coaching cues revealed progressively. Cues attach to a
+// TECHNIQUE (forward stroke, wet exit…), not a per-level skill — the technique
+// is universal across levels; only the conditions change. A skill→technique map
+// resolves any skill to its cues, so a cue is authored once and applies at every
+// level where the technique appears.
 //
-// Tips carry stable ids, not array positions, so persisted checks survive
-// editing or reordering the list.
+// Order within a technique is a developmental ladder: foundational cues first,
+// hard-won conditions insight last. The progressive reveal is the gate — a
+// paddler earns the later cues by mastering the earlier ones. Mastery therefore
+// persists per learner keyed by TECHNIQUE (see store.js tipChecks), so mastering
+// a cue at one level counts at every level.
+//
+// Tip ids are stable, so persisted checks survive editing or reordering.
 
 import tipsData from '../data/top-tips.json';
+import skillTechniques from '../data/skill-techniques.json';
+import techniques from '../data/techniques.json';
 
-// The learner identity for tip progress: the paddler's name, normalized. Kept
-// self-contained so this feature stands alone.
+// The learner identity for tip progress: the paddler's name, normalized.
 export function learnerKey(name) {
   return (name || '').trim().replace(/\s+/g, ' ').toLowerCase();
 }
 
+// The technique a skill belongs to, or null if the skill is not mapped.
+export function techniqueOf(skillId) {
+  return skillTechniques[skillId] || null;
+}
+export function techniqueName(technique) {
+  return techniques[technique] ? techniques[technique].name : technique;
+}
+
 export function tipsFor(skillId) {
-  const t = tipsData[skillId];
+  const technique = techniqueOf(skillId);
+  const t = technique ? tipsData[technique] : null;
   return Array.isArray(t) ? t : [];
 }
 
-// The mastered tip ids for a skill, from a learner's checks map.
+// The mastered tip ids for a skill's technique. Falls back to a legacy
+// skill-keyed entry so older saved progress is not lost.
 export function masteredIds(checks, skillId) {
-  return checks && Array.isArray(checks[skillId]) ? checks[skillId].slice() : [];
+  const technique = techniqueOf(skillId) || skillId;
+  const arr = checks && (checks[technique] || checks[skillId]);
+  return Array.isArray(arr) ? arr.slice() : [];
 }
 
-// Toggle a tip's mastered state, returning a new checks map (immutable).
+// Toggle a tip's mastered state, keyed by technique. Migrates any legacy
+// skill-keyed entry to the technique key. Returns a new checks map (immutable).
 export function toggleMastered(checks, skillId, tipId) {
-  const current = (checks && checks[skillId]) || [];
+  const technique = techniqueOf(skillId) || skillId;
+  const current = (checks && (checks[technique] || checks[skillId])) || [];
   const next = current.includes(tipId)
     ? current.filter(id => id !== tipId)
     : [...current, tipId];
-  return { ...(checks || {}), [skillId]: next };
+  const out = { ...(checks || {}), [technique]: next };
+  if (skillId !== technique) delete out[skillId]; // drop the migrated legacy key
+  return out;
 }
 
 // The progressive window: the next `n` unchecked tips, plus the mastered ones.
@@ -44,36 +68,48 @@ export function visibleTips(tips, mastered, n = 4) {
   };
 }
 
-// Validate a Top Tips data object against the known skill ids. Returns a list of
-// human-readable problems (empty = valid). This guards crowdsourced tips: a bad
-// skill id, a duplicate tip id (which would corrupt saved progress), a
-// non-array, or empty text all fail loudly in CI / the deploy gate.
-export function validateTopTips(data, validSkillIds) {
+// Validate the tips data (keyed by technique). Returns human-readable problems
+// (empty = valid). Guards crowdsourced tips: unknown technique, duplicate tip id
+// (which would corrupt saved progress), non-array, or empty text all fail loudly.
+export function validateTopTips(data, validTechniqueKeys) {
   const errors = [];
   if (!data || typeof data !== 'object' || Array.isArray(data)) {
-    errors.push('top-tips.json must be an object keyed by skill id');
+    errors.push('top-tips.json must be an object keyed by technique');
     return errors;
   }
-  const known = validSkillIds instanceof Set ? validSkillIds : new Set(validSkillIds || []);
-  for (const [skillId, tips] of Object.entries(data)) {
-    if (!known.has(skillId)) errors.push(`unknown skill id: "${skillId}"`);
+  const known = validTechniqueKeys instanceof Set ? validTechniqueKeys : new Set(validTechniqueKeys || []);
+  for (const [technique, tips] of Object.entries(data)) {
+    if (!known.has(technique)) errors.push(`unknown technique: "${technique}"`);
     if (!Array.isArray(tips) || tips.length === 0) {
-      errors.push(`"${skillId}": tips must be a non-empty array`);
+      errors.push(`"${technique}": tips must be a non-empty array`);
       continue;
     }
     const seen = new Set();
     tips.forEach((tip, i) => {
       if (!tip || typeof tip.id !== 'string' || !tip.id.trim()) {
-        errors.push(`"${skillId}"[${i}]: each tip needs a non-empty "id"`);
+        errors.push(`"${technique}"[${i}]: each tip needs a non-empty "id"`);
       } else if (seen.has(tip.id)) {
-        errors.push(`"${skillId}": duplicate tip id "${tip.id}"`);
+        errors.push(`"${technique}": duplicate tip id "${tip.id}"`);
       } else {
         seen.add(tip.id);
       }
       if (!tip || typeof tip.text !== 'string' || !tip.text.trim()) {
-        errors.push(`"${skillId}"[${i}]: each tip needs non-empty "text"`);
+        errors.push(`"${technique}"[${i}]: each tip needs non-empty "text"`);
       }
     });
+  }
+  return errors;
+}
+
+// Validate the skill→technique map: every key a real skill, every value a real
+// technique.
+export function validateSkillTechniques(map, validSkillIds, validTechniqueKeys) {
+  const errors = [];
+  const skills = validSkillIds instanceof Set ? validSkillIds : new Set(validSkillIds || []);
+  const techs = validTechniqueKeys instanceof Set ? validTechniqueKeys : new Set(validTechniqueKeys || []);
+  for (const [skillId, technique] of Object.entries(map || {})) {
+    if (!skills.has(skillId)) errors.push(`unknown skill id: "${skillId}"`);
+    if (!techs.has(technique)) errors.push(`"${skillId}" → unknown technique: "${technique}"`);
   }
   return errors;
 }

@@ -2,13 +2,14 @@
 // strand (from the progression) and ordered foundation-first. Powers the
 // standalone "Skills & Tips" screen, separate from any assessment.
 
-import topTips from '../data/top-tips.json';
 import skills from '../data/skills.json';
 import skillsL3 from '../data/skills-l3.json';
 import skillsL4 from '../data/skills-l4.json';
 import skillsL5 from '../data/skills-l5.json';
+import skillTechniques from '../data/skill-techniques.json';
 import { skillLabel } from './skills.js';
 import { strandOf, progressionRank } from './progression.js';
+import { tipsFor } from './top-tips.js';
 
 const BY_ID = Object.fromEntries(
   [skills, skillsL3, skillsL4, skillsL5].flatMap(f => f.skills).map(s => [s.id, s]),
@@ -22,15 +23,18 @@ export function skillMeta(skillId) {
   return { skillId, name: skillLabel(s), level: s.level, category: s.category, standard: s.standard, strand: strandOf(skillId) };
 }
 
-export function tipsCatalog(tips = topTips) {
+export function tipsCatalog() {
   const levels = new Map(); // level -> Map(strandKey -> group)
   let tipCount = 0;
   let skillCount = 0;
-  for (const id of Object.keys(tips)) {
+  // A skill "has tips" when its technique does; the same technique's cues show
+  // under every level's skill that maps to it (universality made visible).
+  for (const id of Object.keys(skillTechniques)) {
     const s = BY_ID[id];
     if (!s) continue;
+    const n = tipsFor(id).length;
+    if (n === 0) continue;
     skillCount++;
-    const n = Array.isArray(tips[id]) ? tips[id].length : 0;
     tipCount += n;
     const strand = strandOf(id);
     const key = strand ? strand.key : (s.category || 'other');
