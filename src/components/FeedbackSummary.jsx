@@ -2,6 +2,8 @@
 // the assessment as feedback for learning on the three questions: where you are
 // going (goal progress), how you are doing (strengths), and where to next (the
 // one priority skill to start with). Detail per gap lives in BelowStandardDetail.
+import { SkillTipsPreview } from './SkillTipsPreview.jsx';
+
 export function FeedbackSummary({ summary }) {
   if (!summary || !summary.target) return null;
   const { target, metCount, coreTotal, strengths, priorityNext } = summary;
@@ -21,6 +23,7 @@ export function FeedbackSummary({ summary }) {
           <span className="feedback-label">Start with:</span> {priorityNext.name}
         </p>
       ) : null}
+      {priorityNext ? <SkillTipsPreview skillId={priorityNext.skillId} /> : null}
     </div>
   );
 }

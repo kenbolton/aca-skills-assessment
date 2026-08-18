@@ -27,6 +27,12 @@ test('shows goal progress, named strengths, and the one priority', () => {
   expect(out).toMatch(/Capsize & Wet Exit/);
 });
 
+test('previews the priority skill\'s top tips', () => {
+  const out = text(FeedbackSummary({ summary: base })); // priorityNext = l2-wet-exit (has tips)
+  expect(out).toMatch(/How to work on it/);
+  expect(out).toMatch(/Stay calm/); // wet-exit's first cue
+});
+
 test('omits the Strengths line when there are none', () => {
   const out = text(FeedbackSummary({ summary: { ...base, strengths: [] } }));
   expect(out).not.toMatch(/Strengths:/);
