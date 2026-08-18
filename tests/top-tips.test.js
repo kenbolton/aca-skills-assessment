@@ -50,12 +50,23 @@ describe('checks map helpers', () => {
     expect(masteredIds({ 'l2-forward': ['t1'] }, 'l2-forward')).toEqual(['t1']);
     expect(masteredIds({}, 'l2-forward')).toEqual([]);
   });
-  test('toggleMastered adds then removes a tip, immutably', () => {
+  test('toggleMastered keys mastery by technique, immutably', () => {
     const c0 = {};
-    const c1 = toggleMastered(c0, 'l2-forward', 't1');
-    expect(c1['l2-forward']).toEqual(['t1']);
+    const c1 = toggleMastered(c0, 'l2-forward', 't1'); // l2-forward → forward-stroke
+    expect(c1['forward-stroke']).toEqual(['t1']);
     expect(c0).toEqual({}); // original untouched
     const c2 = toggleMastered(c1, 'l2-forward', 't1');
-    expect(c2['l2-forward']).toEqual([]);
+    expect(c2['forward-stroke']).toEqual([]);
+  });
+  test('a cue mastered at one level is mastered at another (same technique)', () => {
+    // l3-strokes-and-maneuvers-01 is also forward-stroke.
+    const c = toggleMastered({}, 'l2-forward', 'f1');
+    expect(masteredIds(c, 'l3-strokes-and-maneuvers-01')).toEqual(['f1']);
+  });
+  test('toggleMastered migrates a legacy skill-keyed entry to the technique', () => {
+    const legacy = { 'l2-forward': ['f1'] };
+    const migrated = toggleMastered(legacy, 'l2-forward', 'f2');
+    expect(migrated['forward-stroke'].sort()).toEqual(['f1', 'f2']);
+    expect(migrated['l2-forward']).toBeUndefined();
   });
 });

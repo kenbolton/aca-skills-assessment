@@ -1,5 +1,5 @@
 {
-  "l2-forward": [
+  "forward-stroke": [
     { "id": "f1", "text": "Sit tall and relax your grip — a loose top hand paddles further." },
     { "id": "f2", "text": "Wind up your torso; power comes from rotation, not the arms." },
     { "id": "f3", "text": "Plant the blade up near your feet, then pull back to your hip." },
@@ -7,14 +7,14 @@
     { "id": "f5", "text": "Fix your eyes on a point ahead; a steady gaze steadies your line." },
     { "id": "f6", "text": "Keep a light, even cadence on both sides." }
   ],
-  "l2-stopping": [
+  "stopping": [
     { "id": "s1", "text": "Sit up — braking starts from posture, not the arms." },
     { "id": "s2", "text": "Plant the blade fully in the water before you resist." },
     { "id": "s3", "text": "Use short, firm back-strokes on alternating sides." },
     { "id": "s4", "text": "Keep the boat flat; leaning back loosens your control." },
     { "id": "s5", "text": "Practise stopping from reverse too, not just from forward." }
   ],
-  "l2-wet-exit": [
+  "wet-exit": [
     { "id": "w1", "text": "Stay calm — you have more time underwater than it feels." },
     { "id": "w2", "text": "Tuck forward onto the front deck before you release." },
     { "id": "w3", "text": "Find the grab loop and pull it forward with a committed sweep." },

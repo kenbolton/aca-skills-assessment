@@ -1,55 +1,71 @@
 # Contributing — Top Tips
 
 Thanks for helping improve the coaching cues. This project welcomes contributions
-to **one thing**: the **Top Tips** — short, practical cues shown under each skill
-on the Rate screen, revealed a few at a time as a paddler masters them.
+to **one thing**: the **Top Tips** — short, practical cues shown where a paddler
+is working a skill, revealed a few at a time as they master them.
 
 ## What is and isn't open
 
-- ✅ **Top Tips** (`src/data/top-tips.json`) — original coaching cues. Add,
-  improve, reorder. **This is what to contribute.**
+- ✅ **Top Tips** (`src/data/top-tips.json`) and the **skill→technique map**
+  (`src/data/skill-techniques.json`) — original coaching content. **This is what
+  to contribute.**
 - ⛔ **ACA skills, standards, and criteria** (`src/data/skills*.json`) — these are
   reproduced **verbatim** from the American Canoe Association's documents and are
   the ACA's work, not this project's. Do not edit them here. See
   [Attribution](README.md#attribution).
 
-## The file
+## Cues attach to a *technique*, not a level
 
-All tips live in **`src/data/top-tips.json`**:
+A forward stroke is the same technique whether you paddle it in L1 flat water or
+L4 open water — only the *conditions* change. So cues are keyed by **technique**
+and authored **once**, then applied at every level where that technique appears.
+
+Three small files work together:
+
+- **`techniques.json`** — the technique catalogue: `{ "forward-stroke": { "name": "Forward Stroke" } }`.
+- **`skill-techniques.json`** — which ACA skill is which technique:
+  `{ "l2-forward": "forward-stroke", "l3-strokes-and-maneuvers-01": "forward-stroke" }`.
+- **`top-tips.json`** — the cues, keyed by technique:
 
 ```jsonc
 {
-  "l2-forward": [
+  "forward-stroke": [
     { "id": "f1", "text": "Sit tall and relax your grip." },
     { "id": "f2", "text": "Power comes from torso rotation, not the arms." }
   ]
 }
 ```
 
-- **Key** = a skill `id` from `src/data/skills*.json` (e.g. `l2-forward`,
-  `l3-rescues-and-towing-01`). A skill with no entry simply shows no panel, so
-  any level and any skill is fair game.
-- **Order = reveal order.** Learners see the top four unchecked cues; each check
-  reveals the next. Put the most important cues first. **Four to six per skill**
-  is a good target — working memory holds about four at once.
-- **Keep each cue short and actionable** — one idea, plain imperative voice,
-  glanceable from a phone on the water.
+## Order is a readiness ladder
+
+**Order the cues by readiness, not just importance.** The foundational cue a
+beginner needs goes first; the hard-won insight that only lands once you've felt,
+say, 25 knots of wind against 3 knots of current goes last. The app reveals the
+top few unmastered cues and a paddler *earns* the later ones by mastering the
+earlier — so an advanced cue never confuses a beginner, and a strong paddler works
+down to it. **Four to six per technique** is a good target (working memory holds
+about four).
+
+Keep each cue short and actionable — one idea, plain imperative voice, glanceable
+from a phone on the water.
 
 ## The one rule that matters: stable ids
 
-Each tip's `id` is what a paddler's saved "mastered" checks point to.
+Each tip's `id` is what a paddler's saved "mastered" progress points to (progress
+is stored **per technique**, so mastering a cue at one level counts at every
+level).
 
-- ✅ Reorder the array freely — order is only the display order.
-- ✅ A new tip gets a **new id that is unique within that skill** (any short
-  string; the existing files use `f1`, `s2`, `w3`, but anything works).
+- ✅ Reorder the array freely — order is only the reveal order.
+- ✅ A new tip gets a **new id unique within its technique** (any short string).
 - ⛔ **Never rename or reuse an existing tip's `id`.** Changing an id orphans the
-  progress people have already saved against it.
+  progress people have saved against it.
 
-## Finding a skill id
+## Adding tips
 
-Skill ids are the `id` fields in `src/data/skills.json` (L1 and L2) and
-`skills-l3.json` / `skills-l4.json` / `skills-l5.json`. Search a file for the
-skill name to find its id.
+- **For an existing technique:** add cues to its array in `top-tips.json`.
+- **For a new technique:** add it to `techniques.json`, map the relevant ACA
+  skills to it in `skill-techniques.json` (find skill ids in `skills*.json`), then
+  add the cues in `top-tips.json`.
 
 ## Test before you open a PR
 
@@ -58,12 +74,13 @@ npm install
 npm test
 ```
 
-`tests/top-tips-data.test.js` validates the file — it rejects an unknown skill
-id, a duplicate tip id, a missing id, and empty text. The same suite runs on
-deploy, so a valid file is required to ship.
+`tests/top-tips-data.test.js` validates the data — it rejects an unknown
+technique, a duplicate tip id, empty text, and a map entry pointing at a
+non-existent skill or technique. The same suite runs on deploy, so valid data is
+required to ship.
 
 ## Submitting
 
-Open a pull request against `main`. Small, focused PRs (one skill or a few) are
-easiest to review. Tips are original content and ship in both the public and
+Open a pull request against `main`. Small, focused PRs (one technique or a few)
+are easiest to review. Tips are original content and ship in both the public and
 self-hosted builds.
