@@ -213,4 +213,6 @@ reproduced verbatim and are not open for edits — see [Attribution](#attributio
 
 - [`docs/design.md`](docs/design.md) — design & architecture.
 - [`docs/data-model.md`](docs/data-model.md) — the per-level data model.
+- [`docs/techniques.md`](docs/techniques.md) — the Top Tips technique model and
+  the (provisional) technique taxonomy.
 - [`docs/implementation-plan.md`](docs/implementation-plan.md) — build plan.
