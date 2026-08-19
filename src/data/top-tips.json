@@ -50,8 +50,7 @@
     { "id": "dr2", "text": "Plant the blade out beside your hip, level with your body." },
     { "id": "dr3", "text": "Pull the boat to the blade, not the blade to the boat." },
     { "id": "dr4", "text": "Stop short of the hull, then slice the blade back out to start again." },
-    { "id": "dr5", "text": "If the bow leads, move the blade back; if the stern leads, move it forward." },
-    { "id": "dr6", "text": "A small edge towards the blade frees the hull — build it slowly." }
+    { "id": "dr5", "text": "If the bow leads, move the blade back; if the stern leads, move it forward." }
   ],
   "stern-rudder": [
     { "id": "sr1", "text": "Rotate and lay the blade alongside the stern, close to the hull." },
@@ -64,7 +63,7 @@
   "edge-control": [
     { "id": "ec1", "text": "Edge with your knees and hips; keep your head over the boat." },
     { "id": "ec2", "text": "Edge, do not lean — the body stays upright while the hull tilts." },
-    { "id": "ec3", "text": "Hold one edge for ten seconds without a wobble, on each side." },
+    { "id": "ec3", "text": "Hold one edge steady, without a wobble, on each side." },
     { "id": "ec4", "text": "Pick the edge before the stroke, not after it." },
     { "id": "ec5", "text": "Hold the edge for the whole maneuver, then come flat on purpose." },
     { "id": "ec6", "text": "Find how far you can go before the deck catches — then work just inside it." }

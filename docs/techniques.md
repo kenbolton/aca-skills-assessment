@@ -136,6 +136,23 @@ Grouped families to seed the thinking — refine names and membership to taste:
 - **Seamanship / judgment (maybe out of scope — see open question 2):**
   navigation, trip-planning, group-management, incident-management.
 
+## Cues are instruction, not criteria
+
+The ACA text is **assessment criteria** — it supplies the standard and the fault,
+rarely the *how*. So most of a cue's content is original coaching, not a
+restatement of the standard. In the draw set, for example, `dr1` traces to "the
+paddle shaft is as vertical as possible" and `dr4` to "recoveries are clean",
+but the rest is authored.
+
+That is the point of Top Tips, and it carries one obligation: **do not dress an
+authored cue as a standard.** Two failure modes to watch, both found in review:
+
+- **Invented precision.** "Hold one edge for ten seconds" reads like a criterion.
+  Nothing sources the ten. Write the drill, drop the fake number.
+- **Contested technique stated as fact.** Coaches disagree about which way to
+  edge a sideways draw, so no cue should assert one direction. Where convention
+  splits, leave the cue out or write it as something to explore.
+
 ## Growing it
 
 To add tips for a new technique:
