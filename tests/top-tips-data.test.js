@@ -1,8 +1,10 @@
 import { expect, test, describe } from 'vitest';
-import { validateTopTips, validateSkillTechniques } from '../src/lib/top-tips.js';
+import { validateTopTips, validateSkillTechniques, validateRetiredIds, validateTipOrder } from '../src/lib/top-tips.js';
 import topTips from '../src/data/top-tips.json';
 import techniques from '../src/data/techniques.json';
 import skillTechniques from '../src/data/skill-techniques.json';
+import retiredTipIds from '../src/data/retired-tip-ids.json';
+import tipOrder from '../src/data/tip-order.json';
 import skills from '../src/data/skills.json';
 import skillsL3 from '../src/data/skills-l3.json';
 import skillsL4 from '../src/data/skills-l4.json';
@@ -19,6 +21,25 @@ describe('committed data (crowdsourcing guard)', () => {
   });
   test('skill-techniques.json maps real skills to real techniques', () => {
     expect(validateSkillTechniques(skillTechniques, SKILL_IDS, TECHNIQUE_KEYS)).toEqual([]);
+  });
+  test('no retired tip id has come back into use', () => {
+    expect(validateRetiredIds(topTips, retiredTipIds)).toEqual([]);
+  });
+  test('tip-order.json lists real ids, once each, for techniques that have cues', () => {
+    expect(validateTipOrder(tipOrder, topTips)).toEqual([]);
+  });
+  test('every retired id names a real technique', () => {
+    expect(Object.keys(retiredTipIds).filter(t => !TECHNIQUE_KEYS.has(t))).toEqual([]);
+  });
+});
+
+describe('validateRetiredIds guards saved mastery', () => {
+  test('flags a retired id that returns with different text', () => {
+    const errs = validateRetiredIds({ draw: [{ id: 'dr6', text: 'something else' }] }, { draw: ['dr6'] });
+    expect(errs.some(e => /retired tip id "dr6" is in use again/.test(e))).toBe(true);
+  });
+  test('passes when the retired id stays gone', () => {
+    expect(validateRetiredIds({ draw: [{ id: 'dr1', text: 'x' }] }, { draw: ['dr6'] })).toEqual([]);
   });
 });
 

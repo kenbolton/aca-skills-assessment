@@ -15,6 +15,7 @@
 import tipsData from '../data/top-tips.json';
 import skillTechniques from '../data/skill-techniques.json';
 import techniques from '../data/techniques.json';
+import tipOrder from '../data/tip-order.json';
 
 // The learner identity for tip progress: the paddler's name, normalized.
 export function learnerKey(name) {
@@ -43,10 +44,26 @@ export function techniqueName(technique) {
   return techniques[technique] ? techniques[technique].name : technique;
 }
 
+// The reveal order is a readiness ladder, kept as a list of ids in
+// tip-order.json so it can be read and rewritten as one thing. The list is
+// partial on purpose: listed cues lead, in that order, and anything unlisted
+// follows in file order — so adding a cue never requires touching the ladder.
+export function applyOrder(cues, orderedIds) {
+  const list = Array.isArray(cues) ? cues : [];
+  if (!Array.isArray(orderedIds) || !orderedIds.length) return list.slice();
+  const byId = new Map(list.map(c => [c && c.id, c]));
+  const led = [];
+  for (const id of orderedIds) {
+    const cue = byId.get(id);
+    if (cue) { led.push(cue); byId.delete(id); }   // delete: a repeated id cannot duplicate a cue
+  }
+  return led.concat(list.filter(c => byId.has(c && c.id)));
+}
+
 export function tipsFor(skillId) {
   const technique = techniqueOf(skillId);
   const t = technique ? tipsData[technique] : null;
-  return Array.isArray(t) ? t : [];
+  return Array.isArray(t) ? applyOrder(t, tipOrder[technique]) : [];
 }
 
 // The mastered tip ids for a skill's technique. Falls back to a legacy
@@ -110,7 +127,55 @@ export function validateTopTips(data, validTechniqueKeys) {
       if (!tip || typeof tip.text !== 'string' || !tip.text.trim()) {
         errors.push(`"${technique}"[${i}]: each tip needs non-empty "text"`);
       }
+      // "signal" is optional — the felt evidence the cue is landing. Present but
+      // blank is a mistake, so it is rejected rather than quietly dropped.
+      if (tip && tip.signal !== undefined) {
+        const signals = Array.isArray(tip.signal) ? tip.signal : [tip.signal];
+        if (!signals.length || signals.some(sg => typeof sg !== 'string' || !sg.trim())) {
+          errors.push(`"${technique}"[${i}]: "signal" must be a non-empty string, or a non-empty list of them`);
+        }
+      }
     });
+  }
+  return errors;
+}
+
+// Validate that no retired tip id has come back. Removing a cue does not free
+// its id — reusing it for a different cue silently transfers saved mastery from
+// the old one to the new one. `retired` is { [technique]: string[] }.
+export function validateRetiredIds(data, retired) {
+  const errors = [];
+  for (const [technique, ids] of Object.entries(retired || {})) {
+    const live = new Set(((data || {})[technique] || []).map(t => t && t.id));
+    for (const id of ids) {
+      if (live.has(id)) errors.push(`"${technique}": retired tip id "${id}" is in use again`);
+    }
+  }
+  return errors;
+}
+
+// Validate the reveal order: every key a technique that has cues, every listed
+// id one of that technique's cues, and no id listed twice. Cues left out of the
+// order are correct, not an error — they simply follow the listed ones.
+export function validateTipOrder(order, tipsData) {
+  const errors = [];
+  for (const [technique, ids] of Object.entries(order || {})) {
+    const cues = (tipsData || {})[technique];
+    if (!Array.isArray(cues) || !cues.length) {
+      errors.push(`order for "${technique}": no technique by that name has cues`);
+      continue;
+    }
+    if (!Array.isArray(ids)) {
+      errors.push(`order for "${technique}": must be a list of tip ids`);
+      continue;
+    }
+    const known = new Set(cues.map(c => c && c.id));
+    const seen = new Set();
+    for (const id of ids) {
+      if (!known.has(id)) errors.push(`order for "${technique}": unknown tip id "${id}"`);
+      else if (seen.has(id)) errors.push(`order for "${technique}": duplicate tip id "${id}"`);
+      else seen.add(id);
+    }
   }
   return errors;
 }

@@ -39,10 +39,31 @@ Three small files work together:
 {
   "forward-stroke": [
     { "id": "f1", "text": "Sit tall and relax your grip." },
-    { "id": "f2", "text": "Power comes from torso rotation, not the arms." }
+    { "id": "f2", "text": "Power comes from torso rotation, not the arms.",
+      "signal": "Your chest faces the blade at the catch." }
   ]
 }
 ```
+
+A cue may carry an optional **`signal`** — what it feels like when you are doing
+it right. A signal is a check, not an instruction. It is never ticked off and
+never takes an `id`, so adding one to an existing cue is always safe. Most cues
+have none; write one only where there is a real sensation to name. Use a list
+when a cue has both a confirming and a warning check. A warning signal must say
+what it means — "a wobble means you are pulling too hard", not just "a wobble".
+
+## Ordering is separate from the cues
+
+The reveal order lives in **`src/data/tip-order.json`** as a list of ids:
+
+```jsonc
+{ "forward-stroke": ["f1", "f2", "f3", "f11"] }
+```
+
+**You can ignore it.** The list is partial: cues named in it lead, in that order,
+and every cue left out follows in file order. So a new cue lands at the end of
+the ladder — usually the right place — without you touching a second file. Edit
+the order only when you want to move a cue up the ladder.
 
 ## Order is a readiness ladder
 
@@ -51,8 +72,11 @@ beginner needs goes first; the hard-won insight that only lands once you've felt
 say, 25 knots of wind against 3 knots of current goes last. The app reveals the
 top few unmastered cues and a paddler *earns* the later ones by mastering the
 earlier — so an advanced cue never confuses a beginner, and a strong paddler works
-down to it. **Four to six per technique** is a good target (working memory holds
-about four).
+down to it. **Four to six technique-specific cues** is a good target (working
+memory holds about four). Universal cues — sit up, rotate from the torso — are
+repeated in every technique they apply to, worded for that technique, so a full
+set often runs longer than six. The app reveals only 3 to 5 at a time, so the
+extra length is more ladder, not more clutter.
 
 Keep each cue short and actionable — one idea, plain imperative voice, glanceable
 from a phone on the water.
@@ -67,6 +91,9 @@ level).
 - ✅ A new tip gets a **new id unique within its technique** (any short string).
 - ⛔ **Never rename or reuse an existing tip's `id`.** Changing an id orphans the
   progress people have saved against it.
+- ⛔ **Removing a cue does not free its id.** Add it to
+  `src/data/retired-tip-ids.json` so it can never come back under a different
+  cue. The test suite fails if one does.
 
 ## Adding tips
 
