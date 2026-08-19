@@ -2,9 +2,42 @@
   "l2-forward": "forward-stroke",
   "l3-strokes-and-maneuvers-01": "forward-stroke",
 
+  "l1-reverse": "reverse-stroke",
+  "l2-reverse": "reverse-stroke",
+  "l3-strokes-and-maneuvers-02": "reverse-stroke",
+
   "l1-stop": "stopping",
   "l2-stopping": "stopping",
   "l3-strokes-and-maneuvers-03": "stopping",
+
+  "l2-sweep": "sweep",
+  "l3-strokes-and-maneuvers-04": "sweep",
+
+  "l1-turn-stationary": "spinning",
+  "l2-rotate-360": "spinning",
+  "l3-strokes-and-maneuvers-05": "spinning",
+
+  "l1-turn-moving": "turning-on-the-move",
+  "l2-turning-move": "turning-on-the-move",
+  "l3-strokes-and-maneuvers-06": "turning-on-the-move",
+
+  "l1-draw": "draw",
+  "l2-draw": "draw",
+  "l3-strokes-and-maneuvers-07": "draw",
+
+  "l2-stern-rudder": "stern-rudder",
+  "l2-stern-rudder-away": "stern-rudder",
+  "l3-strokes-and-maneuvers-09": "stern-rudder",
+
+  "l2-edge-control": "edge-control",
+  "l2-turn-control": "edge-control",
+  "l3-edging-and-support-03": "edge-control",
+
+  "l2-low-brace-recovery": "low-brace-recovery",
+  "l3-edging-and-support-01": "low-brace-recovery",
+
+  "l2-low-brace-turn": "low-brace-turn",
+  "l3-edging-and-support-02": "low-brace-turn",
 
   "l1-wet-exit": "wet-exit",
   "l2-wet-exit": "wet-exit",

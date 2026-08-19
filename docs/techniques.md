@@ -51,15 +51,48 @@ in the Top Tips header runs over (5) → mid (4) → under (3). It is device-wid
 
 ## Current state
 
-Three techniques, with a seeded map proving cross-level reuse:
+Twelve techniques cover the core boat-handling skills of L1, L2 and L3. Each is
+mapped to every level that examines it, which is what makes the cues reusable:
 
-- **forward-stroke** ← `l2-forward`, `l3-strokes-and-maneuvers-01`
-- **stopping** ← `l1-stop`, `l2-stopping`, `l3-strokes-and-maneuvers-03`
-- **wet-exit** ← `l1-wet-exit`, `l2-wet-exit`, `l3-rescues-and-towing-01`
+| Technique | Mapped ACA skills |
+|-----------|-------------------|
+| **stopping** | `l1-stop`, `l2-stopping`, `l3-strokes-and-maneuvers-03` |
+| **reverse-stroke** | `l1-reverse`, `l2-reverse`, `l3-strokes-and-maneuvers-02` |
+| **draw** | `l1-draw`, `l2-draw`, `l3-strokes-and-maneuvers-07` |
+| **spinning** | `l1-turn-stationary`, `l2-rotate-360`, `l3-strokes-and-maneuvers-05` |
+| **turning-on-the-move** | `l1-turn-moving`, `l2-turning-move`, `l3-strokes-and-maneuvers-06` |
+| **wet-exit** | `l1-wet-exit`, `l2-wet-exit`, `l3-rescues-and-towing-01` |
+| **forward-stroke** | `l2-forward`, `l3-strokes-and-maneuvers-01` |
+| **sweep** | `l2-sweep`, `l3-strokes-and-maneuvers-04` |
+| **stern-rudder** | `l2-stern-rudder`, `l2-stern-rudder-away`, `l3-strokes-and-maneuvers-09` |
+| **low-brace-recovery** | `l2-low-brace-recovery`, `l3-edging-and-support-01` |
+| **low-brace-turn** | `l2-low-brace-turn`, `l3-edging-and-support-02` |
+| **edge-control** | `l2-edge-control`, `l2-turn-control`, `l3-edging-and-support-03` |
+
+Three mapping calls worth recording, because they are judgment, not data:
+
+- **Sweeps are one technique, not two.** The candidate taxonomy below lists
+  `forward-sweep` and `reverse-sweep` separately, but the ACA examines them as
+  one row and the cues are the same — wide arc, buried blade, edge away, look
+  through the turn. One cue-set, so one technique.
+- **`l3-strokes-and-maneuvers-09` is "Ruddering (Bow and Stern)"** and maps to
+  `stern-rudder`. The stern-rudder cues are the bulk of it. A separate
+  `bow-rudder` technique is still to write; when it exists, that skill may want
+  to map to both, which the current one-technique-per-skill map cannot express.
+- **`l2-turn-control`** ("vary the radius of their turns") maps to
+  `edge-control` — varying the arc is an edging problem, and it sits in the
+  Edging and Support category.
 
 The map is **seed-then-refine**: seeded by matching skill names, corrected by the
 instructor. Everything else is unmapped for now (an unmapped skill simply shows
-no tips).
+no tips). Deliberately still unmapped: `l3-strokes-and-maneuvers-08` ("Draw
+Sideways on the Move") — a hanging draw is a parked blade, not a repeated
+stroke, so it needs its own cues rather than the static-draw set.
+
+The gap is L4 and L5, and the knowledge strands at every level. Rolling, high
+brace, the rescues, towing, surf and rock-garden handling all have no cues yet;
+whether the judgment and seamanship skills get cues at all is open question 2
+below.
 
 ## Principles
 

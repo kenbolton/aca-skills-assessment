@@ -7,12 +7,83 @@
     { "id": "f5", "text": "Fix your eyes on a point ahead; a steady gaze steadies your line." },
     { "id": "f6", "text": "Keep a light, even cadence on both sides." }
   ],
+  "reverse-stroke": [
+    { "id": "rv1", "text": "Look over one shoulder before you move, and keep looking that way." },
+    { "id": "rv2", "text": "Use the back of the blade — there is no need to turn the paddle over." },
+    { "id": "rv3", "text": "Start each stroke at your hip and push it away towards the stern." },
+    { "id": "rv4", "text": "Unwind your torso with the blade; the arms only hold the shape." },
+    { "id": "rv5", "text": "Correct with a short reverse sweep, not with a forward stroke." },
+    { "id": "rv6", "text": "In wind the stern hunts — correct early and small, before it swings." }
+  ],
   "stopping": [
     { "id": "s1", "text": "Sit up — braking starts from posture, not the arms." },
     { "id": "s2", "text": "Plant the blade fully in the water before you resist." },
     { "id": "s3", "text": "Use short, firm back-strokes on alternating sides." },
     { "id": "s4", "text": "Keep the boat flat; leaning back loosens your control." },
     { "id": "s5", "text": "Practise stopping from reverse too, not just from forward." }
+  ],
+  "sweep": [
+    { "id": "sw1", "text": "Reach the blade well forward, then draw a wide arc out to the stern." },
+    { "id": "sw2", "text": "Bury the whole blade — a skimming blade turns nothing." },
+    { "id": "sw3", "text": "Edge the kayak away from the turn to free up the ends." },
+    { "id": "sw4", "text": "Look where you want to go; the boat follows your eyes." },
+    { "id": "sw5", "text": "Turn from the torso — the arms only carry the paddle round." },
+    { "id": "sw6", "text": "Hold the edge through the whole arc, not just the start of it." }
+  ],
+  "spinning": [
+    { "id": "sp1", "text": "Link a forward sweep on one side to a reverse sweep on the other." },
+    { "id": "sp2", "text": "Keep both arcs wide, so the boat spins instead of travelling." },
+    { "id": "sp3", "text": "Change the edge as you change the stroke." },
+    { "id": "sp4", "text": "Spot round the horizon — watching your blade stalls the spin." },
+    { "id": "sp5", "text": "Count your strokes, then try the full circle in fewer." }
+  ],
+  "turning-on-the-move": [
+    { "id": "tm1", "text": "Set the turn up early — start it before you reach the obstacle." },
+    { "id": "tm2", "text": "Keep some speed; a moving hull turns, a stopped one does not." },
+    { "id": "tm3", "text": "Edge away from the turn and hold that edge through the arc." },
+    { "id": "tm4", "text": "Blend a sweep into your forward strokes — do not stop paddling." },
+    { "id": "tm5", "text": "Look through the turn to your exit, not at what you are avoiding." },
+    { "id": "tm6", "text": "Upwind and downwind turns need different edge — practise both." }
+  ],
+  "draw": [
+    { "id": "dr1", "text": "Stack your hands: top hand high, shaft as near vertical as you can." },
+    { "id": "dr2", "text": "Plant the blade out beside your hip, level with your body." },
+    { "id": "dr3", "text": "Pull the boat to the blade, not the blade to the boat." },
+    { "id": "dr4", "text": "Stop short of the hull, then slice the blade back out to start again." },
+    { "id": "dr5", "text": "If the bow leads, move the blade back; if the stern leads, move it forward." },
+    { "id": "dr6", "text": "A small edge towards the blade frees the hull — build it slowly." }
+  ],
+  "stern-rudder": [
+    { "id": "sr1", "text": "Rotate and lay the blade alongside the stern, close to the hull." },
+    { "id": "sr2", "text": "Carry some speed — a rudder needs water flowing past the blade." },
+    { "id": "sr3", "text": "Open the blade face away from the hull to turn towards the paddle." },
+    { "id": "sr4", "text": "Push the blade out from the stern to turn away from the paddle." },
+    { "id": "sr5", "text": "Hold the shaft with your torso, not your arms; stay wound up." },
+    { "id": "sr6", "text": "In following seas, rudder on the wave face and edge to hold your line." }
+  ],
+  "edge-control": [
+    { "id": "ec1", "text": "Edge with your knees and hips; keep your head over the boat." },
+    { "id": "ec2", "text": "Edge, do not lean — the body stays upright while the hull tilts." },
+    { "id": "ec3", "text": "Hold one edge for ten seconds without a wobble, on each side." },
+    { "id": "ec4", "text": "Pick the edge before the stroke, not after it." },
+    { "id": "ec5", "text": "Hold the edge for the whole maneuver, then come flat on purpose." },
+    { "id": "ec6", "text": "Find how far you can go before the deck catches — then work just inside it." }
+  ],
+  "low-brace-recovery": [
+    { "id": "lbr1", "text": "Knuckles down: the back of the blade slaps flat on the water." },
+    { "id": "lbr2", "text": "Keep your elbows high and above the shaft, never behind you." },
+    { "id": "lbr3", "text": "Push off the water and recover fast — do not rest your weight on it." },
+    { "id": "lbr4", "text": "Snap the boat up with your knee and hip; the blade only buys time." },
+    { "id": "lbr5", "text": "Your head comes up last, every time." },
+    { "id": "lbr6", "text": "Practise going properly off balance, so the brace becomes a reflex." }
+  ],
+  "low-brace-turn": [
+    { "id": "lbt1", "text": "Build speed first — the turn feeds on your momentum." },
+    { "id": "lbt2", "text": "Open with a strong forward sweep to start the boat round." },
+    { "id": "lbt3", "text": "Edge into the turn and hold it; the brace keeps you there." },
+    { "id": "lbt4", "text": "Keep the blade flat and skimming just behind your hip." },
+    { "id": "lbt5", "text": "Look through the turn and stay wound up until the boat comes round." },
+    { "id": "lbt6", "text": "Vary the edge to widen or tighten the arc." }
   ],
   "wet-exit": [
     { "id": "w1", "text": "Stay calm — you have more time underwater than it feels." },

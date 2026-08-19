@@ -1,5 +1,14 @@
 {
   "forward-stroke": { "name": "Forward Stroke" },
+  "reverse-stroke": { "name": "Reverse Paddling" },
   "stopping": { "name": "Stopping" },
+  "sweep": { "name": "Forward & Reverse Sweep" },
+  "spinning": { "name": "Rotate in Place" },
+  "turning-on-the-move": { "name": "Turning on the Move" },
+  "draw": { "name": "Draw Sideways" },
+  "stern-rudder": { "name": "Stern Rudder" },
+  "edge-control": { "name": "Edge Control" },
+  "low-brace-recovery": { "name": "Low Brace Recovery" },
+  "low-brace-turn": { "name": "Low Brace Turn" },
   "wet-exit": { "name": "Wet Exit" }
 }
