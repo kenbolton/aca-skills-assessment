@@ -51,8 +51,11 @@ beginner needs goes first; the hard-won insight that only lands once you've felt
 say, 25 knots of wind against 3 knots of current goes last. The app reveals the
 top few unmastered cues and a paddler *earns* the later ones by mastering the
 earlier — so an advanced cue never confuses a beginner, and a strong paddler works
-down to it. **Four to six per technique** is a good target (working memory holds
-about four).
+down to it. **Four to six technique-specific cues** is a good target (working
+memory holds about four). Universal cues — sit up, rotate from the torso — are
+repeated in every technique they apply to, worded for that technique, so a full
+set often runs longer than six. The app reveals only 3 to 5 at a time, so the
+extra length is more ladder, not more clutter.
 
 Keep each cue short and actionable — one idea, plain imperative voice, glanceable
 from a phone on the water.

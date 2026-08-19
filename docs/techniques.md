@@ -105,6 +105,27 @@ below.
 - **Stable keys.** A technique key is the tips key and the mastery key. Renaming
   one orphans saved progress and needs a remap — treat keys as permanent.
 - **Kebab-case, human name.** Key `low-brace-turn`, name "Low Brace Turn".
+- **Universal cues repeat on purpose.** "Sit up" and "rotate from the torso"
+  apply to nearly every technique. Repetition across techniques is
+  **reinforcement, not redundancy** — motor learning is context specific, and
+  rotating in a stern rudder is not the same act as rotating in a forward
+  stroke. So a universal is authored **once per technique, in that technique's
+  own words**, with its own id and its own mastery state. Do not fold them into
+  a shared set, and do not deduplicate them: a paddler meeting "look through the
+  turn" on the sweep, the spin and the low brace turn is the point.
+- **Name the transfer.** A paddler may need telling that the same thing applies
+  in this new context — that is the work the repeat does. So word a universal's
+  repeat to point at the context the paddler already knows: "Sit tall, the same
+  as going forward" teaches more than "Sit tall" on its own.
+- **Similar language, different subtleties.** Repeats read alike, and the small
+  differences between them do real work on the reader. "Sit tall — the shaft is
+  only vertical if you are" (draw) and "Sit tall as you turn; leaning in is not
+  the same as edging" (turning on the move) are one universal, but each names
+  the fault that universal prevents *here*. Write the subtlety. Never paste.
+- **Retired ids stay retired.** Removing a cue does not free its id. Reusing it
+  for a different idea silently transfers anyone's saved mastery from the old cue
+  to the new one. Rewording the text under a stable id is different, and is the
+  correct way to improve a cue.
 
 ## Open questions (to think about)
 
@@ -135,6 +156,21 @@ Grouped families to seed the thinking — refine names and membership to taste:
   rock-garden-handling, following-seas.
 - **Seamanship / judgment (maybe out of scope — see open question 2):**
   navigation, trip-planning, group-management, incident-management.
+
+## Universal cue coverage
+
+Because universals reinforce (see Principles), their coverage is a real measure
+of the cue set, and it is currently uneven:
+
+| Universal | Techniques carrying it |
+|-----------|------------------------|
+| posture — "sit up", "sit tall" | 3 of 12 — `forward-stroke`, `stopping`, `edge-control` |
+| rotation — torso, core, wound up | 5 of 12 — `forward-stroke`, `reverse-stroke`, `sweep`, `stern-rudder`, `low-brace-turn` |
+
+Both want seeding into the techniques that lack them. Seeding is **not**
+mechanical: each cue is worded for its own technique, and some techniques do not
+want a given universal at all — rotation means nothing in a wet exit. Judge one
+technique at a time.
 
 ## Cues are instruction, not criteria
 
