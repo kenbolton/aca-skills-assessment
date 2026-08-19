@@ -48,7 +48,22 @@ Three small files work together:
 A cue may carry an optional **`signal`** — what it feels like when you are doing
 it right. A signal is a check, not an instruction. It is never ticked off and
 never takes an `id`, so adding one to an existing cue is always safe. Most cues
-have none; write one only where there is a real sensation to name.
+have none; write one only where there is a real sensation to name. Use a list
+when a cue has both a confirming and a warning check. A warning signal must say
+what it means — "a wobble means you are pulling too hard", not just "a wobble".
+
+## Ordering is separate from the cues
+
+The reveal order lives in **`src/data/tip-order.json`** as a list of ids:
+
+```jsonc
+{ "forward-stroke": ["f1", "f2", "f3", "f11"] }
+```
+
+**You can ignore it.** The list is partial: cues named in it lead, in that order,
+and every cue left out follows in file order. So a new cue lands at the end of
+the ladder — usually the right place — without you touching a second file. Edit
+the order only when you want to move a cue up the ladder.
 
 ## Order is a readiness ladder
 

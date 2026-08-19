@@ -1,6 +1,6 @@
 {
   "forward-stroke": [
-    { "id": "f1", "text": "Sit tall and relax your grip — a loose top hand paddles further.", "signal": "You can lift your fingers off the shaft and nothing changes." },
+    { "id": "f1", "text": "Sit tall and relax your grip — a loose top hand paddles further.", "signal": ["You can lift your fingers off the shaft and nothing changes.", "A blister starting means your grip is too tight."] },
     { "id": "f2", "text": "Wind up your torso; power comes from rotation, not the arms.", "signal": "Your chest faces the blade at the catch." },
     { "id": "f3", "text": "Plant the blade up near your feet, then pull back to your hip.", "signal": "The catch is quiet — no splash going in, no slurp coming out." },
     { "id": "f4", "text": "Slice the blade out cleanly at the hip — don't drag it past.", "signal": "The blade leaves no swirl behind it." },
@@ -9,24 +9,27 @@
     { "id": "f7", "text": "For a low-angle stroke, keep your top hand below your eyes and your bottom hand low." },
     { "id": "f8", "text": "Open your top hand and use it to push across the horizon." },
     { "id": "f9", "text": "Keep your top hand relaxed and your bottom hand in gentle control — the bottom hand is the guide." },
-    { "id": "f10", "text": "Push, don't pull. The bottom hand gently guides the blade through the water.", "signal": "Pressure between the knuckles of your top hand." },
+    { "id": "f10", "text": "Push, don't pull. The bottom hand gently guides the blade through the water.", "signal": ["Pressure between the knuckles of your top hand.", "A wobble means you are pulling too hard."] },
     { "id": "f11", "text": "On the catch, bury the blade completely and immediately at your feet." },
     { "id": "f13", "text": "Slow is smooth. Smooth is fast." },
     { "id": "f14", "text": "Take a stroke, pause at the top. Repeat." },
     { "id": "f15", "text": "Engage the strong muscles in your legs to drive the boat with each stroke. Bring the elbow of your top hand and its corresponding knee together as you push with the other foot." },
     { "id": "f16", "text": "Maintain consistent strong triangles in your arms." },
     { "id": "f18", "text": "For a high-angle stroke, gaze through the open fingers of your top hand at the horizon." },
-    { "id": "f19", "text": "If you start to get a blister, try to pull with a single finger. Then alternate which finger, avoiding the \"hot\" finger." },
-    { "id": "f20", "text": "If you feel a wobble, you are pulling too hard. Try to push with the top hand." }
+    { "id": "f19", "text": "If a finger goes hot, pull with a single finger for a while, then alternate which one." },
+    { "id": "f21", "text": "Keep both elbows in the same comfortably low position.", "signal": "Low-back pain on one side means one elbow is riding higher than the other." },
+    { "id": "f22", "text": "Pull the boat forward past the planted blade; do not push the blade back through the water.", "signal": "A boat that does not go where you want means you are pushing the blade, not pulling the boat." }
   ],
   "reverse-stroke": [
     { "id": "rv7", "text": "Sit tall, the same as going forward — do not slump back to look behind." },
     { "id": "rv1", "text": "Look over one shoulder before you move, and keep looking that way." },
     { "id": "rv2", "text": "Use the back of the blade — there is no need to turn the paddle over." },
-    { "id": "rv3", "text": "Start each stroke at your hip and push it away towards the stern." },
+    { "id": "rv3", "text": "Catch just behind your hip — no more than 45° back." },
     { "id": "rv4", "text": "Unwind your torso with the blade; the arms only hold the shape." },
     { "id": "rv5", "text": "Correct with a short reverse sweep, not with a forward stroke." },
-    { "id": "rv6", "text": "In wind the stern hunts — correct early and small, before it swings." }
+    { "id": "rv6", "text": "In wind the stern hunts — correct early and small, before it swings." },
+    { "id": "rv8", "text": "Unwind toward midships; the blade leaves the water at or just aft of it." },
+    { "id": "rv9", "text": "Do not hold the boat flat — edge to the stroke side, and change edge each stroke.", "signal": "The stern locking and turning the boat means you are staying flat." }
   ],
   "stopping": [
     { "id": "s1", "text": "Sit up — braking starts from posture, not the arms." },

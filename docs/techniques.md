@@ -46,6 +46,19 @@ few unmastered cues and a paddler *earns* the later ones by mastering the
 earlier. No per-cue "level" tag is needed — the order carries it, and the
 progressive reveal is the gate.
 
+The ladder lives in `src/data/tip-order.json` as a list of ids, apart from the
+cue text, because a ladder is a thing worth reading and rewriting as a whole:
+
+```jsonc
+{ "forward-stroke": ["f1", "f2", "f3", "f11", "f22", "f4", "f13", …] }
+```
+
+Reordering is then a one-line change that never collides with rewording a cue.
+The list is **partial on purpose** — listed cues lead, in that order, and any cue
+not named follows in file order. So a contributor can add a cue and never open
+the order file; it lands at the end of the ladder, which is usually where a new
+cue belongs. A technique absent from the file keeps file order entirely.
+
 How many cues "the top few" means is the paddler's own call: the **whelm meter**
 in the Top Tips header runs over (5) → mid (4) → under (3). It is device-wide
 (`src/lib/whelm.js`), like tip progress, and defaults to mid.
@@ -207,6 +220,27 @@ instruction, and it rides on a cue as an optional `signal` field:
   real, checkable sensation. Inventing a feeling is the same defect as inventing
   a criterion (see below): if you cannot name what it feels like, leave the field
   out.
+- **A cue may carry several.** `signal` takes a string or a list of them, because
+  a cue often has both a confirming check and a warning check. `f10` has
+  "Pressure between the knuckles of your top hand" and "A wobble means you are
+  pulling too hard".
+
+### A warning signal says what it means
+
+Signals come in two flavours and the panel renders them identically, so the
+words have to carry the difference. "Pressure between the knuckles of your top
+hand" is a **target**. "Low-back pain on one side" is an **alarm**. Written
+bare, the second one reads like something to aim for.
+
+So a warning signal states its meaning: "Low-back pain on one side **means one
+elbow is riding higher than the other**." A confirming signal needs no such
+frame — it is simply what right feels like. This is a wording rule rather than a
+`warning` field, which would need a second rendering to earn itself.
+
+A signal that carries a fix is not a signal. Split it: the sensation becomes the
+signal, the correction stays a cue. `f19` was one cue reading "if you start to
+get a blister, try to pull with a single finger…"; the symptom is now `f1`'s
+warning signal and `f19` keeps only the correction.
 
 ## Cues are instruction, not criteria
 

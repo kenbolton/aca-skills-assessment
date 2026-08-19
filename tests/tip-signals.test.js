@@ -52,6 +52,36 @@ describe('validateTopTips accepts an optional signal', () => {
   });
 });
 
+describe('a cue may carry several signals', () => {
+  // A cue can have a confirming check and a warning check — "pressure between
+  // the knuckles" and "a wobble means you are pulling too hard".
+  const PAIR = [SIGNAL, 'A wobble means you are pulling too hard.'];
+
+  test('accepts a list of signals', () => {
+    expect(validateTopTips({ 'forward-stroke': [cue('f1', { signal: PAIR })] }, TECHNIQUES)).toEqual([]);
+  });
+
+  test('flags a list holding an empty signal', () => {
+    const errs = validateTopTips({ 'forward-stroke': [cue('f1', { signal: [SIGNAL, '  '] })] }, TECHNIQUES);
+    expect(errs.some(e => /"signal"/.test(e))).toBe(true);
+  });
+
+  test('flags an empty list', () => {
+    const errs = validateTopTips({ 'forward-stroke': [cue('f1', { signal: [] })] }, TECHNIQUES);
+    expect(errs.some(e => /"signal"/.test(e))).toBe(true);
+  });
+
+  test('renders one element per signal, in order', () => {
+    const out = TopTips({ tips: [cue('f1', { signal: PAIR })], mastered: [] });
+    expect(signalEls(out).map(e => e.text)).toEqual(PAIR);
+  });
+
+  test('renders both signals after the cue is mastered', () => {
+    const out = TopTips({ tips: [cue('f1', { signal: PAIR })], mastered: ['f1'] });
+    expect(signalEls(out).map(e => e.text)).toEqual(PAIR);
+  });
+});
+
 describe('TopTips renders a signal beneath its cue', () => {
   test('shows the signal for a cue the paddler has not mastered', () => {
     const out = TopTips({ tips: [cue('f1', { signal: SIGNAL })], mastered: [] });

@@ -12,6 +12,7 @@ import { WhelmMeter } from './WhelmMeter.jsx';
 // landing. It renders under the cue text and stays visible after mastery,
 // because a signal is what a paddler re-checks once they believe they have it.
 function Cue({ tip, done, onClick }) {
+  const signals = tip.signal == null ? [] : (Array.isArray(tip.signal) ? tip.signal : [tip.signal]);
   return (
     <li>
       <button
@@ -21,7 +22,7 @@ function Cue({ tip, done, onClick }) {
         onClick={onClick}
       >
         <span className="tt-box" aria-hidden="true">{done ? '☑' : '☐'}</span> {tip.text}
-        {tip.signal ? <span className="tt-signal">{tip.signal}</span> : null}
+        {signals.map((sig, i) => <span key={i} className="tt-signal">{sig}</span>)}
       </button>
     </li>
   );

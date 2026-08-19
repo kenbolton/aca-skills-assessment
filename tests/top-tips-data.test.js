@@ -1,9 +1,10 @@
 import { expect, test, describe } from 'vitest';
-import { validateTopTips, validateSkillTechniques, validateRetiredIds } from '../src/lib/top-tips.js';
+import { validateTopTips, validateSkillTechniques, validateRetiredIds, validateTipOrder } from '../src/lib/top-tips.js';
 import topTips from '../src/data/top-tips.json';
 import techniques from '../src/data/techniques.json';
 import skillTechniques from '../src/data/skill-techniques.json';
 import retiredTipIds from '../src/data/retired-tip-ids.json';
+import tipOrder from '../src/data/tip-order.json';
 import skills from '../src/data/skills.json';
 import skillsL3 from '../src/data/skills-l3.json';
 import skillsL4 from '../src/data/skills-l4.json';
@@ -23,6 +24,9 @@ describe('committed data (crowdsourcing guard)', () => {
   });
   test('no retired tip id has come back into use', () => {
     expect(validateRetiredIds(topTips, retiredTipIds)).toEqual([]);
+  });
+  test('tip-order.json lists real ids, once each, for techniques that have cues', () => {
+    expect(validateTipOrder(tipOrder, topTips)).toEqual([]);
   });
   test('every retired id names a real technique', () => {
     expect(Object.keys(retiredTipIds).filter(t => !TECHNIQUE_KEYS.has(t))).toEqual([]);
