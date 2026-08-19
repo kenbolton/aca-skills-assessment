@@ -115,6 +115,20 @@ export function validateTopTips(data, validTechniqueKeys) {
   return errors;
 }
 
+// Validate that no retired tip id has come back. Removing a cue does not free
+// its id — reusing it for a different cue silently transfers saved mastery from
+// the old one to the new one. `retired` is { [technique]: string[] }.
+export function validateRetiredIds(data, retired) {
+  const errors = [];
+  for (const [technique, ids] of Object.entries(retired || {})) {
+    const live = new Set(((data || {})[technique] || []).map(t => t && t.id));
+    for (const id of ids) {
+      if (live.has(id)) errors.push(`"${technique}": retired tip id "${id}" is in use again`);
+    }
+  }
+  return errors;
+}
+
 // Validate the skill→technique map: every key a real skill, every value a real
 // technique.
 export function validateSkillTechniques(map, validSkillIds, validTechniqueKeys) {

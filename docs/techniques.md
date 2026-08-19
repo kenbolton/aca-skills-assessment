@@ -24,6 +24,7 @@ level where the technique appears. Two axes, kept separate:
 | `src/data/techniques.json` | `{ "forward-stroke": { "name": "Forward Stroke" } }` | the technique catalogue |
 | `src/data/skill-techniques.json` | `{ "l2-forward": "forward-stroke", … }` | maps each ACA skill to its technique |
 | `src/data/top-tips.json` | `{ "forward-stroke": [ { "id", "text" } ] }` | the cues, keyed by technique |
+| `src/data/retired-tip-ids.json` | `{ "forward-stroke": ["f12"] }` | ids that must never return |
 
 `tipsFor(skillId)` resolves *skill → technique → cues*, so the Rate panel and
 the Review/Journey preview work off a skill id without knowing about techniques.
@@ -125,7 +126,9 @@ below.
 - **Retired ids stay retired.** Removing a cue does not free its id. Reusing it
   for a different idea silently transfers anyone's saved mastery from the old cue
   to the new one. Rewording the text under a stable id is different, and is the
-  correct way to improve a cue.
+  correct way to improve a cue. Retired ids are listed in
+  `src/data/retired-tip-ids.json` and `tests/top-tips-data.test.js` fails if one
+  comes back, so this rule is enforced rather than remembered.
 
 ## Open questions (to think about)
 
@@ -140,6 +143,14 @@ below.
    (wind-against-current, following seas, surf) — as context, not new cues?
 4. **How far to map.** Which of the ~284 skills map to a shared technique, and
    which are genuinely level-specific? This is the instructor's ongoing call.
+5. **A skill maps to exactly one technique.** `skill-techniques.json` is
+   one-to-one, so a skill that genuinely needs two cue-sets cannot say so. Found
+   when the forward stroke grew both low-angle and high-angle cues: splitting it
+   would force `l2-forward` to pick one half. Resolved for now by naming the
+   style inside the cue ("For a low-angle stroke, …") rather than splitting. The
+   fix, when it is needed, is to let a value be a list and have `tipsFor()`
+   concatenate the sets; mastery stays keyed per technique, so no migration of
+   saved progress is required. Same shape of problem as cross-cutting cues.
 
 ## A candidate taxonomy (starting point, not gospel)
 

@@ -70,6 +70,9 @@ level).
 - ✅ A new tip gets a **new id unique within its technique** (any short string).
 - ⛔ **Never rename or reuse an existing tip's `id`.** Changing an id orphans the
   progress people have saved against it.
+- ⛔ **Removing a cue does not free its id.** Add it to
+  `src/data/retired-tip-ids.json` so it can never come back under a different
+  cue. The test suite fails if one does.
 
 ## Adding tips
 
