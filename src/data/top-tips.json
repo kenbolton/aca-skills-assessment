@@ -29,7 +29,8 @@
     { "id": "rv5", "text": "Correct with a short reverse sweep, not with a forward stroke." },
     { "id": "rv6", "text": "In wind the stern hunts — correct early and small, before it swings." },
     { "id": "rv8", "text": "Unwind toward midships; the blade leaves the water at or just aft of it." },
-    { "id": "rv9", "text": "Do not hold the boat flat — edge to the stroke side, and change edge each stroke.", "signal": "The stern locking and turning the boat means you are staying flat." }
+    { "id": "rv9", "text": "Do not hold the boat flat — edge to the stroke side, and change edge each stroke.", "signal": "The stern locking and turning the boat means you are staying flat." },
+    { "id": "rv10", "text": "Unlike the forward stroke, do not drive with your legs." }
   ],
   "stopping": [
     { "id": "s1", "text": "Sit up — braking starts from posture, not the arms." },

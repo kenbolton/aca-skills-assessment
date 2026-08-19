@@ -131,6 +131,11 @@ below.
   in this new context — that is the work the repeat does. So word a universal's
   repeat to point at the context the paddler already knows: "Sit tall, the same
   as going forward" teaches more than "Sit tall" on its own.
+- **Name the non-transfer too.** Where a universal deliberately does *not* carry
+  across, say so, because the paddler will assume it does. `f15` teaches leg
+  drive in the forward stroke, so the reverse stroke needs `rv10` — "unlike the
+  forward stroke, do not drive with your legs". Silence is not enough: the
+  transfer happens by default, and only a stated negation stops it.
 - **Similar language, different subtleties.** Repeats read alike, and the small
   differences between them do real work on the reader. "Sit tall — the shaft is
   only vertical if you are" (draw) and "Sit tall as you turn; leaning in is not
