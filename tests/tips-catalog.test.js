@@ -26,7 +26,7 @@ describe('techniqueCatalog (one row per technique, no level)', () => {
 
   test('carries the technique name and its one cue count', () => {
     expect(find('forward-stroke').name).toBe('Forward Stroke');
-    expect(find('forward-stroke').tipCount).toBe(6);
+    expect(find('forward-stroke').tipCount).toBe(tipsFor('l2-forward').length);
   });
 
   test('orders foundation first, so no level headings are needed to read it', () => {

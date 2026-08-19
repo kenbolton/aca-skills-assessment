@@ -1,5 +1,9 @@
 import { expect, test } from 'vitest';
 import { SkillTipsPreview } from '../src/components/SkillTipsPreview.jsx';
+import { tipsFor } from '../src/lib/top-tips.js';
+
+// Counts come from the data, so adding cues to a technique cannot break these.
+const forwardTips = tipsFor('l2-forward');
 
 function text(node) {
   if (node == null || node === false) return '';
@@ -11,15 +15,15 @@ function text(node) {
 }
 
 test('shows the top N cue texts for a skill that has tips', () => {
-  // l2-forward has 6 tips; the first is the "sit tall" cue.
+  // The first l2-forward cue is the "sit tall" one.
   const out = text(SkillTipsPreview({ skillId: 'l2-forward', max: 3 }));
-  expect(out).toMatch(/Sit tall/);           // first cue
-  expect(out).toMatch(/\+3 more/);            // 6 total − 3 shown
-  expect(out).not.toMatch(/Keep a light, even cadence/); // the 6th, not shown
+  expect(out).toMatch(/Sit tall/);                                  // first cue
+  expect(out).toContain(`+${forwardTips.length - 3} more`);         // the rest are counted
+  expect(out).not.toContain(forwardTips[3].text);                   // the 4th is not shown
 });
 
 test('no "+N more" when the skill has N or fewer tips', () => {
-  const out = text(SkillTipsPreview({ skillId: 'l2-forward', max: 6 }));
+  const out = text(SkillTipsPreview({ skillId: 'l2-forward', max: forwardTips.length }));
   expect(out).not.toMatch(/more/);
 });
 

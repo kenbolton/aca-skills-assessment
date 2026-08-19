@@ -5,7 +5,21 @@
     { "id": "f3", "text": "Plant the blade up near your feet, then pull back to your hip." },
     { "id": "f4", "text": "Slice the blade out cleanly at the hip — don't drag it past." },
     { "id": "f5", "text": "Fix your eyes on a point ahead; a steady gaze steadies your line." },
-    { "id": "f6", "text": "Keep a light, even cadence on both sides." }
+    { "id": "f6", "text": "Keep a light, even cadence on both sides." },
+    { "id": "f7", "text": "Keep your top hand below your eyes and your bottom hand low — the shaft is angled." },
+    { "id": "f8", "text": "Open your top hand and use it to push across the horizon." },
+    { "id": "f9", "text": "Keep your top hand relaxed and your bottom hand in gentle control — the bottom hand is the guide." },
+    { "id": "f10", "text": "Push, don't pull. The bottom hand gently guides the blade through the water." },
+    { "id": "f11", "text": "On the catch, bury the blade completely and immediately at your feet." },
+    { "id": "f12", "text": "Do not pull. The bottom hand gently guides the blade through the water." },
+    { "id": "f13", "text": "Slow is smooth. Smooth is fast." },
+    { "id": "f14", "text": "Take a stroke, pause at the top. Repeat." },
+    { "id": "f15", "text": "Engage the strong muscles in your legs to drive the boat with each stroke. Bring the elbow of your top hand and its corresponding knee together as you push with the other foot." },
+    { "id": "f16", "text": "Maintain consistent strong triangles in your arms." },
+    { "id": "f17", "text": "Allow your top hand to come across the horizon." },
+    { "id": "f18", "text": "Gaze through the open fingers of your top hand at the horizon on each stroke." },
+    { "id": "f19", "text": "If you start to get a blister, try to pull with a single finger. Then alternate which finger, avoiding the \"hot\" finger." },
+    { "id": "f20", "text": "If you feel a wobble, you are pulling too hard. Try to push with the top hand." }
   ],
   "reverse-stroke": [
     { "id": "rv7", "text": "Sit tall, the same as going forward — do not slump back to look behind." },
