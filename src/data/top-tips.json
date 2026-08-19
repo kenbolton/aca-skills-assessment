@@ -34,12 +34,12 @@
   ],
   "stopping": [
     { "id": "s1", "text": "Sit up — braking starts from posture, not the arms." },
-    { "id": "s6", "text": "Brake with your torso, the same as you drive forward with it." },
     { "id": "s2", "text": "Plant the blade fully in the water before you resist." },
     { "id": "s3", "text": "Use short, firm back-strokes on alternating sides." },
     { "id": "s4", "text": "Keep the boat flat; leaning back loosens your control." },
     { "id": "s5", "text": "Practise stopping from reverse too, not just from forward." },
-    { "id": "s7", "text": "Braking from reverse, push with your feet — only from reverse, never from forward." }
+    { "id": "s7", "text": "Braking from reverse, use your torso and your feet." },
+    { "id": "s8", "text": "Braking from forward, use your torso — keep your feet out of it." }
   ],
   "sweep": [
     { "id": "sw7", "text": "Sit tall through the whole sweep; slumping shortens your reach." },

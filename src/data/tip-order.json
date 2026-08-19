@@ -5,5 +5,8 @@
   ],
   "reverse-stroke": [
     "rv7", "rv1", "rv2", "rv3", "rv8", "rv4", "rv10", "rv9", "rv5", "rv6"
+  ],
+  "stopping": [
+    "s1", "s2", "s3", "s4", "s8", "s5", "s7"
   ]
 }
