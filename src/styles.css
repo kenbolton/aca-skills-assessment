@@ -398,6 +398,7 @@ button { min-height: var(--hit); font-size: 18px; }
 .whelm-on { background: #6b5d2f; border-color: #6b5d2f; color: #f4f1e8; font-weight: 600; }
 .whelm-on:hover { background: #5b4f28; }
 .top-tips-list, .top-tips-done { list-style: none; margin: 0; padding: 0; }
+.tt-signal { display: block; margin: .15rem 0 0 1.4rem; font-size: .85em; color: #6b6152; font-style: italic; }
 .top-tips-done { margin-top: .3rem; }
 .tt-item {
   display: flex; align-items: baseline; gap: .5rem; width: 100%;

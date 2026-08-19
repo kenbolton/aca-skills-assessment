@@ -39,10 +39,16 @@ Three small files work together:
 {
   "forward-stroke": [
     { "id": "f1", "text": "Sit tall and relax your grip." },
-    { "id": "f2", "text": "Power comes from torso rotation, not the arms." }
+    { "id": "f2", "text": "Power comes from torso rotation, not the arms.",
+      "signal": "Your chest faces the blade at the catch." }
   ]
 }
 ```
+
+A cue may carry an optional **`signal`** — what it feels like when you are doing
+it right. A signal is a check, not an instruction. It is never ticked off and
+never takes an `id`, so adding one to an existing cue is always safe. Most cues
+have none; write one only where there is a real sensation to name.
 
 ## Order is a readiness ladder
 

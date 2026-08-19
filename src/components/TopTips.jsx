@@ -8,6 +8,25 @@ import { visibleTips } from '../lib/top-tips.js';
 import { revealFor, DEFAULT_WHELM } from '../lib/whelm.js';
 import { WhelmMeter } from './WhelmMeter.jsx';
 
+// One cue row. A cue may carry a "signal" — the felt evidence that it is
+// landing. It renders under the cue text and stays visible after mastery,
+// because a signal is what a paddler re-checks once they believe they have it.
+function Cue({ tip, done, onClick }) {
+  return (
+    <li>
+      <button
+        type="button"
+        className={done ? 'tt-item tt-mastered' : 'tt-item'}
+        aria-pressed={done ? 'true' : 'false'}
+        onClick={onClick}
+      >
+        <span className="tt-box" aria-hidden="true">{done ? '☑' : '☐'}</span> {tip.text}
+        {tip.signal ? <span className="tt-signal">{tip.signal}</span> : null}
+      </button>
+    </li>
+  );
+}
+
 export function TopTips({ tips, mastered = [], onToggle, whelm = DEFAULT_WHELM, onWhelmChange, title = 'Top Tips' }) {
   if (!tips || tips.length === 0) return null;
   const { visible, mastered: done, total } = visibleTips(tips, mastered, revealFor(whelm));
@@ -20,26 +39,14 @@ export function TopTips({ tips, mastered = [], onToggle, whelm = DEFAULT_WHELM, 
       </h3>
       {visible.length ? (
         <ul className="top-tips-list">
-          {visible.map(t => (
-            <li key={t.id}>
-              <button type="button" className="tt-item" aria-pressed="false" onClick={toggle(t.id)}>
-                <span className="tt-box" aria-hidden="true">☐</span> {t.text}
-              </button>
-            </li>
-          ))}
+          {visible.map(t => <Cue key={t.id} tip={t} done={false} onClick={toggle(t.id)} />)}
         </ul>
       ) : (
         <p className="tt-all">All tips mastered ✓</p>
       )}
       {done.length ? (
         <ul className="top-tips-done">
-          {done.map(t => (
-            <li key={t.id}>
-              <button type="button" className="tt-item tt-mastered" aria-pressed="true" onClick={toggle(t.id)}>
-                <span className="tt-box" aria-hidden="true">☑</span> {t.text}
-              </button>
-            </li>
-          ))}
+          {done.map(t => <Cue key={t.id} tip={t} done onClick={toggle(t.id)} />)}
         </ul>
       ) : null}
     </section>

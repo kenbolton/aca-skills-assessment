@@ -110,6 +110,11 @@ export function validateTopTips(data, validTechniqueKeys) {
       if (!tip || typeof tip.text !== 'string' || !tip.text.trim()) {
         errors.push(`"${technique}"[${i}]: each tip needs non-empty "text"`);
       }
+      // "signal" is optional — the felt evidence the cue is landing. Present but
+      // blank is a mistake, so it is rejected rather than quietly dropped.
+      if (tip && tip.signal !== undefined && (typeof tip.signal !== 'string' || !tip.signal.trim())) {
+        errors.push(`"${technique}"[${i}]: "signal" must be a non-empty string when present`);
+      }
     });
   }
   return errors;

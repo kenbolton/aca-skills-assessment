@@ -183,6 +183,31 @@ mechanical: each cue is worded for its own technique, and some techniques do not
 want a given universal at all — rotation means nothing in a wet exit. Judge one
 technique at a time.
 
+## Signals — the felt check
+
+A cue says what to do. A **signal** says what it feels like when you are doing
+it — "pressure between the knuckles of your top hand". It is a check, not an
+instruction, and it rides on a cue as an optional `signal` field:
+
+```jsonc
+{ "id": "f10",
+  "text": "Push, don't pull. The bottom hand gently guides the blade through the water.",
+  "signal": "Pressure between the knuckles of your top hand." }
+```
+
+- **Never mastered.** A signal takes no id and no slot in the ladder. You do not
+  master a sensation, you use it to check yourself. Mastery stays keyed to the
+  cue's id, so adding a signal to an existing cue changes no saved progress.
+- **Stays visible after mastery.** The panel keeps showing a signal once its cue
+  is ticked, because a signal is what a paddler re-checks when they believe they
+  already have the cue.
+- **Not in the compact preview.** `SkillTipsPreview` — Review's "Start with" and
+  the Journey — stays a 3-cue nudge and renders no signals.
+- **Optional and sparse.** Most cues have none. Write one only where there is a
+  real, checkable sensation. Inventing a feeling is the same defect as inventing
+  a criterion (see below): if you cannot name what it feels like, leave the field
+  out.
+
 ## Cues are instruction, not criteria
 
 The ACA text is **assessment criteria** — it supplies the standard and the fault,
